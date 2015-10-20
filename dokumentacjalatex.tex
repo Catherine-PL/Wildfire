@@ -1,0 +1,235 @@
+\documentclass[a4paper, 11pt]{article}
+\usepackage[polish]{babel}
+\usepackage[MeX]{polski}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+%\usepackage{times}
+\usepackage{graphicx,wrapfig}
+%\usepackage{anysize}
+%\usepackage{tikz}
+%\usetikzlibrary{calc,through,backgrounds,positioning}
+\usepackage{anysize}
+\usepackage{float}
+%\usepackage{stmaryrd}
+%\usepackage{amssymb}
+%\usepackage{amsthm}
+%\marginsize{3cm}{3cm}{3cm}{3cm}
+%\usepackage{amsmath}
+%\usepackage{color}
+%\usepackage{listings}
+%\usepackage{enumerate}
+%\lstloadlanguages{Ada,C++}
+
+
+\begin{document}	
+	% \noindent -  w tym akapicie nie bedzie wciecia
+	% \ indent - to jest aut., ale powoduje ze jest wciecie
+	% \begin{flushleft}, flushright, center - wyrownianie akapitu
+	% \textbf{pogrubiany tekst}
+	% \textit{kursywa} 
+	% 					STRONY 
+	%  http://www.codecogs.com/latex/eqneditor.php 
+	%  http://www.matematyka.pl/latex.htm
+	% 
+	\begin{titlepage}
+	
+	
+		
+		\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} % Defines a new command for the horizontal lines, change thickness here
+		
+		\center % Center everything on the page
+		
+		%----------------------------------------------------------------------------------------
+		%	HEADING SECTIONS
+		%----------------------------------------------------------------------------------------
+		
+		\textsc{\LARGE Akademia Górniczo-Hutnicza im. Stanisława Staszica}\\[1.5cm] % Name of your university/college
+		\textsc{\Large Kraków}\\[0.5cm] % Major heading such as course name
+		\textsc{\large }\\[0.5cm] % Minor heading such as course title
+		
+		%----------------------------------------------------------------------------------------
+		%	TITLE SECTION
+		%----------------------------------------------------------------------------------------
+		
+		\HRule \\[0.4cm]
+		{\fontsize{38}{50}\selectfont Symulator pożaru lasu}
+	%	{ \Huge \bfseries} Symulator pożaru lasu\\[0.3cm] % Title of your document
+		\HRule \\[1.5cm]
+		
+		%----------------------------------------------------------------------------------------
+		%	AUTHOR SECTION
+		%----------------------------------------------------------------------------------------
+		
+		% If you don't want a supervisor, uncomment the two lines below and remove the section above
+		\Large \emph{Autorzy:}\\
+		Marcin \textsc{Jędrzejczyk}\\ % Your name
+		Sebastian \textsc{Katszer}\\ % Your name
+		Katarzyna \textsc{Kosiak} \\[3cm]\ % Your name
+
+		
+		%----------------------------------------------------------------------------------------
+		%	DATE SECTION
+		%----------------------------------------------------------------------------------------
+		
+		{\large \today}\\[3cm] % Date, change the \today to a set date if you want to be precise
+		
+		%----------------------------------------------------------------------------------------
+		%	LOGO SECTION
+		%----------------------------------------------------------------------------------------
+		
+		%\includegraphics{Logo}\\[1cm] % Include a department/university logo - this will require the graphicx package
+		
+		%----------------------------------------------------------------------------------------
+		
+		\vfill % Fill the rest of the page with whitespace
+		
+	\end{titlepage}
+	
+	%SPIS TRESI
+	%
+	%
+	%
+	%
+	%
+	%
+	%
+	%
+	%
+	
+	\tableofcontents
+	\vfill
+	%\pagebreak
+	
+	%SEKCJE
+	%opis zagadnienia, temat, problem, dlaczego chcemy to rozwiązacyać metodą ewolucyjnę
+	%jakie są metody rozwiącania problemu, przegląd literatury,
+	%proponowane rozwiązania (spójność)
+	%czym się inspierowałyśmy
+	%
+	%
+	%
+	
+	%\setlength{\parskip}{1ex plus 0.5ex minus 0.2ex}
+	
+	\section{Wstęp}
+	\indent
+	
+	Niniejszy dokument stanowi opis zagadnienia symulowania pożarów lasów wraz z prezentacją symulatora rozprzestrzeniania się pożaru lasu.
+
+	\addcontentsline{toc}{section}{Cele modelowania pożaru}
+	\section*{Cele modelowania pożaru}
+	 \indent
+	 
+Modelowanie pożaru polega na próbie odtworzenia zachowania się ognia i poznaniu jego parametrów w zadanej sytuacji - m.in. jego szybkość rozprzestrzeniania się, kierunek i ilość wydzielanego ciepła, estymację skutków pożaru. Na parametry te ma oczywiście wpływ ilość, rodzaj i dokładność dostarczonych danych wejściowch, z których najważniejszym jest rodzaj paliwa. \\
+
+ Istniejące modele paliwa definiują zestawy cech roślinności mających wpływ na ich palność. Najbardziej znane modele pożaru korzystają z głównych systemów klasyfikacji modeli paliwa takich jak dynamiczne modele Scotta i Burgana czy trzynaście ``oryginalnych'' modeli paliwa Andersona i Albiniego, które opisują roślinność w czasie pory suchej, kiedy to stopień zagrożenia pożarowego jest najwyższy. Zwiększa to trafność i przydatność symulacji pożarów podczas organizacji akcji pożarowych.
+	 
+	
+	
+	
+%	As Anderson states “Fuel models are simply tools to help the user realistically estimate fire behavior. The user must maintain a flexible frame of mind and an adaptive method of operating to totally utilize these aids".[2]
+	%napisac o tym ze istnieje wiele modeli it te 13 oryginalnych ze w 
+	% dry season bo po to sa symulacje, jakis cytat trzasnac.
+	
+% wiki Fuel_model <- dużo info na temat paliw
+%	- fuel model dla naszego empirycznego, only for DRY SEASON!
+%	fala huygensa\\
+%	automaty gdzies!!!!!!\\
+	
+	
+	
+	
+	\addcontentsline{toc}{section}{Czynniki środowiskowe}
+	\section*{Czynniki środowiskowe}
+		
+	\addcontentsline{toc}{section}{Opis zagadnienia}
+	\section*{Podejścia do modelowania pożaru}
+	\indent
+	
+	Od powstania pierwszych modeli pożarów w latach czterdziestych XX wieku minęło wiele czasu, w ciągu którego zaprezentowano kolejne - zróżnicowane pod względem wymaganych danych wejściowych, znaczących czynników i stopnia rozbudowania - modele.\\
+	\indent	Problemem związanym z modelowaniem tak skomplikowanego zjawiska jak ogień jest rosnąca wraz z ilością branych pod uwagę czynników liczba koniecznych do wykoniania obliczeń, a co za tym idzie - potrzeba coraz większej mocy obliczeniowej. W związku z tym w istniejących modelach zastosowano różne uproszczenia, często poświęcając mniej znaczące czynniki na rzecz przyspieszenia obliczeń.  \\
+	\\
+	Modele pożaru można podzielić na trzy grupy: empiryczne, semi-empiryczne i oparte na fizyce.
+	\subsubsection*{Modele empiryczne}
+	TODO
+	\subsubsection*{Modele semi-empiryczne}
+	TODO
+	\subsubsection*{Modele oparte na fizyce}
+	TODO
+	\addcontentsline{toc}{section}{Popularne modele}
+	\section* {Popularne/najważniejsze?/przykładowe modele}
+	\indent
+	TODO\\
+	Rothermel(1972)
+	Rothermel(1991)
+	Van Wagner (1977)
+	Cruz(1999)
+	Cruz(1999)
+	
+
+	wspomniec o tym z czego korzystaja te systemy firecostam i behaveplus
+	
+	
+	
+	\section{Poniższego oprócz bibliografii nie potrzebujemy jeszcze na te konsultacje  Zastosowany model}
+	\indent
+
+		
+sds
+	\addcontentsline{toc}{section}{Dane wejściowe}
+	\section*{Dane wejściowe}
+	\indent
+	
+	dsd
+	\addcontentsline{toc}{section}{Cele symulacji}
+	\section*{Cele symulacji}
+	\indent
+	
+xcx
+	\addcontentsline{toc}{section}{Cele symulacji2}
+	\section*{Cele symulacji2}
+	\indent
+	
+	xcx
+	%\addcontentsline{toc}{section}{$ f $ minmaxTransposition}
+	\section*{$ f $ fancy function podtytuł}
+	\indent
+	\begin{figure}[H]%[!htb]
+		%		\centerline{\includegraphics[scale=0.7]{Mmin}}
+		%	\raggedright{	\caption{pseudokod Mutation.minMaxTransposition}}
+	\end{figure}
+	\addcontentsline{toc}{section}{Podsumowanie}
+	\section*{Podsumowanie}
+	\indent
+	
+
+	\begin{figure}[bt]
+		%		\centerline{\includegraphics[scale=0.7]{alggenmenu}}
+		%	\raggedright{	\caption{menu}}
+	\end{figure}
+	\section{Testy}
+	\indent
+	sd
+	\section{Wnioski}
+	\indent
+	
+	sdsd
+	\section{Literatura}
+	%\indent
+	
+\textbf{Asensio MI, Ferragut L., Simon J.:} Modelling of convective phenomena in forest fire. Rev Real Academia de Ciencias, 2002, 96:299–313\\
+\textbf{Chad Hoffman:} Fire Behavior Predictions Case Study, University of Idaho, 2007\\
+\textbf{Kułakowski Krzysztof:} Automaty Komórkowe, OEN AGH (2000) \\
+\textbf{Law A.M., Kelton W.D.:} Simulation Modeling and Analysis, Second Edition, McGraw-Hill 2000\\
+\textbf{Ottmar Roger D. et al.:} "An Overview of the Fuel Characteristic Classification System - Quantifying, Classifying, and Creating Fuel beds for Resource Planning." Canadian Journal of Forestry Research. 37:2383-2393. 2007\\
+\textbf{Rothermel Richard C.:} A Mathematical Model for Predicting Fire Spread in Wildland Fuels. USDA Forest Service. Research Paper INT-115. 1972.\\
+\textbf{Sayama Hiroki:} Introduction to the Modeling and Analysis of Complex Systems, Open SUNY Textbooks, State University of New York at Geneseo, 2015\\	
+\textbf{Scott Joe H.,Burgan Robert E.:} Standard Fire Behavior Fuel Models, USDA Forest Service Gen. Tech. Rep. RMRS-GTR-153., June 2005\\	
+\textbf{Weise David R., Biging Gregory S.:} A Qualitative Comparison of Fire Spread Models Incorporating Wind and Slope Effects, Research Gate, October 2015\\
+\textbf{Wells Gail:} The Rothermel Fire-Spread Study: Still Running Like a Champ, Fire Science Direct, Issue 2, March 2008\\
+
+
+
+
+	%to trzeba zrobić na podstawie zadania z latexa (9?) z odno
+\end{document}
