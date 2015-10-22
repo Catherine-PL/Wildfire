@@ -57,13 +57,10 @@ class Board
 	void ignite()
 	{
 		Random randomGenerator = new Random();
-		int [] choosenTreeLocation = {0,0};
 		Node choosenTree;
 		do
 		{
-			choosenTreeLocation[0]=  randomGenerator.nextInt(size);
-			choosenTreeLocation[1]=  randomGenerator.nextInt(size);
-			choosenTree= boardState[choosenTreeLocation[0]][choosenTreeLocation[1]];
+			choosenTree= boardState[randomGenerator.nextInt(size)][randomGenerator.nextInt(size)];
 		}
 		while (choosenTree.isTree == false);
 		choosenTree.isBurning=true;
@@ -75,10 +72,22 @@ class Board
 		{
 			for (int j = 0; j<size; j++)
 			{
-				if ((boardState[i][j].isTree==true) && (boardState[i][j].isBurning==true))
+				if ((boardState[i][j].isTree==true) && (boardState[i][j].isBurning==true) && (boardState[i][j].burningSinceThisStep==false))
 				{
 					burnNeighboursAndBurnOut(i,j);	
 				}
+				/*if (boardState[i][j].isTree==false)
+				{
+					boardState[i][j].isBurning=false;
+					boardState[i][j].burnt=false;
+				}*/
+			}
+		}
+		for (int i = 0; i<size; i++)
+		{
+			for (int j = 0; j<size; j++)
+			{	
+				boardState[i][j].burningSinceThisStep = false;
 			}
 		}
 	}
@@ -86,14 +95,39 @@ class Board
 	void burnNeighboursAndBurnOut(int _i,int _j)
 	{
 		
-		if ((_i-1>=0)&&(_j+1<size)&&(boardState[_i-1][_j+1].isTree==true)&& (boardState[_i-1][_j+1].burnt == false)) boardState[_i-1][_j+1].isBurning = true;
-		if ((_j+1<size)&&(boardState[_i][_j+1].isTree==true) && (boardState[_i][_j+1].burnt == false)  )  boardState[_i][_j+1].isBurning = true;
-		if ((_j+1<size)&&(_i+1<size)&&(boardState[_i+1][_j+1].isTree=true)&&(boardState[_i+1][_j+1].burnt == false))  boardState[_i+1][_j+1].isBurning = true;
-		if ((_i+1<size)&&(boardState[_i+1][_j].isTree==true) &&(boardState[_i+1][_j].burnt == false))boardState[_i+1][_j].isBurning = true;
-		if ((_j-1>=0)&&(_i+1<size)&&(boardState[_i+1][_j-1].isTree==true)&&(boardState[_i+1][_j-1].burnt == false)) boardState[_i+1][_j-1].isBurning = true;
-		if ((_j-1>=0)&&(boardState[_i][_j-1].isTree==true)&&(boardState[_i][_j-1].burnt == false) )boardState[_i][_j-1].isBurning = true;
-		if ((_i-1>=0)&&(_j-1>=0)&&(boardState[_i-1][_j-1].isTree==true)&&(boardState[_i-1][_j-1].burnt == false)) boardState[_i-1][_j-1].isBurning = true;
-		if ((_i-1>=0)&&(boardState[_i-1][_j].isTree==true)&&(boardState[_i-1][_j].burnt == false) )boardState[_i-1][_j].isBurning = true;
+		
+		if ((_i-1>=0)&&(_j+1<size)&&(boardState[_i-1][_j+1].isTree==true)&& (boardState[_i-1][_j+1].burnt == false))
+			{boardState[_i-1][_j+1].isBurning = true;
+			boardState[_i-1][_j+1].burningSinceThisStep = true;
+			}
+		if ((_j+1<size)&&(boardState[_i][_j+1].isTree==true) && (boardState[_i][_j+1].burnt == false)  )  
+			{boardState[_i][_j+1].isBurning = true;
+			boardState[_i][_j+1].burningSinceThisStep = true;
+			}
+		if ((_j+1<size)&&(_i+1<size)&&(boardState[_i+1][_j+1].isTree==true)&&(boardState[_i+1][_j+1].burnt == false)) 
+			{boardState[_i+1][_j+1].isBurning = true;
+			boardState[_i+1][_j+1].burningSinceThisStep = true;
+			}
+		if ((_i+1<size)&&(boardState[_i+1][_j].isTree==true) &&(boardState[_i+1][_j].burnt == false))
+			{boardState[_i+1][_j].isBurning = true;
+			boardState[_i+1][_j].burningSinceThisStep = true;
+			}
+		if ((_j-1>=0)&&(_i+1<size)&&(boardState[_i+1][_j-1].isTree==true)&&(boardState[_i+1][_j-1].burnt == false)) 
+			{boardState[_i+1][_j-1].isBurning = true;
+			boardState[_i+1][_j-1].burningSinceThisStep = true;
+			}
+		if ((_j-1>=0)&&(boardState[_i][_j-1].isTree==true)&&(boardState[_i][_j-1].burnt == false) )
+			{boardState[_i][_j-1].isBurning = true;
+			boardState[_i][_j-1].burningSinceThisStep = true;
+			}
+		if ((_i-1>=0)&&(_j-1>=0)&&(boardState[_i-1][_j-1].isTree==true)&&(boardState[_i-1][_j-1].burnt == false)) 
+			{boardState[_i-1][_j-1].isBurning = true;
+			boardState[_i-1][_j-1].burningSinceThisStep = true;
+			}
+		if ((_i-1>=0)&&(boardState[_i-1][_j].isTree==true)&&(boardState[_i-1][_j].burnt == false) )
+			{boardState[_i-1][_j].isBurning = true;
+			boardState[_i-1][_j].burningSinceThisStep = true;
+			}
 		boardState[_i][_j].isBurning=false;
 		boardState[_i][_j].burnt=true;
 	}
@@ -126,6 +160,7 @@ class Node
 	boolean isTree = false;
 	boolean isBurning = false;
 	boolean burnt = false;
+	boolean burningSinceThisStep = false;
 	
 	Node(int _probability)
 	{
