@@ -2,11 +2,14 @@ package wildfire.simulation.desktop;
 
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
-import wildfire.simulation.Wildfire;
+import com.mygdx.game.Drop;
 
 public class DesktopLauncher {
-	public static void main (String[] arg) {
-		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
-		new LwjglApplication(new Wildfire(), config);
-	}
+   public static void main(String[] args) {
+      LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
+      config.title = "Drop";
+      config.width = 500;
+      config.height = 500;
+      new LwjglApplication(new Graphic(), config);
+   }
 }
