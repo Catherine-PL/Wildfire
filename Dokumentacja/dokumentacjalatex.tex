@@ -141,7 +141,8 @@ Modelowanie pożaru polega na próbie odtworzenia zachowania się ognia i poznan
 	
 	\addcontentsline{toc}{section}{Czynniki środowiskowe}
 	\section*{Czynniki środowiskowe}
-		
+		Na pożar lasu wpływ mają takie czynniki jak pogoda, charakterystyka paliwa i topografia terenu.\\
+		Pogoda wpływa na ogień poprzez wiatr i wilgotność.
 	\addcontentsline{toc}{section}{Opis zagadnienia}
 	\section*{Podejścia do modelowania pożaru}
 	\indent
@@ -151,20 +152,57 @@ Modelowanie pożaru polega na próbie odtworzenia zachowania się ognia i poznan
 	\\
 	Modele pożaru można podzielić na trzy grupy: empiryczne, semi-empiryczne i oparte na fizyce.
 	\subsubsection*{Modele empiryczne}
-	TODO
+	\begin{itemize}
+	\item Kanadyjski
+	\item Australijski
+	\end{itemize}
 	\subsubsection*{Modele semi-empiryczne}
-	TODO
+	\begin{itemize}
+	\item Automat komórkowy
+	\item Rothermel
+		\begin{itemize}
+		\item BEHAVE
+		\item SPREAD
+		\item FARSITE
+		\end{itemize}
+	\end{itemize}
 	\subsubsection*{Modele oparte na fizyce}
-	TODO
+	\begin{itemize}
+	\item Modelowanie ognia koron 
+	\item Pełne fizyczne i multifazowe podejście
+	\end{itemize}
 	\addcontentsline{toc}{section}{Popularne modele}
 	\section* {Popularne/najważniejsze?/przykładowe modele}
+	
+	%% co o tym myślicie, chyba za bardzo od rzeczywistości nie odbiegłem
+	Farasite i Prometheus używają zależności semi-empirycznych, a także ziemia-korony. Wykorzystują ponadto zasadę rozchodzenia się fal Huygensa.	\\
+	Farasite i aplikacje BEHAVE deomstrują wielką użyteczność w terenie, dzięki swojej zdolności do oszacowywania zachowań ognia w czasie rzeczywistym.\\
+	Modele skomplikowane testują i pokazują jak prawdopodobnie zachowałby się ogień w różnych scenariusza. Jednak z powodu potrzeby dużej ilości danych wejściowych i czasu symulacji stosuje się je częściej w badaniu niż w terenie. \\
+	W terenie używa się modeli, które symulują szybciej, by pozostawić okno czasowe na podjęcie decyzji jak się zachować. 
+	
+	
 	\indent
 	TODO\\
-	Rothermel(1972)
-	Rothermel(1991)
-	Van Wagner (1977)
-	Cruz(1999)
-	Cruz(1999)
+	\subsection{Rothermel(1972)}
+	Pierwszy matematyczny model dla symulacji "wildfires" został opublikowany 1972 przez Rothermela (??i jego zespół ???and several other people who were not named Rothermel). Jego zapis znajduje się poniżej.
+	For each fuel particle, the spread rate to other particles is given by: 
+$$
+R=\frac{(I_p)_0(1+\phi_W +\phi_S)}{_b\epsilon Q_{ig}}\\
+$$
+%% to może kolega mi przetłumaczy lepiej niż google translator
+where\\
+$R$	prawie stałe tempo rozprzestrzeniania się stanu	m /minute\\
+$(I_P)_0$	stosunek propagacji przepływu bez wiatru ??	kJ / m2 / minute\\
+$\rho_b$	przesusznoa masa na gęstość ??	kg / m3\\
+$\epsilon$ efektywna liczba ogrzewania	\\
+$Q_{ig}$	ciepło przedzapłonu??	kJ / kg\\
+$\phi_w$	współczynnik wiatru	\\
+$\phi_s$	współczynnik nachylenia\\
+
+\subsection{Rothermel(1991)}
+\subsection{Van Wagner (1977)}
+\subsection{Cruz(1999)}
+\subsection{Cruz(1999)}
 	
 
 	wspomniec o tym z czego korzystaja te systemy firecostam i behaveplus
