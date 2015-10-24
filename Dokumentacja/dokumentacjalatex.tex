@@ -184,6 +184,7 @@ Modelowanie pożaru polega na próbie odtworzenia zachowania się ognia i poznan
 	\indent
 	TODO\\
 	\subsection{Rothermel(1972)}
+	\indent
 	Pierwszy matematyczny model dla symulacji "wildfires" został opublikowany 1972 przez Rothermela (??i jego zespół ???and several other people who were not named Rothermel). Jego zapis znajduje się poniżej.
 	For each fuel particle, the spread rate to other particles is given by: 
 $$
@@ -200,9 +201,40 @@ $\phi_w$	współczynnik wiatru	\\
 $\phi_s$	współczynnik nachylenia\\
 
 \subsection{Rothermel(1991)}
+\indent
+Crown fire rate of spread
+$$
+R_{active}=3.34(R_10)_{40\%}
+$$
+$R_{active}$ the crown fire rate of spread\\
+$R_10$ surface fire rate of spread using the fuel characteristics for fuel model 10 and a midflame wind speed set at 40\% the 6.1-m windspeed\\
 \subsection{Van Wagner (1977)}
+\indent
+Crown Fire Initiation Model
+$$
+I`_{initiation}=(\frac{CBH(460+25.9FMC)}{100})^(\frac{3}{2})
+$$
+$I_initation$=surface fire line intensity requried for fire transition
+Wejściowe zmienne:\\
+CBH- Canopy base height\\
+FMC- Foliar moisture content
 \subsection{Cruz(1999)}
-\subsection{Cruz(1999)}
+$$
+g(x)=\beta_0+\beta_{1}U_10+\beta_{2}FSG+ \sum\limits_{a=1}^{k_j -1}\beta_{ju}D_{ju}+\beta_5EFFM
+$$
+EFFM- estimated fine ful moisture content(\% ovendry mass basis)\\
+$U_10  10-m$ open wind speed
+$\beta_1, ...,\beta_4$ -regression coefficients
+\subsection{Cruz(2002)}
+\indent
+Crown fire spread model
+$$
+CROS_A=\beta_1U^{\beta_2}_10 \times CBD^{\beta_3} \times e^{-\beta_4EFFM}
+$$
+$EFFM$ estimated fine fuel moisture content (\% ovendry mass bassis)\\
+$CBD$ canopy bulk density\\
+$U_10  10-m$ open wind speed
+$\beta_1, ...,\beta_4$ -regression coefficients\\
 	
 
 	wspomniec o tym z czego korzystaja te systemy firecostam i behaveplus
