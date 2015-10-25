@@ -98,6 +98,7 @@
 	
 	\tableofcontents
 	\vfill
+	\newpage
 	%\pagebreak
 	
 	%SEKCJE
@@ -114,15 +115,15 @@
 	\section{Wstęp}
 	\indent
 	
-	Niniejszy dokument stanowi opis zagadnienia symulowania pożarów lasów wraz z prezentacją symulatora rozprzestrzeniania się pożaru lasu.
+	Niniejszy dokument stanowi opis zagadnienia symulowania pożarów lasów wraz z prezentacją symulatora rozprzestrzeniania się pożaru lasu opartego na automatach komórkowych.
 
 	\addcontentsline{toc}{section}{Cele modelowania pożaru}
 	\section*{Cele modelowania pożaru}
 	 \indent
-	 
-Modelowanie pożaru polega na próbie odtworzenia zachowania się ognia i poznaniu jego parametrów w zadanej sytuacji - m.in. jego szybkość rozprzestrzeniania się, kierunek i ilość wydzielanego ciepła, estymację skutków pożaru. Na parametry te ma oczywiście wpływ ilość, rodzaj i dokładność dostarczonych danych wejściowch, z których najważniejszym jest rodzaj paliwa. \\
-
- Istniejące modele paliwa definiują zestawy cech roślinności mających wpływ na ich palność. Najbardziej znane modele pożaru korzystają z głównych systemów klasyfikacji modeli paliwa takich jak dynamiczne modele Scotta i Burgana czy trzynaście ``oryginalnych'' modeli paliwa Andersona i Albiniego, które opisują roślinność w czasie pory suchej, kiedy to stopień zagrożenia pożarowego jest najwyższy. Zwiększa to trafność i przydatność symulacji pożarów podczas organizacji akcji pożarowych.
+	 % W sumie to chyba treść tej sekcji ma niewiele wspólnego z jej tytułem. ALe na wiki
+	 %omawiane yły fuel models w podrozdziale o takim samym tytule więc też tak zrobiłam
+Modelowanie pożaru polega na próbie odtworzenia zachowania się ognia i poznaniu jego parametrów w zadanej sytuacji - m.in. szybkości rozprzestrzeniania się, kierunku i ilości wydzielanego ciepła, estymację skutków pożaru. Na parametry te mają oczywiście wpływ ilość, rodzaj i dokładność dostarczonych danych wejściowch, z których najważniejszym jest rodzaj paliwa. \\
+ \indent Istniejące modele paliwowe definiują zestawy cech roślinności mających wpływ na ich palność. Najbardziej znane modele pożaru korzystają z głównych systemów klasyfikacji modeli paliwowych takich jak dynamiczne modele Scotta i Burgana czy trzynaście ``oryginalnych'' modeli paliwowych Andersona i Albiniego, które opisują roślinność w czasie pory suchej, kiedy to stopień zagrożenia pożarowego jest najwyższy. Zwiększa to trafność i przydatność symulacji pożarów podczas organizacji akcji pożarowych.
 	 
 	
 	
@@ -134,90 +135,91 @@ Modelowanie pożaru polega na próbie odtworzenia zachowania się ognia i poznan
 % wiki Fuel_model <- dużo info na temat paliw
 %	- fuel model dla naszego empirycznego, only for DRY SEASON!
 %	fala huygensa\\
-%	automaty gdzies!!!!!!\\
 	
 	
 	
 	
 	\addcontentsline{toc}{section}{Czynniki środowiskowe}
 	\section*{Czynniki środowiskowe}
-		Na pożar lasu wpływ mają takie czynniki jak pogoda, charakterystyka paliwa i topografia terenu.\\
-		Pogoda wpływa na ogień poprzez wiatr i wilgotność.
-	\addcontentsline{toc}{section}{Opis zagadnienia}
+	\indent 
+	
+		Na pożar lasu wpływ mają takie czynniki jak pogoda, charakterystyka paliwa i topografia terenu.	Pogoda wpływa na ogień poprzez kierunek i siłę wiatru i wilgotność powietrza.
+		\\ \\TODO trochę szerzej o tym
+	\addcontentsline{toc}{section}{Podejścia do modelowania pożaru}
 	\section*{Podejścia do modelowania pożaru}
 	\indent
 	
 	Od powstania pierwszych modeli pożarów w latach czterdziestych XX wieku minęło wiele czasu, w ciągu którego zaprezentowano kolejne - zróżnicowane pod względem wymaganych danych wejściowych, znaczących czynników i stopnia rozbudowania - modele.\\
-	\indent	Problemem związanym z modelowaniem tak skomplikowanego zjawiska jak ogień jest rosnąca wraz z ilością branych pod uwagę czynników liczba koniecznych do wykoniania obliczeń, a co za tym idzie - potrzeba coraz większej mocy obliczeniowej. W związku z tym w istniejących modelach zastosowano różne uproszczenia, często poświęcając mniej znaczące czynniki na rzecz przyspieszenia obliczeń.  \\
-	\\
-	Modele pożaru można podzielić na trzy grupy: empiryczne, semi-empiryczne i oparte na fizyce.
-	\subsubsection*{Modele empiryczne}
+	\indent	Problemem związanym z modelowaniem tak skomplikowanego zjawiska jak ogień jest rosnąca wraz z ilością branych pod uwagę czynników liczba koniecznych do wykoniania obliczeń, a co za tym idzie - potrzeba coraz większej mocy obliczeniowej. Właśnie  z powodu względnie długiego czasu symulacji i potrzeby dużej ilości danych wejściowych skomplikowane modele stosuje się częściej w badaniu niż w terenie.  W związku z tym w istniejących modelach zastosowano różne uproszczenia, często poświęcając mniej znaczące czynniki na rzecz przyspieszenia obliczeń.  \\
+\indent	Modele pożaru można podzielić na trzy grupy: empiryczne (model kanadyjski i australijski), semi-empiryczne (automaty komórkowe i Rothermel) i oparte na fizyce (modelowanie ognia koron oraz pełne fizyczne i multifazowe podejście).
+	
+	\iffalse
+	% \iftrue for disabling comment
+	 \subsubsection*{Modele empiryczne}
 	\begin{itemize}
 	\item Kanadyjski
 	\item Australijski
 	\end{itemize}
 	\subsubsection*{Modele semi-empiryczne}
 	\begin{itemize}
-	\item Automat komórkowy
+	\item Automaty komórkowe
 	\item Rothermel
-		\begin{itemize}
-		\item BEHAVE
-		\item SPREAD
-		\item FARSITE
-		\end{itemize}
 	\end{itemize}
 	\subsubsection*{Modele oparte na fizyce}
 	\begin{itemize}
 	\item Modelowanie ognia koron 
 	\item Pełne fizyczne i multifazowe podejście
 	\end{itemize}
-	\addcontentsline{toc}{section}{Popularne modele}
-	\section* {Popularne/najważniejsze?/przykładowe modele}
+	\fi
 	
-	%% co o tym myślicie, chyba za bardzo od rzeczywistości nie odbiegłem
-	Farasite i Prometheus używają zależności semi-empirycznych, a także ziemia-korony. Wykorzystują ponadto zasadę rozchodzenia się fal Huygensa.	\\
-	Farasite i aplikacje BEHAVE deomstrują wielką użyteczność w terenie, dzięki swojej zdolności do oszacowywania zachowań ognia w czasie rzeczywistym.\\
-	Modele skomplikowane testują i pokazują jak prawdopodobnie zachowałby się ogień w różnych scenariusza. Jednak z powodu potrzeby dużej ilości danych wejściowych i czasu symulacji stosuje się je częściej w badaniu niż w terenie. \\
-	W terenie używa się modeli, które symulują szybciej, by pozostawić okno czasowe na podjęcie decyzji jak się zachować. 
-	
-	
+	\addcontentsline{toc}{section}{Sztandarowe modele}
+	\section* {Sztandarowe modele}
 	\indent
-	TODO\\
-	\subsection{Rothermel(1972)}
+	
+	Poniżej znajduje się krótki przegląd kilku wartych uwagi modeli. Wszystkie wymienione miały znaczącą rolę w rozwoju zagadnienia modelowania pożaru lub są uznawane za najdokładniejsze dla zadanego czasu oczekiwania na rozwiązanie i używane są w najpopularniejszych profesjonalnych programach do symulacji pożaru jak na przykład Farasite, Prometheus czy BEHAVE, które dzięki swojej zdolności do oszacowywania zachowań ognia w czasie rzeczywistym demonstrują wielką użyteczność w terenie.
+	\subsection{Rothermel - szybkość rozchodzenia się linii pożaru}
 	\indent
-	Pierwszy matematyczny model dla symulacji "wildfires" został opublikowany 1972 przez Rothermela (??i jego zespół ???and several other people who were not named Rothermel). Jego zapis znajduje się poniżej.
-	For each fuel particle, the spread rate to other particles is given by: 
+
+	Pierwszy matematyczny model dla symulacji pożaru, został opublikowany w 1972 roku przez Richarda Rothermela.\\
+	
+	Przybliżone równanie na szybkość rozchodzenia się linii pożaru ma formę:
 $$
 R=\frac{(I_p)_0(1+\phi_W +\phi_S)}{_b\epsilon Q_{ig}}\\
 $$
 %% to może kolega mi przetłumaczy lepiej niż google translator
-where\\
-$R$	prawie stałe tempo rozprzestrzeniania się stanu	m /minute\\
-$(I_P)_0$	stosunek propagacji przepływu bez wiatru ??	kJ / m2 / minute\\
-$\rho_b$	przesusznoa masa na gęstość ??	kg / m3\\
-$\epsilon$ efektywna liczba ogrzewania	\\
-$Q_{ig}$	ciepło przedzapłonu??	kJ / kg\\
-$\phi_w$	współczynnik wiatru	\\
-$\phi_s$	współczynnik nachylenia\\
+gdzie:\\
+$R$	- szybkość rozchodzenia się linii pożaru	[m/min]\\
+$(I_P)_0$	- 	strumień ciepła dla warunków bezwietrznych	[kJ/m2/min]\\
+$\rho_b$	- 	gęstość drewna całkowicie suchego	[kg/m3]\\
+$\epsilon$ 	- efektywność ogrzewania	\\
+$Q_{ig}$	- 	ciepło przedzapłonowe	[kJ/kg]\\
+$\phi_w$	- 	współczynnik wiatru	\\
+$\phi_s$	- 	współczynnik nachylenia\\
 
-\subsection{Rothermel(1991)}
+
+\subsection{Rothermel - szybkość rozprzestrzeniania się pożaru w koronach}
 \indent
-Crown fire rate of spread
+
+Równanie opisujące szybkość rozprzestrzeniania się pożaru w koronach:
 $$
 R_{active}=3.34(R_10)_{40\%}
 $$
-$R_{active}$ the crown fire rate of spread\\
-$R_10$ surface fire rate of spread using the fuel characteristics for fuel model 10 and a midflame wind speed set at 40\% the 6.1-m windspeed\\
-\subsection{Van Wagner (1977)}
+gdzie: \\
+$R_{active}$ - szybkość rozprzestrzeniania się pożaru w koronach [m/min]\\
+$R_10$ - szybkość rozchodzenia się linii pożaru dla 10. modelu paliwowego i prędkość wiatru na wysokości połowy płomieni równa 40\% prędkości wiatru na wysokości 6,1m. [m/min]\\
+
+\subsection{Van Wagner - intensywność linii ognia}
 \indent
-Crown Fire Initiation Model
+Van Wagner zaproponował inne podejście do zagadnienia rozprzestrzenania się pożaru. Równanie opisujące intensywność linii ognia wymaganą do dalszego przeniesienia się ognia:
 $$
 I`_{initiation}=(\frac{CBH(460+25.9FMC)}{100})^(\frac{3}{2})
 $$
-$I_initation$=surface fire line intensity requried for fire transition
-Wejściowe zmienne:\\
-CBH- Canopy base height\\
-FMC- Foliar moisture content
+gdzie:\\
+$I_initation$ - intensywność linii ognia wymaganą do dalszego przeniesienia się ognia [J/m] \\
+CBH - podstawowa wysokość roślinności [m]\\
+FMC- wilgotność roślinności (podłoża i drzew)\\
+%Pozwalam sobie wywalić na razie 
+\iffalse
 \subsection{Cruz(1999)}
 $$
 g(x)=\beta_0+\beta_{1}U_10+\beta_{2}FSG+ \sum\limits_{a=1}^{k_j -1}\beta_{ju}D_{ju}+\beta_5EFFM
@@ -225,17 +227,22 @@ $$
 EFFM- estimated fine ful moisture content(\% ovendry mass basis)\\
 $U_10  10-m$ open wind speed
 $\beta_1, ...,\beta_4$ -regression coefficients
-\subsection{Cruz(2002)}
+\fi
+\subsection{Cruz - szybkość rozprzestrzeniania się pożaru w koronach}
 \indent
-Crown fire spread model
+Zaproponowane w 2002 roku przez Cruza równanie na szybkość rozprzestrzeniania się pożaru w koronach: 
 $$
 CROS_A=\beta_1U^{\beta_2}_10 \times CBD^{\beta_3} \times e^{-\beta_4EFFM}
 $$
-$EFFM$ estimated fine fuel moisture content (\% ovendry mass bassis)\\
-$CBD$ canopy bulk density\\
-$U_10  10-m$ open wind speed
-$\beta_1, ...,\beta_4$ -regression coefficients\\
-	
+gdzie: \\
+$EFFM$ - estymowana wilgotność paliwa \\
+$CBD$ - gęstość grupy roślinności [1/m3]\\
+$U_10  10-m$ - prędkość wiatru ponad najwyższą roślinnością [m/min]
+$\beta_1, ...,\beta_4$ -współczynniki regresji\\
+\subsection{Automaty komórkowe}	
+\indent
+sds
+\\TODO BARDZO
 
 	wspomniec o tym z czego korzystaja te systemy firecostam i behaveplus
 	
@@ -243,17 +250,28 @@ $\beta_1, ...,\beta_4$ -regression coefficients\\
 	
 	\section{Poniższego oprócz bibliografii nie potrzebujemy jeszcze na te konsultacje  Zastosowany model}
 	\indent
-
+Automaty komórkowe
 		
 sds
-	\addcontentsline{toc}{section}{Dane wejściowe}
-	\section*{Dane wejściowe}
-	\indent
-	
-	dsd
 	\addcontentsline{toc}{section}{Cele symulacji}
 	\section*{Cele symulacji}
 	\indent
+dass
+
+	\addcontentsline{toc}{section}{Dane wejściowe}
+	\section*{Dane wejściowe}
+	\indent
+	ddf
+	\addcontentsline{toc}{section}{Sąsiedztwo}
+	\section*{Sąsiedztwo}
+	\indent	
+	
+	dsd
+	Prędkość wiatru, ukształtowanie terenu. (może wgrywać mapę z wysokościami komórek
+	i ona mogłąby być rozszerzana odpowiednio do rozmiaru!).
+	\addcontentsline{toc}{section}{Modele paliwowe}
+	\section*{Modele paliwowe}
+	\indent	
 	
 xcx
 	\addcontentsline{toc}{section}{Cele symulacji2}
@@ -288,7 +306,9 @@ xcx
 	%\indent
 	
 \textbf{Asensio MI, Ferragut L., Simon J.:} Modelling of convective phenomena in forest fire. Rev Real Academia de Ciencias, 2002, 96:299–313\\
+\textbf{Bodrožić Ljiljana, Stipaniev Darko, Šerić Marijo:} Forest fires spread modeling using cellular automata approach, University of Split, 21000 Split, Croatia, 2009 \\
 \textbf{Chad Hoffman:} Fire Behavior Predictions Case Study, University of Idaho, 2007\\
+\textbf{Czerpak Tomasz, Maciak Tadeusz:} Modelowanie pożaru lasu. Część 1. Metody i algorytmy modelowania pożaru lasu, Wydział Informatyki, Politechnika Białostocka, 2011 \\
 \textbf{Kułakowski Krzysztof:} Automaty Komórkowe, OEN AGH (2000) \\
 \textbf{Law A.M., Kelton W.D.:} Simulation Modeling and Analysis, Second Edition, McGraw-Hill 2000\\
 \textbf{Ottmar Roger D. et al.:} "An Overview of the Fuel Characteristic Classification System - Quantifying, Classifying, and Creating Fuel beds for Resource Planning." Canadian Journal of Forestry Research. 37:2383-2393. 2007\\
