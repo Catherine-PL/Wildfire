@@ -1,5 +1,5 @@
-package 
 package wildfire.simulation;
+
 import java.util.Iterator;
 
 import com.badlogic.gdx.ApplicationListener;
@@ -29,10 +29,10 @@ public class Graphic implements ApplicationListener {
    
    @Override
    public void create() {
-	   treeRed = new Texture(Gdx.files.internal("treered.png")); 
-	   noTree= new Texture(Gdx.files.internal("notree.png")); 
-	   treeBlack = new Texture(Gdx.files.internal("treeblack.png")); 
-	   treeGreen = new Texture(Gdx.files.internal("treegreen.png")); 
+	   treeRed = new Texture("treered.jpg"); 
+	   noTree= new Texture("notree.jpg"); 
+	   treeBlack = new Texture("treeblack.jpg"); 
+	   treeGreen = new Texture("treegreen.jpg"); 
       // create the camera and the SpriteBatch
       camera = new OrthographicCamera();
       camera.setToOrtho(false, 500,500);
