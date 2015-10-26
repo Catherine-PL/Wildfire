@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2015.10.6)  25 OCT 2015 16:28
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2015.10.6)  26 OCT 2015 17:55
 entering extended mode
 **dokumentacjalatex.tex
 (C:\Users\Dylek\Documents\GitHub\Wildfire\Dokumentacja\dokumentacjalatex.tex
@@ -444,48 +444,53 @@ LaTeX Font Info:    External font `plex10' loaded for size
 )
 \tf@toc=\write3
  [1]
-Underfull \hbox (badness 10000) in paragraph at lines 146--149
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 183--184
+Underfull \hbox (badness 10000) in paragraph at lines 145--154
 
  []
 
 [2]
-Underfull \hbox (badness 10000) in paragraph at lines 188--198
+Underfull \hbox (badness 10000) in paragraph at lines 191--192
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 206--210
+Underfull \hbox (badness 10000) in paragraph at lines 196--206
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 216--231
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 236--242
+Underfull \hbox (badness 10000) in paragraph at lines 214--218
 
  []
 
 [3]
-LaTeX Font Info:    External font `plex10' loaded for size
-(Font)              <14.4> on input line 283.
-LaTeX Font Info:    External font `plex10' loaded for size
-(Font)              <10> on input line 283.
-LaTeX Font Info:    External font `plex10' loaded for size
-(Font)              <7> on input line 283.
- [4]
-Underfull \hbox (badness 10000) in paragraph at lines 308--320
+Underfull \hbox (badness 10000) in paragraph at lines 224--239
 
  []
 
-[5]
+
+Underfull \hbox (badness 10000) in paragraph at lines 244--250
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 253--254
+
+ []
+
+[4]
+LaTeX Font Info:    External font `plex10' loaded for size
+(Font)              <14.4> on input line 289.
+LaTeX Font Info:    External font `plex10' loaded for size
+(Font)              <10> on input line 289.
+LaTeX Font Info:    External font `plex10' loaded for size
+(Font)              <7> on input line 289.
+
+Underfull \hbox (badness 10000) in paragraph at lines 314--326
+
+ []
+
+[5] [6]
 (C:\Users\Dylek\Documents\GitHub\Wildfire\Dokumentacja\dokumentacjalatex.aux)
 
 LaTeX Font Warning: Size substitutions with differences
@@ -493,13 +498,13 @@ LaTeX Font Warning: Size substitutions with differences
 
  ) 
 Here is how much of TeX's memory you used:
- 2323 strings out of 493921
- 28329 string characters out of 3147282
- 83353 words of memory out of 3000000
- 5577 multiletter control sequences out of 15000+200000
+ 2324 strings out of 493921
+ 28343 string characters out of 3147282
+ 84353 words of memory out of 3000000
+ 5578 multiletter control sequences out of 15000+200000
  19896 words of font info for 46 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 27i,4n,24p,624b,221s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 27i,5n,24p,743b,221s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/pl/plmi.enc}{C:/Program Files/Mi
 KTeX 2.9/fonts/enc/dvips/pl/plms.enc}{C:/Program Files/MiKTeX 2.9/fonts/enc/dvi
 ps/pl/plrm.enc} <C:\Users\Dylek\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknapp
@@ -520,9 +525,9 @@ s/MiKTeX 2.9/fonts/type1/public/pl/plr10.pfb><C:/Program Files/MiKTeX 2.9/fonts
 /type1/public/pl/plr6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/pl/pl
 r8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/pl/plsy10.pfb><C:/Progra
 m Files/MiKTeX 2.9/fonts/type1/public/pl/plsy8.pfb>
-Output written on dokumentacjalatex.pdf (6 pages, 174716 bytes).
+Output written on dokumentacjalatex.pdf (7 pages, 177825 bytes).
 PDF statistics:
- 417 PDF objects out of 1000 (max. 8388607)
+ 424 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
