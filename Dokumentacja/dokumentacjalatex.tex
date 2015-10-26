@@ -159,6 +159,12 @@
 	Od powstania pierwszych modeli pożarów w latach czterdziestych XX wieku minęło wiele czasu, w ciągu którego zaprezentowano kolejne - zróżnicowane pod względem wymaganych danych wejściowych, znaczących czynników i stopnia rozbudowania - modele.\\
 	\indent	Problemem związanym z modelowaniem tak skomplikowanego zjawiska jak ogień jest rosnąca wraz z ilością branych pod uwagę czynników liczba koniecznych do wykoniania obliczeń, a co za tym idzie - potrzeba coraz większej mocy obliczeniowej. Właśnie  z powodu względnie długiego czasu symulacji i potrzeby dużej ilości danych wejściowych skomplikowane modele stosuje się częściej w badaniu niż w terenie.  W związku z tym w istniejących modelach zastosowano różne uproszczenia, często poświęcając mniej znaczące czynniki na rzecz przyspieszenia obliczeń.  \\
 	\indent	Modele pożaru można podzielić na trzy grupy: empiryczne (model kanadyjski i australijski), semi-empiryczne (automaty komórkowe i Rothermel) i oparte na fizyce (modelowanie ognia koron oraz pełne fizyczne i multifazowe podejście).
+		\subsection{Model paliwowy}	
+		\indent
+		
+		Model paliwowy jest to zbiór możliwych paliw, typów roślinności i ich własności, które są reprezentowane w postaci parametrów. Parametry te wykorzystywane są następnie jako dane wejściowe dla zastosowanego modelu.\\
+		
+		 Pierwszy taki zbiór wprowadził Rothermel, który rozróżnił 11 różnych paliw - od  krótkiej trawy po powalone drzewa - których właściwości utrzymują sie na stałym poziomie właściwości cząstek w czasie. Zbiór ten został rozszerzony o dwa modele paliw przez Albiniego, a następnie opisany przez Andersena. Wraz z czasem powstały bardziej rozbudowane zestawy. Narodziły się dynamiczne modele paliwowe. 
 	
 	\iffalse
 	% \iftrue for disabling comment
@@ -297,10 +303,8 @@
 		\centerline{\includegraphics[scale=0.4]{automaty}}
 		\raggedright{	\caption{Automaty komórkowe - przykładow prezentacji różnych stanów wraz z zaznaczonym sąsiedztwem Moore'a}}
 	\end{figure}
-	
-	\section{Model paliwowy}	
-	\indent
-	M
+	\newpage
+
 	
 	\section{Zastosowany model}
 	\indent
@@ -327,8 +331,8 @@
 	\addcontentsline{toc}{section}{Modele paliwowe}
 	\section*{Modele paliwowe}
 	\indent	
-	Model paliwowy jest to zbiór możliwych paliw, typów roślinności i ich własności, które są reprezentowane w postaci parametrów. Parametry te wykorzystywane są następnie jako dane wejściowe dla naszego modelu. Pierwszy taki zbiór wprowadził Rothermel, który rozróżnił 11 różnych paliw: trawa krótka, trawa długa, gęste krzaki i krzewy, gęste zarośla krzewów i małych drzew, trawy i poszycie leśne, ściółka leśna, ściółka leśna razem z gałęziami i martwymi częsciami roślin, ściółka lasów liściastych, wyrąbane lub powalone drzewa w 3 formach. Utrzymywał on na stałym poziomie właściwości cząstek w czasie. Wraz z czasem Albini dodał jeszcze 2 paliwa. Zbiór ten został opisany przez Andersena. Wraz z czasem powstały bardziej rozbudowane zestawy. Narodziły się dynamiczne modele paliwowe. 
 	
+	11 różnych paliw: trawa krótka, trawa długa, gęste krzaki i krzewy, gęste zarośla krzewów i małych drzew, trawy i poszycie leśne, ściółka leśna, ściółka leśna razem z gałęziami i martwymi częsciami roślin, ściółka lasów liściastych, wyrąbane lub powalone drzewa w 3 formach.
 	
 	\addcontentsline{toc}{section}{Cele symulacji2}
 	\section*{Cele symulacji2}
@@ -358,6 +362,7 @@
 	\indent
 	
 	sdsd
+	\newpage
 	\section{Literatura}
 	%\indent
 	
