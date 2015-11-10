@@ -7,18 +7,33 @@ public class Cell {
 
 	public enum State
 	{
-		BURNING, BURNED, TREE, FREE;
+		BURNING, BURNT, TREE, FREE;
+	}
+	
+	class Coordinate{
+		int x;
+		int y;
+		
+		Coordinate(int _y, int _x)
+		{
+			x = _x;
+			y = _y;
+		}
+		
+		public String toString()
+		{
+			return ("y:" + y + " - x:" + x);
+		}
 	}
 	
 	private State state;
-	private int lifetime;
-	private int[] coordinates = new int[2]; 	
+	private int lifetime;		// ilosc minut palenia siê paliwa, mo¿na dodaæ pole np. iloœæ ciep³a dla komórki
+	private Coordinate coordinates; 	
 	Set<Cell> neighbors = new HashSet<Cell>();  
 	
-	public Cell(int x, int y, int probability)				// powierzchnia 1m x 1m - przydatne w rozprzestrzenianiu siê po¿aru
+	public Cell(int y, int x, int probability)				// powierzchnia 1m x 1m - przydatne w rozprzestrzenianiu siê po¿aru
 	{
-		coordinates[0] = x;
-		coordinates[1] = y;	
+		coordinates = new Coordinate(y,x);
 		lifetime = 10;						// ilosc cykli, 1 cykl to 1 minuta
 		
 		if(probability > Terrain.randomGenerator.nextInt(100))
@@ -41,13 +56,21 @@ public class Cell {
 	{
 		return state;
 	}
-	public void spreadFire(Set<Cell> burning)
+	public void addNeighbor(Cell n)
 	{
-		lifetime--;
+		neighbors.add(n);
+	}
+	public Coordinate getCoordinates()
+	{
+		return this.coordinates;
+	}
+ 	public void spreadFire()
+	{
+		lifetime--;					
 		if(lifetime == 0)
 		{
-			state = State.BURNED;
-			burning.remove(this);
+			state = State.BURNT;
+			Terrain.treesOnFire.remove(this);
 		}
 		
 		for(Cell c : neighbors)
@@ -55,9 +78,14 @@ public class Cell {
 			if(c.state == State.TREE)
 			{			
 				c.state = State.BURNING;
-				burning.add(c);
+				Terrain.treesOnFire.add(c);
 			}									
 		}
+	}
+	
+	public String toString()
+	{
+		return (this.coordinates.toString());
 	}
 	
 }

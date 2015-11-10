@@ -1,18 +1,19 @@
 package wildfire.simulation;
 
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Random;
 import java.util.Set;
 
-import wildfire.simulation.Ellipse.Coordinate;
+
 
 public class Terrain {
 
 	
-	private int size;
+	public int size;
 	private Cell [][] terrainState;
-	Set<Cell> treesOnFire = new HashSet<Cell>();
-	Ellipse wave = new Ellipse();
+	static Set<Cell> treesOnFire = new HashSet<Cell>();
+	//Ellipse wave = new Ellipse();
 	
 	static Random randomGenerator = new Random();
 	
@@ -33,13 +34,34 @@ public class Terrain {
 	
 	
 
-	private void defineNeighbors()
+	private void defineNeighbors()			// wyliczanie sasiedztwa, na razie wszystko do okola
 	{
+		int [] yn = {-1,0,1};
+		int [] xn = {-1,0,1};
 		for (int y = 0; y<size; y++)
+		{
 			for (int x = 0; x<size; x++)
-				for(Coordinate c: wave.xy)
-					if(y+c.y < size && y+c.y >= 0 && x+c.x < size && x+c.x >= 0 )
-						terrainState[y][x].neighbors.add(terrainState[y+c.y][x+c.x]);					
+			{
+				
+				for(int i=0; i<3; i++)				
+				{
+					if((y+yn[i] < size) && (y+yn[i] >= 0))
+					{										
+						for(int j=0; j<3; j++)
+						{
+							if(j==1 && i==1)
+								continue;
+							else if((x+xn[j] < size) && (x+xn[j] >= 0))
+							{
+							//	System.out.print("y: " + y + ", x: " + x);								
+							//	System.out.println("; y+yn[i]: " + (y+yn[i]) + ",  x+xn[j]: " + (x+xn[j]));
+								terrainState[y][x].addNeighbor(terrainState[y+yn[i]][x+xn[j]]);
+							}
+						}
+					}
+				}	
+			}															
+		}														
 	}
 	private void ignite()
 	{
@@ -51,33 +73,60 @@ public class Terrain {
 		}
 		while (choosenTree.getState() == Cell.State.FREE);
 		
-		System.out.println("--- " + choosenTree.getState());
+		System.out.println("--- " + choosenTree.getState() + " -- " + choosenTree.getCoordinates());
 		choosenTree.setState(Cell.State.BURNING);
-		System.out.println("--- " + choosenTree.getState());
+		System.out.println("--- " + choosenTree.getState() + " -- " + choosenTree.getCoordinates());
 		treesOnFire.add(choosenTree);
 		
 	}	
 	public void spreadFire()
 	{
-		for(Cell c : treesOnFire)
+		Iterator<Cell> t = treesOnFire.iterator();
+		while(t.hasNext())
 		{
-			c.spreadFire(treesOnFire);
+			t.next().spreadFire();
 		}
 	}	
 	public boolean isAllBurnt()
 	{
 		return treesOnFire.isEmpty();
 	}
+	public Cell getCell(int y, int x)
+	{
+		return terrainState[y][x];
+	}
+	public String toString()
+	{
+		String txt = new String();
+		for(int y = 0 ; y<size; y++)
+		{
+			for(int x = 0 ; x<size; x++)
+			{
+				txt = txt + terrainState[y][x].getState() + ", ";
+			}
+			txt = txt + "\n";
+		}
+		
+		return txt;
+	}
 	
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		Terrain t = new Terrain(2,100);
+		int size = 4;
+		Terrain t = new Terrain(size,50);
 		
-		for(int y = 0 ; y<2; y++)
-			for(int x = 0 ; x<2; x++)
-				System.out.println(t.terrainState[y][x].getState());
-
+		while(!t.isAllBurnt())
+		{
+			System.out.println("-------------------------");		
+			System.out.println(t.toString());
+			t.spreadFire();			
+		}
+		
 	}
+		
+	
+
+	
 
 }
