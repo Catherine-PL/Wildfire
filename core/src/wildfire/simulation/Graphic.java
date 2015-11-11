@@ -16,6 +16,7 @@ public class Graphic implements ApplicationListener {
    private OrthographicCamera camera;
 
    Board board = new Board(60,50);
+   Terrain t = new Terrain(60,50);
    
    @Override
    public void create() {
@@ -26,7 +27,7 @@ public class Graphic implements ApplicationListener {
       // create the camera and the SpriteBatch
       camera = new OrthographicCamera();
       camera.setToOrtho(false, 500,500);
-      batch = new SpriteBatch();
+      batch = new SpriteBatch();      
       board.ignite();
    }
 
@@ -57,31 +58,31 @@ public class Graphic implements ApplicationListener {
       // begin a new batch and draw the bucket and
       // all trees
       batch.begin();
-      for (int k = 0; k<board.size; k++)
+      for (int y = 0; y<t.size; y++)
 		{
-			for (int l = 0; l<board.size; l++)
+			for (int x = 0; x<t.size; x++)
 			{
-				if(board.boardState[k][l].isTree==false)
+				if(t.getCell(y, x).getState() == Cell.State.FREE)
 				{
 					//batch.draw(noTree, 10*k-10, 10*l-10);
 				}
-				if((board.boardState[k][l].isTree==true) &&(board.boardState[k][l].isBurning == false)&&(board.boardState[k][l].burnt == false))
+				if((t.getCell(y, x).getState() == Cell.State.TREE))
 				{
-					batch.draw(treeGreen, 10*k-10, 10*l-10);
+					batch.draw(treeGreen, 10*y-10, 10*x-10);
 				}
-				if((board.boardState[k][l].isTree==true) &&(board.boardState[k][l].isBurning == true)&&(board.boardState[k][l].burnt == false))
+				if((t.getCell(y, x).getState() == Cell.State.BURNING))
 				{
-					batch.draw(treeRed, 10*k-10, 10*l-10);
+					batch.draw(treeRed, 10*y-10, 10*x-10);
 				}
-				if((board.boardState[k][l].burnt == true)&&(board.boardState[k][l].isTree==true))
+				if((t.getCell(y, x).getState() == Cell.State.BURNT))
 				{
-					batch.draw(treeBlack, 10*k-10, 10*l-10);
+					batch.draw(treeBlack, 10*y-10, 10*x-10);
 				}
 			}
 		}
 		//System.out.println(sum + " " + board.size*board.size);
       batch.end();  
-      if (board.isAllBurnt()==false) board.spreadFire();
+      if (t.isAllBurnt() == false) t.spreadFire();
    }
 
    @Override
