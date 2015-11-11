@@ -5,17 +5,14 @@ import java.util.Iterator;
 import java.util.Random;
 import java.util.Set;
 
-
-
 public class Terrain {
 
-	
 	public int size;
 	private Cell [][] terrainState;
-	static Set<Cell> treesOnFire = new HashSet<Cell>();
-	//Ellipse wave = new Ellipse();
-	
-	static Random randomGenerator = new Random();
+	private static Set<Cell> treesOnFire = new HashSet<Cell>();
+	public static Set<Cell> treesOnFireAdd = new HashSet<Cell>();
+	public static Set<Cell> treesOnFireRemove = new HashSet<Cell>();
+	public static Random randomGenerator = new Random();
 	
 	
 	Terrain(int _size, int trees)
@@ -31,8 +28,6 @@ public class Terrain {
 		ignite();
 		
 	}
-	
-	
 
 	private void defineNeighbors()			// wyliczanie sasiedztwa, na razie wszystko do okola
 	{
@@ -81,11 +76,24 @@ public class Terrain {
 	}	
 	public void spreadFire()
 	{
-		Iterator<Cell> t = treesOnFire.iterator();
-		while(t.hasNext())
+		
+		for(Cell t : treesOnFire)
 		{
-			t.next().spreadFire();
-		}
+			t.spreadFire();
+		}	
+		System.out.println("---treesOnFire: " + treesOnFire.size() + ", treesOnFireAdd: " + treesOnFireAdd.size()+ ", treesOnFireRemove: " + treesOnFireRemove.size());		
+		for(Cell temp : treesOnFireAdd)
+		{
+			treesOnFire.add(temp);
+		}		
+		treesOnFireAdd.clear();
+		for(Cell temp : treesOnFireRemove)
+		{
+			treesOnFire.remove(temp);
+		}		
+		treesOnFireRemove.clear();
+		
+		
 	}	
 	public boolean isAllBurnt()
 	{

@@ -31,6 +31,7 @@ public class Cell {
 	private Coordinate coordinates; 	
 	Set<Cell> neighbors = new HashSet<Cell>();  
 	
+
 	public Cell(int y, int x, int probability)				// powierzchnia 1m x 1m - przydatne w rozprzestrzenianiu siê po¿aru
 	{
 		coordinates = new Coordinate(y,x);
@@ -38,16 +39,23 @@ public class Cell {
 		
 		if(probability > Terrain.randomGenerator.nextInt(100))
 		{
-			System.out.println("TREE");
+			//System.out.println("TREE");
 			state = State.TREE;
 		}
 		else
 		{
-			System.out.println("FREE");
+			//System.out.println("FREE");
 			state = State.FREE;
 		}
 		
 	}	
+	public Cell(int y, int x, Cell.State s, int life)		
+	{
+		coordinates = new Coordinate(y,x);
+		lifetime = life;						
+		state = s;
+		
+	}
 	public void setState(State s)
 	{
 		state = s;
@@ -66,11 +74,12 @@ public class Cell {
 	}
  	public void spreadFire()
 	{
+ 		HashSet<Cell> r = new HashSet<Cell>();
 		lifetime--;					
 		if(lifetime == 0)
 		{
 			state = State.BURNT;
-			Terrain.treesOnFire.remove(this);
+			Terrain.treesOnFireRemove.add(this);
 		}
 		
 		for(Cell c : neighbors)
@@ -78,9 +87,10 @@ public class Cell {
 			if(c.state == State.TREE)
 			{			
 				c.state = State.BURNING;
-				Terrain.treesOnFire.add(c);
+				Terrain.treesOnFireAdd.add(c);
 			}									
 		}
+		
 	}
 	
 	public String toString()
