@@ -9,6 +9,10 @@ public class Cell {
 	{
 		BURNING, BURNT, TREE, FREE;
 	}
+	public enum Wood
+	{
+		OAK, PINY;
+	}
 	
 	class Coordinate{
 		int x;
@@ -27,34 +31,35 @@ public class Cell {
 	}
 	
 	private State state;
+	private Wood type;
 	private int lifetime;		// ilosc minut palenia siê paliwa, mo¿na dodaæ pole np. iloœæ ciep³a dla komórki
 	private Coordinate coordinates; 	
 	Set<Cell> neighbors = new HashSet<Cell>();  
-	
-
-	public Cell(int y, int x, int probability)				// powierzchnia 1m x 1m - przydatne w rozprzestrzenianiu siê po¿aru
+		
+	private void setParam(int y, int x, int life)
 	{
 		coordinates = new Coordinate(y,x);
-		lifetime = 10;						// ilosc cykli, 1 cykl to 1 minuta
+		lifetime = life;						// ilosc cykli, 1 cykl to 1 minuta		
+		if(Data.percent_piny > Terrain.randomGenerator.nextInt(100))
+			type = Wood.PINY;
+		else
+			type = Wood.OAK;
+		
+	}
+	
+	public Cell(int y, int x, int probability)				// powierzchnia 1m x 1m - przydatne w rozprzestrzenianiu siê po¿aru
+	{
+		setParam(y,x,10);
 		
 		if(probability > Terrain.randomGenerator.nextInt(100))
-		{
-			//System.out.println("TREE");
-			state = State.TREE;
-		}
-		else
-		{
-			//System.out.println("FREE");
-			state = State.FREE;
-		}
-		
+			state = State.TREE;		
+		else		
+			state = State.FREE;				
 	}	
 	public Cell(int y, int x, Cell.State s, int life)		
 	{
-		coordinates = new Coordinate(y,x);
-		lifetime = life;						
-		state = s;
-		
+		setParam(y,x,life);						
+		state = s;		
 	}
 	public void setState(State s)
 	{
