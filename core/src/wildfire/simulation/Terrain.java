@@ -17,13 +17,22 @@ public class Terrain {
 	
 	Terrain(int _size, int trees)
 	{		
+		double l=0;
 		size = _size;
 		terrainState = new Cell[size][size];
 		
 		for (int y = 0; y<size; y++)
 			for (int x = 0; x<size; x++)
+			{
 				terrainState[y][x]=new Cell(y,x,trees);
-			
+				if(terrainState[y][x].getState() == Cell.State.TREE)
+					l++;
+			}
+		
+					
+		System.out.println("Number of all cells: " + size*size);
+		System.out.println("Number of all trees: " + l);
+		System.out.println();
 		defineNeighbors();		
 		ignite();
 		
