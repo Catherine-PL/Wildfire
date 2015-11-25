@@ -12,7 +12,7 @@ public class Terrain {
 	private static Set<Cell> treesOnFire = new HashSet<Cell>();
 	public static Set<Cell> treesOnFireAdd = new HashSet<Cell>();
 	public static Set<Cell> treesOnFireRemove = new HashSet<Cell>();
-	public static Random randomGenerator = new Random();
+	public static Random randomGenerator = new Random();	
 	
 	
 	Terrain(int _size, int trees)

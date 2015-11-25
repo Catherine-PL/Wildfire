@@ -32,8 +32,10 @@ public class Cell {
 	
 	private State state;
 	private Wood type;
-	private int lifetime;		// ilosc minut palenia siê paliwa, mo¿na dodaæ pole np. iloœæ ciep³a dla komórki
+	private int lifetime;									// ilosc minut palenia siê paliwa, mo¿na dodaæ pole np. iloœæ ciep³a dla komórki
 	private Coordinate coordinates; 	
+	private long height = 500;
+	private int size = 1;									// bok kwadratu - ilosc metrow
 	Set<Cell> neighbors = new HashSet<Cell>();  
 		
 	private void setParam(int y, int x, int life)
@@ -61,6 +63,46 @@ public class Cell {
 		setParam(y,x,life);						
 		state = s;		
 	}
+	
+	public double rothermel(Data.Direction d)
+	{
+		Data.calculateE();
+		Data.calculateQ_ig();
+		Data.calculateIp(type);
+	
+		System.out.println("----Dla kierunku: " + d + "----");
+		
+		double density;
+		double wind = Data.windValue(d);
+		double terrain = 0;
+		
+		if(type == Wood.OAK)
+			density = Data.density_oak;
+		else
+			density = Data.density_piny;
+		
+				
+		System.out.println("Ip_0:		" + Data.ip_0);
+		System.out.println("wind:		" + wind);
+		System.out.println("terrain:	" + terrain);
+		
+		System.out.println();
+		
+		System.out.println("density:	" + density);
+		System.out.println("e:		" + Data.e);
+		System.out.println("Q_iq:		" + Data.q_ig);
+		System.out.println();
+		
+		double licznik = Data.ip_0*(1 + wind + terrain);
+		double mianownik = density * Data.e * Data.q_ig; 
+		
+		System.out.println("licznik: " + licznik + ", mianownik: " + mianownik);
+		System.out.println("Rothermel:");
+		
+		//return  licznik / mianownik; 
+		return  Math.floor(licznik / mianownik); 
+	}
+	
 	public void setState(State s)
 	{
 		state = s;
@@ -69,6 +111,7 @@ public class Cell {
 	{
 		return state;
 	}
+	
 	public void addNeighbor(Cell n)
 	{
 		neighbors.add(n);
@@ -103,4 +146,17 @@ public class Cell {
 		return (this.coordinates.toString());
 	}
 	
+	public static void main(String[] args)
+	{
+		Cell c = new Cell(1,1,Cell.State.TREE, 5);
+		System.out.println(c.rothermel(Data.Direction.N));
+		System.out.println(c.rothermel(Data.Direction.NE));
+		System.out.println(c.rothermel(Data.Direction.E));
+		System.out.println(c.rothermel(Data.Direction.SE));
+		System.out.println(c.rothermel(Data.Direction.S));
+		System.out.println(c.rothermel(Data.Direction.SW));
+		System.out.println(c.rothermel(Data.Direction.W));
+		System.out.println(c.rothermel(Data.Direction.NW));
+		
+	}
 }
