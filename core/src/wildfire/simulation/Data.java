@@ -18,7 +18,7 @@ final class Data {
 	
 	static final int x = 0;
 	
-	static double wind = 1.4;									// 0 - 30, 30> huragan
+	static double wind = 4;										// 0 - 30, 30> huragan
 	static double terrain = 1.2;								// not sure
 	static double fuel_humidity = 1.0;							
 	static double q_ig = 250 + 1.116 * fuel_humidity;									// kJ / kg
@@ -30,7 +30,7 @@ final class Data {
 	static double percent_oak = 85;								// kuznia raciborska
 	static double percent_piny = 15;
 	
-	static double r_0 = 1;		
+	static double r_0 = 8;		
 	
 	static double ip_0_oak = r_0 * density_oak * e * q_ig;		// Ip_0 = R_0 * mianownik w rothermelu
 	static double ip_0_piny = r_0 * density_piny * e * q_ig;	// Ip_0 = R_0 * mianownik w rothermelu

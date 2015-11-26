@@ -91,7 +91,7 @@ public class Terrain {
 			}															
 		}														
 	}
-	public void defineNeighbor()			// zle nie wazne
+/*	public void defineNeighbor()			// zle nie wazne
 	{
 		for (int y = 0; y<size; y++)
 		{
@@ -152,7 +152,7 @@ public class Terrain {
 			}
 		}
 		
-	}
+	}*/
 	private void ignite()
 	{
 		
@@ -217,8 +217,7 @@ public class Terrain {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		int size = 6;
-		Terrain t = new Terrain(size,100);
-		t.defineNeighbor();
+		Terrain t = new Terrain(size,100);		
 		
 		System.out.println(t.terrainState[2][2].neighbors);
 		/*
