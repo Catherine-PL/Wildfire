@@ -16,7 +16,7 @@ public class Graphic implements ApplicationListener {
    private OrthographicCamera camera;
 
    Board board = new Board(60,50);
-   Terrain t = new Terrain(60,50);
+   Terrain t = new Terrain(50,40);
    
    @Override
    public void create() {
