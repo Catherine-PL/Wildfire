@@ -5,6 +5,9 @@ import java.util.Iterator;
 import java.util.Random;
 import java.util.Set;
 
+import wildfire.simulation.Cell.State;
+import wildfire.simulation.Cell.Wood;
+
 public class Terrain {
 
 	public int size;
@@ -15,16 +18,37 @@ public class Terrain {
 	public static Random randomGenerator = new Random();	
 	
 	
-	Terrain(int _size, int trees)
+	Terrain(int _size, int probability)
 	{		
 		double l=0;
 		size = _size;
 		terrainState = new Cell[size][size];
+		int life = 10;
+		int heightS = 500;
+		int heightT = 10;
 		
 		for (int y = 0; y<size; y++)
 			for (int x = 0; x<size; x++)
 			{
-				terrainState[y][x]=new Cell(y,x,trees);
+				Wood wood;
+				State s;
+				if(probability > Terrain.randomGenerator.nextInt(100))
+				{
+					s = State.TREE;
+					if(Data.percent_oak > Terrain.randomGenerator.nextInt(100))
+						wood = Wood.OAK;		
+					else		
+						wood = Wood.PINY;
+					
+				}
+				else		
+				{
+					s = State.FREE;
+					wood = Wood.NONE;
+				}																
+				
+				terrainState[y][x]=new Cell(new Cell.Coordinate(y, x), s, wood, life, heightS, heightT, 1);
+				
 				if(terrainState[y][x].getState() == Cell.State.TREE)
 					l++;
 			}
@@ -66,6 +90,68 @@ public class Terrain {
 				}	
 			}															
 		}														
+	}
+	public void defineNeighbor()			// zle nie wazne
+	{
+		for (int y = 0; y<size; y++)
+		{
+			for (int x = 0; x<size; x++)
+			{
+				
+				for(Data.Direction d : Data.Direction.values())
+				{										
+					int r = (int) Math.floor(terrainState[y][x].rothermel(d));		
+					System.out.print(d + ": " + r + "; ");
+				
+					for(int i=1; i<=r;i++)
+					{
+						switch(d)
+						{
+						case N:
+							if(y-i >= 0)
+								terrainState[y][x].addNeighbor(terrainState[y-i][x]);
+							break;							
+						case NE:
+							if(y-i >= 0 && x-i >=0)
+								terrainState[y][x].addNeighbor(terrainState[y-i][x-i]);
+							break;												
+						case E:
+							if(x+i < size)
+								terrainState[y][x].addNeighbor(terrainState[y][x+i]);
+							break;
+						case SE:
+							if(y+i < size && x+i < size)
+								terrainState[y][x].addNeighbor(terrainState[y+i][x+i]);
+							break;						
+						case S:
+							if(y+i < size)
+								terrainState[y][x].addNeighbor(terrainState[y+i][x]);
+							break;						
+						case SW:
+							if(y+i < size && x-i >=0)
+								terrainState[y][x].addNeighbor(terrainState[y+i][x-i]);
+							break;						
+						case W:
+							if(x-i >= 0)
+								terrainState[y][x].addNeighbor(terrainState[y][x-i]);
+							break;						
+						case NW:
+							if(y-i >= 0 && x-i >= 0)
+								terrainState[y][x].addNeighbor(terrainState[y-i][x-i]);
+							break;												
+						}
+						
+							
+							
+					}
+					
+				}
+				System.out.println(" -- " +y + ":" + x);
+		
+		
+			}
+		}
+		
 	}
 	private void ignite()
 	{
@@ -130,15 +216,20 @@ public class Terrain {
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		int size = 4;
-		Terrain t = new Terrain(size,50);
+		int size = 6;
+		Terrain t = new Terrain(size,100);
+		t.defineNeighbor();
 		
+		System.out.println(t.terrainState[2][2].neighbors);
+		/*
 		while(!t.isAllBurnt())
 		{
 			System.out.println("-------------------------");		
 			System.out.println(t.toString());
 			t.spreadFire();			
 		}
+		*/
+		
 		
 	}
 		

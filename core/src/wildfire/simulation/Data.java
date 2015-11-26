@@ -18,18 +18,23 @@ final class Data {
 	
 	static final int x = 0;
 	
-	static double wind = 1.4;
+	static double wind = 1.4;									// 0 - 30, 30> huragan
 	static double terrain = 1.2;								// not sure
 	static double fuel_humidity = 1.0;							
-	static double q_ig = 250;									// kJ / kg
+	static double q_ig = 250 + 1.116 * fuel_humidity;									// kJ / kg
 	static double sav = 1600;									// powierzchnia do objêtnoœci; jednostka 1/ft
-	static double e = 1;										// efektywne ogrzewanie w przediale (0,1)
+	static double e = Math.exp(-138 / sav);										// efektywne ogrzewanie w przediale (0,1)
+	
 	static double density_piny = 460;							// kg / m^3
 	static double density_oak = 760;
 	static double percent_oak = 85;								// kuznia raciborska
 	static double percent_piny = 15;
-	static double ip_0 = 0;										// Ip_0 = R_0 * mianownik w rothermelu
+	
 	static double r_0 = 1;		
+	
+	static double ip_0_oak = r_0 * density_oak * e * q_ig;		// Ip_0 = R_0 * mianownik w rothermelu
+	static double ip_0_piny = r_0 * density_piny * e * q_ig;	// Ip_0 = R_0 * mianownik w rothermelu
+	
 	
 	static Direction winddir = Direction.N;
 	
@@ -49,25 +54,8 @@ final class Data {
 	{
 		fuel_humidity = value;
 	}
-	static void calculateQ_ig()
-	{
-		q_ig = 250 + 1.116 * fuel_humidity;
-	}
-	static void calculateE()
-	{
-		e = Math.exp(-138 / sav);
-	}
-	static void calculateIp(Cell.Wood wood)
-	{
-		double density;
-		if(wood == Wood.OAK)
-			density = Data.density_oak;
-		else
-			density = Data.density_piny;
-		
-		ip_0 = r_0 * density * Data.e * Data.q_ig; 
-	}
-
+	
+	
 	static double windValue(Direction d)
 	{
 		if(d == winddir) return wind;
