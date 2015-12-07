@@ -8,9 +8,9 @@ import wildfire.simulation.Graphic;
 public class DesktopLauncher {
    public static void main(String[] args) {
       LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
-      config.title = "Drop";
-      config.width = 500;
-      config.height = 500;
+      config.title = "Wildfire";
+      config.width = 900;
+      config.height = 620;
       new LwjglApplication(new Graphic(), config);
    }
 }

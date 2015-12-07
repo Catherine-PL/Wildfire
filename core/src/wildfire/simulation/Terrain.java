@@ -18,7 +18,7 @@ public class Terrain {
 	public static Random randomGenerator = new Random();	
 	
 	
-	Terrain(int _size, int probability)
+	Terrain(int _size, int probability,int relief)
 	{		
 		double l=0;
 		size = _size;
@@ -34,7 +34,7 @@ public class Terrain {
 				State s;
 				if(probability > Terrain.randomGenerator.nextInt(100))
 				{
-					s = State.TREE;
+					s = State.FUEL;
 					if(Data.percent_oak > Terrain.randomGenerator.nextInt(100))
 						wood = Wood.OAK;		
 					else		
@@ -49,7 +49,7 @@ public class Terrain {
 				
 				terrainState[y][x]=new Cell(new Cell.Coordinate(y, x), s, wood, life, heightS, heightT, 1);
 				
-				if(terrainState[y][x].getState() == Cell.State.TREE)
+				if(terrainState[y][x].getState() == Cell.State.FUEL)
 					l++;
 			}
 		
@@ -58,10 +58,28 @@ public class Terrain {
 		System.out.println("Number of all trees: " + l);
 		System.out.println();
 		defineNeighbors();		
+		generateElevation(relief);
 		ignite();
 		
 	}
 
+	//podstawowy generator, nie ma uwzglednienia wysokosci na jakiej sa sasiedzi
+		public void generateElevation(int relief)
+		{
+			int probability=0;
+			for (int y = 0; y<size; y++)
+				for (int x = 0; x<size; x++)
+				{
+					probability = randomGenerator.nextInt(100);
+					if (probability<10) terrainState[y][x].setElevation(relief);
+					else if (probability<20) terrainState[y][x].setElevation(relief/5);
+					else if (probability<50) terrainState[y][x].setElevation(relief/3);
+					else if (probability<75) terrainState[y][x].setElevation(relief/2 + relief/5);
+					else if (probability<90) terrainState[y][x].setElevation(relief/2 - relief/5);				
+				}	
+		}
+		
+	
 	private void defineNeighbors()			// wyliczanie sasiedztwa, na razie wszystko do okola
 	{
 		int [] yn = {-1,0,1};
@@ -217,7 +235,7 @@ public class Terrain {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		int size = 6;
-		Terrain t = new Terrain(size,100);		
+		Terrain t = new Terrain(size,100,50);		
 		
 		System.out.println(t.terrainState[2][2].neighbors);
 		/*

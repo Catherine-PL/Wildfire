@@ -9,7 +9,7 @@ public class Cell {
 
 	public enum State
 	{
-		BURNING, BURNT, TREE, FREE;
+		BURNING, BURNT, FUEL, FREE;
 	}
 	public enum Wood
 	{
@@ -33,6 +33,7 @@ public class Cell {
 	}
 	
 	private Coordinate 		coordinates; 
+	private int elevation;
 	private State 			state;
 	private Wood 			type;
 	private int 			lifetime;									// ilosc minut palenia siê paliwa, mo¿na dodaæ pole np. iloœæ ciep³a dla komórki	
@@ -64,6 +65,16 @@ public class Cell {
 		this.heightSea = heightSea;
 		this.heightTree = heightTree;
 		this.size = size;
+	}
+	
+	
+	public void setElevation(int e)
+	{
+		elevation=e;
+	}	
+	public int getElevation()
+	{
+		return elevation;
 	}
 	
 	private double lb()
@@ -211,7 +222,7 @@ public class Cell {
 		
 		for(Cell c : neighbors)
 		{
-			if(c.state == State.TREE)
+			if(c.state == State.FUEL)
 			{			
 				c.state = State.BURNING;
 				Terrain.treesOnFireAdd.add(c);
@@ -228,7 +239,7 @@ public class Cell {
 	
 	public static void main(String[] args)
 	{
-		Cell c = new Cell(new Cell.Coordinate(1, 1), State.TREE, Wood.OAK, 10, 500, 10, 1);
+		Cell c = new Cell(new Cell.Coordinate(1, 1), State.FUEL, Wood.OAK, 10, 500, 10, 1);
 /*		System.out.println(c.rothermel(Data.Direction.N));
 		System.out.println(c.rothermel(Data.Direction.NE));
 		System.out.println(c.rothermel(Data.Direction.E));

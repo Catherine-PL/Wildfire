@@ -15,8 +15,7 @@ public class Graphic implements ApplicationListener {
    private SpriteBatch batch;
    private OrthographicCamera camera;
 
-   Board board = new Board(60,50);
-   Terrain t = new Terrain(50,40);
+   Terrain t = new Terrain(60,50,50);
    
    @Override
    public void create() {
@@ -26,9 +25,9 @@ public class Graphic implements ApplicationListener {
 	   treeGreen = new Texture("treegreen.jpg"); 
       // create the camera and the SpriteBatch
       camera = new OrthographicCamera();
-      camera.setToOrtho(false, 500,500);
+      camera.setToOrtho(false, 900,620);
       batch = new SpriteBatch();      
-      board.ignite();
+
    }
 
 
@@ -64,26 +63,27 @@ public class Graphic implements ApplicationListener {
 			{
 				if(t.getCell(y, x).getState() == Cell.State.FREE)
 				{
-					//batch.draw(noTree, 10*k-10, 10*l-10);
+					batch.draw(noTree, 10*y+10, 10*x+10);
 				}
-				if((t.getCell(y, x).getState() == Cell.State.TREE))
+				if((t.getCell(y, x).getState() == Cell.State.FUEL))
 				{
-					batch.draw(treeGreen, 10*y-10, 10*x-10);
+					batch.draw(treeGreen, 10*y+10, 10*x+10);
 				}
 				if((t.getCell(y, x).getState() == Cell.State.BURNING))
 				{
-					batch.draw(treeRed, 10*y-10, 10*x-10);
+					batch.draw(treeRed, 10*y+10, 10*x+10);
 				}
 				if((t.getCell(y, x).getState() == Cell.State.BURNT))
 				{
-					batch.draw(treeBlack, 10*y-10, 10*x-10);
+					batch.draw(treeBlack, 10*y+10, 10*x+10);
 				}
 			}
 		}
 		//System.out.println(sum + " " + board.size*board.size);
-      batch.end();  
-      if (t.isAllBurnt() == false) t.spreadFire();
-   }
+    batch.end();  
+    if (t.isAllBurnt() == false) t.spreadFire();
+ }
+
 
    @Override
    public void dispose() {
