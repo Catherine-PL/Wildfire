@@ -2,6 +2,8 @@ package wildfire.simulation;
 
 //import representation.View.Screen;
 
+import wildfire.simulation.Data.Direction;
+
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
@@ -30,27 +32,37 @@ public class Graphic implements ApplicationListener,  InputProcessor {
    private OrthographicCamera camera;
    private BitmapFont font;
    private int screensizeY =620;
+   private int broadLeafTypeProbablitity =50;
+   private int vegetationProbablitity =50;
    //enum do wyboru opcji zeby napisy byly wpisywane i wyswietlane odpowiednio
    public enum Choice {
-	    GENERATE(10), T_AREA(2), T_ROUGHNESS(0), T_MAXIMUM_HEIGHT(1), W_VELOCITY(3),W_DIRECTION(4),W_HUMIDITY (5),NONE(9), GENERATE_EXAMPLE(10) ;
+	    GENERATE(10), T_AREA(0), T_ROUGHNESS(1), T_MAXIMUM_HEIGHT(2), W_VELOCITY(3),W_DIRECTION(4),W_HUMIDITY (5),NONE(9), GENERATE_EXAMPLE(10) ;
 	    private final int value;
+	    
 	    private Choice(int value) {
 	        this.value = value;
 	    }
-
 	    public int getValue() {
 	        return value;
 	    }
 	}
    private Choice option;
-   Terrain t = new Terrain(60,50,50);
+   Terrain t = new Terrain(60,50,(int)(Data.percent_oak),50,60); //tutaj powinno byc od razu dane z ku¿ni
+   	//rozmiar boku, prawdopodobienstwo ze cos rosnie, prawd. ze liœciaste, mask wysokosc, zroznicowanie terenu
+   //TODO
    
    @Override
    public void create() {
-	   for(int i=0; i<6 ;i++)
-	   {
-		   texts[i]=new StringBuilder("");
-	   }
+	   texts[0]=new StringBuilder("50");
+	   texts[1]=new StringBuilder("10");
+	   texts[2]=new StringBuilder("5");
+	   texts[3]=new StringBuilder("4");
+	   texts[4]=new StringBuilder("NE");
+	   texts[5]=new StringBuilder("72");
+	  // for(int i=0; i<6 ;i++)
+	   //{
+		//   texts[i]=new StringBuilder("");
+	  // }
 	   font = new BitmapFont();
 	   
 	   option=Choice.NONE;
@@ -61,8 +73,8 @@ public class Graphic implements ApplicationListener,  InputProcessor {
 	   noTree= new Texture("notree.jpg"); 
 	   treeBlack = new Texture("treeblack.jpg"); 
 	   treeGreen = new Texture("treegreen.jpg"); 
-	   chosenDensity = new Texture("none.png"); 	
-	   chosenType = new Texture("none.png"); 
+	   chosenDensity = new Texture("densityOpen.png"); 	
+	   chosenType = new Texture("typeMixed.png"); 
       // create the camera and the SpriteBatch
       camera = new OrthographicCamera();
       camera.setToOrtho(false, 900,620);
@@ -183,30 +195,41 @@ public class Graphic implements ApplicationListener,  InputProcessor {
 			if ((X>16) && (X<280)  &&(Y>screensizeY -600) && (Y<screensizeY -556))
 			{
 				option=Choice.GENERATE_EXAMPLE;
-				//TODO jakoœ zmieniæ ¿eby wczytywane by³y dane KuŸni
+
 			}
 		   //jak wcisnie gdzies indziej not o automatycznie wpiswywanie gdzies indziej
 		   //Generate
 			if ((X>16) && (X<280)  &&(Y>screensizeY -544) && (Y<screensizeY -500))
 			{
 				option=Choice.GENERATE;
+				//ustawienie terenu wed³ug podanych w³aœciwoœci
+				t = new Terrain(Integer.parseInt(texts[0].toString()),vegetationProbablitity,broadLeafTypeProbablitity,Integer.parseInt(texts[2].toString()),Integer.parseInt(texts[1].toString()) );
+				//ustawienie danych Data wed³ug podanych w³aœciwoœci
+				Data.setWind(Double.parseDouble(texts[3].toString()));
+				Data.setDirection(Direction.valueOf(texts[4].toString()));
+				Data.setHumidity(Integer.parseInt(texts[5].toString()));
+				
 //TODO przepisanie zmiennych: z wpisanych do Data
 			}
 			//wybor opcji vegetation
+			//TODO gdzie ten parametr w³o¿yæ
 			if ((Y<screensizeY -244) && (Y>screensizeY -260) )
 			{
 				if ((X>33) && (X<85))
 				{	
 					 chosenDensity = new Texture("densitySparse.png"); 	
+					 vegetationProbablitity=50;
 					 
 				}
 				if ((X>136) && (X<177))
 				{	
-					 chosenDensity = new Texture("densityOpen.png"); 	
+					 chosenDensity = new Texture("densityOpen.png"); 
+					 vegetationProbablitity=20;
 				}
 				if ((X>212) && (X<255))
 				{	
-					 chosenDensity = new Texture("densityDense.png"); 	
+					 chosenDensity = new Texture("densityDense.png");
+					 vegetationProbablitity=90;
 				}
 			}
 			if ((Y< screensizeY -291) && (Y>screensizeY -308) )
@@ -214,14 +237,17 @@ public class Graphic implements ApplicationListener,  InputProcessor {
 				if ((X>33) && (X<114))
 				{	
 					  chosenType = new Texture("typeNeedleleaf.png"); 
+					  broadLeafTypeProbablitity=15;
 				}
 				if ((X>127) && (X<198))
 				{	
 					  chosenType = new Texture("typeBroadleaf.png"); 
+					  broadLeafTypeProbablitity=85;
 				}
 				if ((X>210) && (X<255))
 				{	
 					  chosenType = new Texture("typeMixed.png"); 
+					  broadLeafTypeProbablitity=50;
 				}
 			}
 		   // wpisywanie
@@ -229,15 +255,15 @@ public class Graphic implements ApplicationListener,  InputProcessor {
 			{				
 				if ((Y<screensizeY -60) && (Y>screensizeY -80) )
 				{
-					option=Choice.T_ROUGHNESS;
+					option=Choice.T_AREA;
 				}
 				if ((Y<screensizeY -86) && (Y>screensizeY -108) )
 				{
-					option=Choice.T_MAXIMUM_HEIGHT;	
+					option=Choice.T_ROUGHNESS;	
 				}
 				if ((Y<screensizeY -113) && (Y>screensizeY -135) )
 				{
-					option=Choice.T_AREA;	
+					option=Choice.T_MAXIMUM_HEIGHT;	
 				}
 				if ((Y<screensizeY -387) && (Y>screensizeY -409) )
 				{

@@ -20,7 +20,8 @@ final class Data {
 	
 	static double wind = 4;										// 0 - 30, 30> huragan
 	static double terrain = 1.2;								// not sure
-	static double fuel_humidity = 1.0;							
+	static double fuel_humidity = 1.0;		
+	static int air_humidity = 1;	
 	static double q_ig = 250 + 1.116 * fuel_humidity;									// kJ / kg
 	static double sav = 1600;									// powierzchnia do objêtnoœci; jednostka 1/ft
 	static double e = Math.exp(-138 / sav);										// efektywne ogrzewanie w przediale (0,1)
@@ -38,11 +39,15 @@ final class Data {
 	
 	static Direction winddir = Direction.N;
 	
+	static void setHumidity(int h)
+	{
+		air_humidity = h;
+	}
 	static void setDirection(Direction d)
 	{
 		winddir = d;
 	}
-	static void setWind(int value)
+	static void setWind(double value)
 	{
 		wind = value;
 	}
