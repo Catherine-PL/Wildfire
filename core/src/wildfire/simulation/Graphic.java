@@ -10,11 +10,23 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Input.Buttons;
 import com.badlogic.gdx.Input.Keys;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.PerspectiveCamera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.VertexAttributes.Usage;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g3d.Environment;
+import com.badlogic.gdx.graphics.g3d.Material;
+import com.badlogic.gdx.graphics.g3d.Model;
+import com.badlogic.gdx.graphics.g3d.ModelBatch;
+import com.badlogic.gdx.graphics.g3d.ModelInstance;
+import com.badlogic.gdx.graphics.g3d.attributes.ColorAttribute;
+import com.badlogic.gdx.graphics.g3d.environment.DirectionalLight;
+import com.badlogic.gdx.graphics.g3d.utils.CameraInputController;
+import com.badlogic.gdx.graphics.g3d.utils.ModelBuilder;
 
 
 public class Graphic implements ApplicationListener,  InputProcessor {
@@ -29,11 +41,22 @@ public class Graphic implements ApplicationListener,  InputProcessor {
    private Texture guitext;
    private Texture treeBlack;	
    private SpriteBatch batch;
-   private OrthographicCamera camera;
+   public PerspectiveCamera camera;
+   private OrthographicCamera cam;
    private BitmapFont font;
    private int screensizeY =620;
    private int broadLeafTypeProbablitity =50;
    private int vegetationProbablitity =50;
+   public ModelBatch modelBatch;
+   public Model modelFree;
+   public Model modelOak;
+   public Model modelPiny;
+   public Model modelBurning;
+   public Model modelBurnt;
+   public ModelInstance instance;
+   public ModelInstance instance2;
+   public Environment environment;
+   public CameraInputController camController;
    //enum do wyboru opcji zeby napisy byly wpisywane i wyswietlane odpowiednio
    public enum Choice {
 	    GENERATE(10), T_AREA(0), T_ROUGHNESS(1), T_MAXIMUM_HEIGHT(2), W_VELOCITY(3),W_DIRECTION(4),W_HUMIDITY (5),NONE(9), GENERATE_EXAMPLE(10) ;
@@ -53,16 +76,35 @@ public class Graphic implements ApplicationListener,  InputProcessor {
    
    @Override
    public void create() {
-	   texts[0]=new StringBuilder("50");
+	   //do 3D
+	   ModelBuilder modelBuilder = new ModelBuilder();
+       modelFree = modelBuilder.createBox(3f, 1f, 3f, 
+               new Material(ColorAttribute.createDiffuse(Color.BROWN)),
+               Usage.Position | Usage.Normal);
+       modelOak = modelBuilder.createCone(3f, 3f, 3f,3, 
+               new Material(ColorAttribute.createDiffuse(Color.GREEN)),
+               Usage.Position | Usage.Normal);
+       modelPiny = modelBuilder.createCone(3f, 3f, 3f,3, 
+               new Material(ColorAttribute.createDiffuse(Color.YELLOW)),
+               Usage.Position | Usage.Normal);
+       modelBurning = modelBuilder.createCone(3f, 3f, 3f,3, 
+               new Material(ColorAttribute.createDiffuse(Color.RED)),
+               Usage.Position | Usage.Normal);
+       modelBurnt = modelBuilder.createCone(3f, 3f, 3f,3, 
+               new Material(ColorAttribute.createDiffuse(Color.BLACK)),
+               Usage.Position | Usage.Normal);
+      //instance = new ModelInstance(model);
+	   
+	   
+	   
+	   
+	   
+	   texts[0]=new StringBuilder("100");
 	   texts[1]=new StringBuilder("10");
 	   texts[2]=new StringBuilder("5");
 	   texts[3]=new StringBuilder("4");
 	   texts[4]=new StringBuilder("NE");
 	   texts[5]=new StringBuilder("72");
-	  // for(int i=0; i<6 ;i++)
-	   //{
-		//   texts[i]=new StringBuilder("");
-	  // }
 	   font = new BitmapFont();
 	   
 	   option=Choice.NONE;
@@ -76,10 +118,25 @@ public class Graphic implements ApplicationListener,  InputProcessor {
 	   chosenDensity = new Texture("densityOpen.png"); 	
 	   chosenType = new Texture("typeMixed.png"); 
       // create the camera and the SpriteBatch
-      camera = new OrthographicCamera();
-      camera.setToOrtho(false, 900,620);
-      batch = new SpriteBatch();      
+	   cam = new OrthographicCamera();
+	   cam.setToOrtho(false, 1300,620);
+	   camera = new PerspectiveCamera(57, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+       camera.position.set(15f, 175f, 390f);
+       camera.lookAt(50,-150,70);
+       camera.near = 1f;
+       camera.far = 600f;
+       camera.update();
+       camController = new CameraInputController(camera);
+      batch = new SpriteBatch();   
+      
+      modelBatch = new ModelBatch();
 
+      environment = new Environment();
+      environment.set(new ColorAttribute(ColorAttribute.AmbientLight, 0.4f, 0.4f, 0.4f, 1f));
+      environment.add(new DirectionalLight().set(0.8f, 0.8f, 0.8f, -1f, -0.8f, -0.2f));
+      
+      batch.setProjectionMatrix(cam.combined);
+      
    }
 
 
@@ -90,26 +147,17 @@ public class Graphic implements ApplicationListener,  InputProcessor {
 		} catch(InterruptedException ex) {
 		    Thread.currentThread().interrupt();
 		}
-
-	  
-      // clear the screen with a dark blue color. The
-      // arguments to glClearColor are the red, green
-      // blue and alpha component in the range [0,1]
-      // of the color to be used to clear the screen.
       Gdx.gl.glClearColor(0.84f, 0.90f, 0.44f, 1); 
-      Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
- 
-      // tell the camera to update its matrices.
-      camera.update();
-
-      // tell the SpriteBatch to render in the
-      // coordinate system specified by the camera.
-      batch.setProjectionMatrix(camera.combined);
+      Gdx.gl.glViewport(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+      Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT);
+      Gdx.input.setInputProcessor(this);
       batchMenu();
-     // batchSimulation();
+
       if (option.getValue() ==Choice.GENERATE.getValue())
       {
-    	  batchSimulation();
+
+    	  batchSimulation3D();
+    	  //batchSimulation();
       }
  }
 
@@ -132,6 +180,86 @@ public class Graphic implements ApplicationListener,  InputProcessor {
 	   
 	   batch.end();  
    }
+   
+   public void batchSimulation3D()
+   {
+	   Gdx.input.setInputProcessor(camController);
+ 	   camController.update();
+ 	   camera.update();
+       modelBatch.begin(camera);
+       //modelBatch.render(instance, environment);
+       //drzewa of course
+    //   ModelBuilder modelBuilder = new ModelBuilder();
+      // model = modelBuilder.createCone(1f, 1f, 1f,3, 
+        //       new Material(ColorAttribute.createDiffuse(Color.GREEN)),
+          //     Usage.Position | Usage.Normal);
+      //instance = new ModelInstance(model);
+     
+       
+       //
+       int margin=290;
+	      for (int y = 0; y<t.size; y++)
+			{
+				for (int x = 0; x<t.size; x++)
+				{
+					//wybuduj podstawe ziemii
+					
+					for (int z = -2; z<t.getCell(y, x).getElevation()-1; z++)
+					{
+						instance2 = new ModelInstance(modelFree,3*y-80,  z,3*x);
+						modelBatch.render(instance2, environment);
+					}
+					
+					
+					
+					 //instance = new ModelInstance(model,y,  0,x);
+					 //instance = new ModelInstance(model);
+					
+					if(t.getCell(y, x).getState() == Cell.State.FREE)
+					{
+						//instance = new ModelInstance(modelFree,3*y,  t.getCell(y, x).getElevation(),3*x);
+						//modelBatch.render(instance, environment);
+
+					}
+					if((t.getCell(y, x).getState() == Cell.State.FUEL))
+					{
+					//	batch.draw(treeGreen, 10*y+margin, 10*x+10);
+						if((t.getCell(y, x).getType() == Cell.Wood.OAK))
+						{
+							 instance = new ModelInstance(modelOak,3*y-80, t.getCell(y, x).getElevation() ,3*x);
+							modelBatch.render(instance, environment);
+		
+						}
+						if((t.getCell(y, x).getType() == Cell.Wood.PINY))
+						{
+							 instance = new ModelInstance(modelPiny,3*y-80,  t.getCell(y, x).getElevation(),3*x);
+							modelBatch.render(instance, environment);
+		
+					
+						}
+					}
+					if((t.getCell(y, x).getState() == Cell.State.BURNING))
+					{
+						 instance = new ModelInstance(modelBurning,3*y-80,  t.getCell(y, x).getElevation(),3*x);
+						modelBatch.render(instance, environment);
+	
+					
+					}
+					if((t.getCell(y, x).getState() == Cell.State.BURNT))
+					{
+						 instance = new ModelInstance(modelBurnt,3*y-80,  t.getCell(y, x).getElevation(),3*x);
+						modelBatch.render(instance, environment);
+					
+				
+					}
+				}
+			}
+	   modelBatch.end();  
+	   if (t.isAllBurnt() == false) t.spreadFire();
+       
+       
+   }
+   
    public void batchSimulation()
    {
 	   batch.begin();
@@ -305,7 +433,9 @@ public class Graphic implements ApplicationListener,  InputProcessor {
  //TODO na razie mnie to nie interesuje	
  	public void dispose() {
  	      // dispose of all the native resources
- 		
+ 		//modelBatch.dispose();
+       // model.dispose();
+       // batch.dispose();
  	   }
 
  	   @Override

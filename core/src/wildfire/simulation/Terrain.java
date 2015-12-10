@@ -35,7 +35,7 @@ public class Terrain {
 				if(probability > Terrain.randomGenerator.nextInt(100))
 				{
 					s = State.FUEL;
-					if(Data.percent_oak > Terrain.randomGenerator.nextInt(100))
+					if(vegtype > Terrain.randomGenerator.nextInt(100))
 						wood = Wood.OAK;		
 					else		
 						wood = Wood.PINY;
