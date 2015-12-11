@@ -9,18 +9,18 @@ final class Data {
 	
 	public enum Direction
 	{
-		N(1), NE(2), E(3), SE(4), S(5), SW(6), W(7), NW(8);
+		N(90), NE(45), E(0), SE(-45), S(-90), SW(-135), W(180), NW(135);
 		
-		int dir;
+		int angle;
 		
-		Direction(int d)
+		Direction(int angle_from_E)
 		{
-			dir = d; 
+			angle = angle_from_E; 
 		}
 	}
 	//o coœ takiego chodi³o ci Sebastianie
 //	<String,Integer> ja bêdzie lepiej 
-	private static HashMap<Direction,Integer> directionAzimuth=new HashMap<Direction,Integer>();
+//	private static HashMap<Direction,Integer> directionAzimuth=new HashMap<Direction,Integer>();
 	private static int[][] dirVector={{0,1,1,1,0,-1,-1,-1},{1,1,0,-1,-1,-1,0,1}};//get w linii 110
 
 
@@ -82,6 +82,7 @@ final class Data {
 	
 	static double windValue(Direction d)
 	{
+		/*
 		if(d == winddir) return wind;
 		else
 		{
@@ -98,7 +99,7 @@ final class Data {
 			
 			if(diff == 4)
 				return -wind;
-		}
+		}*/
 		return 0;
 	}
 	
@@ -109,7 +110,7 @@ final class Data {
 		tab[1]=dirVector[1][i];
 		return tab;
 		}
-	public void setDirAimuth(){
+	/*public void setDirAimuth(){
 		directionAzimuth.put(Direction.N,0);
 		directionAzimuth.put(Direction.NE, 45);
 		directionAzimuth.put(Direction.E, 90);
@@ -122,5 +123,5 @@ final class Data {
 
 	public static int getDirAzimuth(Direction dir){
 		return directionAzimuth.get(dir);
-	}
+	}*/
 }

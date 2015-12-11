@@ -1,5 +1,6 @@
 package wildfire.simulation;
 
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Random;
@@ -82,31 +83,22 @@ public class Terrain {
 	
 	private void defineNeighbors()			// wyliczanie sasiedztwa, na razie wszystko do okola
 	{
-		int [] yn = {-1,0,1};
-		int [] xn = {-1,0,1};
+		
 		for (int y = 0; y<size; y++)
 		{
 			for (int x = 0; x<size; x++)
 			{
-				
-				for(int i=0; i<3; i++)				
+				HashMap<Integer, HashSet<Integer>> neighbors = terrainState[y][x].elipse(Data.Direction.N.angle);
+				for(Integer xn : neighbors.keySet())
 				{
-					if((y+yn[i] < size) && (y+yn[i] >= 0))
-					{										
-						for(int j=0; j<3; j++)
-						{
-							if(j==1 && i==1)
-								continue;
-							else if((x+xn[j] < size) && (x+xn[j] >= 0))
-							{
-							//	System.out.print("y: " + y + ", x: " + x);								
-							//	System.out.println("; y+yn[i]: " + (y+yn[i]) + ",  x+xn[j]: " + (x+xn[j]));
-								terrainState[y][x].addNeighbor(terrainState[y+yn[i]][x+xn[j]]);
-							}
-						}
+					for(Integer yn : neighbors.get(xn))
+					{
+						if(yn > 0 && yn < size && xn > 0 && xn < size)
+							if(terrainState[yn][xn].getState() == Cell.State.FUEL)
+								terrainState[y][x].addNeighbor(terrainState[yn][xn]);
 					}
-				}	
-			}															
+				}
+			}												
 		}														
 	}
 /*	public void defineNeighbor()			// zle nie wazne
@@ -246,7 +238,8 @@ public class Terrain {
 			t.spreadFire();			
 		}
 		*/
-		
+		Terrain t = new Terrain(60,50,(int)(Data.percent_oak),50,60);
+		System.out.println(t.terrainState[20][20].neighbors);
 		
 	}
 		

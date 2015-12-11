@@ -92,19 +92,22 @@ public class Cell {
 	private void wspolczynniki()
 	{
 		double r = rothermel();
-		System.out.println("r: " + r);
+		//System.out.println("r: " + r);
 		
 		this.a = 0.5 * (r + (r/hb())) / lb();
 		this.b = (r + (r/hb())) / 2.0;
 		this.c = this.b - ( r / hb() );
-		
+		/*
 		System.out.println("----Wspolczynniki elipsy: ");
 		System.out.println("a: " + a);
 		System.out.println("b: " + b);
 		System.out.println("c: " + c);
+		*/
 	}
 	public HashMap<Integer, HashSet<Integer>> elipse(double angle)		// kat wzgledem wiatru na wschod (x), odwrotnie niz zegar
 	{		
+		this.wspolczynniki();
+		
 		HashMap<Integer,HashSet<Integer>> elipse = new HashMap<Integer,HashSet<Integer>>();
 		HashMap<Integer,HashSet<Integer>> result = new HashMap<Integer,HashSet<Integer>>();
 		
@@ -130,7 +133,7 @@ public class Cell {
 			
 			elipse.get(x).add(y);
 			
-			System.out.println("r:" + r + "; cos:" + Math.cos(i-radian));
+			//System.out.println("r:" + r + "; cos:" + Math.cos(i-radian));
 			//System.out.print("xy:" + x + y + "; ");																		
 			
 		}
@@ -163,25 +166,27 @@ public class Cell {
 		}
 		//*/
 		
-		System.out.println();
-		System.out.println(elipse);			// elipsa, ale od jej srodka a nie od miejsca zaplonu.
 		
 		int xz = (int) Math.round(c * Math.cos(Math.PI+radian));
 		int yz = (int) Math.round(c * Math.sin(Math.PI+radian));
-						
+	
+		/*
+		System.out.println();
+		System.out.println(elipse);			// elipsa, ale od jej srodka a nie od miejsca zaplonu.	
 		System.out.println("----zaplon----");
 		System.out.println("x: " + xz + "  y: " + yz);			// miejsce zaplonu.		
+		*///
 		
 		elipse.get(xz).remove(yz);								// usuniecie miejsca zaplonu z sasiadow
-		
+		//System.out.println(elipse);			// elipsa, ale od jej srodka a nie od miejsca zaplonu.
 		
 		for(Integer x : elipse.keySet())
 		{
-			int xn = coordinates.x + x;			
+			int xn = coordinates.x + x - xz;			
 			result.put(xn, new HashSet<Integer>());
 			for(Integer y : elipse.get(x))
 			{
-				result.get(xn).add(coordinates.y+y);
+				result.get(xn).add(coordinates.y - (y - yz));			// bo oœ y roœnie w dó³
 			}
 			
 			
@@ -282,8 +287,8 @@ public class Cell {
 */		System.out.println("-----------");
 		c.wspolczynniki();
 		
-		System.out.println("");
-		System.out.println(c.elipse(45));
+		System.out.println("Cell: x=10 y=10");
+		System.out.println(c.elipse(0));
 		//c.defineNeighbor();
 		
 	}
