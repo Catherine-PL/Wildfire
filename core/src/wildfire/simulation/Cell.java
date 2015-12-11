@@ -2,6 +2,7 @@ package wildfire.simulation;
 
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Set;
 
@@ -25,6 +26,7 @@ public class Cell {
 			x = _x;
 			y = _y;
 		}
+
 		
 		public String toString()
 		{
@@ -33,7 +35,7 @@ public class Cell {
 	}
 	
 	private Coordinate 		coordinates; 
-	private int elevation;
+	private int 			elevation;
 	private State 			state;
 	private Wood 			type;
 	private int 			lifetime;									// ilosc minut palenia siê paliwa, mo¿na dodaæ pole np. iloœæ ciep³a dla komórki	
@@ -101,69 +103,93 @@ public class Cell {
 		System.out.println("b: " + b);
 		System.out.println("c: " + c);
 	}
-	public void elipse()
+	public HashMap<Integer, HashSet<Integer>> elipse(double angle)		// kat wzgledem wiatru na wschod (x), odwrotnie niz zegar
 	{		
+		HashMap<Integer,HashSet<Integer>> elipse = new HashMap<Integer,HashSet<Integer>>();
 		HashMap<Integer,HashSet<Integer>> result = new HashMap<Integer,HashSet<Integer>>();
 		
+	
+		double step = Math.PI / 180;
+		double radian = angle * step;
+				
+		double e2 = ((b*b) - (a*a)) / (b*b);
 		
-		for(int i=0; i<360; i++)
+		
+		for(double i=0; i<(2*Math.PI); i = i + step)					// ca³a elipsa z obrotem
 		{
-			double x = this.b * Math.cos(i);
-			double y = this.a * Math.sin(i);
 			
-			if(!result.containsKey((int)x))
-				result.put((int) x, new HashSet<Integer>());
-			else
-				result.get((int)x).add((int)y);						
+			double r = Math.sqrt((a*a) / (1 - e2*Math.cos(i-radian)*Math.cos(i-radian)));
+			
+						
+			int x = (int) Math.round(r * Math.cos(i));
+			int y = (int) Math.round(r * Math.sin(i));
+			
+			
+			if(!elipse.containsKey(x))
+				elipse.put(x, new HashSet<Integer>());
+			
+			elipse.get(x).add(y);
+			
+			System.out.println("r:" + r + "; cos:" + Math.cos(i-radian));
+			//System.out.print("xy:" + x + y + "; ");																		
+			
 		}
-		System.out.println(result);			// elipsa, ale od jej srodka a nie od miejsca zaplonu. 
+		
+		
+											
+		//*	wypelnienie srodka
+		Set<Integer> keys = new HashSet<Integer>(elipse.keySet()); 		
+		Iterator<Integer> it = keys.iterator();
+		while(it.hasNext())
+		{
+			Integer key = it.next();		
+			HashSet<Integer> set = elipse.get(key);											// moze tree set?
+			Integer max=0;
+			Integer min=0;
+			
+			for(Integer v : set)
+			{
+				if(max < v)
+					max = v;
+				if(min > v)
+					min = v;
+			}
+			for(int i=min+1; i < max-min-1; i++)
+			{
+				set.add(i);
+			}
+			elipse.remove(key);
+			elipse.put(key, set);
+		}
+		//*/
+		
+		System.out.println();
+		System.out.println(elipse);			// elipsa, ale od jej srodka a nie od miejsca zaplonu.
+		
+		int xz = (int) Math.round(c * Math.cos(Math.PI+radian));
+		int yz = (int) Math.round(c * Math.sin(Math.PI+radian));
+						
+		System.out.println("----zaplon----");
+		System.out.println("x: " + xz + "  y: " + yz);			// miejsce zaplonu.		
+		
+		elipse.get(xz).remove(yz);								// usuniecie miejsca zaplonu z sasiadow
+		
+		
+		for(Integer x : elipse.keySet())
+		{
+			int xn = coordinates.x + x;			
+			result.put(xn, new HashSet<Integer>());
+			for(Integer y : elipse.get(x))
+			{
+				result.get(xn).add(coordinates.y+y);
+			}
+			
+			
+		}
+		
+		return result;
 	}
 	
-	public double rothermel(Data.Direction d)	// trzeba bedzie poprawic, moze jendak na katach
-	{
-					
-		
-		
-		double density;
-		double wind = Data.windValue(d);
-		double terrain = 0;
-		
-		double ip_0 = 0;
-		
-		if(type == Wood.OAK)
-		{
-			density = Data.density_oak;
-			ip_0 = Data.ip_0_oak;
-		}
-		else
-		{
-			density = Data.density_piny;
-			ip_0 = Data.ip_0_oak;
-		}
-				
-		double licznik = ip_0*(1 + wind + terrain);
-		double mianownik = density * Data.e * Data.q_ig; 
-		
-		/*
-		System.out.println("----Dla kierunku: " + d + "----");		
-		System.out.println("Ip_0:		" + ip_0);
-		System.out.println("wind:		" + wind);
-		System.out.println("terrain:	" + terrain);
-		
-		System.out.println();
-		
-		System.out.println("density:	" + density);
-		System.out.println("e:		" + Data.e);
-		System.out.println("Q_iq:		" + Data.q_ig);
-		System.out.println();
-		
-		System.out.println("licznik: " + licznik + ", mianownik: " + mianownik);
-		System.out.println("Rothermel:");
-		*/
-		
-		return  licznik / mianownik; 
-		//return  Math.floor(licznik / mianownik); 
-	}
 	private double rothermel()	// szybkosc rozchodzenia sie pozaru dla jego czola
 	{
 		
@@ -239,7 +265,7 @@ public class Cell {
 	
 	public static void main(String[] args)
 	{
-		Cell c = new Cell(new Cell.Coordinate(1, 1), State.FUEL, Wood.OAK, 10, 500, 10, 1);
+		Cell c = new Cell(new Cell.Coordinate(10, 10), State.FUEL, Wood.OAK, 10, 500, 10, 1);
 /*		System.out.println(c.rothermel(Data.Direction.N));
 		System.out.println(c.rothermel(Data.Direction.NE));
 		System.out.println(c.rothermel(Data.Direction.E));
@@ -250,7 +276,10 @@ public class Cell {
 		System.out.println(c.rothermel(Data.Direction.NW));
 */		System.out.println("-----------");
 		c.wspolczynniki();
-		c.elipse();
+		
+		System.out.println("");
+		System.out.println(c.elipse(45));
+		//c.defineNeighbor();
 		
 	}
 }
