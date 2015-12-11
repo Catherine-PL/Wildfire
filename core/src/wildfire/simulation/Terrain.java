@@ -18,7 +18,7 @@ public class Terrain {
 	public static Random randomGenerator = new Random();	
 	
 	
-	Terrain(int _size, int probability,int relief)
+	Terrain(int _size, int probability, int vegtype, int relief, int roughness) //probability i roguhness zakres 0-100
 	{		
 		double l=0;
 		size = _size;
@@ -35,7 +35,7 @@ public class Terrain {
 				if(probability > Terrain.randomGenerator.nextInt(100))
 				{
 					s = State.FUEL;
-					if(Data.percent_oak > Terrain.randomGenerator.nextInt(100))
+					if(vegtype > Terrain.randomGenerator.nextInt(100))
 						wood = Wood.OAK;		
 					else		
 						wood = Wood.PINY;
@@ -235,9 +235,9 @@ public class Terrain {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		int size = 6;
-		Terrain t = new Terrain(size,100,50);		
+		//Terrain t = new Terrain(size,100,50);		
 		
-		System.out.println(t.terrainState[2][2].neighbors);
+		//System.out.println(t.terrainState[2][2].neighbors);
 		/*
 		while(!t.isAllBurnt())
 		{

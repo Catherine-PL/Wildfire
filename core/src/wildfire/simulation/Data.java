@@ -1,5 +1,8 @@
 package wildfire.simulation;
 
+import java.util.HashMap;
+
+
 import wildfire.simulation.Cell.Wood;
 
 final class Data {
@@ -15,20 +18,37 @@ final class Data {
 			dir = d; 
 		}
 	}
-	
+	//o coœ takiego chodi³o ci Sebastianie
+//	<String,Integer> ja bêdzie lepiej 
+	private static HashMap<Direction,Integer> directionAzimuth=new HashMap<Direction,Integer>();
+	private static int[][] dirVector={{0,1,1,1,0,-1,-1,-1},{1,1,0,-1,-1,-1,0,1}};//get w linii 110
+
+
 	static final int x = 0;
 	
-	static double wind = 5;										// 0 - 30, 30> huragan
-	static double terrain = 1.2;								// not sure
-	static double fuel_humidity = 1.0;							
+
+
+	static double wind = 4;										// 0 - 30, 30> huragan
+	static double terrain = 1.2;								// not sure //MJ to jest wspó³czynnik nachylenia??
+	static double fuel_humidity = 1.0;		
+	static int air_humidity = 1;	
+
 	static double q_ig = 250 + 1.116 * fuel_humidity;									// kJ / kg
 	static double sav = 1600;									// powierzchnia do objêtnoœci; jednostka 1/ft
 	static double e = Math.exp(-138 / sav);										// efektywne ogrzewanie w przediale (0,1)
 	
 	static double density_piny = 460;							// kg / m^3
 	static double density_oak = 760;
-	static double percent_oak = 85;								// kuznia raciborska
-	static double percent_piny = 15;
+	//1. oak to d¹b
+	//2. 85% gatunki iglaste
+	// 15% liœciaste
+	//3. chyba ¿e oak to iglaste u nas, a piny to liœciaste
+	//%%static double percent_oak = 85;								// kuznia raciborska
+	//static double percent_piny = 15;
+	//conifer=drzewo iglaste, conifers drzewa iglaste
+	//Hardwood=liœciate
+	static double percent_oak = 15;	
+	static double percent_piny = 85;
 	
 	static double r_0 = 4;		
 	
@@ -38,11 +58,15 @@ final class Data {
 	
 	static Direction winddir = Direction.N;
 	
+	static void setHumidity(int h)
+	{
+		air_humidity = h;
+	}
 	static void setDirection(Direction d)
 	{
 		winddir = d;
 	}
-	static void setWind(int value)
+	static void setWind(double value)
 	{
 		wind = value;
 	}
@@ -76,5 +100,27 @@ final class Data {
 				return -wind;
 		}
 		return 0;
+	}
+	
+	
+	public static int[] getDirVector(int i){
+		int [] tab=new int[2];
+		tab[0]=dirVector[0][i];
+		tab[1]=dirVector[1][i];
+		return tab;
+		}
+	public void setDirAimuth(){
+		directionAzimuth.put(Direction.N,0);
+		directionAzimuth.put(Direction.NE, 45);
+		directionAzimuth.put(Direction.E, 90);
+		directionAzimuth.put(Direction.SE, 135);
+		directionAzimuth.put(Direction.S, 180);
+		directionAzimuth.put(Direction.SW, 225);
+		directionAzimuth.put(Direction.W, 270);
+		directionAzimuth.put(Direction.NW, 315);
+	}
+
+	public static int getDirAzimuth(Direction dir){
+		return directionAzimuth.get(dir);
 	}
 }

@@ -229,6 +229,11 @@ public class Cell {
 		return state;
 	}
 	
+	public Wood getType()
+	{
+		return type;
+	}
+	
 	public void addNeighbor(Cell n)
 	{
 		neighbors.add(n);
