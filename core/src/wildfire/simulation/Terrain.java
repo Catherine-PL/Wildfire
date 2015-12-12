@@ -2,21 +2,27 @@ package wildfire.simulation;
 
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Random;
 import java.util.Set;
+import java.util.TreeSet;
 
 import wildfire.simulation.Cell.State;
 import wildfire.simulation.Cell.Wood;
 
+/**
+ * Represents map section as cells. Main class for a simulation.
+ * @author Sebastian
+ *
+ */
 public class Terrain {
 
-	public int size;
-	private Cell [][] terrainState;
-	private static Set<Cell> treesOnFire = new HashSet<Cell>();
-	public static Set<Cell> treesOnFireAdd = new HashSet<Cell>();
-	public static Set<Cell> treesOnFireRemove = new HashSet<Cell>();
-	public static Random randomGenerator = new Random();	
+	private Cell [][] 				terrainState;
+	private static Set<Cell> 		treesOnFire = new HashSet<Cell>();
+	
+	public static Set<Cell> 		treesOnFireAdd = new HashSet<Cell>();
+	public static Set<Cell> 		treesOnFireRemove = new HashSet<Cell>();
+	public static Random 			randomGenerator = new Random();		
+	public int 						size;
 	
 	
 	Terrain(int _size, int probability, int vegtype, int relief, int roughness) //probability i roguhness zakres 0-100
@@ -58,112 +64,32 @@ public class Terrain {
 		System.out.println("Number of all cells: " + size*size);
 		System.out.println("Number of all trees: " + l);
 		System.out.println();
-		defineNeighbors();		
+		defineNeighbors(Data.Direction.N);		
 		generateElevation(relief);
 		ignite();
 		
 	}
 
-	//podstawowy generator, nie ma uwzglednienia wysokosci na jakiej sa sasiedzi
-		public void generateElevation(int relief)
-		{
-			int probability=0;
-			for (int y = 0; y<size; y++)
-				for (int x = 0; x<size; x++)
-				{
-					probability = randomGenerator.nextInt(100);
-					if (probability<10) terrainState[y][x].setElevation(relief);
-					else if (probability<20) terrainState[y][x].setElevation(relief/5);
-					else if (probability<50) terrainState[y][x].setElevation(relief/3);
-					else if (probability<75) terrainState[y][x].setElevation(relief/2 + relief/5);
-					else if (probability<90) terrainState[y][x].setElevation(relief/2 - relief/5);				
-				}	
-		}
-		
-	
-	private void defineNeighbors()			// wyliczanie sasiedztwa, na razie wszystko do okola
+	private void defineNeighbors(Data.Direction wind_direction)			
 	{
 		
 		for (int y = 0; y<size; y++)
 		{
 			for (int x = 0; x<size; x++)
 			{
-				HashMap<Integer, HashSet<Integer>> neighbors = terrainState[y][x].elipse(Data.Direction.N.angle);
+				HashMap<Integer, TreeSet<Integer>> neighbors = terrainState[y][x].elipse(wind_direction.angle);
 				for(Integer xn : neighbors.keySet())
 				{
 					for(Integer yn : neighbors.get(xn))
 					{
 						if(yn > 0 && yn < size && xn > 0 && xn < size)
-							if(terrainState[yn][xn].getState() == Cell.State.FUEL)
-								terrainState[y][x].addNeighbor(terrainState[yn][xn]);
+							terrainState[y][x].addNeighbor(terrainState[yn][xn]);
 					}
 				}
 			}												
 		}														
 	}
-/*	public void defineNeighbor()			// zle nie wazne
-	{
-		for (int y = 0; y<size; y++)
-		{
-			for (int x = 0; x<size; x++)
-			{
-				
-				for(Data.Direction d : Data.Direction.values())
-				{										
-					int r = (int) Math.floor(terrainState[y][x].rothermel(d));		
-					System.out.print(d + ": " + r + "; ");
-				
-					for(int i=1; i<=r;i++)
-					{
-						switch(d)
-						{
-						case N:
-							if(y-i >= 0)
-								terrainState[y][x].addNeighbor(terrainState[y-i][x]);
-							break;							
-						case NE:
-							if(y-i >= 0 && x-i >=0)
-								terrainState[y][x].addNeighbor(terrainState[y-i][x-i]);
-							break;												
-						case E:
-							if(x+i < size)
-								terrainState[y][x].addNeighbor(terrainState[y][x+i]);
-							break;
-						case SE:
-							if(y+i < size && x+i < size)
-								terrainState[y][x].addNeighbor(terrainState[y+i][x+i]);
-							break;						
-						case S:
-							if(y+i < size)
-								terrainState[y][x].addNeighbor(terrainState[y+i][x]);
-							break;						
-						case SW:
-							if(y+i < size && x-i >=0)
-								terrainState[y][x].addNeighbor(terrainState[y+i][x-i]);
-							break;						
-						case W:
-							if(x-i >= 0)
-								terrainState[y][x].addNeighbor(terrainState[y][x-i]);
-							break;						
-						case NW:
-							if(y-i >= 0 && x-i >= 0)
-								terrainState[y][x].addNeighbor(terrainState[y-i][x-i]);
-							break;												
-						}
-						
-							
-							
-					}
-					
-				}
-				System.out.println(" -- " +y + ":" + x);
-		
-		
-			}
-		}
-		
-	}*/
-	private void ignite()
+	private void ignite()														// losowe drzewo podpolane
 	{
 		
 		Cell choosenTree;
@@ -179,6 +105,27 @@ public class Terrain {
 		treesOnFire.add(choosenTree);
 		
 	}	
+	
+	
+	//podstawowy generator, nie ma uwzglednienia wysokosci na jakiej sa sasiedzi
+	public void generateElevation(int relief)
+		{
+			int probability=0;
+			for (int y = 0; y<size; y++)
+				for (int x = 0; x<size; x++)
+				{
+					probability = randomGenerator.nextInt(100);
+					if (probability<10) terrainState[y][x].setElevation(relief);
+					else if (probability<20) terrainState[y][x].setElevation(relief/5);
+					else if (probability<50) terrainState[y][x].setElevation(relief/3);
+					else if (probability<75) terrainState[y][x].setElevation(relief/2 + relief/5);
+					else if (probability<90) terrainState[y][x].setElevation(relief/2 - relief/5);				
+				}	
+		}
+		
+	/**
+	 * Spreading fire among trees. It invoke spreadFire() function from Cell class to ignite neighbors. 
+	 */
 	public void spreadFire()
 	{
 		
@@ -208,6 +155,7 @@ public class Terrain {
 	{
 		return terrainState[y][x];
 	}
+	
 	public String toString()
 	{
 		String txt = new String();

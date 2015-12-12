@@ -1,11 +1,11 @@
 package wildfire.simulation;
 
-import java.util.HashMap;
-
-
-import wildfire.simulation.Cell.Wood;
-
-final class Data {
+/**
+ * Aggregation of all needed parameters to wildfire simulation.
+ * @author Sebastian
+ *
+ */
+final public class Data {
 	
 	public enum Direction
 	{
@@ -18,16 +18,12 @@ final class Data {
 			angle = angle_from_E; 
 		}
 	}
-	//o coœ takiego chodi³o ci Sebastianie
-//	<String,Integer> ja bêdzie lepiej 
-//	private static HashMap<Direction,Integer> directionAzimuth=new HashMap<Direction,Integer>();
-	private static int[][] dirVector={{0,1,1,1,0,-1,-1,-1},{1,1,0,-1,-1,-1,0,1}};//get w linii 110
+
+	private static int[][] dirVector={{0,1,1,1,0,-1,-1,-1},{1,1,0,-1,-1,-1,0,1}};//get w linii 110  -- co to? (Sebastian siê zastanawia)
 
 
 	static final int x = 0;
 	
-
-
 	static double wind = 4;										// 0 - 30, 30> huragan
 	static double terrain = 1.2;								// not sure //MJ to jest wspó³czynnik nachylenia??
 	static double fuel_humidity = 1.0;		
@@ -50,8 +46,8 @@ final class Data {
 	static double percent_oak = 15;	
 	static double percent_piny = 85;
 	
-	static double r_0 = 4;		
-	
+	/* Rothermel */
+	static double r_0 = 4;			
 	static double ip_0_oak = r_0 * density_oak * e * q_ig;		// Ip_0 = R_0 * mianownik w rothermelu
 	static double ip_0_piny = r_0 * density_piny * e * q_ig;	// Ip_0 = R_0 * mianownik w rothermelu
 	
@@ -110,18 +106,5 @@ final class Data {
 		tab[1]=dirVector[1][i];
 		return tab;
 		}
-	/*public void setDirAimuth(){
-		directionAzimuth.put(Direction.N,0);
-		directionAzimuth.put(Direction.NE, 45);
-		directionAzimuth.put(Direction.E, 90);
-		directionAzimuth.put(Direction.SE, 135);
-		directionAzimuth.put(Direction.S, 180);
-		directionAzimuth.put(Direction.SW, 225);
-		directionAzimuth.put(Direction.W, 270);
-		directionAzimuth.put(Direction.NW, 315);
-	}
-
-	public static int getDirAzimuth(Direction dir){
-		return directionAzimuth.get(dir);
-	}*/
+	
 }
