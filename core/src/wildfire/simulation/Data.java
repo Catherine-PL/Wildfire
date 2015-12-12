@@ -18,8 +18,13 @@ final public class Data {
 			angle = angle_from_E; 
 		}
 	}
-
+	
+	//MJ  wektory kierunkowe odpowiadaj¹ce kierunkom œwiata
+	//N(0,1) NE(1,1) E(1,0), SE(1,-1), S(0,-1), SW(-1,-1), W(-1,0), NW(-1,1)
+	//pobieramy getDirVector(int i) i jest 0-7 i zwraca nam który chcemy
 	private static int[][] dirVector={{0,1,1,1,0,-1,-1,-1},{1,1,0,-1,-1,-1,0,1}};//get w linii 110  -- co to? (Sebastian siê zastanawia)
+																				//np. getDirVector(1) zwróci {1,1} i ten wektor symbolizuje NE,
+																			// to s¹ kierunki z uk³adu wspó³rzêdnych, 0,1 to N, 0,-1 to S
 
 
 	static final int x = 0;
@@ -99,7 +104,7 @@ final public class Data {
 		return 0;
 	}
 	
-	
+	//zwraca wektor kierunkowy
 	public static int[] getDirVector(int i){
 		int [] tab=new int[2];
 		tab[0]=dirVector[0][i];
