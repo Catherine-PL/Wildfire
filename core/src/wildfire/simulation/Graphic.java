@@ -70,8 +70,8 @@ public class Graphic implements ApplicationListener,  InputProcessor {
 	    }
 	}
    private Choice option;
-   Terrain t = new Terrain(60,50,(int)(Data.percent_oak),50,60); //tutaj powinno byc od razu dane z ku¿ni
-   	//rozmiar boku, prawdopodobienstwo ze cos rosnie, prawd. ze liœciaste, mask wysokosc, zroznicowanie terenu
+   Terrain t = new Terrain(150,50,(int)(Data.percent_oak),4,60); //tutaj powinno byc od razu dane z ku¿ni
+   	//rozmiar boku, prawdopodobienstwo ze cos rosnie, prawd. ze liœciaste, maks wysokosc, zroznicowanie terenu
    //TODO
    
    @Override
@@ -121,10 +121,10 @@ public class Graphic implements ApplicationListener,  InputProcessor {
 	   cam = new OrthographicCamera();
 	   cam.setToOrtho(false, 1300,620);
 	   camera = new PerspectiveCamera(57, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-       camera.position.set(15f, 175f, 390f);
-       camera.lookAt(50,-150,70);
+       camera.position.set(45f, 325f, 490f);
+       camera.lookAt(20,-350,20);
        camera.near = 1f;
-       camera.far = 600f;
+       camera.far = 800f;
        camera.update();
        camController = new CameraInputController(camera);
       batch = new SpriteBatch();   
@@ -142,11 +142,11 @@ public class Graphic implements ApplicationListener,  InputProcessor {
 
    @Override
    public void render() {
-	   try {
-		    Thread.sleep(75);                 //1000 milliseconds is one second.
-		} catch(InterruptedException ex) {
-		    Thread.currentThread().interrupt();
-		}
+	 //  try {
+		  //  Thread.sleep(75);                 //1000 milliseconds is one second.
+	//	} catch(InterruptedException ex) {
+		//    Thread.currentThread().interrupt();
+		//}
       Gdx.gl.glClearColor(0.84f, 0.90f, 0.44f, 1); 
       Gdx.gl.glViewport(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
       Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT);
