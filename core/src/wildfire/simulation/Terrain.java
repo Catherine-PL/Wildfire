@@ -64,7 +64,7 @@ public class Terrain {
 		System.out.println("Number of all cells: " + size*size);
 		System.out.println("Number of all trees: " + l);
 		System.out.println();
-		defineNeighbors(Data.Direction.N);		
+		defineNeighbors(Data.winddir);		
 		generateElevation(relief);
 		ignite();
 		

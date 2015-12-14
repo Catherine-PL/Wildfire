@@ -330,12 +330,13 @@ public class Graphic implements ApplicationListener,  InputProcessor {
 			if ((X>16) && (X<280)  &&(Y>screensizeY -544) && (Y<screensizeY -500))
 			{
 				option=Choice.GENERATE;
-				//ustawienie terenu wed³ug podanych w³aœciwoœci
-				t = new Terrain(Integer.parseInt(texts[0].toString()),vegetationProbablitity,broadLeafTypeProbablitity,Integer.parseInt(texts[2].toString()),Integer.parseInt(texts[1].toString()) );
-				//ustawienie danych Data wed³ug podanych w³aœciwoœci
+				//ustawienie danych Data wed³ug podanych w³aœciwoœc
 				Data.setWind(Double.parseDouble(texts[3].toString()));
 				Data.setDirection(Direction.valueOf(texts[4].toString()));
 				Data.setHumidity(Integer.parseInt(texts[5].toString()));
+				//ustawienie terenu wed³ug podanych w³aœciwoœci
+				t = new Terrain(Integer.parseInt(texts[0].toString()),vegetationProbablitity,broadLeafTypeProbablitity,Integer.parseInt(texts[2].toString()),Integer.parseInt(texts[1].toString()) );
+
 				
 //TODO przepisanie zmiennych: z wpisanych do Data
 			}
