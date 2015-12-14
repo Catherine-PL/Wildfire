@@ -71,14 +71,23 @@ public class Cell {
 	Set<Cell> 				neighbors = new HashSet<Cell>();  
 		
 	
+	/* Rothermel zmienne do wektora wiatru i nachylenia */
+	//rhoB/rhoP
+	private double sigma=Data.sav;
+
+	private double betaOp=3.348*Math.pow(sigma,-0.8189);
+	private double phi=Data.terrain;
+	
+	private double C=7.47*Math.exp((-0.133*Math.pow(sigma,0.55)));
+	private double B=0.02526*Math.pow(sigma,0.54);
+	private double E=0.715*Math.exp((-3.59*0.0001*sigma));
+	
+	private double U=Data.wind;
+	
 	private double rothermel()	// szybkosc rozchodzenia sie pozaru dla jego czola
 	{
 		
 		double density;
-		//double wind = Data.wind;
-		double wind = 0;
-		double terrain = 0;
-		
 		double ip_0 = 0;
 		
 		if(type == Wood.OAK)
@@ -91,7 +100,9 @@ public class Cell {
 			density = Data.density_piny;
 			ip_0 = Data.ip_0_oak;
 		}
-				
+		double beta=density/5;
+		double wind=C*Math.pow(U,B)*Math.pow((beta/betaOp),-E);
+		double terrain=5.275*Math.pow(beta,-0.3)*(Math.pow(Math.tan(phi),2));
 		double licznik = ip_0*(1 + wind + terrain);
 		double mianownik = density * Data.e * Data.q_ig; 
 				
