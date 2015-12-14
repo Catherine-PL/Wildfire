@@ -254,37 +254,50 @@ Paliwo pożaru to trawy, krzewy oraz wszystko inne co może się spalić. Drobne
 	
 	Automaty komórkowe tworzą środowisko dla większych dyskretnych klas modeli.
 		
-	\section{Poniższego oprócz bibliografii nie potrzebujemy jeszcze na te konsultacje  Zastosowany model}
+	\section{Zastosowany model}
 	\indent
-	Automaty komórkowe
 	
-	sds
 	\addcontentsline{toc}{section}{Cele symulacji}
 	\section*{Cele symulacji}
 	\indent
-	dass
+	Zapoznanie się z metodami przeprowadzania symulacji i próba przeniesienia wiedzy teoretycznej na projekt praktyczny. Ponadto przetestowanie jak radzi sobie język Java w tego typu projektach oraz ile z właściwości tego języka jesteśmy w stanie tu użyć.
 	
 	\addcontentsline{toc}{section}{Dane wejściowe}
 	\section*{Dane wejściowe}
 	\indent
-	ddf
+	Zanim uruchomimy symulację należy, wybrać/podać:
+	\begin{itemize}
+	\item wielkość powierzchni,
+	\item roughness, %?? na co to tłumaczymy
+	\item maksymalną wysokość,
+	\item gęstość zalesienia,
+	\item typ lasu,
+	\item prędkość wiatru,
+	\item kierunek w którym wieje wiatr,
+	\item wilgotność powietrza.
+	\end{itemize}
+	Po czym kliknąć przycisk GENERATE.\\
+	Przycisk GENERATE EXAMPLE jest odpowiedzialny za podstawienie danych testowych i wygenerowanie dla nich symulacji.
 	\addcontentsline{toc}{section}{Sąsiedztwo}
 	\section*{Sąsiedztwo}
 	\indent	
+	Zastosowaliśmy w naszym projekcie sąsiedztwo eliptyczne wyznaczane na podstawie wiatru.\\
+	Może jakiś wzór tu walnąć??\\
 	
-	dsd
-	Prędkość wiatru, ukształtowanie terenu. (może wgrywać mapę z wysokościami komórek
-	i ona mogłąby być rozszerzana odpowiednio do rozmiaru!).
+	
+	%dsd
+%	Prędkość wiatru, ukształtowanie terenu. (może wgrywać mapę z wysokościami komórek
+%	i ona mogłąby być rozszerzana odpowiednio do rozmiaru!).
 	\addcontentsline{toc}{section}{Modele paliwowe}
 	\section*{Modele paliwowe}
 	\indent	
-	
-	xcx
-	\addcontentsline{toc}{section}{Cele symulacji2}
-	\section*{Cele symulacji2}
+	Tu wymieniamy jakie są i że my mamy te 3 czy jak.\\
+	W naszym programie jest możliwość wyboru modelu paliwowego. Do wyboru mamy las iglasty, liściasty, mieszany.
+	\addcontentsline{toc}{section}{Cele symulacji}
+	\section*{Cele symulacji}
 	\indent
-	
-	xcx
+	to nam raczej nie potrzebne jest, bo parę stron wcześniej jest to lepiej napisane( skapłem się po chwili)\\
+	Celem symulacji jest próba przewidzenia jak zachowuje się pożar lasu. Dzięki temu można podjąć decyzję, jak rozdysponować środki w czasie walki z żywiłem w sposób optymalny oraz ostrzec o obszarach zagrożonych. Można też spróbować przewidzieć jak zachowałby się przyszły teoretyczny pożar, co pozwoliłoby zawczasu podjąć akcje zapobiegawcze.
 	%\addcontentsline{toc}{section}{$ f $ minmaxTransposition}
 	\section*{$ f $ fancy function podtytuł}
 	\indent
@@ -297,10 +310,39 @@ Paliwo pożaru to trawy, krzewy oraz wszystko inne co może się spalić. Drobne
 	\indent
 	
 	
-	\begin{figure}[bt]
+	%\begin{figure}[bt]
 		%		\centerline{\includegraphics[scale=0.7]{alggenmenu}}
 		%	\raggedright{	\caption{menu}}
-	\end{figure}
+	%\end{figure}
+	\section{Walidacja}
+	Walidacja – w naukach technicznych i informatyce działanie mające
+ 	na celu potwierdzenie w sposób udokumentowany i zgodny z założeniami,
+	 że procedury, procesy, urządzenia, materiały, czynności i systemy
+	 rzeczywiście prowadzą do zaplanowanych wyników.\\
+	
+	Do walidacji wykorzystaliśmy, jako punkt odniesienia pożar Kuźni Raciborskiej w 1992 roku.
+	Informacje z materiałów źródłowych o tym pożarze to m.in.:
+	\begin{itemize}
+	\item Klimat umiarkowany, kontynentalny z wpływem atlantyckiego,
+	\item Średnia roczna opadów 650mm w części północnej, 660mm w części południowej, 500mm ostatniego lata,
+	\item Udział drzew iglastych(sosna, świerk) w powierzchni- 85\%,
+	\item Udział drzew liściastych(głównie dąb,buk, brzoza) w powierzchni- 15\%,
+	\item Wiatr południowo-zachodni,
+	%\item Prędkość wiatru od XX do YY, średnio  ZZ,
+	\item Wiek drzew: do 20 lat - 15\%, do 40 lat 18\%, starsze 67\%,
+	\item Teren nizinny, płaski, bez wyraźnych wzgórz czy znacznych różnic wysokości terenu,
+	\item Temperatura w dniu pożaru wynosiła $34^\circ C$, a wcześniej nawet do 40$^\circ C$,
+	\item Większość warstwy podłoża to niezmineralizowana ściółka lub zbutwiałe drzewa oraz rośliny o grubości kilkunastu cm,
+	\item Obecność torfu o grubości 1-1.5m, który zajmował około 150ha obszaru.
+	\end{itemize}
+	\begin{figure}
+			\includegraphics[scale=0.7]{kuznia.jpg}
+			\caption{pożar Kuźni Raciborskiej}
+	\end{figure}	
+	\begin{figure}
+			\includegraphics[scale=0.4]{kuznianasza.jpg}
+			\caption{Wynik naszego programu dla danych z Kuźni}
+	\end{figure}	
 	\section{Testy}
 	\indent
 	sd
