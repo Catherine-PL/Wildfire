@@ -29,10 +29,10 @@ final public class Data {
 
 	static final int x = 0;
 	
-	static double wind = 4;										// 0 - 30, 30> huragan
+	static double wind = 12;										// 0 - 30, 30> huragan
 	static double terrain = 1.2;								// not sure //MJ to jest wspó³czynnik nachylenia??
 	static double fuel_humidity = 1.0;		
-	static int air_humidity = 1;	
+	static int air_humidity = 0.15;	
 
 	static double q_ig = 250 + 1.116 * fuel_humidity;									// kJ / kg
 	static double sav = 1600;									// powierzchnia do objêtnoœci; jednostka 1/ft
