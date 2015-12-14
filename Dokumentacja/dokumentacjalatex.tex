@@ -281,8 +281,10 @@ Paliwo pożaru to trawy, krzewy oraz wszystko inne co może się spalić. Drobne
 	\addcontentsline{toc}{section}{Sąsiedztwo}
 	\section*{Sąsiedztwo}
 	\indent	
-	Zastosowaliśmy w naszym projekcie sąsiedztwo eliptyczne wyznaczane na podstawie wiatru.\\
-	Może jakiś wzór tu walnąć??\\
+	
+	W naszym projekcie sąsiedztwo wyliczane jest na podstawie szybkości rozchodzenia się pożaru ze wzoru Rothermela, który to uwzględnia również współczynniki wiatru i nachylenia. Zastosowana została zasada Huygensa, która to zakłada, że każdy wierzchołek może być źródłem nowej eliptycznej ekspansji ognia. W związku z tym, sąsiedztwo komórki jest wygenerowane z elipsy. Jej kształt jest zgodny z zależnością odkrytą przez Andersona, przy założeniu, że pożar rośnie w kształcie pojedynczej elipsy, zgodnie z założeniami modelu Alexandra. Fizycznie tworzona jest ona w układzie współrzędnych biegunowych, gdzie zostaje obrócona wraz z kierunkiem wiania wiatru. Następnie jest ona rzutowana na rzeczywiste położenie komórki i poddana dyskretyzacji.
+	
+	Może jakiś wzór tu walnąć??
 	
 	
 	%dsd
