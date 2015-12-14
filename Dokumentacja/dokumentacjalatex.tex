@@ -141,18 +141,17 @@
 	
 	\addcontentsline{toc}{section}{Czynniki środowiskowe}
 	\section*{Czynniki środowiskowe}%spradźcie czy to się trzyma kupy
-% Kasiu indent mi tu nie chce działąć :(
-\indent Na pożar lasu wpływ mają takie czynniki jak pogoda, charakterystyka paliwa i topografia terenu.	\\
-\indent
-Pogoda wpływa na ogień poprzez kierunek i siłę wiatru oraz wilgotność powietrza. Mokre paliwo potrzebuje więcej dostarczonej energii, by nastąpił jego zapłon. Ilość potrzebnej energii zależy również od temperatury otoczenia.	\\
-\indent
-Topologia ma znaczący wpływ na pożar lasu. Jeśli las jest na terenie pochyłym to ogień będzie rozprzestrzeniał się szybciej z dołu do góry niż odwrotnie, a to dzięki wstępnemu ogrzaniu drzew położonych wyżej. Dochodzi do tego jeszcze nasłonecznienie stoku. Jeśli drzewa są dobrze nasłonecznione oznacza to, że dostarczono im więcej energii, co przekłada się na ich szybszy zapłon niż drzew z zacienionego obszaru. Ukształtowanie terenu ma też wpływ na wiatr. Obecność gór, wąwozów oraz przełęczy zmienia przepływ powietrza.Ponadto mogą wystąpić bariery dla ognia takie jak drogi, uskoki w ziemi, rzeki, bagna, jeziora, które zatrzymują rozprzestrzenianie się ognia.\\
-\indent
-Wiatr działa na pożar na parę sposobów. Dostarcza tlen potrzebny podczas spalania. Zmniejsza wilgotność paliwa przez zwiększenie parowania. Także fizycznie przesuwa ogień i ciepło zwiększając zasięg pożaru. Co więcej jest odpowiedzialny za "spotting" (z ang.), czyli transport płonących kawałków drzew i niedopałków dalej w teren.\\
-\indent
-Paliwo pożaru to trawy, krzewy oraz wszystko inne co może się spalić. Drobne rzeczy zapalają się szybciej, a wielkie wolniej, ale też dostarczają różną ilość ciepła zależy to od kaloryczności materiału, który płonie. Paliwo ma także wpływ na to w jaki sposób rozprzestrzenia się ogień.  \\
+	% Kasiu indent mi tu nie chce działąć :(
+	\indent Na pożar lasu wpływ mają takie czynniki jak pogoda, charakterystyka paliwa i topografia terenu.	\\
+	\indent
+	Pogoda wpływa na ogień poprzez kierunek i siłę wiatru oraz wilgotność powietrza. Mokre paliwo potrzebuje więcej dostarczonej energii, by nastąpił jego zapłon. Ilość potrzebnej energii zależy również od temperatury otoczenia.	\\
+	\indent
+	Topologia ma znaczący wpływ na przebieg pożaru lasu. Jeżeli las jest na terenie pochyłym to ogień będzie rozprzestrzeniał się szybciej z dołu do góry niż odwrotnie, a to dzięki wstępnemu ogrzaniu drzew położonych wyżej. Dochodzi do tego jeszcze nasłonecznienie stoku. Jeśli drzewa są dobrze nasłonecznione oznacza to, że dostarczono im więcej energii, co przekłada się na ich szybszy zapłon niż drzew z zacienionego obszaru. Ukształtowanie terenu ma też wpływ na wiatr. Obecność gór, wąwozów oraz przełęczy zmienia przepływ powietrza.Ponadto mogą wystąpić bariery dla ognia takie jak drogi, uskoki w ziemi, rzeki, bagna, jeziora, które zatrzymują rozprzestrzenianie się ognia.\\
+	\indent
+	Wiatr działa na pożar na parę sposobów. Dostarcza tlen potrzebny podczas spalania. Zmniejsza wilgotność paliwa przez zwiększenie parowania. Także fizycznie przesuwa ogień i ciepło zwiększając zasięg pożaru. Co więcej jest odpowiedzialny za "spotting" (z ang.), czyli transport płonących kawałków drzew i niedopałków dalej w teren.\\
+	\indent
+	Paliwo pożaru to trawy, krzewy oraz wszystko inne co może się spalić. Drobne rzeczy zapalają się szybciej, a wielkie wolniej, ale też dostarczają różną ilość ciepła zależy - to od kaloryczności materiału, który płonie. Paliwo ma także wpływ na to w jaki sposób rozprzestrzenia się ogień. Dzięki wyższej roślinności możliwa wysokość słupa ognia naturalnie się zwiększa.  \\
 	
-%\\ TODO trochę szerzej o tym
 	\addcontentsline{toc}{section}{Podejścia do modelowania pożaru}
 	\section*{Podejścia do modelowania pożaru}
 	\indent
@@ -160,6 +159,12 @@ Paliwo pożaru to trawy, krzewy oraz wszystko inne co może się spalić. Drobne
 	Od powstania pierwszych modeli pożarów w latach czterdziestych XX wieku minęło wiele czasu, w ciągu którego zaprezentowano kolejne - zróżnicowane pod względem wymaganych danych wejściowych, znaczących czynników i stopnia rozbudowania - modele.\\
 	\indent	Problemem związanym z modelowaniem tak skomplikowanego zjawiska jak ogień jest rosnąca wraz z ilością branych pod uwagę czynników liczba koniecznych do wykoniania obliczeń, a co za tym idzie - potrzeba coraz większej mocy obliczeniowej. Właśnie  z powodu względnie długiego czasu symulacji i potrzeby dużej ilości danych wejściowych skomplikowane modele stosuje się częściej w badaniu niż w terenie.  W związku z tym w istniejących modelach zastosowano różne uproszczenia, często poświęcając mniej znaczące czynniki na rzecz przyspieszenia obliczeń.  \\
 	\indent	Modele pożaru można podzielić na trzy grupy: empiryczne (model kanadyjski i australijski), semi-empiryczne (automaty komórkowe i Rothermel) i oparte na fizyce (modelowanie ognia koron oraz pełne fizyczne i multifazowe podejście).
+	\subsection{Model paliwowy}	
+	\indent
+	
+	Model paliwowy jest to zbiór możliwych paliw, typów roślinności i ich własności, które są reprezentowane w postaci parametrów. Parametry te wykorzystywane są następnie jako dane wejściowe dla zastosowanego modelu.\\
+	
+	Pierwszy taki zbiór wprowadził Rothermel, który rozróżnił 11 różnych paliw - od  krótkiej trawy po powalone drzewa - których właściwości utrzymują sie na stałym poziomie właściwości cząstek w czasie. Zbiór ten został rozszerzony o dwa modele paliw przez Albiniego, a następnie opisany przez Andersena. Wraz z czasem powstały bardziej rozbudowane zestawy. Narodziły się dynamiczne modele paliwowe. 
 	
 	\iffalse
 	% \iftrue for disabling comment
@@ -204,6 +209,47 @@ Paliwo pożaru to trawy, krzewy oraz wszystko inne co może się spalić. Drobne
 	$\phi_w$	- 	współczynnik wiatru	\\
 	$\phi_s$	- 	współczynnik nachylenia\\
 	
+	\subsubsection{Ciepło przed zapłonowe}	
+	
+	$Q_{ig}$	- 	ciepło przed-zapłonowe	[kJ/kg]\\
+	Ciepło przed zapłonem jest to energia w przeliczeniu na jednostkę masy, która jest potrzebna do zapłonu. Obliczane jest na podstawie zmian ciepła właściwego z otoczenia, temperatury zapłonu, jak i ciepła utajonego wyparowywania wilgoci	.
+	
+	
+	$$Q_{ig}=C_{pd}\Delta T_{ig} + M_{f}(C_{pw}\Delta T_{B}+V)$$
+	gdzie:\\
+	$C_{pd}$ - ciepło właściwe suchego drewna,\\
+	$\Delta T_{ig}$ - zakres temperatur zapłonu,\\
+	$M_{f}$ - wilgotność paliwa,\\
+	$C_{pw}$ - ciepło właściwe wody,\\
+	$\Delta T_{B}$ - Zakres temperatur wrzenia,\\
+	$V$ - Utajone ciepło parowania.\\
+	
+	Po przeliczeniu:
+	
+	$$Q_{ig}=250+1,116M_{f}$$
+	
+	
+	\subsubsection{Efektywność ogrzewania}
+	
+	Jest to stosunek efektywnej gęstości, czyli ilość paliwa, które bierze udział w zapłonie $p_{be}$, do rzeczywistej gęstości paliwa $p_{b}$
+	$$\epsilon =  \frac{p_{be}}{p_{b}}$$
+	
+	Dana ta została wyliczona eksperymentalnie przez Rothermela i dla "dobrych paliw" przyjmuje wartość bliską jeden, a wraz ze wzrostem rozmiarów paliwa będzie maleć do $0$. 
+	$$\epsilon=exp(-138/\sigma)$$ 
+	gdzie:\\
+	$\sigma$ - iloraz powierzchni i objętości cząsteczki paliwa. Dla paliw o kształcie walca współczynnik ten może przyjąć wartość:
+	
+	$$\epsilon=\frac{4}{d}$$ 
+	gdzie:\\
+	$d$ - Jest średnicą paliw okrągłych lub długością krawędzi przekroju kwadratowego.
+	
+	
+	\subsubsection{Strumień ciepła}
+	Czynnik $I_{p}$ określa, w jaki sposób rozchodzi się strumień ciepła. Składa się on z poziomego jak i pionowego strumienia. Istota wertykalnego strumienia pojawia się w momencie wiania wiatru, który to powoduje przechylenie się płomienia, powodując wzrost promieniowania podczerwonego. W modelu bezwietrznym pozostaje podstawowy, horyzontalny wektor $(I_{p})_{0}$, który to może zostać wyliczony eksperymentalnie w bezwietrznych warunkach.
+	
+	\subsubsection{Współczynnik wiatru, nachylenia}
+	
+	Współczynniki te reprezentują dodatkowe strumienie ciepła, które tworzone są przez dodatkowe warunki jakimi są siła wiatru i ukształtowanie terenu. Są to bezwymiarowe współczynniki, wyliczane w sposób eksperymentalny.
 	
 	\subsection{Rothermel - szybkość rozprzestrzeniania się pożaru w koronach}
 	\indent
@@ -253,6 +299,10 @@ Paliwo pożaru to trawy, krzewy oraz wszystko inne co może się spalić. Drobne
 	Automat komórkowy to system składający się z pojedynczych komórek, ktore znajdują sie jedna obok drugiej na n-wymiarowej siatce. Każda z komórek może mieć w danej chwili jeden stan z wielu. Stany komórki zmieniają się zgodnie z regułami przejść i zależą od stanu jej sąsiadów. Czas i przestrzeń są dyskretne.\\
 	
 	Automaty komórkowe tworzą środowisko dla większych dyskretnych klas modeli.
+	\begin{figure}[H]
+		\centerline{\includegraphics[scale=0.4]{automaty}}
+		\raggedright{	\caption{Automaty komórkowe - przykładow prezentacji różnych stanów wraz z zaznaczonym sąsiedztwem Moore'a}}
+	\end{figure}
 		
 	\section{Zastosowany model}
 	\indent
