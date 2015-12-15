@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2015.10.6)  15 DEC 2015 10:28
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2015.10.6)  15 DEC 2015 10:48
 entering extended mode
 **dokumentacjalatex2.tex
 
@@ -620,23 +620,23 @@ File: przyklad.jpg Graphic file (type jpg)
 Package pdftex.def Info: przyklad.jpg used on input line 460.
 (pdftex.def)             Requested size: 429.55812pt x 266.04597pt.
 
-<przyklad2.jpg, id=71, 350.81062pt x 246.1697pt>
+<przyklad2.jpg, id=71, 350.81062pt x 240.14719pt>
 File: przyklad2.jpg Graphic file (type jpg)
  <use przyklad2.jpg>
 Package pdftex.def Info: przyklad2.jpg used on input line 461.
-(pdftex.def)             Requested size: 350.80975pt x 246.16908pt.
+(pdftex.def)             Requested size: 350.80975pt x 240.14658pt.
 
-<przyklad3.jpg, id=72, 350.81062pt x 247.67531pt>
+<przyklad3.jpg, id=72, 350.81062pt x 240.14719pt>
 File: przyklad3.jpg Graphic file (type jpg)
  <use przyklad3.jpg>
 Package pdftex.def Info: przyklad3.jpg used on input line 462.
-(pdftex.def)             Requested size: 350.80975pt x 247.6747pt.
+(pdftex.def)             Requested size: 350.80975pt x 240.14658pt.
 
-<przyklad4.jpg, id=73, 362.85562pt x 248.42813pt>
+<przyklad4.jpg, id=73, 350.81062pt x 240.14719pt>
 File: przyklad4.jpg Graphic file (type jpg)
  <use przyklad4.jpg>
 Package pdftex.def Info: przyklad4.jpg used on input line 463.
-(pdftex.def)             Requested size: 362.85474pt x 248.42752pt.
+(pdftex.def)             Requested size: 350.80975pt x 240.14658pt.
  [13 <C:/Users/Dylek/Documents/Cathernine-PL/Wildfire/Dokumentacja/kuznia3.jpg>
  <C:/Users/Dylek/Documents/Cathernine-PL/Wildfire/Dokumentacja/kuznia4.jpg>] [1
 4 <C:/Users/Dylek/Documents/Cathernine-PL/Wildfire/Dokumentacja/przyklad.jpg> <
@@ -683,9 +683,9 @@ gram Files/MiKTeX 2.9/fonts/type1/public/pl/plr10.pfb><C:/Program Files/MiKTeX
 2.9/fonts/type1/public/pl/plr6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/pub
 lic/pl/plr8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/pl/plsy10.pfb><
 C:/Program Files/MiKTeX 2.9/fonts/type1/public/pl/plsy8.pfb>
-Output written on dokumentacjalatex2.pdf (17 pages, 2821269 bytes).
+Output written on dokumentacjalatex2.pdf (17 pages, 2814555 bytes).
 PDF statistics:
- 471 PDF objects out of 1000 (max. 8388607)
+ 472 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  66 words of extra memory for PDF output out of 10000 (max. 10000000)
 
