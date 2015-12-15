@@ -19,15 +19,13 @@ final public class Data {
 		}
 	}
 
-	private static int[][] dirVector={{0,1,1,1,0,-1,-1,-1},{1,1,0,-1,-1,-1,0,1}};//get w linii 110  -- co to? (Sebastian siê zastanawia)
+	
+	static int lifetime = 5;
 
-
-	static final int x = 0;
 	
 	static double wind = 4;										// 0 - 30, 30> huragan
-	static double terrain = 1.2;								// not sure //MJ to jest wspó³czynnik nachylenia??
 	static double fuel_humidity = 1.0;		
-	static int air_humidity = 1;	
+	static double air_humidity = 1;								// dopisaæ przelicznik z air na fuel	
 
 	static double q_ig = 250 + 1.116 * fuel_humidity;									// kJ / kg
 	static double sav = 1600;									// powierzchnia do objêtnoœci; jednostka 1/ft
@@ -66,45 +64,11 @@ final public class Data {
 	{
 		wind = value;
 	}
-	static void setTerrain(int value)
-	{
-		terrain = value;
-	}
 	static void setFuel_humidity(int value)
 	{
 		fuel_humidity = value;
 	}
 	
 	
-	static double windValue(Direction d)
-	{
-		/*
-		if(d == winddir) return wind;
-		else
-		{
-			int diff = Math.abs(winddir.dir - d.dir);
-			
-			if(diff == 1 || diff == 7)
-				return wind/2;
-			
-			if(diff == 2 || diff == 6)
-				return 0;
-			
-			if(diff == 3 || diff == 5)
-				return - wind / 2;
-			
-			if(diff == 4)
-				return -wind;
-		}*/
-		return 0;
-	}
-	
-	
-	public static int[] getDirVector(int i){
-		int [] tab=new int[2];
-		tab[0]=dirVector[0][i];
-		tab[1]=dirVector[1][i];
-		return tab;
-		}
 	
 }

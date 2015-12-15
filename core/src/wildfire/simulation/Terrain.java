@@ -30,7 +30,6 @@ public class Terrain {
 		double l=0;
 		size = _size;
 		terrainState = new Cell[size][size];
-		int life = 10;
 		int heightS = 500;
 		int heightT = 10;
 		
@@ -54,7 +53,7 @@ public class Terrain {
 					wood = Wood.NONE;
 				}																
 				
-				terrainState[y][x]=new Cell(new Cell.Coordinate(y, x), s, wood, life, heightS, heightT, 1);
+				terrainState[y][x]=new Cell(new Cell.Coordinate(y, x), s, wood, heightS, heightT, 1);
 				
 				if(terrainState[y][x].getState() == Cell.State.FUEL)
 					l++;
@@ -77,13 +76,16 @@ public class Terrain {
 		{
 			for (int x = 0; x<size; x++)
 			{
-				HashMap<Integer, TreeSet<Integer>> neighbors = terrainState[y][x].elipse(wind_direction.angle);
-				for(Integer xn : neighbors.keySet())
+				if(terrainState[y][x].getState() == Cell.State.FUEL)		// dla ka¿dego drzewa, a nie dla kamieni
 				{
-					for(Integer yn : neighbors.get(xn))
+					HashMap<Integer, TreeSet<Integer>> neighbors = terrainState[y][x].elipse(wind_direction.angle);
+					for(Integer xn : neighbors.keySet())
 					{
-						if(yn > 0 && yn < size && xn > 0 && xn < size)
-							terrainState[y][x].addNeighbor(terrainState[yn][xn]);
+						for(Integer yn : neighbors.get(xn))
+						{
+							if(yn > 0 && yn < size && xn > 0 && xn < size)
+								terrainState[y][x].addNeighbor(terrainState[yn][xn]);
+						}
 					}
 				}
 			}												

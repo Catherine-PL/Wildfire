@@ -58,7 +58,7 @@ public class Cell {
 	private int 			elevation;
 	private State 			state;
 	private Wood 			type;
-	private int 			lifetime;									// ilosc minut palenia siê paliwa, mo¿na dodaæ pole np. iloœæ ciep³a dla komórki	
+	private int 			lifetime=Data.lifetime;									// ilosc minut palenia siê paliwa, mo¿na dodaæ pole np. iloœæ ciep³a dla komórki	
 	private long 			heightSea;									// jednostka m
 	private double 			heightTree;									// jednostka m
 	private int 			size = 1;									// bok kwadratu - ilosc metrow
@@ -126,7 +126,7 @@ public class Cell {
 	}
 		
 		
-	public Cell(Coordinate yx, State state, Wood type, int lifetime, long heightSea, double heightTree, int size)		
+	public Cell(Coordinate yx, State state, Wood type, long heightSea, double heightTree, int size)		
 	{
 		this.coordinates = yx;					
 		this.state = state;		
@@ -255,13 +255,15 @@ public class Cell {
 			state = State.BURNT;
 			Terrain.treesOnFireRemove.add(this);
 		}
-		
-		for(Cell c : neighbors)
+		if(lifetime == Data.lifetime-1)
 		{
-			if(c.state == State.FUEL)
+			for(Cell c : neighbors)
 			{
-				c.state = State.BURNING;
-				Terrain.treesOnFireAdd.add(c);
+				if(c.state == State.FUEL)
+				{
+					c.state = State.BURNING;
+					Terrain.treesOnFireAdd.add(c);
+				}
 			}
 		}
 		
@@ -273,7 +275,7 @@ public class Cell {
 
 	public static void main(String[] args)
 	{
-		Cell c = new Cell(new Cell.Coordinate(10, 10), State.FUEL, Wood.OAK, 10, 500, 10, 1);
+		Cell c = new Cell(new Cell.Coordinate(10, 10), State.FUEL, Wood.OAK, 500, 10, 1);
 		c.wspolczynniki();
 				
 		System.out.println("Cell: x=10 y=10");
