@@ -197,7 +197,7 @@ public class Graphic implements ApplicationListener,  InputProcessor {
      
        
        //
-       int margin=290;
+   //   int margin=290;
 	      for (int y = 0; y<t.size; y++)
 			{
 				for (int x = 0; x<t.size; x++)
@@ -210,17 +210,6 @@ public class Graphic implements ApplicationListener,  InputProcessor {
 						modelBatch.render(instance2, environment);
 					}
 					
-					
-					
-					 //instance = new ModelInstance(model,y,  0,x);
-					 //instance = new ModelInstance(model);
-					
-					if(t.getCell(y, x).getState() == Cell.State.FREE)
-					{
-						//instance = new ModelInstance(modelFree,3*y,  t.getCell(y, x).getElevation(),3*x);
-						//modelBatch.render(instance, environment);
-
-					}
 					if((t.getCell(y, x).getState() == Cell.State.FUEL))
 					{
 					//	batch.draw(treeGreen, 10*y+margin, 10*x+10);
@@ -323,20 +312,22 @@ public class Graphic implements ApplicationListener,  InputProcessor {
 			if ((X>16) && (X<280)  &&(Y>screensizeY -600) && (Y<screensizeY -556))
 			{
 				option=Choice.GENERATE_EXAMPLE;
+				 t.ignite();
 
 			}
 		   //jak wcisnie gdzies indziej not o automatycznie wpiswywanie gdzies indziej
 		   //Generate
 			if ((X>16) && (X<280)  &&(Y>screensizeY -544) && (Y<screensizeY -500))
 			{
-				option=Choice.GENERATE;
 				//ustawienie danych Data wed³ug podanych w³aœciwoœc
 				Data.setWind(Double.parseDouble(texts[3].toString()));
 				Data.setDirection(Direction.valueOf(texts[4].toString()));
 				Data.setHumidity(Integer.parseInt(texts[5].toString()));
 				//ustawienie terenu wed³ug podanych w³aœciwoœci
 				t = new Terrain(Integer.parseInt(texts[0].toString()),vegetationProbablitity,broadLeafTypeProbablitity,Integer.parseInt(texts[2].toString()),Integer.parseInt(texts[1].toString()) );
-
+				t.ignite();
+				option=Choice.GENERATE;
+			
 				
 //TODO przepisanie zmiennych: z wpisanych do Data
 			}

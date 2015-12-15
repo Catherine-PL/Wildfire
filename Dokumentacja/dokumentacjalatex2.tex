@@ -120,8 +120,7 @@
 	\addcontentsline{toc}{section}{Cele modelowania pożaru}
 	\section*{Cele modelowania pożaru}
 	\indent
-	% W sumie to chyba treść tej sekcji ma niewiele wspólnego z jej tytułem. ALe na wiki
-	%omawiane yły fuel models w podrozdziale o takim samym tytule więc też tak zrobiłam
+	
 	Modelowanie pożaru polega na próbie odtworzenia zachowania się ognia i poznaniu jego parametrów w zadanej sytuacji - m.in. szybkości rozprzestrzeniania się, kierunku i ilości wydzielanego ciepła, estymację skutków pożaru. Na parametry te mają oczywiście wpływ ilość, rodzaj i dokładność dostarczonych danych wejściowch, z których najważniejszym jest rodzaj paliwa. \\
 	\indent Istniejące modele paliwowe definiują zestawy cech roślinności mających wpływ na ich palność. Najbardziej znane modele pożaru korzystają z głównych systemów klasyfikacji modeli paliwowych takich jak dynamiczne modele Scotta i Burgana czy trzynaście ``oryginalnych'' modeli paliwowych Andersona i Albiniego, które opisują roślinność w czasie pory suchej, kiedy to stopień zagrożenia pożarowego jest najwyższy. Zwiększa to trafność i przydatność symulacji pożarów podczas organizacji akcji pożarowych.
 	
@@ -141,8 +140,10 @@
 	
 	\addcontentsline{toc}{section}{Czynniki środowiskowe}
 	\section*{Czynniki środowiskowe}%spradźcie czy to się trzyma kupy
-	% Kasiu indent mi tu nie chce działąć :(
-	\indent Na pożar lasu wpływ mają takie czynniki jak pogoda, charakterystyka paliwa i topografia terenu.	\\
+
+	\indent 
+	
+	Na pożar lasu wpływ mają takie czynniki jak pogoda, charakterystyka paliwa i topografia terenu.	\\
 	\indent
 	Pogoda wpływa na ogień poprzez kierunek i siłę wiatru oraz wilgotność powietrza. Mokre paliwo potrzebuje więcej dostarczonej energii, by nastąpił jego zapłon. Ilość potrzebnej energii zależy również od temperatury otoczenia.	\\
 	\indent
@@ -291,7 +292,7 @@
 	gdzie: \\
 	$EFFM$ - estymowana wilgotność paliwa \\
 	$CBD$ - gęstość grupy roślinności [1/m3]\\
-	$U_10  10-m$ - prędkość wiatru ponad najwyższą roślinnością [m/min]
+	$U_10  10-m$ - prędkość wiatru ponad najwyższą roślinnością [m/min]\\
 	$\beta_1, ...,\beta_4$ -współczynniki regresji\\
 	\subsection{Modele oparte na automatach komórkowych}	
 	\indent
@@ -303,99 +304,153 @@
 		\centerline{\includegraphics[scale=0.4]{automaty}}
 		\raggedright{	\caption{Automaty komórkowe - przykładow prezentacji różnych stanów wraz z zaznaczonym sąsiedztwem Moore'a}}
 	\end{figure}
-	
-	\section{Zastosowany model}
+		
+	\section{Proponowany model}
 	\indent
 	
-	\addcontentsline{toc}{section}{Cele symulacji}
-	\section*{Cele symulacji}
+		Zastosowany w tej aplikacji model opiera się na modelu szybkości rozchodzenia się linii pożaru Rothermela, przy czym do reprezentacji lasu wykorzystana została sieć automatów komórkowych. Sąsiedztwo dla każdej komórki obliczane jest na podstawie wprowadzonych przez użytkownika danych i wykorzystuje zasadę Huygensa oraz opisaną poniżej zależność Andersona. \\
+		
+	\addcontentsline{toc}{section}{Cele modelu}
+	\section*{Cele modelu}
 	\indent
-	Zapoznanie się z metodami przeprowadzania symulacji i próba przeniesienia wiedzy teoretycznej na projekt praktyczny. Ponadto przetestowanie jak radzi sobie język Java w tego typu projektach oraz ile z właściwości tego języka jesteśmy w stanie tu użyć.
+	
+	Nasze cele to zapoznanie się z metodami przeprowadzania symulacji i próba przeniesienia wiedzy teoretycznej na projekt praktyczny. Ponadto celem jest przetestowanie jak radzi sobie język Java w tego typu projektach oraz ile z właściwości tego języka jesteśmy w stanie użyć przy tego rodzaju aplikacji.
+	
+	\addcontentsline{toc}{section}{Uzasadnienie wyboru danych narzędzi i technologii}
+	\section*{Uzasadnienie wyboru danych narzędzi i technologii}
+	\indent
+		
+		Nasz symulator został zaimplementowany w języku Java, ponieważ wszyscy członkowie zespołu są pragną rozwijać swoje zdolności programistyczne w tym języku, a także chcielibyśmy sprawdzić wydajność tego języka.\\
+		
+		Jeśli chodzi o bibliotekę graficzną, to nasz wybór padł na libGDX - crossplatformową bibliotekę z licencją opensource (oficjalna strona internetowa: www.libgdx.badlogicgames.com). \\
+		
+		Jedną z głównych zalet tej biblioteki jest jej szybkość - twórcy postawili bardzo duży nacisk na rozsądne zarządzanie pamięcią.  Dodatkowo libGDX dostarcza narzędzi do obsługi dźwięku i interpretacji wejścia dostarczonego przez użytkownika. Mimo, że renderowanie zachodzi przy użyciu OpenGL ES 2.0, to w większości przypadków nie trzeba znać szczegółów działania tego API, ponieważ biblioteka libGDX dostarcza wygodnych, wysokopoziomowych metod, dzięki którym sprawnie można uzyskać pożądane efekty - od wyświetlania dwuwymiarowych obiektów po tworzenie trójwymiarowych scen.\\
+		
+		Diagramy UML zostały stworzone w programie starUML - jest to lekki, darmowy program, który oferuje przyjazny interfejs użytkownika i wygodną hierarchizację elementów.
+	
 	
 	\addcontentsline{toc}{section}{Dane wejściowe}
 	\section*{Dane wejściowe}
 	\indent
-	Zanim uruchomimy symulację należy, wybrać/podać:
-	\begin{itemize}
-		\item wielkość powierzchni,
-		\item roughness, %?? na co to tłumaczymy
-		\item maksymalną wysokość,
-		\item gęstość zalesienia,
-		\item typ lasu,
-		\item prędkość wiatru,
-		\item kierunek w którym wieje wiatr,
-		\item wilgotność powietrza.
-	\end{itemize}
-	Po czym kliknąć przycisk GENERATE.\\
-	Przycisk GENERATE EXAMPLE jest odpowiedzialny za podstawienie danych testowych i wygenerowanie dla nich symulacji.
+	
+	\noindent\begin{minipage}{0.4\textwidth}% adapt widths of minipages to your needs
+		\includegraphics[width=\linewidth]{GUI}
+		Interfejs użytkownika
+	\end{minipage}%
+	\hfill%
+	\begin{minipage}{0.5\textwidth}\raggedright
+		
+		W celu uruchomienia symulacji na podstawie własnych danych należy podać:
+		\begin{itemize}
+			\item długość boku powierzchni (area),
+			\item nierówność terenu (roughness),
+			\item maksymalną wysokość terenu(maximum height),
+			\item gęstość zalesienia (density),
+			\item typ lasu (type),
+			\item prędkość wiatru (wind velocity),
+			\item kierunek wiatru (wind direction),
+			\item wilgotność powietrza (humidity).
+		\end{itemize}
+		Aby wygenerować symulację na podstawie powyższych danych należy wcisnąć przycisk GENERATE.\\
+		Przycisk GENERATE EXAMPLE jest odpowiedzialny za podstawienie danych testowych i wygenerowanie dla nich symulacji.
+	\end{minipage}
+	
+	
+	\addcontentsline{toc}{section}{Dane wyjściowe}
+	\section*{Dane wyjściowe}
+	\indent
+	
+	Wersja Beta, poza generowaniem symulacji, nigdzie nie zapisuje swoich wyników.
+	
 	\addcontentsline{toc}{section}{Sąsiedztwo}
 	\section*{Sąsiedztwo}
 	\indent	
 	
-	W naszym projekcie sąsiedztwo wyliczane jest na podstawie szybkości rozchodzenia się pożaru ze wzoru Rothermela, który to uwzględnia również współczynniki wiatru i nachylenia. Zastosowana została zasada Huygensa, która to zakłada, że każdy wierzchołek może być źródłem nowej eliptycznej ekspansji ognia. W związku z tym, sąsiedztwo komórki jest wygenerowane z elipsy. Jej kształt jest zgodny z zależnością odkrytą przez Andersona, przy założeniu, że pożar rośnie w kształcie pojedynczej elipsy, zgodnie z założeniami modelu Alexandra. Fizycznie tworzona jest ona w układzie współrzędnych biegunowych, gdzie zostaje obrócona wraz z kierunkiem wiania wiatru. Następnie jest ona rzutowana na rzeczywiste położenie komórki i poddana dyskretyzacji.
-	
-	Może jakiś wzór tu walnąć??
+	W naszym projekcie sąsiedztwo dla danego drzewa wyliczane jest na podstawie szybkości rozchodzenia się pożaru ze wzoru Rothermela, który to uwzględnia również współczynniki wiatru i nachylenia. Zastosowana została zasada Huygensa, która to zakłada, że każdy wierzchołek może być źródłem nowej eliptycznej ekspansji ognia. W związku z tym, sąsiedztwo komórki jest wygenerowane z elipsy. Jej kształt jest zgodny z zależnością odkrytą przez Andersona, przy założeniu, że pożar rośnie w kształcie pojedynczej elipsy, zgodnie z założeniami modelu Alexandra. Fizycznie tworzona jest ona w układzie współrzędnych biegunowych, gdzie zostaje obrócona wraz z kierunkiem wiania wiatru. Następnie jest ona rzutowana na rzeczywiste położenie komórki i poddana dyskretyzacji.
+		\begin{figure}[H]
+			\centerline{\includegraphics[scale=1.0]{elipse}}
+			\raggedright{	\caption{Sąsiedztwo komórki generowane z elipsy}}
+		\end{figure}
 	
 	
 	%dsd
-	%	Prędkość wiatru, ukształtowanie terenu. (może wgrywać mapę z wysokościami komórek
-	%	i ona mogłąby być rozszerzana odpowiednio do rozmiaru!).
+%	Prędkość wiatru, ukształtowanie terenu. (może wgrywać mapę z wysokościami komórek
+%	i ona mogłąby być rozszerzana odpowiednio do rozmiaru!).
 	\addcontentsline{toc}{section}{Modele paliwowe}
 	\section*{Modele paliwowe}
 	\indent	
-	Tu wymieniamy jakie są i że my mamy te 3 czy jak.\\
-	W naszym programie jest możliwość wyboru modelu paliwowego. Do wyboru mamy las iglasty, liściasty, mieszany.
-	\addcontentsline{toc}{section}{Cele symulacji}
-	\section*{Cele symulacji}
-	\indent
-	to nam raczej nie potrzebne jest, bo parę stron wcześniej jest to lepiej napisane( skapłem się po chwili)\\
-	Celem symulacji jest próba przewidzenia jak zachowuje się pożar lasu. Dzięki temu można podjąć decyzję, jak rozdysponować środki w czasie walki z żywiłem w sposób optymalny oraz ostrzec o obszarach zagrożonych. Można też spróbować przewidzieć jak zachowałby się przyszły teoretyczny pożar, co pozwoliłoby zawczasu podjąć akcje zapobiegawcze.
+	
+	Nasza aplikacja pozwala użytkownikowi na wybranie jednego z trzech modeli paliwowych, które opisują najpowszechniejsze w Polsce typy lasów. Dodatkowo dla każdego z tych typów można zdefiniować gęstość lasu.
+	Typ lasu:
+	\begin{itemize}
+		\item liściasty (broadleaf) - składający się w 85\% z dębów i w pozostałej części z sosen,
+		\item iglasty (needleleaf) - składający się w 85\% z sosen i w pozostałej części z dębów,
+		\item mieszany (mixed) - składający się z równej ilości sosen i dębów.
+	
+	\end{itemize}
+	Gęstość lasu:
+	\begin{itemize}
+		\item las otwarty (open) - tylko 20\% terenu jest zajęte przez drzewa,
+		\item las rzadki (sparse) - 50\% terenu jest zajęte przez drzewa,
+		\item las gęsty (dense) - aż 80\% terenu jest zajęte przez drzewa,
+		
+	\end{itemize}
+
 	%\addcontentsline{toc}{section}{$ f $ minmaxTransposition}
-	\section*{$ f $ fancy function podtytuł}
+	\section*{Diagramy}
 	\indent
-	\begin{figure}[H]%[!htb]
-		%		\centerline{\includegraphics[scale=0.7]{Mmin}}
-		%	\raggedright{	\caption{pseudokod Mutation.minMaxTransposition}}
-	\end{figure}
-	\addcontentsline{toc}{section}{Podsumowanie}
-	\section*{Podsumowanie}
-	\indent
+	
+		\begin{figure}[H]
+			\centerline{\includegraphics[scale=0.9]{usecase1}}
+			\raggedright{	\caption{Diagram przypadków użycia}}
+		\end{figure}
+	
+	
+
 	
 	
 	%\begin{figure}[bt]
-	%		\centerline{\includegraphics[scale=0.7]{alggenmenu}}
-	%	\raggedright{	\caption{menu}}
+		%		\centerline{\includegraphics[scale=0.7]{alggenmenu}}
+		%	\raggedright{	\caption{menu}}
 	%\end{figure}
-	\section{Walidacja}
+	
+	\section{Wyniki symulacji}
+	\indent
+	as
+	\addcontentsline{toc}{section}{Porównanie wyników z danymi rzeczywistymi}
+	\section*{Porównanie wyników z danymi rzeczywistymi}
+	\indent
+	
 	Walidacja – w naukach technicznych i informatyce działanie mające
-	na celu potwierdzenie w sposób udokumentowany i zgodny z założeniami,
-	że procedury, procesy, urządzenia, materiały, czynności i systemy
-	rzeczywiście prowadzą do zaplanowanych wyników.\\
+ 	na celu potwierdzenie w sposób udokumentowany i zgodny z założeniami,
+	 że procedury, procesy, urządzenia, materiały, czynności i systemy
+	 rzeczywiście prowadzą do zaplanowanych wyników.\\
 	
 	Do walidacji wykorzystaliśmy, jako punkt odniesienia pożar Kuźni Raciborskiej w 1992 roku.
 	Informacje z materiałów źródłowych o tym pożarze to m.in.:
 	\begin{itemize}
-		\item Klimat umiarkowany, kontynentalny z wpływem atlantyckiego,
-		\item Średnia roczna opadów 650mm w części północnej, 660mm w części południowej, 500mm ostatniego lata,
-		\item Udział drzew iglastych(sosna, świerk) w powierzchni- 85\%,
-		\item Udział drzew liściastych(głównie dąb,buk, brzoza) w powierzchni- 15\%,
-		\item Wiatr południowo-zachodni,
-		%\item Prędkość wiatru od XX do YY, średnio  ZZ,
-		\item Wiek drzew: do 20 lat - 15\%, do 40 lat 18\%, starsze 67\%,
-		\item Teren nizinny, płaski, bez wyraźnych wzgórz czy znacznych różnic wysokości terenu,
-		\item Temperatura w dniu pożaru wynosiła $34^\circ C$, a wcześniej nawet do 40$^\circ C$,
-		\item Większość warstwy podłoża to niezmineralizowana ściółka lub zbutwiałe drzewa oraz rośliny o grubości kilkunastu cm,
-		\item Obecność torfu o grubości 1-1.5m, który zajmował około 150ha obszaru.
+	\item Klimat umiarkowany, kontynentalny z wpływem atlantyckiego,
+	\item Średnia roczna opadów 650mm w części północnej, 660mm w części południowej, 500mm ostatniego lata,
+	\item Udział drzew iglastych(sosna, świerk) w powierzchni- 85\%,
+	\item Udział drzew liściastych(głównie dąb,buk, brzoza) w powierzchni- 15\%,
+	\item Wiatr południowo-zachodni,
+	%\item Prędkość wiatru od XX do YY, średnio  ZZ,
+	\item Wiek drzew: do 20 lat - 15\%, do 40 lat 18\%, starsze 67\%,
+	\item Teren nizinny, płaski, bez wyraźnych wzgórz czy znacznych różnic wysokości terenu,
+	\item Temperatura w dniu pożaru wynosiła $34^\circ C$, a wcześniej nawet do 40$^\circ C$,
+	\item Większość warstwy podłoża to niezmineralizowana ściółka lub zbutwiałe drzewa oraz rośliny o grubości kilkunastu cm,
+	\item Obecność torfu o grubości 1-1.5m, który zajmował około 150ha obszaru.
 	\end{itemize}
 	\begin{figure}
-		\includegraphics[scale=0.7]{kuznia.jpg}
-		\caption{pożar Kuźni Raciborskiej}
+			\includegraphics[scale=0.7]{kuznia.jpg}
+			\caption{pożar Kuźni Raciborskiej}
 	\end{figure}	
 	\begin{figure}
-		\includegraphics[scale=0.4]{kuznianasza.jpg}
-		\caption{Wynik naszego programu dla danych z Kuźni}
+			\includegraphics[scale=0.4]{kuznianasza.jpg}
+			\caption{Wynik naszego programu dla danych z Kuźni}
 	\end{figure}	
-	\section{Testy}
+	\addcontentsline{toc}{section}{Statystyki}
+	\section*{Statystyki}
 	\indent
 	sd
 	\section{Wnioski}

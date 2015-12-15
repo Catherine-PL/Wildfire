@@ -1,7 +1,7 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2015.5.24)  15 DEC 2015 00:46
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2015.5.24)  15 DEC 2015 01:29
 entering extended mode
-**dokumentacjalatex.tex
-(D:\Zainstalowane\Eclipse\Wildfire\Dokumentacja\dokumentacjalatex.tex
+**dokumentacjalatex2.tex
+(D:\Zainstalowane\Eclipse\Wildfire\Dokumentacja\dokumentacjalatex2.tex
 LaTeX2e <2011/06/27>
 Babel <v3.8m> and hyphenation patterns for english, afrikaans, ancientgreek, ar
 abic, armenian, assamese, basque, bengali, bokmal, bulgarian, catalan, coptic, 
@@ -382,7 +382,7 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \@float@everytoks=\toks19
 \@floatcapt=\box28
 )
-(D:\Zainstalowane\Eclipse\Wildfire\Dokumentacja\dokumentacjalatex.aux)
+(D:\Zainstalowane\Eclipse\Wildfire\Dokumentacja\dokumentacjalatex2.aux)
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 24.
 LaTeX Font Info:    ... okay on input line 24.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 24.
@@ -419,7 +419,7 @@ LaTeX Font Warning: Font shape `T1/cmr/m/n' in size <38> not available
 [1
 
 {C:/Users/USER/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
-(D:\Zainstalowane\Eclipse\Wildfire\Dokumentacja\dokumentacjalatex.toc
+(D:\Zainstalowane\Eclipse\Wildfire\Dokumentacja\dokumentacjalatex2.toc
 LaTeX Font Info:    Try loading font information for OML+plm on input line 6.
 
 (C:\Users\USER\AppData\Roaming\MiKTeX\2.9\tex\latex\polski\omlplm.fd
@@ -445,122 +445,152 @@ LaTeX Font Info:    External font `plex10' loaded for size
 \tf@toc=\write3
 
 [1]
-Underfull \hbox (badness 10000) in paragraph at lines 145--154
+Underfull \hbox (badness 10000) in paragraph at lines 146--155
 
  []
 
 [2]
-Underfull \hbox (badness 10000) in paragraph at lines 165--166
+Underfull \hbox (badness 10000) in paragraph at lines 166--167
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 196--197
+Underfull \hbox (badness 10000) in paragraph at lines 197--198
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 201--211
+Underfull \hbox (badness 10000) in paragraph at lines 202--212
 
  []
 
 [3]
-Underfull \hbox (badness 10000) in paragraph at lines 218--226
+Underfull \hbox (badness 10000) in paragraph at lines 219--227
 
  []
 
 
-Overfull \hbox (1.98997pt too wide) in paragraph at lines 237--238
+Overfull \hbox (1.98997pt too wide) in paragraph at lines 238--239
 []\T1/cmr/m/n/10.95 Dana ta zo-staªa wy-li-czona eks-pe-ry-men-tal-nie przez Ro
 -ther-mela i dla "do-brych pa-liw"przyjmuje
  []
 
 [4]
-Underfull \hbox (badness 10000) in paragraph at lines 260--264
+Underfull \hbox (badness 10000) in paragraph at lines 261--265
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 270--285
+Underfull \hbox (badness 10000) in paragraph at lines 271--286
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 290--296
+Underfull \hbox (badness 10000) in paragraph at lines 291--297
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 299--300
+Underfull \hbox (badness 10000) in paragraph at lines 300--301
 
  []
 
 <automaty.jpg, id=32, 423.08063pt x 386.94562pt>
 File: automaty.jpg Graphic file (type jpg)
  <use automaty.jpg>
-Package pdftex.def Info: automaty.jpg used on input line 303.
+Package pdftex.def Info: automaty.jpg used on input line 304.
 (pdftex.def)             Requested size: 169.22925pt x 154.7755pt.
  [5]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 320.
+Underfull \hbox (badness 10000) in paragraph at lines 311--312
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 323--324
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 325--326
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 327--328
+
+ []
+
+[6 <D:/Zainstalowane/Eclipse/Wildfire/Dokumentacja/automaty.jpg>]
+<GUI.jpg, id=42, 208.52907pt x 450.9347pt>
+File: GUI.jpg Graphic file (type jpg)
+ <use GUI.jpg>
+Package pdftex.def Info: GUI.jpg used on input line 337.
+(pdftex.def)             Requested size: 182.09486pt x 393.79625pt.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 345.
 
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\base\omscmr.fd"
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 320.
- [6 <D:/Zainstalowane/Eclipse/Wildfire/Dokumentacja/automaty.jpg>]
-LaTeX Font Info:    External font `plex10' loaded for size
-(Font)              <14.4> on input line 354.
-LaTeX Font Info:    External font `plex10' loaded for size
-(Font)              <10> on input line 354.
-LaTeX Font Info:    External font `plex10' loaded for size
-(Font)              <7> on input line 354.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 345.
 
-Underfull \hbox (badness 10000) in paragraph at lines 370--374
+<elipse.jpg, id=43, 192.72pt x 101.62968pt>
+File: elipse.jpg Graphic file (type jpg)
+ <use elipse.jpg>
+Package pdftex.def Info: elipse.jpg used on input line 371.
+(pdftex.def)             Requested size: 192.71951pt x 101.62943pt.
+ [7 <D:/Zainstalowane/Eclipse/Wildfire/Dokumentacja/GUI.jpg>]
+<usecase1.jpg, id=48, 499.8675pt x 209.28188pt>
+File: usecase1.jpg Graphic file (type jpg)
+ <use usecase1.jpg>
+Package pdftex.def Info: usecase1.jpg used on input line 404.
+(pdftex.def)             Requested size: 449.87659pt x 188.35193pt.
+ [8 <D:/Zainstalowane/Eclipse/Wildfire/Dokumentacja/elipse.jpg>]
+Underfull \hbox (badness 10000) in paragraph at lines 424--428
 
  []
 
-[7] <kuznia.jpg, id=47, 624.3325pt x 882.29625pt>
+<kuznia.jpg, id=52, 624.3325pt x 882.29625pt>
 File: kuznia.jpg Graphic file (type jpg)
  <use kuznia.jpg>
-Package pdftex.def Info: kuznia.jpg used on input line 391.
+Package pdftex.def Info: kuznia.jpg used on input line 445.
 (pdftex.def)             Requested size: 437.02977pt x 617.60316pt.
-
-<kuznianasza.jpg, id=48, 1371.1225pt x 770.88pt>
+ [9 <D:/Zainstalowane/Eclipse/Wildfire/Dokumentacja/usecase1.jpg>]
+<kuznianasza.jpg, id=56, 1371.1225pt x 770.88pt>
 File: kuznianasza.jpg Graphic file (type jpg)
  <use kuznianasza.jpg>
-Package pdftex.def Info: kuznianasza.jpg used on input line 395.
+Package pdftex.def Info: kuznianasza.jpg used on input line 449.
 (pdftex.def)             Requested size: 548.43929pt x 308.34654pt.
 
-Overfull \hbox (93.19518pt too wide) in paragraph at lines 395--396
+Overfull \hbox (93.19518pt too wide) in paragraph at lines 449--450
 [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 408--420
+Underfull \hbox (badness 10000) in paragraph at lines 463--475
 
  []
 
-[8] [9 <D:/Zainstalowane/Eclipse/Wildfire/Dokumentacja/kuznia.jpg>] [10 <D:/Zai
-nstalowane/Eclipse/Wildfire/Dokumentacja/kuznianasza.jpg>]
-(D:\Zainstalowane\Eclipse\Wildfire\Dokumentacja\dokumentacjalatex.aux)
+[10] [11 <D:/Zainstalowane/Eclipse/Wildfire/Dokumentacja/kuznia.jpg>] [12 <D:/Z
+ainstalowane/Eclipse/Wildfire/Dokumentacja/kuznianasza.jpg>]
+(D:\Zainstalowane\Eclipse\Wildfire\Dokumentacja\dokumentacjalatex2.aux)
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 2.17pt have occurred.
 
  ) 
 Here is how much of TeX's memory you used:
- 2362 strings out of 493921
- 29102 string characters out of 3147285
+ 2360 strings out of 493921
+ 29110 string characters out of 3147285
  84353 words of memory out of 3000000
  5608 multiletter control sequences out of 15000+200000
- 20153 words of font info for 47 fonts, out of 3000000 for 9000
+ 16680 words of font info for 38 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 27i,7n,24p,822b,228s stack positions out of 5000i,500n,10000p,200000b,50000s
-{C:/Users/USER/AppData/Roaming/MiKTeX/2.9/fonts/enc/dvips/pl/plmi.enc}{C:/Use
-rs/USER/AppData/Roaming/MiKTeX/2.9/fonts/enc/dvips/pl/plms.enc}{C:/Users/USER/A
-ppData/Roaming/MiKTeX/2.9/fonts/enc/dvips/pl/plrm.enc} <C:\Users\USER\AppData\L
+ 27i,7n,24p,841b,228s stack positions out of 5000i,500n,10000p,200000b,50000s
+{C:/Users/USER/AppData/Roaming/MiKTeX/2.9/fonts/enc/dvips/pl/plms.enc}{C:/Use
+rs/USER/AppData/Roaming/MiKTeX/2.9/fonts/enc/dvips/pl/plrm.enc}{C:/Users/USER/A
+ppData/Roaming/MiKTeX/2.9/fonts/enc/dvips/pl/plmi.enc} <C:\Users\USER\AppData\L
 ocal\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx1200.pk> <C:\Users\USER\
 AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm1095.pk> <C:\Us
 ers\USER\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx1095.p
@@ -574,16 +604,15 @@ KTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\eccc1440.pk> <C:\Users\USER\AppData
 \Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\eccc1728.pk><C:/Program Fi
 les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/USER/AppData
 /Roaming/MiKTeX/2.9/fonts/type1/public/pl/plmi10.pfb><C:/Users/USER/AppData/Roa
-ming/MiKTeX/2.9/fonts/type1/public/pl/plmi12.pfb><C:/Users/USER/AppData/Roaming
-/MiKTeX/2.9/fonts/type1/public/pl/plmi8.pfb><C:/Users/USER/AppData/Roaming/MiKT
-eX/2.9/fonts/type1/public/pl/plr10.pfb><C:/Users/USER/AppData/Roaming/MiKTeX/2.
-9/fonts/type1/public/pl/plr6.pfb><C:/Users/USER/AppData/Roaming/MiKTeX/2.9/font
-s/type1/public/pl/plr8.pfb><C:/Users/USER/AppData/Roaming/MiKTeX/2.9/fonts/type
-1/public/pl/plsy10.pfb><C:/Users/USER/AppData/Roaming/MiKTeX/2.9/fonts/type1/pu
-blic/pl/plsy8.pfb>
-Output written on dokumentacjalatex.pdf (11 pages, 1333581 bytes).
+ming/MiKTeX/2.9/fonts/type1/public/pl/plmi8.pfb><C:/Users/USER/AppData/Roaming/
+MiKTeX/2.9/fonts/type1/public/pl/plr10.pfb><C:/Users/USER/AppData/Roaming/MiKTe
+X/2.9/fonts/type1/public/pl/plr6.pfb><C:/Users/USER/AppData/Roaming/MiKTeX/2.9/
+fonts/type1/public/pl/plr8.pfb><C:/Users/USER/AppData/Roaming/MiKTeX/2.9/fonts/
+type1/public/pl/plsy10.pfb><C:/Users/USER/AppData/Roaming/MiKTeX/2.9/fonts/type
+1/public/pl/plsy8.pfb>
+Output written on dokumentacjalatex2.pdf (13 pages, 1416991 bytes).
 PDF statistics:
- 442 PDF objects out of 1000 (max. 8388607)
+ 449 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 16 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 31 words of extra memory for PDF output out of 10000 (max. 10000000)
 

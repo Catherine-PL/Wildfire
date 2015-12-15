@@ -25,14 +25,19 @@ final public class Data {
 	private static int[][] dirVector={{0,1,1,1,0,-1,-1,-1},{1,1,0,-1,-1,-1,0,1}};//get w linii 110  -- co to? (Sebastian siê zastanawia)
 																				//np. getDirVector(1) zwróci {1,1} i ten wektor symbolizuje NE,
 																			// to s¹ kierunki z uk³adu wspó³rzêdnych, 0,1 to N, 0,-1 to S
-
+	 static double sigma=Data.sav;
+	static double betaOp=3.348*Math.pow(sigma,-0.8189);
+	 static double C=7.47*Math.exp((-0.133*Math.pow(sigma,0.55)));
+	 static double B=0.02526*Math.pow(sigma,0.54);
+	 static double E=0.715*Math.exp((-3.59*0.0001*sigma));
+	
 
 	static final int x = 0;
 	
 	static double wind = 12;										// 0 - 30, 30> huragan
-	static double terrain = 1.2;								// not sure //MJ to jest wspó³czynnik nachylenia??
+	static double terrain = 1;								// not sure //MJ to jest wspó³czynnik nachylenia??
 	static double fuel_humidity = 1.0;		
-	static int air_humidity = 0.15;	
+	static int air_humidity = 15;	
 
 	static double q_ig = 250 + 1.116 * fuel_humidity;									// kJ / kg
 	static double sav = 1600;									// powierzchnia do objêtnoœci; jednostka 1/ft

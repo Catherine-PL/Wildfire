@@ -1,0 +1,28 @@
+\select@language {polish}
+\contentsline {section}{\numberline {1}Wst\IeC {\k e}p}{2}
+\contentsline {section}{Cele modelowania po\IeC {\.z}aru}{2}
+\contentsline {section}{Czynniki \IeC {\'s}rodowiskowe}{2}
+\contentsline {section}{Podej\IeC {\'s}cia do modelowania po\IeC {\.z}aru}{2}
+\contentsline {subsection}{\numberline {1.1}Model paliwowy}{3}
+\contentsline {section}{Sztandarowe modele}{3}
+\contentsline {subsection}{\numberline {1.2}Rothermel - szybko\IeC {\'s}\IeC {\'c} rozchodzenia si\IeC {\k e} linii po\IeC {\.z}aru}{3}
+\contentsline {subsubsection}{\numberline {1.2.1}Ciep\IeC {\l }o przed zap\IeC {\l }onowe}{4}
+\contentsline {subsubsection}{\numberline {1.2.2}Efektywno\IeC {\'s}\IeC {\'c} ogrzewania}{4}
+\contentsline {subsubsection}{\numberline {1.2.3}Strumie\IeC {\'n} ciep\IeC {\l }a}{4}
+\contentsline {subsubsection}{\numberline {1.2.4}Wsp\IeC {\'o}\IeC {\l }czynnik wiatru, nachylenia}{5}
+\contentsline {subsection}{\numberline {1.3}Rothermel - szybko\IeC {\'s}\IeC {\'c} rozprzestrzeniania si\IeC {\k e} po\IeC {\.z}aru w koronach}{5}
+\contentsline {subsection}{\numberline {1.4}Van Wagner - intensywno\IeC {\'s}\IeC {\'c} linii ognia}{5}
+\contentsline {subsection}{\numberline {1.5}Cruz - szybko\IeC {\'s}\IeC {\'c} rozprzestrzeniania si\IeC {\k e} po\IeC {\.z}aru w koronach}{5}
+\contentsline {subsection}{\numberline {1.6}Modele oparte na automatach kom\IeC {\'o}rkowych}{5}
+\contentsline {section}{\numberline {2}Proponowany model}{6}
+\contentsline {section}{Cele modelu}{6}
+\contentsline {section}{Uzasadnienie wyboru danych narz\IeC {\k e}dzi i technologii}{6}
+\contentsline {section}{Dane wej\IeC {\'s}ciowe}{7}
+\contentsline {section}{Dane wyj\IeC {\'s}ciowe}{7}
+\contentsline {section}{S\IeC {\k a}siedztwo}{7}
+\contentsline {section}{Modele paliwowe}{8}
+\contentsline {section}{\numberline {3}Wyniki symulacji}{9}
+\contentsline {section}{Por\IeC {\'o}wnanie wynik\IeC {\'o}w z danymi rzeczywistymi}{9}
+\contentsline {section}{Statystyki}{10}
+\contentsline {section}{\numberline {4}Wnioski}{10}
+\contentsline {section}{\numberline {5}Literatura}{10}

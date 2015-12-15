@@ -60,13 +60,9 @@ public class Terrain {
 					l++;
 			}
 		
-					
-		System.out.println("Number of all cells: " + size*size);
-		System.out.println("Number of all trees: " + l);
-		System.out.println();
+		terrainState[size/2][size/2]=new Cell(new Cell.Coordinate(size/2, size/2), State.FUEL, Wood.OAK, life, heightS, heightT, 1);
 		defineNeighbors(Data.winddir);		
 		generateElevation(relief);
-		ignite();
 		
 	}
 
@@ -89,19 +85,12 @@ public class Terrain {
 			}												
 		}														
 	}
-	private void ignite()														// losowe drzewo podpolane
+	public void ignite()														// losowe drzewo podpolane
 	{
 		
 		Cell choosenTree;
-		do
-		{
-			choosenTree= terrainState[randomGenerator.nextInt(size)][randomGenerator.nextInt(size)];
-		}
-		while (choosenTree.getState() == Cell.State.FREE);
-		
-		System.out.println("--- " + choosenTree.getState() + " -- " + choosenTree.getCoordinates());
+		choosenTree= terrainState[size/2][size/2];
 		choosenTree.setState(Cell.State.BURNING);
-		System.out.println("--- " + choosenTree.getState() + " -- " + choosenTree.getCoordinates());
 		treesOnFire.add(choosenTree);
 		
 	}	
