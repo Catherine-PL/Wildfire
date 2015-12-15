@@ -23,6 +23,7 @@
 \contentsline {section}{Modele paliwowe}{8}
 \contentsline {section}{\numberline {3}Wyniki symulacji}{9}
 \contentsline {section}{Por\IeC {\'o}wnanie wynik\IeC {\'o}w z danymi rzeczywistymi}{9}
-\contentsline {section}{Statystyki}{10}
-\contentsline {section}{\numberline {4}Wnioski}{10}
-\contentsline {section}{\numberline {5}Literatura}{10}
+\contentsline {section}{\numberline {4}Testy}{14}
+\contentsline {section}{Statystyki}{15}
+\contentsline {section}{\numberline {5}Wnioski}{15}
+\contentsline {section}{\numberline {6}Literatura}{16}

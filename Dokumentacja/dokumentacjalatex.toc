@@ -22,6 +22,7 @@
 \contentsline {section}{Cele symulacji}{7}
 \contentsline {section}{Podsumowanie}{7}
 \contentsline {section}{\numberline {3}Walidacja}{7}
-\contentsline {section}{\numberline {4}Testy}{8}
-\contentsline {section}{\numberline {5}Wnioski}{8}
-\contentsline {section}{\numberline {6}Literatura}{8}
+\contentsline {section}{\numberline {4}Testy}{12}
+\contentsline {section}{\numberline {5}Wnioski}{13}
+\contentsline {section}{\numberline {6}Wnioski}{13}
+\contentsline {section}{\numberline {7}Literatura}{13}
