@@ -33,14 +33,7 @@ final public class Data {
 	
 	static double density_piny = 460;							// kg / m^3
 	static double density_oak = 760;
-	//1. oak to d¹b
-	//2. 85% gatunki iglaste
-	// 15% liœciaste
-	//3. chyba ¿e oak to iglaste u nas, a piny to liœciaste
-	//%%static double percent_oak = 85;								// kuznia raciborska
-	//static double percent_piny = 15;
-	//conifer=drzewo iglaste, conifers drzewa iglaste
-	//Hardwood=liœciate
+
 	static double percent_oak = 15;	
 	static double percent_piny = 85;
 	

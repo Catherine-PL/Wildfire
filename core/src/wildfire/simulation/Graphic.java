@@ -71,6 +71,7 @@ public class Graphic implements ApplicationListener,  InputProcessor {
 	}
    private Choice option;
    Terrain t = new Terrain(60,50,(int)(Data.percent_oak),50,60); //tutaj powinno byc od razu dane z ku¿ni
+   //Terrain t = new Terrain(150,50,(int)(Data.percent_oak),4,60); -- roznica 
    	//rozmiar boku, prawdopodobienstwo ze cos rosnie, prawd. ze liœciaste, mask wysokosc, zroznicowanie terenu
    //TODO
    
@@ -103,7 +104,7 @@ public class Graphic implements ApplicationListener,  InputProcessor {
 	   texts[1]=new StringBuilder("10");
 	   texts[2]=new StringBuilder("5");
 	   texts[3]=new StringBuilder("4");
-	   texts[4]=new StringBuilder("NE");
+	   texts[4]=new StringBuilder("N");
 	   texts[5]=new StringBuilder("72");
 	   font = new BitmapFont();
 	   
@@ -121,10 +122,16 @@ public class Graphic implements ApplicationListener,  InputProcessor {
 	   cam = new OrthographicCamera();
 	   cam.setToOrtho(false, 1300,620);
 	   camera = new PerspectiveCamera(57, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-       camera.position.set(15f, 175f, 390f);
+       
+	   camera.position.set(15f, 175f, 390f);
        camera.lookAt(50,-150,70);
        camera.near = 1f;
        camera.far = 600f;
+       /*camera.position.set(45f, 325f, 490f); //roznica
+       camera.lookAt(20,-350,20);
+       camera.near = 1f;
+       camera.far = 800f;*/
+       
        camera.update();
        camController = new CameraInputController(camera);
       batch = new SpriteBatch();   
@@ -142,11 +149,11 @@ public class Graphic implements ApplicationListener,  InputProcessor {
 
    @Override
    public void render() {
-	   try {
+	   /*try {
 		    Thread.sleep(75);                 //1000 milliseconds is one second.
 		} catch(InterruptedException ex) {
 		    Thread.currentThread().interrupt();
-		}
+		}*/
       Gdx.gl.glClearColor(0.84f, 0.90f, 0.44f, 1); 
       Gdx.gl.glViewport(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
       Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT);
@@ -331,11 +338,19 @@ public class Graphic implements ApplicationListener,  InputProcessor {
 			{
 				option=Choice.GENERATE;
 				//ustawienie terenu wed³ug podanych w³aœciwoœci
-				t = new Terrain(Integer.parseInt(texts[0].toString()),vegetationProbablitity,broadLeafTypeProbablitity,Integer.parseInt(texts[2].toString()),Integer.parseInt(texts[1].toString()) );
-				//ustawienie danych Data wed³ug podanych w³aœciwoœci
+				
+				//ustawienie danych Data wed³ug podanych w³aœciwoœci			// roznica t na dole
 				Data.setWind(Double.parseDouble(texts[3].toString()));
 				Data.setDirection(Direction.valueOf(texts[4].toString()));
 				Data.setHumidity(Integer.parseInt(texts[5].toString()));
+				
+				t = new Terrain(Integer.parseInt(texts[0].toString()),vegetationProbablitity,broadLeafTypeProbablitity,Integer.parseInt(texts[2].toString()),Integer.parseInt(texts[1].toString()) );
+				
+				
+				
+				
+				
+				
 				
 //TODO przepisanie zmiennych: z wpisanych do Data
 			}

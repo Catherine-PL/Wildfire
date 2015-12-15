@@ -63,7 +63,7 @@ public class Terrain {
 		System.out.println("Number of all cells: " + size*size);
 		System.out.println("Number of all trees: " + l);
 		System.out.println();
-		defineNeighbors(Data.Direction.N);		
+		defineNeighbors(Data.winddir);		
 		generateElevation(relief);
 		ignite();
 		
@@ -83,7 +83,7 @@ public class Terrain {
 					{
 						for(Integer yn : neighbors.get(xn))
 						{
-							if(yn > 0 && yn < size && xn > 0 && xn < size)
+							if(yn >= 0 && yn < size && xn >= 0 && xn < size)
 								terrainState[y][x].addNeighbor(terrainState[yn][xn]);
 						}
 					}
@@ -94,12 +94,14 @@ public class Terrain {
 	private void ignite()														// losowe drzewo podpolane
 	{
 		
+		int s = size/2;
 		Cell choosenTree;
 		do
 		{
-			choosenTree= terrainState[randomGenerator.nextInt(size)][randomGenerator.nextInt(size)];
+			choosenTree= terrainState[s][s];			
+			s++;			
 		}
-		while (choosenTree.getState() == Cell.State.FREE);
+		while (choosenTree.getState() != Cell.State.FUEL);
 		
 		System.out.println("--- " + choosenTree.getState() + " -- " + choosenTree.getCoordinates());
 		choosenTree.setState(Cell.State.BURNING);
@@ -189,7 +191,7 @@ public class Terrain {
 		}
 		*/
 		Terrain t = new Terrain(60,50,(int)(Data.percent_oak),50,60);
-		System.out.println(t.terrainState[20][20].neighbors);
+		
 		
 	}
 		
