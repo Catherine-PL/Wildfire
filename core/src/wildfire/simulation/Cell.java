@@ -287,9 +287,8 @@ public class Cell {
 
 	public static void main(String[] args)
 	{
-		Cell c = new Cell(new Cell.Coordinate(10, 10), State.FUEL, Wood.OAK, 500, 10, 1);
-		c.wspolczynniki();
-				
+		Cell c = new Cell(new Cell.Coordinate(2, 2), State.FUEL, Wood.OAK, 500, 10, 1);
+						
 		System.out.println("Cell: x=10 y=10");
 		System.out.println("-----------");
 		System.out.println(c.elipse(0));

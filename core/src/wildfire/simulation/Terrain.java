@@ -8,6 +8,7 @@ import java.util.TreeSet;
 
 import wildfire.simulation.Cell.State;
 import wildfire.simulation.Cell.Wood;
+import wildfire.simulation.Data.Direction;
 
 /**
  * Represents map section as cells. Main class for a simulation.
@@ -182,15 +183,22 @@ public class Terrain {
 		//Terrain t = new Terrain(size,100,50);		
 		
 		//System.out.println(t.terrainState[2][2].neighbors);
-		/*
+		
+		
+		// testowanie
+		Data.setDirection(Direction.N);
+		Terrain t = new Terrain(5,100,(int)(Data.percent_oak),50,60);
+		System.out.println(t.terrainState[2][2]);			
+		System.out.println(t.terrainState[2][2].elipse(Direction.S.angle));
 		while(!t.isAllBurnt())
 		{
 			System.out.println("-------------------------");		
 			System.out.println(t.toString());
+			
 			t.spreadFire();			
 		}
-		*/
-		Terrain t = new Terrain(60,50,(int)(Data.percent_oak),50,60);
+		
+		
 		
 		
 	}
