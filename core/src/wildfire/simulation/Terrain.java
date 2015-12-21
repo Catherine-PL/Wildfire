@@ -160,7 +160,55 @@ public class Terrain {
 		return txt;
 	}
 	
-	
+	public void spreadSpotting(){
+		Set<Cell> onFire= this.treesOnFire;
+		Set<Cell> newOnFire=new HashSet<Cell>();
+		double spDist;
+		
+		int N,Y=0,X=0;
+		int skalar=1;
+		switch (Data.winddir){
+		case N :{ X=0;Y=1; break;}
+		case NE :{ X=1;Y=1; break;}
+		case E :{ X=1;Y=0; break;}
+		case SE :{ X=1;Y=-1; break;}
+		case S :{ X=0;Y=-1; break;}
+		case SW : { X=-1;Y=-1; break;}
+		case W : { X=-1;Y=0; break;}
+		case NW : { X=-1;Y=1; break;}		
+		}
+		for(Cell cell:onFire){
+			int cX=cell.getCoordinates().x;
+			int cY=cell.getCoordinates().y;
+			N=getNeighnoursOnFire(cX,cY);
+			spDist=cell.getSpottingDistance(1+N);
+			skalar=randomGenerator.nextInt((int)spDist);
+			Y=Y*skalar+cY;
+			X=X*skalar+cX;
+			if(X>0 && Y>0 && Y<size && X<size){
+				newOnFire.add(Terrain.this.getCell(Y, X));
+			}
+		}
+		for(Cell cell:newOnFire){
+			if(cell.getState()==Cell.State.FUEL)
+				treesOnFireAdd.add(cell);				
+		}
+	}
+	private int getNeighnoursOnFire(int x,int y) {
+		int n=0;
+		if(x+1<Terrain.this.size && y+1<Terrain.this.size && x>1 && y>1){
+			if(this.terrainState[x+1][y+1].getState()==Cell.State.BURNING)n=n+1;
+			if(this.terrainState[x][y+1].getState()==Cell.State.BURNING)n=n+1;
+			if(this.terrainState[x+1][y].getState()==Cell.State.BURNING)n=n+1;
+			if(this.terrainState[x-1][y-1].getState()==Cell.State.BURNING)n=n+1;
+			if(this.terrainState[x-1][y].getState()==Cell.State.BURNING)n=n+1;
+			if(this.terrainState[x][y-1].getState()==Cell.State.BURNING)n=n+1;
+			if(this.terrainState[x+1][y-1].getState()==Cell.State.BURNING)n=n+1;
+			if(this.terrainState[x-1][y+1].getState()==Cell.State.BURNING)n=n+1;
+		}
+		return n;
+	}
+
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		int size = 6;
