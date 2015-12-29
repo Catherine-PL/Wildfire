@@ -79,15 +79,15 @@ public class Terrain {
 			{
 				if(terrainState[y][x].getState() == Cell.State.FUEL)		// dla ka¿dego drzewa, a nie dla kamieni
 				{
-					HashMap<Integer, TreeSet<Integer>> neighbors = terrainState[y][x].elipse(wind_direction.angle);
-					for(Integer xn : neighbors.keySet())
+					HashMap<Integer, TreeSet<Integer>> neighbors = terrainState[y][x].elipse(wind_direction.angle);					
+					for(Integer xn : neighbors.keySet())						
 					{
 						for(Integer yn : neighbors.get(xn))
 						{
 							if(yn >= 0 && yn < size && xn >= 0 && xn < size)
-								terrainState[y][x].addNeighbor(terrainState[yn][xn]);
+								terrainState[y][x].addNeighbor(terrainState[yn][xn]);							
 						}
-					}
+					}					
 				}
 			}												
 		}														
@@ -186,7 +186,7 @@ public class Terrain {
 		
 		
 		// testowanie
-		Data.setDirection(Direction.N);
+		Data.setDirection(Direction.S);
 		Terrain t = new Terrain(5,100,(int)(Data.percent_oak),50,60);
 		System.out.println(t.terrainState[2][2]);			
 		System.out.println(t.terrainState[2][2].elipse(Direction.S.angle));
@@ -198,6 +198,14 @@ public class Terrain {
 			t.spreadFire();			
 		}
 		
+		System.out.println("-----------------------------");
+		
+		System.out.println("Cell: x=2 y=2");
+		System.out.println("-----------");		
+		System.out.println("E: " + t.terrainState[2][2].elipse(0));
+		System.out.println("W: " + t.terrainState[2][2].elipse(180));
+		System.out.println("N: " + t.terrainState[2][2].elipse(Data.Direction.N.angle));
+		System.out.println("S: " + t.terrainState[2][2].elipse(Data.Direction.S.angle));
 		
 		
 		

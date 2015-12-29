@@ -204,8 +204,7 @@ public class Cell {
 				elipse.put(x, new TreeSet<Integer>());
 			
 			elipse.get(x).add(y);																										
-		}
-		
+		}				
 													
 		/*	wypelnienie srodka */
 		Set<Integer> keys = new HashSet<Integer>(elipse.keySet()); 		
@@ -218,21 +217,19 @@ public class Cell {
 			Integer max= set.last();
 			Integer min= set.first();
 						
-			for(int i=min+1; i < max-min-1; i++)
+			for(int i=min+1; i < max; i++)
 			{
 				set.add(i);
-			}
-			elipse.remove(key);
+			}			
 			elipse.put(key, set);
 		}
-
+		
 		
 		/* obrót miejsca zap³onu */
 		int xz = (int) Math.round(c * Math.cos(Math.PI+radian));	
 		int yz = (int) Math.round(c * Math.sin(Math.PI+radian));
 
 		elipse.get(xz).remove(yz);										// usuniecie miejsca zaplonu z sasiadow
-
 
 		/* Przesuniecie elipsy na wspó³rzêdne komórki */
 		for(Integer x : elipse.keySet())
@@ -244,7 +241,7 @@ public class Cell {
 				result.get(xn).add(coordinates.y - (y - yz));			// bo oœ y roœnie w dó³
 			}
 		}
-		
+				
 		return result;
 	}	
 	/**
@@ -287,14 +284,14 @@ public class Cell {
 
 	public static void main(String[] args)
 	{
-		Cell c = new Cell(new Cell.Coordinate(2, 2), State.FUEL, Wood.OAK, 500, 10, 1);
+		Cell c = new Cell(new Cell.Coordinate(2, 2), State.FUEL, Wood.PINY, 500, 10, 1);
 						
-		System.out.println("Cell: x=10 y=10");
-		System.out.println("-----------");
-		System.out.println(c.elipse(0));
-		System.out.println(c.elipse(180));
+		System.out.println("Cell: x=2 y=2");
+		System.out.println("-----------");		
+		System.out.println("E: " + c.elipse(0));
+		System.out.println("W: " + c.elipse(180));
 		System.out.println("N: " + c.elipse(Data.Direction.N.angle));
-		System.out.println("S" + c.elipse(Data.Direction.S.angle));
+		System.out.println("S: " + c.elipse(Data.Direction.S.angle));
 		
 		
 	}

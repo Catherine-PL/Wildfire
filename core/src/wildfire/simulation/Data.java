@@ -9,7 +9,7 @@ final public class Data {
 	
 	public enum Direction
 	{
-		N(90), NE(45), E(0), SE(-45), S(-90), SW(-135), W(180), NW(135);
+		N(90), NE(45), E(0), SE(-45), S(270), SW(-135), W(180), NW(135);
 		
 		int angle;
 		
