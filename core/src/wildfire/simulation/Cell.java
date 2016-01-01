@@ -148,9 +148,9 @@ public class Cell {
 		this.size = size;
 		
 		if (type==Wood.OAK)
-			this.burnthreshold =47;
+			this.burnthreshold =Data.toburn_oak;
 		if (type==Wood.PINY)
-			this.burnthreshold =26;
+			this.burnthreshold =Data.toburn_piny;
 	}
 	
 	/* Set, Get funcitons */

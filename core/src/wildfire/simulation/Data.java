@@ -39,8 +39,10 @@ final public class Data {
 	static double fuel_humidity = 1.0;		
 	static int air_humidity = 15;	
 
-	static int lifetime_oak =50;
-	static int lifetime_piny =20;
+	static int lifetime_oak =40;
+	static int lifetime_piny =15;
+	static int toburn_oak =25;
+	static int toburn_piny =11;				//ile ciepla trzeba dostarczyc zeby sie zapalilo (na podstawie gestosci i artykulow o drzewach)
 	static double q_ig = 250 + 1.116 * fuel_humidity;									// kJ / kg
 	static double sav = 1600;									// powierzchnia do objêtnoœci; jednostka 1/ft
 	static double e = Math.exp(-138 / sav);										// efektywne ogrzewanie w przediale (0,1)
