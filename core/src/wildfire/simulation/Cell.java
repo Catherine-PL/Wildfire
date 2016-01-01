@@ -58,6 +58,7 @@ public class Cell {
 	private int 			elevation;
 	private State 			state;
 	private Wood 			type;
+	private int				burnthreshold;
 	private int 			lifetime;									// ilosc minut palenia siê paliwa, mo¿na dodaæ pole np. iloœæ ciep³a dla komórki	
 	private long 			heightSea;									// jednostka m
 	private double 			heightTree;									// jednostka m
@@ -68,6 +69,7 @@ public class Cell {
 	private double			b;											// Na ich bazie robimy sasiedztwo
 	private double			c;											// odleglosc od punktu zaplonu do srodka elipsy
 						
+	
 	Set<Cell> 				neighbors = new HashSet<Cell>();  
 		
 	
@@ -144,6 +146,11 @@ public class Cell {
 		this.heightSea = heightSea;
 		this.heightTree = heightTree;
 		this.size = size;
+		
+		if (type==Wood.OAK)
+			this.burnthreshold =47;
+		if (type==Wood.PINY)
+			this.burnthreshold =26;
 	}
 	
 	/* Set, Get funcitons */
@@ -269,8 +276,16 @@ public class Cell {
 		{
 			if(c.state == State.FUEL)
 			{
-				c.state = State.BURNING;
-				Terrain.treesOnFireAdd.add(c);
+				
+				if(c.burnthreshold==0)
+				{
+					c.state = State.BURNING;
+					Terrain.treesOnFireAdd.add(c);
+				}
+				if(c.burnthreshold>0)
+				{
+					c.burnthreshold=c.burnthreshold-1;
+				}
 			}
 		}
 		

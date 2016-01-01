@@ -32,7 +32,7 @@ public class Terrain {
 		double l=0;
 		size = _size;
 		terrainState = new Cell[size][size];
-		int life = 10;
+		int life=20;
 		int heightS = 500;
 		int heightT = 10;
 		
@@ -45,9 +45,16 @@ public class Terrain {
 				{
 					s = State.FUEL;
 					if(vegtype > Terrain.randomGenerator.nextInt(100))
-						wood = Wood.OAK;		
-					else		
+						{
+						wood = Wood.OAK;
+						life=Data.lifetime_oak;
+						}
+					else	
+					{
 						wood = Wood.PINY;
+						life=Data.lifetime_piny;
+					}
+						
 					
 				}
 				else		
@@ -55,6 +62,8 @@ public class Terrain {
 					s = State.FREE;
 					wood = Wood.NONE;
 				}																
+				
+				
 				
 				terrainState[y][x]=new Cell(new Cell.Coordinate(y, x), s, wood, life, heightS, heightT, 1);
 				
@@ -91,7 +100,7 @@ public class Terrain {
 	{
 		
 		Cell choosenTree;
-		choosenTree= terrainState[1][size/2];
+		choosenTree= terrainState[size/2][size/2];
 		choosenTree.setState(Cell.State.BURNING);
 		treesOnFire.add(choosenTree);
 		
