@@ -72,15 +72,22 @@ public class Cell {
 	
 	Set<Cell> 				neighbors = new HashSet<Cell>();  
 		
+	/* Rothermel zmienne do wektora wiatru i nachylenia
+	//rhoB/rhoP
+	/
+	private double sigma=Data.sav;
+
+	private double betaOp=3.348*Math.pow(sigma,-0.8189);
+		
+	private double C=7.47*Math.exp((-0.133*Math.pow(sigma,0.55)));
+	private double B=0.02526*Math.pow(sigma,0.54);
+	private double E=0.715*Math.exp((-3.59*0.0001*sigma));
 	
 	/* Rothermel zmienne do wektora wiatru i nachylenia */
 	//rhoB/rhoP
 	
 
 
-	private double phi=Data.terrain;
-	
-	
 	private double U=Data.wind;
 	
 	private double rothermel()	// szybkosc rozchodzenia sie pozaru dla jego czola
@@ -100,15 +107,15 @@ public class Cell {
 			ip_0 = Data.ip_0_oak;
 		}
 		double betaPrzeBetaOp=2;
-		double beta=betaPrzeBetaOp*Data.betaOp;
+		//double beta=betaPrzeBetaOp*Data.betaOp;
 		double wind=Data.C*Math.pow(U,Data.B)*Math.pow((betaPrzeBetaOp),-Data.E);
-		double terrain=5.275*Math.pow(beta,-0.3)*(Math.pow(Math.tan(phi),2));
+		//double terrain=5.275*Math.pow(beta,-0.3)*(Math.pow(Math.tan(1),2));
+		double terrain=0;
 		double licznik = ip_0*(1 + wind + terrain);
 		double mianownik = density * Data.e * Data.q_ig; 
 				
 		return  licznik / mianownik; 				
 		
-		//return  Math.floor(licznik / mianownik); 
 	}
 	private double lb()
 	{
@@ -208,8 +215,7 @@ public class Cell {
 				elipse.put(x, new TreeSet<Integer>());
 			
 			elipse.get(x).add(y);																										
-		}
-		
+		}				
 													
 		/*	wypelnienie srodka */
 		Set<Integer> keys = new HashSet<Integer>(elipse.keySet()); 		
@@ -222,21 +228,19 @@ public class Cell {
 			Integer max= set.last();
 			Integer min= set.first();
 						
-			for(int i=min+1; i < max-min-1; i++)
+			for(int i=min+1; i < max; i++)
 			{
 				set.add(i);
-			}
-			elipse.remove(key);
+			}			
 			elipse.put(key, set);
 		}
-
+		
 		
 		/* obrót miejsca zap³onu */
 		int xz = (int) Math.round(c * Math.cos(Math.PI+radian));	
 		int yz = (int) Math.round(c * Math.sin(Math.PI+radian));
 
 		elipse.get(xz).remove(yz);										// usuniecie miejsca zaplonu z sasiadow
-
 
 		/* Przesuniecie elipsy na wspó³rzêdne komórki */
 		for(Integer x : elipse.keySet())
@@ -248,7 +252,7 @@ public class Cell {
 				result.get(xn).add(coordinates.y - (y - yz));			// bo oœ y roœnie w dó³
 			}
 		}
-		
+				
 		return result;
 	}	
 	/**
@@ -271,12 +275,10 @@ public class Cell {
 			state = State.BURNT;
 			Terrain.treesOnFireRemove.add(this);
 		}
-		
-		for(Cell c : neighbors)
+		if(lifetime == Data.lifetime-1)
 		{
-			if(c.state == State.FUEL)
+			for(Cell c : neighbors)
 			{
-				
 				if(c.burnthreshold==0)
 				{
 					c.state = State.BURNING;
@@ -401,15 +403,15 @@ public class Cell {
 	
 	public static void main(String[] args)
 	{
-		Cell c = new Cell(new Cell.Coordinate(10, 10), State.FUEL, Wood.OAK, 10, 500, 10, 1);
+		Cell c = new Cell(new Cell.Coordinate(2, 2), State.FUEL, Wood.OAK, 10, 500, 10, 1);
 		c.wspolczynniki();
-				
-		System.out.println("Cell: x=10 y=10");
-		System.out.println("-----------");
-		System.out.println(c.elipse(0));
-		System.out.println(c.elipse(180));
-		System.out.println(c.elipse(Data.Direction.W.angle));
-		System.out.println(c.elipse(Data.Direction.NW.angle));
+		
+		System.out.println("Cell: x=2 y=2");
+		System.out.println("-----------");		
+		System.out.println("E: " + c.elipse(0));
+		System.out.println("W: " + c.elipse(180));
+		System.out.println("N: " + c.elipse(Data.Direction.N.angle));
+		System.out.println("S: " + c.elipse(Data.Direction.S.angle));
 		
 		
 	}

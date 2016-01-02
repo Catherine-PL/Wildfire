@@ -8,6 +8,7 @@ import java.util.TreeSet;
 
 import wildfire.simulation.Cell.State;
 import wildfire.simulation.Cell.Wood;
+import wildfire.simulation.Data.Direction;
 
 /**
  * Represents map section as cells. Main class for a simulation.
@@ -63,15 +64,15 @@ public class Terrain {
 					wood = Wood.NONE;
 				}																
 				
-				
-				
 				terrainState[y][x]=new Cell(new Cell.Coordinate(y, x), s, wood, life, heightS, heightT, 1);
 				
 				if(terrainState[y][x].getState() == Cell.State.FUEL)
 					l++;
 			}
 		
-		terrainState[size/2][size/2]=new Cell(new Cell.Coordinate(size/2, size/2), State.FUEL, Wood.OAK, life, heightS, heightT, 1);
+		System.out.println("Number of all cells: " + size*size);
+		System.out.println("Number of all trees: " + l);
+		System.out.println();
 		defineNeighbors(Data.winddir);		
 		generateElevation(relief);
 		
@@ -84,14 +85,17 @@ public class Terrain {
 		{
 			for (int x = 0; x<size; x++)
 			{
-				HashMap<Integer, TreeSet<Integer>> neighbors = terrainState[y][x].elipse(wind_direction.angle);
-				for(Integer xn : neighbors.keySet())
+				if(terrainState[y][x].getState() == Cell.State.FUEL)		// dla ka¿dego drzewa, a nie dla kamieni
 				{
-					for(Integer yn : neighbors.get(xn))
+					HashMap<Integer, TreeSet<Integer>> neighbors = terrainState[y][x].elipse(wind_direction.angle);					
+					for(Integer xn : neighbors.keySet())						
 					{
-						if(yn > 0 && yn < size && xn > 0 && xn < size)
-							terrainState[y][x].addNeighbor(terrainState[yn][xn]);
-					}
+						for(Integer yn : neighbors.get(xn))
+						{
+							if(yn >= 0 && yn < size && xn >= 0 && xn < size)
+								terrainState[y][x].addNeighbor(terrainState[yn][xn]);							
+						}
+					}					
 				}
 			}												
 		}														
@@ -99,8 +103,16 @@ public class Terrain {
 	public void ignite()														// losowe drzewo podpolane
 	{
 		
+		int s = size/2;
 		Cell choosenTree;
-		choosenTree= terrainState[size/2][size/2];
+		do
+		{
+			choosenTree= terrainState[s][s];			
+			s++;			
+		}
+		while (choosenTree.getState() != Cell.State.FUEL);
+		
+		System.out.println("--- " + choosenTree.getState() + " -- " + choosenTree.getCoordinates());
 		choosenTree.setState(Cell.State.BURNING);
 		treesOnFire.add(choosenTree);
 		
@@ -258,16 +270,31 @@ public class Terrain {
 		//Terrain t = new Terrain(size,100,50);		
 		
 		//System.out.println(t.terrainState[2][2].neighbors);
-		/*
+		
+		
+		// testowanie
+		Data.setDirection(Direction.S);
+		Terrain t = new Terrain(5,100,(int)(Data.percent_oak),50,60);
+		System.out.println(t.terrainState[2][2]);			
+		System.out.println(t.terrainState[2][2].elipse(Direction.S.angle));
 		while(!t.isAllBurnt())
 		{
 			System.out.println("-------------------------");		
 			System.out.println(t.toString());
+			
 			t.spreadFire();			
 		}
-		*/
-		Terrain t = new Terrain(60,50,(int)(Data.percent_oak),50,60);
-		System.out.println(t.terrainState[20][20].neighbors);
+		
+		System.out.println("-----------------------------");
+		
+		System.out.println("Cell: x=2 y=2");
+		System.out.println("-----------");		
+		System.out.println("E: " + t.terrainState[2][2].elipse(0));
+		System.out.println("W: " + t.terrainState[2][2].elipse(180));
+		System.out.println("N: " + t.terrainState[2][2].elipse(Data.Direction.N.angle));
+		System.out.println("S: " + t.terrainState[2][2].elipse(Data.Direction.S.angle));
+		
+		
 		
 	}
 		

@@ -70,6 +70,7 @@ public class Graphic implements ApplicationListener,  InputProcessor {
 	    }
 	}
    private Choice option;
+
    Terrain t = new Terrain(150,50,(int)(Data.percent_oak),4,60); //tutaj powinno byc od razu dane z ku¿ni
    	//rozmiar boku, prawdopodobienstwo ze cos rosnie, prawd. ze liœciaste, maks wysokosc, zroznicowanie terenu
    //TODO
@@ -103,7 +104,7 @@ public class Graphic implements ApplicationListener,  InputProcessor {
 	   texts[1]=new StringBuilder("10");
 	   texts[2]=new StringBuilder("5");
 	   texts[3]=new StringBuilder("4");
-	   texts[4]=new StringBuilder("NE");
+	   texts[4]=new StringBuilder("N");
 	   texts[5]=new StringBuilder("72");
 	   font = new BitmapFont();
 	   
@@ -328,6 +329,14 @@ public class Graphic implements ApplicationListener,  InputProcessor {
 				t.ignite();
 				option=Choice.GENERATE;
 			
+				
+				t = new Terrain(Integer.parseInt(texts[0].toString()),vegetationProbablitity,broadLeafTypeProbablitity,Integer.parseInt(texts[2].toString()),Integer.parseInt(texts[1].toString()) );
+				
+				
+				
+				
+				
+				
 				
 //TODO przepisanie zmiennych: z wpisanych do Data
 			}
