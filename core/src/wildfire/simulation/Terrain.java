@@ -230,21 +230,30 @@ public class Terrain {
 			int cY=cell.getCoordinates().y;
 			N=getNeighnoursOnFire(cX,cY);
 			spDist=cell.getSpottingDistance(1+N);
+			/////Normalizacja
+			if(spDist>=size)
+				spDist=spDist-(spDist/size-1)*size;
+			
 			skalar=randomGenerator.nextInt((int)spDist)+1;//+1 ¿eby nie dostawaæ 0 z random
 			newY=cY+Y*skalar;
 			newX=cX+X*skalar;
-			System.out.println("newX"+newX+",newY"+newY+"\t Xc"+cX+",Yc"+cY+"\tSKALAR"+skalar+"\t wiatr X"+X+" Y"+Y);
+			//System.out.println("newX"+newX+",newY"+newY+"\t Xc"+cX+",Yc"+cY+"\tSKALAR"+skalar+"\t wiatr X"+X+" Y"+Y);
 
-			if(X>0 && Y>0 && Y<size && X<size){
+			if(newX>0 && newY>0 && newY<size && newX<size){
 				newOnFire.add(Terrain.this.getCell( newY,newX));
+				System.out.println("newX"+newX+",newY "+newY +"ok");
+
 			}
 			else{
 				Terrain.outBorderFire++;
 			}
 		}
 		for(Cell cell:newOnFire){
-			if(cell.getState()==Cell.State.FUEL)
-				treesOnFireAdd.add(cell);	
+			if(cell.getState()==Cell.State.FUEL){
+				cell.setBurnthresholdToZero();
+				treesOnFireAdd.add(cell);
+
+			}
 			Terrain.spotingCount++;
 		}
 	}

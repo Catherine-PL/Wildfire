@@ -401,6 +401,10 @@ public class Cell {
 		return 0;
 	}
 	
+	void setBurnthresholdToZero(){
+		this.burnthreshold=0;
+	}
+	
 	public static void main(String[] args)
 	{
 		Cell c = new Cell(new Cell.Coordinate(2, 2), State.FUEL, Wood.OAK, 10, 500, 10, 1);
