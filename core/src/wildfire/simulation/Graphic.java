@@ -313,7 +313,7 @@ public class Graphic implements ApplicationListener,  InputProcessor {
 			if ((X>16) && (X<280)  &&(Y>screensizeY -600) && (Y<screensizeY -556))
 			{
 				option=Choice.GENERATE_EXAMPLE;
-				 t.ignite();
+				 //t.ignite();
 
 			}
 		   //jak wcisnie gdzies indziej not o automatycznie wpiswywanie gdzies indziej
@@ -326,11 +326,11 @@ public class Graphic implements ApplicationListener,  InputProcessor {
 				Data.setHumidity(Integer.parseInt(texts[5].toString()));
 				//ustawienie terenu wed³ug podanych w³aœciwoœci
 				t = new Terrain(Integer.parseInt(texts[0].toString()),vegetationProbablitity,broadLeafTypeProbablitity,Integer.parseInt(texts[2].toString()),Integer.parseInt(texts[1].toString()) );
-				t.ignite();
+				//t.ignite();
 				option=Choice.GENERATE;
 			
 				
-				t = new Terrain(Integer.parseInt(texts[0].toString()),vegetationProbablitity,broadLeafTypeProbablitity,Integer.parseInt(texts[2].toString()),Integer.parseInt(texts[1].toString()) );
+			//	t = new Terrain(Integer.parseInt(texts[0].toString()),vegetationProbablitity,broadLeafTypeProbablitity,Integer.parseInt(texts[2].toString()),Integer.parseInt(texts[1].toString()) );
 				
 				
 				

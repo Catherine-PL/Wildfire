@@ -86,7 +86,10 @@ public class Cell {
 	/* Rothermel zmienne do wektora wiatru i nachylenia */
 	//rhoB/rhoP
 	
-
+	public void setBurnThreshold(int value)
+	{
+		burnthreshold=value;
+	}
 
 	private double U=Data.wind;
 	
@@ -275,7 +278,23 @@ public class Cell {
 			state = State.BURNT;
 			Terrain.treesOnFireRemove.add(this);
 		}
-		if(lifetime == Data.lifetime-1)
+		for(Cell c : neighbors)
+		{
+			if(c.state == State.FUEL)
+			{
+				if(c.burnthreshold==0)
+				{
+					c.state = State.BURNING;
+					Terrain.treesOnFireAdd.add(c);
+				}
+				if(c.burnthreshold>0)
+				{
+					c.burnthreshold=c.burnthreshold-1;
+				}
+			}
+		}
+		
+		/*if(lifetime == maxlifetime-1)
 		{
 			for(Cell c : neighbors)
 			{
@@ -289,7 +308,7 @@ public class Cell {
 					c.burnthreshold=c.burnthreshold-1;
 				}
 			}
-		}
+		}*/
 		
 	}	
 	public String toString()

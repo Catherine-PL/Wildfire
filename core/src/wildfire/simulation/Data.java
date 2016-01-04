@@ -36,8 +36,8 @@ final public class Data {
 	static double fuel_humidity = 1.0;		
 	static double air_humidity = 15;								// dopisaæ przelicznik z air na fuel	
 
-	static int lifetime_oak =40;
-	static int lifetime_piny =15;
+	static int lifetime_oak =15;
+	static int lifetime_piny =6;
 	static int toburn_oak =25;
 	static int toburn_piny =11;				//ile ciepla trzeba dostarczyc zeby sie zapalilo (na podstawie gestosci i artykulow o drzewach)
 	static double q_ig = 250 + 1.116 * fuel_humidity;									// kJ / kg
