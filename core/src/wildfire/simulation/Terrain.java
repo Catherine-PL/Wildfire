@@ -102,7 +102,8 @@ public class Terrain {
 			}												
 		}														
 	}
-	public void ignite()														// losowe drzewo podpolane
+	//rozpoczêcie po¿aru - 9 œrodkowych drzew podpalanych
+	public void ignite()													
 	{
 		
 		Cell choosenTree;
