@@ -26,4 +26,4 @@
 \contentsline {section}{\numberline {4}Testy}{12}
 \contentsline {section}{Statystyki}{13}
 \contentsline {section}{\numberline {5}Wnioski}{13}
-\contentsline {section}{\numberline {6}Literatura}{13}
+\contentsline {section}{\numberline {6}Literatura}{14}

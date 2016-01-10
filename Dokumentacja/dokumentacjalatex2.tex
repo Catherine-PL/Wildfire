@@ -454,27 +454,43 @@
 	sd
 	\section{Wnioski}
 	\indent
+	
 		W tym rozdziale przedstawione zostaną różnego rodzaju wnioski z projektu.
 	\section*{Najważniejsze wnioski}
 	\indent
 	
-	sdsd
+		Symulacja przeprowadzona na danych z pożaru Kuźni Raciborskiej w 1992 roku daje oczekiwane rezultaty, zgodne z rzeczywistym przebiegiem początkowego etapu pożaru. Porównanie wyników naszej symulacji z późniejszymi etapami pożaru jest bezcelowe z powodu ingerencji straży pożarnej, czego nie modelowaliśmy w naszym projekcie. 
+		
+		Wybranym przez nas językiem programowania była Java, a pośrednim celem tego projektu było sprawdzenie, jak radzi sobie ten język z ogromną ilością obliczeń potrzebnych przy symulacji pożaru lasu z jednoczesnym wyświetlaniem modelu trójwymiarowego. Testy aplikacji wykazały, że - tak jak się spodziewaliśmy - złożoność tego języka wpływa negatywnie na szybkość obliczeń (szczególnie dobrze widać to przy starcie aplikacji, gdy obliczane są elipsy sąsiedztw dla drzew).\\
+		\\
+		TODO co jeszcze???????????????????????????????
+		???????????????????????????????
 	\section*{Usytuowanie modelu symulacji na tle istniejących rozwiązań}
 	\indent
 	
-	sdsd
+	Nasza symulacja bazuje na badaniach Rothermela sprzed prawie pięćdziesięciu lat, przez co śmiało można stwierdzić, że w porównaniu z nowoczesnymi systemami symulacji pożaru lasu (jak na przykład FARSITE) symulator nasz jest niedoskonały i wręcz prehistoryczny. \\
+	
+	Bazowanie się na matematycznym modelu rozchodzenia się linii pożaru Rorhermela a nie na nowszych modelach uzasadniamy dwoma argumentami. Po pierwsze, moc obliczeniowa naszych komputerów jest dość mała przez co tworzenie bardziej skomplikowanego modelu byłoby powolne, a korzystanie z aplikacji irytujące dla użytkownika. Po drugie, jest to nasz pierwszy projekt związany z symulacją jakiegoś rzeczywistego procesu; nasze doświadczenie i wiedza byłyby niewystarczające do ukończenia tak skomplikowanego projektu w zadanym czasie.
 	\section*{Najważniejsze wyzwania i trudności rozpatrywanego problemu}
 	\indent
 	
-	sdsd
+	Największym wyzwaniem symulacji pożaru lasu jest według nas wybranie skończonej liczby najbardziej znaczących czynników wpływających na przebieg pożaru. Jest to niezwykle problematyczne, ponieważ na przebieg pożaru ma wpływ bardzo dużo czynników, do tego trudno jest ocenić które mają największy wpływ na pożar. \\
+	
+	Kolejnym ważnym problemem jest walidacja symulacji i zdobycie danych o rzeczywistych pożarach - trudno jest znaleźć dobrze udokumentowane pożary, a przeprowadzenie kontrolowanego pożaru to mimo wszystko proces destrukcyjny i trudny do legalnego zrealizowania.
 	\section*{Największe sukcesy projektu}
 	\indent
 	
-	sdsd
+	Pierwszym sukcesem było szczęśliwe znalezienie dokładnych danych o pożarze Kuźni Raciborskiej - przez cały okres tworzenia projektu służyły nam one jako podstawa do sprawdzania poprawności naszej symulacji.\\
+	
+	Kolejne dwa sukcesy to: poprawne zaimplementowanie  matematycznego modelu rozchodzenia się linii pożaru Rorhermela i uwzględnienie w naszej symulacji zjawiska spottingu.\\
+	
+	Jako kolejny sukces uznajemy element niezwiązany ściśle z modelowaniem pożaru lasu, ale silnie wpływający na łatwość zrozumienia i sprawdzenia działania naszego programu - generowanie obracalnego, trójwymiarowego modelu prezentującego aktualny stan płonącego lasu.
+	
+	
 	\section*{Proponowane kierunki rozwoju}
 	\indent
 	
-	sdsd
+	Kierunek rozwoju tej symulacji jest dla nas oczywisty - w pierwszym kroku należałoby zamodelować rozprzestrzenianie się pożaru w koronach drzew. Następnie możnaby pokusić się o uwzględnienie w sumulacji nie tylko właściwości drzew, ale też ściółki. Należałoby też "zdynamizować" środowisko - uwzględnić fakt, że wiatr, wilgotność powietrza i inne czynniki zmieniają się w czasie.
 	\section{Literatura}
 	%\indent
 	

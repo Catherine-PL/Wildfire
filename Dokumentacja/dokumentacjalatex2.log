@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2015.5.24)  10 JAN 2016 20:59
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2015.5.24)  10 JAN 2016 22:01
 entering extended mode
 **dokumentacjalatex2.tex
 (D:\Zainstalowane\Eclipse\Wildfire\Dokumentacja\dokumentacjalatex2.tex
@@ -573,22 +573,46 @@ Package pdftex.def Info: generatetest.png used on input line 447.
 
 [11 <D:/Zainstalowane/Eclipse/Wildfire/Dokumentacja/kuzniatest.png>] [12 <D:/Za
 instalowane/Eclipse/Wildfire/Dokumentacja/generatetest.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 481--493
+Underfull \hbox (badness 10000) in paragraph at lines 464--468
 
  []
 
-[13] [14]
-(D:\Zainstalowane\Eclipse\Wildfire\Dokumentacja\dokumentacjalatex2.aux)
+
+Underfull \hbox (badness 10000) in paragraph at lines 471--472
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 477--478
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 483--484
+
+ []
+
+[13]
+Underfull \hbox (badness 10000) in paragraph at lines 485--486
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 497--509
+
+ []
+
+[14] (D:\Zainstalowane\Eclipse\Wildfire\Dokumentacja\dokumentacjalatex2.aux)
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 2.17pt have occurred.
 
  ) 
 Here is how much of TeX's memory you used:
- 2365 strings out of 493921
- 29209 string characters out of 3147285
+ 2366 strings out of 493921
+ 29223 string characters out of 3147285
  84353 words of memory out of 3000000
- 5612 multiletter control sequences out of 15000+200000
+ 5613 multiletter control sequences out of 15000+200000
  16680 words of font info for 38 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
  27i,7n,24p,841b,229s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -614,9 +638,9 @@ X/2.9/fonts/type1/public/pl/plr6.pfb><C:/Users/USER/AppData/Roaming/MiKTeX/2.9/
 fonts/type1/public/pl/plr8.pfb><C:/Users/USER/AppData/Roaming/MiKTeX/2.9/fonts/
 type1/public/pl/plsy10.pfb><C:/Users/USER/AppData/Roaming/MiKTeX/2.9/fonts/type
 1/public/pl/plsy8.pfb>
-Output written on dokumentacjalatex2.pdf (15 pages, 2394324 bytes).
+Output written on dokumentacjalatex2.pdf (15 pages, 2397688 bytes).
 PDF statistics:
- 463 PDF objects out of 1000 (max. 8388607)
+ 465 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  36 words of extra memory for PDF output out of 10000 (max. 10000000)
 
