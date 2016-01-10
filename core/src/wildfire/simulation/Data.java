@@ -34,12 +34,12 @@ final public class Data {
 	static double wind = 4;										// 0 - 30, 30> huragan
 	static double terrain = 1;
 	static double fuel_humidity = 1.0;		
-	static double air_humidity = 15;								// dopisaæ przelicznik z air na fuel	
+	static double air_humidity = 15;								
 
 	static int lifetime_oak =15;
 	static int lifetime_piny =6;
-	static int toburn_oak =25;
-	static int toburn_piny =11;				//ile ciepla trzeba dostarczyc zeby sie zapalilo (na podstawie gestosci i artykulow o drzewach)
+	static int toburn_oak =18+ (int)air_humidity/5 ;
+	static int toburn_piny =8+ (int)air_humidity/10;				//ile ciepla trzeba dostarczyc zeby sie zapalilo (na podstawie gestosci i artykulow o drzewach)
 	static double q_ig = 250 + 1.116 * fuel_humidity;									// kJ / kg
 	static double sav = 1600;									// powierzchnia do objêtnoœci; jednostka 1/ft
 	static double e = Math.exp(-138 / sav);										// efektywne ogrzewanie w przediale (0,1)
