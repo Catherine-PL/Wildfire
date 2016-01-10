@@ -151,10 +151,13 @@ public class Terrain {
 		{
 			t.spreadFire();
 		}	
+		
 		System.out.println("---treesOnFire: " + treesOnFire.size() + ", treesOnFireAdd: " + treesOnFireAdd.size()+ ", treesOnFireRemove: " + treesOnFireRemove.size());		
 		for(Cell temp : treesOnFireAdd)
 		{
 			treesOnFire.add(temp);
+			
+
 		}		
 		treesOnFireAdd.clear();
 		for(Cell temp : treesOnFireRemove)
@@ -163,7 +166,7 @@ public class Terrain {
 		}		
 		treesOnFireRemove.clear();
 		
-		spreadSpotting();
+		spreadSpotting2(treesOnFire);
 		System.out.println("Poza zasiêgiem "+Terrain.outBorderFire+" Spotting fire"+Terrain.spotingCount);
 	}	
 	public boolean isAllBurnt()
@@ -190,36 +193,86 @@ public class Terrain {
 		return txt;
 	}
 	
+	
+	public void spreadSpotting2(Set<Cell> paliSie){
+		int X=0,Y=0,N=0,kX=0,kY=0,skalar=0,nowyX,nowyY;		
+		double spottingDist=0;
+		Random ran=new Random();
+		
+		switch (Data.winddir){
+		
+		//case N :{ X=-1;Y=0; break;}
+		case N :{ X=0;Y=-1; break;}
+		//case E :{ X=0;Y=1; break;}
+		case E :{ X=1;Y=0; break;}
+		//case W : { X=0;Y=-1; break;}
+		case W : { X=-1;Y=0; break;}
+		//case S :{ X=1;Y=0; break;}
+		case S :{ X=0;Y=1; break;}
+		//case NE :{ X=-1;Y=1; break;}
+		case SW :{ X=-1;Y=1; break;}
+		case SE :{ X=1;Y=1; break;}
+		//case SW : { X=1;Y=-1; break;}
+		case NE : { X=1;Y=-1; break;}
+		case NW : { X=-1;Y=-1; break;}
+		}
+		
+		//for(Cell komorka: Terrain.this.treesOnFire){
+		for(int i=0;i<size;i++)
+		  for(int j=0;j<size;j++){
+			  Cell komorka=Terrain.this.getCell(j, i);
+			  if(komorka.getState()==Cell.State.BURNING){
+			//komórka dla której liczê
+			//kX=komorka.getCoordinates().x;
+				  kX=i;
+				  kY=j;
+			//kY=komorka.getCoordinates().y;
+			nowyX=kX;
+			nowyY=kY;
+			//obliczenie iloœci pal¹cych siê drzew w okolicy 3x3
+			N=getNeighnoursOnFire(kX,kY)+1;
+			//wyliczenie maksymalnego dystansu spotiingu z Albiniego
+			spottingDist=komorka.getSpottingDistance(N);
+			
+			//losowo wybiermay spotting distance z progiem górnym z Albiniego
+			skalar=ran.nextInt((int) spottingDist);
+			
+			if(X!=0)nowyX=kX+X*skalar;
+			if(Y!=0)nowyY=kY+Y*skalar;		
+			if(nowyY>0 && nowyY<100 && nowyX>0 && nowyX<100){
+			if(Terrain.this.terrainState[nowyY][nowyX].getState()==Cell.State.FUEL){
+				//Terrain.this.terrainState[nowyY][nowyX].setBurnthresholdToZero();
+				Terrain.this.terrainState[nowyY][nowyX].setState(Cell.State.BURNING);;
+				Terrain.spotingCount++;
+					}
+				}else Terrain.outBorderFire++;
+			}
+			
+			
+			
+			
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	}
+	
 	public void spreadSpotting(){
-		Set<Cell> onFire= Terrain.treesOnFire;
+		Set<Cell> onFire=Terrain.treesOnFire; //Terrain.treesOnFire;
 		Set<Cell> newOnFire=new HashSet<Cell>();
 		double spDist;
-		int N=0,Y=0,X=0;
-
-		int skalar=1;
+		int Y=0,X=0;
+	
 		switch (Data.winddir){
-		/*//poprzednie coœ idzie przeciwnie do wiatru
-		case N :{ X=0;Y=1; break;}
-		case NE :{ X=1;Y=1; break;}
-		case E :{ X=1;Y=0; break;}
-		case SE :{ X=1;Y=-1; break;}
-		case S :{ X=0;Y=-1; break;}
-		case SW : { X=-1;Y=-1; break;}
-		case W : { X=-1;Y=0; break;}
-		case NW : { X=-1;Y=1; break;}
-		
-					//próba naprawienia
-		case N :{ X=1;Y=0; break;}
-		case E :{ X=0;Y=-1; break;}
-		case W : { X=0;Y=1; break;}
-		case S :{ X=-1;Y=0; break;}
-
-		case SW :{ X=-1;Y=1; break;}
-		case NW :{ X=1;Y=1; break;}
-		case NE : { X=1;Y=-1; break;}
-		case SE : { X=-1;Y=-1; break;}
-		*/
-		//próba naprawienia2
+				//wg mnie to jest OK
 		case N :{ X=-1;Y=0; break;}
 		case E :{ X=0;Y=1; break;}
 		case W : { X=0;Y=-1; break;}
@@ -230,38 +283,51 @@ public class Terrain {
 		case SW : { X=1;Y=-1; break;}
 		case NW : { X=-1;Y=-1; break;}
 		}
-		for(Cell cell:onFire){
-			int newX=0,newY=0;
-			int cX=cell.getCoordinates().x;
+		
+		
+		for(Cell cell: onFire){
+			int skalar=1,N=0;
+			int newX=0,newY=0;				//inicjalizacja koordynatów 
+			int cX=cell.getCoordinates().x; //pobranie X pal¹cego siê drzewa
 			int cY=cell.getCoordinates().y;
-			N=getNeighnoursOnFire(cX,cY);
-			spDist=cell.getSpottingDistance(1+N);
+			N=getNeighnoursOnFire(cX,cY);	//obliczenie iloœci pal¹cych siê s¹siadów
+			spDist=cell.getSpottingDistance(1+N);//wyiaczane za wzoru Albiniego
 			/////Normalizacja
 			if(spDist>=size)
-				spDist=spDist-(spDist/size-1)*size;
+				spDist=spDist-(spDist/size-1)*size-2;
+			if(spDist<=size && spDist>=0){
+				skalar=randomGenerator.nextInt((int)spDist)+1;//+1 ¿eby nie dostawaæ 0 z random
+				//wspó³rzêdna komórki dla której wykonuje obliczenia + wspó³. kierunku wiartu* odleg³oœæ na któr¹ wyrzuci³o ga³¹Ÿ
+				if(Y!=0)newY=cY+Y*skalar;else newY=cY;
+				if(X!=0)newX=cX+X*skalar;else newX=cX;
+				//System.out.println("newX"+newX+",newY"+newY+"\t Xc"+cX+",Yc"+cY+"\tSKALAR"+skalar+"\t wiatr X"+X+" Y"+Y);
+	
+				if(newX>0 && newY>0 && newY<size && newX<size){
+					newOnFire.add(Terrain.this.getCell(newY,newX));
+					//System.out.println("X "+cX+"Y "+cY+"  \t newX"+newX+",newY "+newY +"ok"+"\t"+"X"+Terrain.this.getCell(newY,newX).getCoordinates().x+"Y"+Terrain.this.getCell( newY,newX).getCoordinates().y+" skalar"+skalar+" wiatr X "+X+" Y "+Y);
+	
+				}
+				else{
+					Terrain.outBorderFire++;
+				}
+			}
 			
-			skalar=randomGenerator.nextInt((int)spDist)+1;//+1 ¿eby nie dostawaæ 0 z random
-			newY=cY+Y*skalar;
-			newX=cX+X*skalar;
-			//System.out.println("newX"+newX+",newY"+newY+"\t Xc"+cX+",Yc"+cY+"\tSKALAR"+skalar+"\t wiatr X"+X+" Y"+Y);
-
-			if(newX>0 && newY>0 && newY<size && newX<size){
-				newOnFire.add(Terrain.this.getCell( newY,newX));
-				System.out.println("newX"+newX+",newY "+newY +"ok");
-
-			}
-			else{
-				Terrain.outBorderFire++;
-			}
 		}
-		for(Cell cell:newOnFire){
-			if(cell.getState()==Cell.State.FUEL){
-				cell.setBurnthresholdToZero();
-				treesOnFireAdd.add(cell);
-
+		for(Cell cello:newOnFire){
+			if(cello.getState()==Cell.State.FUEL && cello.getState()!=Cell.State.BURNT && cello.getState()!=Cell.State.BURNING){
+				//cello.setBurnthresholdToZero();
+				//treesOnFireAdd.add(cell);
+				cello.setBurnThreshold(0);
+				cello.setState(Cell.State.BURNING);				
+				//cello.setState(Cell.State.BURNING);
+				//Terrain.treesOnFire.add(cello);
+				System.out.println("Zapalam X,Y "+cello.getCoordinates().x+" ; "+cello.getCoordinates().y);
+				//Terrain.treesOnFireAdd.add(cello);
+				Terrain.spotingCount++;
 			}
-			Terrain.spotingCount++;
+			
 		}
+		System.out.println("Poza zasiêgiem "+Terrain.outBorderFire+" Spotting fire"+Terrain.spotingCount);
 	}
 	
 	private int getNeighnoursOnFire(int x,int y) {
