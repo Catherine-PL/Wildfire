@@ -308,7 +308,7 @@
 	\section{Proponowany model}
 	\indent
 	
-	Zastosowany w tej aplikacji model opiera się na modelu szybkości rozchodzenia się linii pożaru Rothermela, przy czym do reprezentacji lasu wykorzystana została sieć automatów komórkowych. Sąsiedztwo dla każdej komórki obliczane jest na podstawie wprowadzonych przez użytkownika danych i wykorzystuje zasadę Huygensa oraz opisaną poniżej zależność Andersona. \\
+	Zastosowany w tej aplikacji model opiera się na modelu szybkości rozchodzenia się linii pożaru Rothermela, przy czym do reprezentacji lasu wykorzystana została sieć automatów komórkowych. Sąsiedztwo dla każdej komórki obliczane jest na podstawie wprowadzonych przez użytkownika danych i wykorzystuje zasadę Huygensa oraz opisaną poniżej zależność Andersona. Przedstawiony model uwzględnia też zjawisko spottingu wykorzystując równania Albiniego z 1981r., które zostały opisane poniżej.\\
 	
 	\addcontentsline{toc}{section}{Cele modelu}
 	\section*{Cele modelu}
@@ -395,6 +395,22 @@
 		\item las gęsty (dense) - aż 80\% terenu jest zajęte przez drzewa,
 		
 	\end{itemize}
+	\section*{Spotting fire}
+	\indent
+	Terminem ''spotting fire'' określa się sytuację, gdy palące się kawałki drzew i roślinności niesione wiatrem tworzą nowe ogniska ognia przed czołem pożaru. Zjawisko to ma nieraz bardzo duży zasięg.  Ma możliwość pokonywania barier pożarowych, np. rzek, posiada ono znaczny wpływ na zachowanie i dynamizm pożaru.\\
+	
+	Do naszego modelu zastosowaliśmy równania Albiniego znalezione w książce ''Spot Fire Distance Equastions for Pocket Calculators'' Carolyn H. Chase, gdzie odsyłam po wyjaśnienie reszty zmiennych i metod ich obliczania.
+		
+		$$F=1.30x10^{-3}Uh^{*1/2}\left( 0.362+\left(\frac{z(0)}{h^{*}}\right)^{1/2}\frac{1}{2}ln\left(\frac{z(0)}{h^{*}}\right) \right)$$
+		
+		$$S=DX_6$$
+		$$X_0=A$$
+	$$	X_{n+1}=A-B(cos(\pi X_n-M\pi/2)-cos(M\pi/2))$$
+	$$	A=F/D$$
+	$$	B=H/(10\pi)		$$
+	F- to maksymalny zasięg w metrach spottingu na terenie płaskim\\
+	S- to maksymalny zasięg w metrach spotinngu na terenie nierównym\\	
+	
 	
 	%\addcontentsline{toc}{section}{$ f $ minmaxTransposition}
 	\section*{Diagramy}
@@ -533,7 +549,7 @@ Open broadleaf, Wind velocity=8 & 407 & 4967 & 8,19\% &66s \\ \hline
 	\textbf{Weise David R., Biging Gregory S.:} A Qualitative Comparison of Fire Spread Models Incorporating Wind and Slope Effects, Research Gate, October 2015\\
 	\textbf{Wells Gail:} The Rothermel Fire-Spread Study: Still Running Like a Champ, Fire Science Direct, Issue 2, March 2008\\
 	\textbf{Carolyn H. Chase:} Spot Fire Distance Equations for Pocket Calculators. USDA Forest Service, March 1981\\ 
-	
+	\textbf{Maciej Schroeder} Była Taka Akcja, 2012\\
 	
 	
 	
