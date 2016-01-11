@@ -24,6 +24,6 @@
 \contentsline {section}{\numberline {3}Wyniki symulacji}{9}
 \contentsline {section}{Por\IeC {\'o}wnanie wynik\IeC {\'o}w z danymi rzeczywistymi}{9}
 \contentsline {section}{\numberline {4}Testy}{12}
-\contentsline {section}{Statystyki}{13}
-\contentsline {section}{\numberline {5}Wnioski}{13}
-\contentsline {section}{\numberline {6}Literatura}{14}
+\contentsline {section}{Statystyki}{14}
+\contentsline {section}{\numberline {5}Wnioski}{15}
+\contentsline {section}{\numberline {6}Literatura}{16}
