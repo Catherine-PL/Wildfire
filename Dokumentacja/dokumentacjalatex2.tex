@@ -448,16 +448,37 @@
 		\raggedright{	\caption{Przykładowe wyniki naszej symulacji dla danych wpisanych przez użytkownika}}
 	\end{figure}
 	\begin{figure}[H]
-		\centerline{\includegraphics[scale=0.4]{MJscreen2}}
+		\centerline{\includegraphics[scale=0.4]{MJscreen3}}
 		\raggedright{	\caption{Przykładowe wyniki naszej symulacji dla danych wpisanych przez użytkownika}}
 	\end{figure}\begin{figure}[H]
-		\centerline{\includegraphics[scale=0.4]{MJscreen}}
+		\centerline{\includegraphics[scale=0.4]{MJscreen4}}
 		\raggedright{	\caption{Przykładowe wyniki naszej symulacji dla danych wpisanych przez użytkownika}}
 	\end{figure}
 	\addcontentsline{toc}{section}{Statystyki}
 	\section*{Statystyki}
 	\indent
-	sd
+	Specyfikacja komputera do testów:\\
+	\begin{itemize}
+	\item Windows 7 wersja 64bitowa
+	\item 8GB pamięci Ram
+	\item Proceror Intel Core i5-3230M CPU @ 2.60Ghz
+\end{itemize}		
+	
+	Porównanie wyników dla zmiennej siły wiatru i gęstości drzew.\\
+	Ilości drzew dotyczą jedynie planszy, na której operował program.\\
+	Dla area=100, roughness=10,maximum height=5,Wind direction=N,Humidity=72;\\
+	\begin{tabular}{|l|l|l|l|l|} \hline	
+Parametry	& Ilość spalonych drzew & Ilość drzew	& w \% &Czas symulacji \\ \hline
+Dense needleaf, Wind velocity=4 & 8944 & 8944 & 100\% &109s \\ \hline
+Dense needleaf, Wind velocity=8 & 1871 & 8962 & 20,87\% &192s\\ \hline
+Open needleaf, Wind velocity=4 & 5053 & 5056 & 99,94\%&297s\\ \hline
+Open needleaf, Wind velocity=8 & 704 & 5006 & 14,06\%& 62s\\ \hline
+Dense broadleaf, Wind velocity=4 & 8985 & 8985 & 100\% &393s\\ \hline %śmieszek mi podał że spaliło się 8986 :D
+Dense broadleaf, Wind velocity=8 & 1131 & 9026 & 12,53\%&81s\\ \hline
+Open broadleaf,Wind velocity=4 & 2456 & 4940 & 49,71\% &96s\\ \hline
+Open broadleaf, Wind velocity=8 & 407 & 4967 & 8,19\% &66s \\ \hline
+
+\end{tabular}\\[1cm]
 	\section{Wnioski}
 	\indent
 	
