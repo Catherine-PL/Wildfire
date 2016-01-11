@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2015.10.6)  11 JAN 2016 20:45
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2015.10.6)  11 JAN 2016 23:12
 entering extended mode
 **dokumentacjalatex2.tex
 
-(C:\Users\Dylek\Documents\Cathernine-PL\Wildfire\Dokumentacja\dokumentacjalatex
-2.tex
+("C:\Users\Dylek\Documents\New folder\Wildfire\Dokumentacja\dokumentacjalatex2.
+tex"
 LaTeX2e <2011/06/27>
 Babel <v3.8m> and hyphenation patterns for english, afrikaans, ancientgreek, ar
 abic, armenian, assamese, basque, bengali, bokmal, bulgarian, catalan, coptic, 
@@ -384,8 +384,8 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \@float@everytoks=\toks19
 \@floatcapt=\box28
 )
-(C:\Users\Dylek\Documents\Cathernine-PL\Wildfire\Dokumentacja\dokumentacjalatex
-2.aux)
+("C:\Users\Dylek\Documents\New folder\Wildfire\Dokumentacja\dokumentacjalatex2.
+aux")
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 24.
 LaTeX Font Info:    ... okay on input line 24.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 24.
@@ -421,8 +421,8 @@ LaTeX Font Warning: Font shape `T1/cmr/m/n' in size <38> not available
 [1
 
 {C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}]
-(C:\Users\Dylek\Documents\Cathernine-PL\Wildfire\Dokumentacja\dokumentacjalatex
-2.toc
+("C:\Users\Dylek\Documents\New folder\Wildfire\Dokumentacja\dokumentacjalatex2.
+toc"
 LaTeX Font Info:    Try loading font information for OML+plm on input line 6.
  ("C:\Program Files\MiKTeX 2.9\tex\latex\polski\omlplm.fd"
 File: omlplm.fd 2008/02/24 v1.2.1 Font defs for fonts PL (MW)
@@ -521,7 +521,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 327--328
 
  []
 
-[6 <C:/Users/Dylek/Documents/Cathernine-PL/Wildfire/Dokumentacja/automaty.jpg>]
+[6 <C:/Users/Dylek/Documents/New folder/Wildfire/Dokumentacja/automaty.jpg>]
 <GUI.jpg, id=42, 208.52907pt x 450.9347pt>
 File: GUI.jpg Graphic file (type jpg)
  <use GUI.jpg>
@@ -541,13 +541,13 @@ File: elipse.jpg Graphic file (type jpg)
  <use elipse.jpg>
 Package pdftex.def Info: elipse.jpg used on input line 371.
 (pdftex.def)             Requested size: 192.71951pt x 101.62943pt.
- [7 <C:/Users/Dylek/Documents/Cathernine-PL/Wildfire/Dokumentacja/GUI.jpg>]
+ [7 <C:/Users/Dylek/Documents/New folder/Wildfire/Dokumentacja/GUI.jpg>]
 <usecase1.jpg, id=48, 499.8675pt x 209.28188pt>
 File: usecase1.jpg Graphic file (type jpg)
  <use usecase1.jpg>
 Package pdftex.def Info: usecase1.jpg used on input line 404.
 (pdftex.def)             Requested size: 449.87659pt x 188.35193pt.
- [8 <C:/Users/Dylek/Documents/Cathernine-PL/Wildfire/Dokumentacja/elipse.jpg>]
+ [8 <C:/Users/Dylek/Documents/New folder/Wildfire/Dokumentacja/elipse.jpg>]
 <kuzniaR.jpg, id=52, 624.3325pt x 882.29625pt>
 File: kuzniaR.jpg Graphic file (type jpg)
  <use kuzniaR.jpg>
@@ -558,42 +558,37 @@ Underfull \hbox (badness 10000) in paragraph at lines 431--432
 
  []
 
-[9 <C:/Users/Dylek/Documents/Cathernine-PL/Wildfire/Dokumentacja/usecase1.jpg>]
-<kuzniatest.png, id=56, 990.70125pt x 1487.5575pt>
-File: kuzniatest.png Graphic file (type png)
- <use kuzniatest.png>
-Package pdftex.def Info: kuzniatest.png used on input line 439.
-(pdftex.def)             Requested size: 396.27348pt x 595.01247pt.
-
-[10 <C:/Users/Dylek/Documents/Cathernine-PL/Wildfire/Dokumentacja/kuzniaR.jpg>]
+[9 <C:/Users/Dylek/Documents/New folder/Wildfire/Dokumentacja/usecase1.jpg>]
+<kuznia5.png, id=56, 987.69pt x 1499.6025pt>
+File: kuznia5.png Graphic file (type png)
+ <use kuznia5.png>
+Package pdftex.def Info: kuznia5.png used on input line 439.
+(pdftex.def)             Requested size: 395.069pt x 599.83038pt.
+ [10 <C:/Users/Dylek/Documents/New folder/Wildfire/Dokumentacja/kuzniaR.jpg>]
 <generatetest.png, id=60, 991.45406pt x 1487.5575pt>
 File: generatetest.png Graphic file (type png)
  <use generatetest.png>
 Package pdftex.def Info: generatetest.png used on input line 447.
 (pdftex.def)             Requested size: 396.5746pt x 595.01247pt.
 
-<MJscreen3.png, id=61, 777.65532pt x 1421.31pt>
-File: MJscreen3.png Graphic file (type png)
- <use MJscreen3.png>
-Package pdftex.def Info: MJscreen3.png used on input line 451.
-(pdftex.def)             Requested size: 311.05661pt x 568.51393pt.
- [11 <C:/Users/Dylek/Documents/Cathernine-PL/Wildfire/Dokumentacja/kuzniatest.p
-ng>]
-<MJscreen4.png, id=65, 915.42pt x 1409.265pt>
-File: MJscreen4.png Graphic file (type png)
- <use MJscreen4.png>
-Package pdftex.def Info: MJscreen4.png used on input line 454.
-(pdftex.def)             Requested size: 366.16151pt x 563.69603pt.
- [12 <C:/Users/Dylek/Documents/Cathernine-PL/Wildfire/Dokumentacja/generatetest
-.png>]
-[13 <C:/Users/Dylek/Documents/Cathernine-PL/Wildfire/Dokumentacja/MJscreen3.png
->]
+<test1.png, id=61, 983.17313pt x 1392.70313pt>
+File: test1.png Graphic file (type png)
+ <use test1.png>
+Package pdftex.def Info: test1.png used on input line 451.
+(pdftex.def)             Requested size: 393.26228pt x 557.07138pt.
+ [11 <C:/Users/Dylek/Documents/New folder/Wildfire/Dokumentacja/kuznia5.png>]
+<test2.png, id=65, 986.18437pt x 1392.70313pt>
+File: test2.png Graphic file (type png)
+ <use test2.png>
+Package pdftex.def Info: test2.png used on input line 454.
+(pdftex.def)             Requested size: 394.46675pt x 557.07138pt.
+ [12 <C:/Users/Dylek/Documents/New folder/Wildfire/Dokumentacja/generatetest.pn
+g>] [13 <C:/Users/Dylek/Documents/New folder/Wildfire/Dokumentacja/test1.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 459--461
 
  []
 
-[14 <C:/Users/Dylek/Documents/Cathernine-PL/Wildfire/Dokumentacja/MJscreen4.png
->]
+[14 <C:/Users/Dylek/Documents/New folder/Wildfire/Dokumentacja/test2.png>]
 Overfull \hbox (28.0954pt too wide) in paragraph at lines 467--482
 [] 
  []
@@ -634,8 +629,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 523--536
  []
 
 [16] [17]
-(C:\Users\Dylek\Documents\Cathernine-PL\Wildfire\Dokumentacja\dokumentacjalatex
-2.aux)
+("C:\Users\Dylek\Documents\New folder\Wildfire\Dokumentacja\dokumentacjalatex2.
+aux")
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 2.17pt have occurred.
@@ -643,7 +638,7 @@ LaTeX Font Warning: Size substitutions with differences
  ) 
 Here is how much of TeX's memory you used:
  2376 strings out of 493921
- 29343 string characters out of 3147282
+ 29261 string characters out of 3147282
  86353 words of memory out of 3000000
  5620 multiletter control sequences out of 15000+200000
  16680 words of font info for 38 fonts, out of 3000000 for 9000
@@ -669,7 +664,7 @@ gram Files/MiKTeX 2.9/fonts/type1/public/pl/plr10.pfb><C:/Program Files/MiKTeX
 2.9/fonts/type1/public/pl/plr6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/pub
 lic/pl/plr8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/pl/plsy10.pfb><
 C:/Program Files/MiKTeX 2.9/fonts/type1/public/pl/plsy8.pfb>
-Output written on dokumentacjalatex2.pdf (18 pages, 4031107 bytes).
+Output written on dokumentacjalatex2.pdf (18 pages, 5445674 bytes).
 PDF statistics:
  479 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
