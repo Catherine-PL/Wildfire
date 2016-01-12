@@ -361,7 +361,7 @@
 	\section*{Dane wyjściowe}
 	\indent
 	
-	Wersja Beta, poza generowaniem symulacji, nigdzie nie zapisuje swoich wyników.
+	Aktualna wersja, poza generowaniem symulacji, nigdzie nie zapisuje swoich wyników.
 	
 	\addcontentsline{toc}{section}{Sąsiedztwo}
 	\section*{Sąsiedztwo}
@@ -382,7 +382,7 @@
 	$$ r^2 = \frac{a^2}{1-e^2cos^2\theta}  $$	
 	$$e^2 = \frac{b^2 - a^2}{b^2}$$
 	
-	Podczas procesu jej tworzenia, bardzo łatwo może zostać obrócona wraz z kierunkiem wiania wiatru poprzez przekazania kąta obrotu do funkcji trygonometrycznych. Następnie jest jej powierzchnia jest uwzględniana, a całość rzutowana na rzeczywiste położenie komórki i poddana dyskretyzacji. 
+	Podczas procesu jej tworzenia, bardzo łatwo może zostać obrócona wraz z kierunkiem wiania wiatru poprzez przekazania kąta obrotu do funkcji trygonometrycznych. Następnie jej powierzchnia jest uwzględniana, a całość rzutowana na rzeczywiste położenie komórki i poddana dyskretyzacji. 
 	\begin{figure}[H]
 		\centerline{\includegraphics[scale=1.0]{elipse}}
 		\raggedright{	\caption{Sąsiedztwo komórki generowane z elipsy}}
@@ -415,7 +415,7 @@
 	\indent
 	Terminem ''spotting fire'' określa się sytuację, gdy palące się kawałki drzew i roślinności niesione wiatrem tworzą nowe ogniska ognia przed czołem pożaru. Zjawisko to ma nieraz bardzo duży zasięg.  Ma możliwość pokonywania barier pożarowych, np. rzek, posiada ono znaczny wpływ na zachowanie i dynamizm pożaru.\\
 	
-	Do naszego modelu zastosowaliśmy równania Albiniego znalezione w książce ''Spot Fire Distance Equastions for Pocket Calculators'' Carolyn H. Chase, gdzie odsyłam po wyjaśnienie reszty zmiennych i metod ich obliczania.
+	Do naszego modelu zastosowaliśmy równania Albiniego przedstawione w publikacji ''Spot Fire Distance Equastions for Pocket Calculators'' Carolyn H. Chase, gdzie odsyłamy po wyjaśnienie reszty zmiennych i metod ich obliczania.
 		
 		$$F=1.30x10^{-3}Uh^{*1/2}\left( 0.362+\left(\frac{z(0)}{h^{*}}\right)^{1/2}\frac{1}{2}ln\left(\frac{z(0)}{h^{*}}\right) \right)$$
 		
@@ -424,8 +424,8 @@
 	$$	X_{n+1}=A-B(cos(\pi X_n-M\pi/2)-cos(M\pi/2))$$
 	$$	A=F/D$$
 	$$	B=H/(10\pi)		$$
-	F- to maksymalny zasięg w metrach spottingu na terenie płaskim\\
-	S- to maksymalny zasięg w metrach spotinngu na terenie nierównym\\	
+	F-  maksymalny zasięg w metrach spottingu na terenie płaskim\\
+	S-  maksymalny zasięg w metrach spotinngu na terenie nierównym\\	
 	
 	
 	%\addcontentsline{toc}{section}{$ f $ minmaxTransposition}
@@ -436,6 +436,11 @@
 		\centerline{\includegraphics[scale=0.9]{usecase1}}
 		\raggedright{	\caption{Diagram przypadków użycia}}
 	\end{figure}
+		\begin{figure}[H]
+			\centerline{\includegraphics[scale=0.7]{state}}
+			\raggedright{	\caption{Diagram stanów programu}}
+		\end{figure}
+	
 	\begin{figure}[H]
 		\centerline{\includegraphics[scale=0.9]{classDiagram}}
 		\raggedright{	\caption{Diagram klas z pominięciem biblioteki graficznej}}
@@ -519,6 +524,7 @@ Open broadleaf, Wind velocity=8 & 407 & 4967 & 8,19\% &66s \\ \hline
 	\indent
 	
 		W tym rozdziale przedstawione zostaną różnego rodzaju wnioski z projektu.
+	\addcontentsline{toc}{section}{Najważniejsze wnioski}
 	\section*{Najważniejsze wnioski}
 	\indent
 	
@@ -527,19 +533,21 @@ Open broadleaf, Wind velocity=8 & 407 & 4967 & 8,19\% &66s \\ \hline
 		Wybranym przez nas językiem programowania była Java, a pośrednim celem tego projektu było sprawdzenie, jak radzi sobie ten język z ogromną ilością obliczeń potrzebnych przy symulacji pożaru lasu z jednoczesnym wyświetlaniem modelu trójwymiarowego. Testy aplikacji wykazały, że - tak jak się spodziewaliśmy - złożoność tego języka wpływa negatywnie na szybkość obliczeń (szczególnie dobrze widać to przy starcie aplikacji, gdy obliczane są elipsy sąsiedztw dla drzew). Niemniej jednak, wykorzystanie wielowątkowości mogłoby poprawić rezultaty. 
 		
 		Symulacja pożaru lasu jest procesem skomplikowanym i bardzo kosztownym obliczeniowo. Wybór sposobu symulacji, również przekłada się na złożoność obliczeniową. W naszym projekcie zaimplementowany został empiryczny model, stosunkowo łatwy, w którym występuje tylko kilka funkcji obliczeniowych. Prędkość rozchodzenia się fali, czy też zapłon sąsiedztwa jest wyliczana empirycznie, zgodnie ze wzorem Rothermel'a, a nie za pomocą funkcji fizycznych dla każdego z drzew osobno.
-		
+			\addcontentsline{toc}{section}{Usytuowanie modelu symulacji na tle istniejących rozwiązań}
 	\section*{Usytuowanie modelu symulacji na tle istniejących rozwiązań}
 	\indent
 	
 	Nasza symulacja bazuje na badaniach Rothermela sprzed prawie pięćdziesięciu lat, przez co śmiało można stwierdzić, że w porównaniu z nowoczesnymi systemami symulacji pożaru lasu (jak na przykład FARSITE) symulator nasz jest niedoskonały i wręcz prehistoryczny. \\
 	
 	Bazowanie się na matematycznym modelu rozchodzenia się linii pożaru Rorhermela a nie na nowszych modelach uzasadniamy dwoma argumentami. Po pierwsze, moc obliczeniowa naszych komputerów jest dość mała przez co tworzenie bardziej skomplikowanego modelu byłoby powolne, a korzystanie z aplikacji irytujące dla użytkownika. Po drugie, jest to nasz pierwszy projekt związany z symulacją jakiegoś rzeczywistego procesu; nasze doświadczenie i wiedza byłyby niewystarczające do ukończenia tak skomplikowanego projektu w zadanym czasie.
+		\addcontentsline{toc}{section}{Najważniejsze wyzwania i trudności rozpatrywanego problemu}
 	\section*{Najważniejsze wyzwania i trudności rozpatrywanego problemu}
 	\indent
 	
 	Największym wyzwaniem symulacji pożaru lasu jest według nas wybranie skończonej liczby najbardziej znaczących czynników wpływających na przebieg pożaru. Jest to niezwykle problematyczne, ponieważ na przebieg pożaru ma wpływ bardzo dużo czynników, do tego trudno jest ocenić które mają największy wpływ na pożar. \\
 	
 	Kolejnym ważnym problemem jest walidacja symulacji i zdobycie danych o rzeczywistych pożarach - trudno jest znaleźć dobrze udokumentowane pożary, a przeprowadzenie kontrolowanego pożaru to mimo wszystko proces destrukcyjny i trudny do legalnego zrealizowania.
+		\addcontentsline{toc}{section}{Największe sukcesy projektu}
 	\section*{Największe sukcesy projektu}
 	\indent
 	
@@ -549,7 +557,7 @@ Open broadleaf, Wind velocity=8 & 407 & 4967 & 8,19\% &66s \\ \hline
 	
 	Jako kolejny sukces uznajemy element niezwiązany ściśle z modelowaniem pożaru lasu, ale silnie wpływający na łatwość zrozumienia i sprawdzenia działania naszego programu - generowanie obracalnego, trójwymiarowego modelu prezentującego aktualny stan płonącego lasu.
 	
-	
+		\addcontentsline{toc}{section}{Proponowane kierunki rozwoju}
 	\section*{Proponowane kierunki rozwoju}
 	\indent
 	

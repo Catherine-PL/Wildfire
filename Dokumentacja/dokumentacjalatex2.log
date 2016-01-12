@@ -1,13 +1,22 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2015.10.26)  12 JAN 2016 08:22
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2015.5.24)  12 JAN 2016 10:16
 entering extended mode
 **dokumentacjalatex2.tex
-(dokumentacjalatex2.tex
-LaTeX2e <2015/01/01> patch level 2
-Babel <3.9m> and hyphenation patterns for 69 languages loaded.
-(D:\MiKTeX\tex\latex\base\article.cls
-Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
-(D:\MiKTeX\tex\latex\base\size11.clo
-File: size11.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
+(D:\Zainstalowane\Eclipse\Wildfire\Dokumentacja\dokumentacjalatex2.tex
+LaTeX2e <2011/06/27>
+Babel <v3.8m> and hyphenation patterns for english, afrikaans, ancientgreek, ar
+abic, armenian, assamese, basque, bengali, bokmal, bulgarian, catalan, coptic, 
+croatian, czech, danish, dutch, esperanto, estonian, farsi, finnish, french, ga
+lician, german, german-x-2013-05-26, greek, gujarati, hindi, hungarian, iceland
+ic, indonesian, interlingua, irish, italian, kannada, kurmanji, latin, latvian,
+ lithuanian, malayalam, marathi, mongolian, mongolianlmc, monogreek, ngerman, n
+german-x-2013-05-26, nynorsk, oriya, panjabi, pinyin, polish, portuguese, roman
+ian, russian, sanskrit, serbian, slovak, slovenian, spanish, swedish, swissgerm
+an, tamil, telugu, turkish, turkmen, ukenglish, ukrainian, uppersorbian, usengl
+ishmax, welsh, loaded.
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\article.cls"
+Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\size11.clo"
+File: size11.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
 )
 \c@part=\count79
 \c@section=\count80
@@ -20,20 +29,21 @@ File: size11.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
 \abovecaptionskip=\skip41
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
-) (D:\MiKTeX\tex\generic\babel\babel.sty
-Package: babel 2015/08/03 3.9m The Babel package
+)
+("C:\Program Files\MiKTeX 2.9\tex\generic\babel\babel.sty"
+Package: babel 2008/07/08 v3.8m The Babel package
 
 *************************************
 * Local config file bblopts.cfg used
 *
-(D:\MiKTeX\tex\latex\00miktex\bblopts.cfg
+("C:\Program Files\MiKTeX 2.9\tex\latex\00miktex\bblopts.cfg"
 File: bblopts.cfg 2006/07/31 v1.0 MiKTeX 'babel' configuration
 )
-(D:\MiKTeX\tex\latex\babel-polish\polish.ldf
+("C:\Program Files\MiKTeX 2.9\tex\generic\babel\polish.ldf"
 Language: polish 2005/03/31 v1.2l Polish support from the babel system
 
-(D:\MiKTeX\tex\generic\babel\babel.def
-File: babel.def 2015/08/03 3.9m Babel common definitions
+("C:\Program Files\MiKTeX 2.9\tex\generic\babel\babel.def"
+File: babel.def 2008/07/08 v3.8m Babel common definitions
 \babel@savecnt=\count87
 \U@D=\dimen103
 )
@@ -43,18 +53,19 @@ Package babel Info: Making " an active character on input line 83.
 \pl@right=\dimen106
 \pl@temp=\dimen107
 ))
-(D:\MiKTeX\tex\latex\polski\polski.sty
+(C:\Users\USER\AppData\Roaming\MiKTeX\2.9\tex\latex\polski\polski.sty
 Package: polski 2008/02/24 v1.3.3 Polish language package
 
 Document language package `polski' v1.3.3 <2008/02/24>
-\l@nohyphenation=\language70
+\l@nohyphenation=\language69
    Switching to Polish text encoding and Polish maths fonts.
-(D:\MiKTeX\tex\latex\base\ot4enc.def
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\ot4enc.def"
 File: ot4enc.def 2005/09/27 v1.99g Standard LaTeX file
 )
 LaTeX Font Info:    Try loading font information for OT4+cmr on input line 346.
 
- (D:\MiKTeX\tex\latex\polski\ot4cmr.fd
+
+(C:\Users\USER\AppData\Roaming\MiKTeX\2.9\tex\latex\polski\ot4cmr.fd
 File: ot4cmr.fd 2008/02/24 v1.2.1 Font defs for fonts PL (MW)
 )
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
@@ -89,19 +100,20 @@ LaTeX Font Info:    Overwriting symbol font `letters' in version `bold'
 LaTeX Font Info:    Overwriting symbol font `symbols' in version `bold'
 (Font)                  OMS/cmsy/b/n --> OMS/plsy/b/n on input line 346.
 )
-(D:\MiKTeX\tex\latex\base\inputenc.sty
-Package: inputenc 2015/03/17 v1.2c Input encoding file
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\inputenc.sty"
+Package: inputenc 2008/03/30 v1.1d Input encoding file
 \inpenc@prehook=\toks14
 \inpenc@posthook=\toks15
- (D:\MiKTeX\tex\latex\base\utf8.def
-File: utf8.def 2015/06/27 v1.1n UTF-8 support for inputenc
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\utf8.def"
+File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
 Now handling font encoding OML ...
 ... no UTF-8 mapping file for font encoding OML
 Now handling font encoding T1 ...
 ... processing UTF-8 mapping file for font encoding T1
 
-(D:\MiKTeX\tex\latex\base\t1enc.dfu
-File: t1enc.dfu 2015/06/27 v1.1n UTF-8 support for inputenc
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\t1enc.dfu"
+File: t1enc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
    defining Unicode char U+00A1 (decimal 161)
    defining Unicode char U+00A3 (decimal 163)
    defining Unicode char U+00AB (decimal 171)
@@ -249,8 +261,9 @@ File: t1enc.dfu 2015/06/27 v1.1n UTF-8 support for inputenc
 )
 Now handling font encoding OT1 ...
 ... processing UTF-8 mapping file for font encoding OT1
- (D:\MiKTeX\tex\latex\base\ot1enc.dfu
-File: ot1enc.dfu 2015/06/27 v1.1n UTF-8 support for inputenc
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\ot1enc.dfu"
+File: ot1enc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
    defining Unicode char U+00A1 (decimal 161)
    defining Unicode char U+00A3 (decimal 163)
    defining Unicode char U+00B8 (decimal 184)
@@ -280,8 +293,8 @@ File: ot1enc.dfu 2015/06/27 v1.1n UTF-8 support for inputenc
 Now handling font encoding OMS ...
 ... processing UTF-8 mapping file for font encoding OMS
 
-(D:\MiKTeX\tex\latex\base\omsenc.dfu
-File: omsenc.dfu 2015/06/27 v1.1n UTF-8 support for inputenc
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\omsenc.dfu"
+File: omsenc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
    defining Unicode char U+00A7 (decimal 167)
    defining Unicode char U+00B6 (decimal 182)
    defining Unicode char U+00B7 (decimal 183)
@@ -305,38 +318,39 @@ Now handling font encoding OT4 ...
    defining Unicode char U+2026 (decimal 8230)
    defining Unicode char U+2122 (decimal 8482)
    defining Unicode char U+2423 (decimal 9251)
-)) (D:\MiKTeX\tex\latex\base\fontenc.sty
+))
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\fontenc.sty"
 Package: fontenc 2005/09/27 v1.99g Standard LaTeX package
 
-(D:\MiKTeX\tex\latex\base\t1enc.def
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\t1enc.def"
 File: t1enc.def 2005/09/27 v1.99g Standard LaTeX file
-LaTeX Font Info:    Redeclaring font encoding T1 on input line 48.
+LaTeX Font Info:    Redeclaring font encoding T1 on input line 43.
 ))
-(D:\MiKTeX\tex\latex\graphics\graphicx.sty
-Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphicx.sty"
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
 
-(D:\MiKTeX\tex\latex\graphics\keyval.sty
-Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\keyval.sty"
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
 \KV@toks@=\toks16
 )
-(D:\MiKTeX\tex\latex\graphics\graphics.sty
-Package: graphics 2014/10/28 v1.0p Standard LaTeX Graphics (DPC,SPQR)
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphics.sty"
+Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
 
-(D:\MiKTeX\tex\latex\graphics\trig.sty
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\trig.sty"
 Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
 )
-(D:\MiKTeX\tex\latex\00miktex\graphics.cfg
+("C:\Program Files\MiKTeX 2.9\tex\latex\00miktex\graphics.cfg"
 File: graphics.cfg 2007/01/18 v1.5 graphics configuration of teTeX/TeXLive
 )
-Package graphics Info: Driver file: pdftex.def on input line 94.
+Package graphics Info: Driver file: pdftex.def on input line 91.
 
-(D:\MiKTeX\tex\latex\pdftex-def\pdftex.def
+("C:\Program Files\MiKTeX 2.9\tex\latex\pdftex-def\pdftex.def"
 File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
 
-(D:\MiKTeX\tex\generic\oberdiek\infwarerr.sty
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\infwarerr.sty"
 Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
 )
-(D:\MiKTeX\tex\generic\oberdiek\ltxcmds.sty
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ltxcmds.sty"
 Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 )
 \Gread@gobject=\count88
@@ -344,7 +358,7 @@ Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 \Gin@req@height=\dimen108
 \Gin@req@width=\dimen109
 )
-(D:\MiKTeX\tex\latex\wrapfig\wrapfig.sty
+(C:\Users\USER\AppData\Roaming\MiKTeX\2.9\tex\latex\wrapfig\wrapfig.sty
 \wrapoverhang=\dimen110
 \WF@size=\dimen111
 \c@WF@wrappedlines=\count89
@@ -352,7 +366,7 @@ Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 \WF@everypar=\toks17
 Package: wrapfig 2003/01/31  v 3.6
 )
-(D:\MiKTeX\tex\latex\ltxmisc\anysize.sty
+("C:\Program Files\MiKTeX 2.9\tex\latex\ltxmisc\anysize.sty"
 Package: anysize 1994/08/13 1.0 Contributed LaTeX2e package
 
 Package: `anysize' 1.0 <1994/08/13>
@@ -360,14 +374,15 @@ Package: `anysize' 1.0 <1994/08/13>
 \@Rightmargin=\dimen113
 \@Topmargin=\dimen114
 \@Bottommargin=\dimen115
-) (D:\MiKTeX\tex\latex\float\float.sty
+) ("C:\Program Files\MiKTeX 2.9\tex\latex\float\float.sty"
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \c@float@type=\count90
 \float@exts=\toks18
 \float@box=\box27
 \@float@everytoks=\toks19
 \@floatcapt=\box28
-) (dokumentacjalatex2.aux)
+)
+(D:\Zainstalowane\Eclipse\Wildfire\Dokumentacja\dokumentacjalatex2.aux)
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 24.
 LaTeX Font Info:    ... okay on input line 24.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 24.
@@ -383,7 +398,7 @@ LaTeX Font Info:    ... okay on input line 24.
 LaTeX Font Info:    Checking defaults for OT4/cmr/m/n on input line 24.
 LaTeX Font Info:    ... okay on input line 24.
 
-(D:\MiKTeX\tex\context\base\supp-pdf.mkii
+(C:\Users\USER\AppData\Roaming\MiKTeX\2.9\tex\context\base\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count91
 \scratchdimen=\dimen116
@@ -403,19 +418,21 @@ LaTeX Font Warning: Font shape `T1/cmr/m/n' in size <38> not available
 
 [1
 
-{C:/Users/Sebastian/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
-(dokumentacjalatex2.toc
+{C:/Users/USER/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
+(D:\Zainstalowane\Eclipse\Wildfire\Dokumentacja\dokumentacjalatex2.toc
 LaTeX Font Info:    Try loading font information for OML+plm on input line 6.
- (D:\MiKTeX\tex\latex\polski\omlplm.fd
+
+(C:\Users\USER\AppData\Roaming\MiKTeX\2.9\tex\latex\polski\omlplm.fd
 File: omlplm.fd 2008/02/24 v1.2.1 Font defs for fonts PL (MW)
 )
 LaTeX Font Info:    Try loading font information for OMS+plsy on input line 6.
 
-(D:\MiKTeX\tex\latex\polski\omsplsy.fd
+(C:\Users\USER\AppData\Roaming\MiKTeX\2.9\tex\latex\polski\omsplsy.fd
 File: omsplsy.fd 2008/02/24 v1.2.1 Font defs for fonts PL (MW)
 )
 LaTeX Font Info:    Try loading font information for OMX+plex on input line 6.
- (D:\MiKTeX\tex\latex\polski\omxplex.fd
+
+(C:\Users\USER\AppData\Roaming\MiKTeX\2.9\tex\latex\polski\omxplex.fd
 File: omxplex.fd 2008/02/24 v1.2.1 Font defs for fonts PL (MW)
 )
 LaTeX Font Info:    External font `plex10' loaded for size
@@ -424,14 +441,15 @@ LaTeX Font Info:    External font `plex10' loaded for size
 (Font)              <8> on input line 6.
 LaTeX Font Info:    External font `plex10' loaded for size
 (Font)              <6> on input line 6.
-)
+ [1])
 \tf@toc=\write3
- [1]
+
+[2]
 Underfull \hbox (badness 10000) in paragraph at lines 146--155
 
  []
 
-[2]
+[3]
 Underfull \hbox (badness 10000) in paragraph at lines 166--167
 
  []
@@ -446,7 +464,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 202--212
 
  []
 
-[3]
+[4]
 Underfull \hbox (badness 10000) in paragraph at lines 219--227
 
  []
@@ -457,7 +475,7 @@ Overfull \hbox (1.98997pt too wide) in paragraph at lines 238--239
 -ther-mela i dla "do-brych pa-liw"przyjmuje
  []
 
-[4]
+[5]
 Underfull \hbox (badness 10000) in paragraph at lines 262--266
 
  []
@@ -477,7 +495,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 301--302
 
  []
 
-[5] <automaty.jpg, id=39, 423.08063pt x 386.94562pt>
+[6] <automaty.jpg, id=43, 423.08063pt x 386.94562pt>
 File: automaty.jpg Graphic file (type jpg)
  <use automaty.jpg>
 Package pdftex.def Info: automaty.jpg used on input line 305.
@@ -497,12 +515,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 326--327
 
  []
 
-[6 <./automaty.jpg>]
+[7 <D:/Zainstalowane/Eclipse/Wildfire/Dokumentacja/automaty.jpg>]
 Underfull \hbox (badness 10000) in paragraph at lines 328--329
 
  []
 
-<GUI.jpg, id=44, 208.52907pt x 450.9347pt>
+<GUI.jpg, id=47, 208.52907pt x 450.9347pt>
 File: GUI.jpg Graphic file (type jpg)
  <use GUI.jpg>
 Package pdftex.def Info: GUI.jpg used on input line 338.
@@ -510,22 +528,22 @@ Package pdftex.def Info: GUI.jpg used on input line 338.
 LaTeX Font Info:    Try loading font information for OMS+cmr on input line 346.
 
 
-(D:\MiKTeX\tex\latex\base\omscmr.fd
-File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\omscmr.fd"
+File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 346.
- [7 <./GUI.jpg>]
+ [8 <D:/Zainstalowane/Eclipse/Wildfire/Dokumentacja/GUI.jpg>]
 Underfull \hbox (badness 10000) in paragraph at lines 379--381
 
  []
 
-<elipse.jpg, id=49, 192.72pt x 101.62968pt>
+<elipse.jpg, id=52, 192.72pt x 101.62968pt>
 File: elipse.jpg Graphic file (type jpg)
  <use elipse.jpg>
 Package pdftex.def Info: elipse.jpg used on input line 387.
 (pdftex.def)             Requested size: 192.71951pt x 101.62943pt.
- [8]
+ [9]
 Underfull \hbox (badness 10000) in paragraph at lines 415--417
 
  []
@@ -535,129 +553,145 @@ Underfull \hbox (badness 10000) in paragraph at lines 426--429
 
  []
 
-[9 <./elipse.jpg>] <usecase1.jpg, id=56, 499.8675pt x 209.28188pt>
+[10 <D:/Zainstalowane/Eclipse/Wildfire/Dokumentacja/elipse.jpg>]
+<usecase1.jpg, id=59, 499.8675pt x 209.28188pt>
 File: usecase1.jpg Graphic file (type jpg)
-
-<use usecase1.jpg>
+ <use usecase1.jpg>
 Package pdftex.def Info: usecase1.jpg used on input line 436.
 (pdftex.def)             Requested size: 449.87659pt x 188.35193pt.
- <classDiagram.png, id=57, 604.50844pt x 563.85657pt>
-File: classDiagram.png Graphic file (type png)
 
-<use classDiagram.png>
-Package pdftex.def Info: classDiagram.png used on input line 440.
+<state.png, id=60, 637.63219pt x 411.78844pt>
+File: state.png Graphic file (type png)
+ <use state.png>
+Package pdftex.def Info: state.png used on input line 440.
+(pdftex.def)             Requested size: 446.3395pt x 288.24992pt.
+
+<classDiagram.png, id=61, 604.50844pt x 563.85657pt>
+File: classDiagram.png Graphic file (type png)
+ <use classDiagram.png>
+Package pdftex.def Info: classDiagram.png used on input line 445.
 (pdftex.def)             Requested size: 544.05257pt x 507.46623pt.
- [10 <./usecase1.jpg>] [11 <./classDiagram.png>]
-<kuzniaR.jpg, id=66, 624.3325pt x 882.29625pt>
+
+[11 <D:/Zainstalowane/Eclipse/Wildfire/Dokumentacja/usecase1.jpg> <D:/Zainstalo
+wane/Eclipse/Wildfire/Dokumentacja/state.png>] [12 <D:/Zainstalowane/Eclipse/Wi
+ldfire/Dokumentacja/classDiagram.png>]
+<kuzniaR.jpg, id=71, 624.3325pt x 882.29625pt>
 File: kuzniaR.jpg Graphic file (type jpg)
  <use kuzniaR.jpg>
-Package pdftex.def Info: kuzniaR.jpg used on input line 467.
+Package pdftex.def Info: kuzniaR.jpg used on input line 472.
 (pdftex.def)             Requested size: 437.02977pt x 617.60316pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 467--468
+Underfull \hbox (badness 10000) in paragraph at lines 472--473
 
  []
 
-[12] <kuznia5.png, id=71, 987.69pt x 1499.6025pt>
+[13] <kuznia5.png, id=75, 987.69pt x 1499.6025pt>
 File: kuznia5.png Graphic file (type png)
  <use kuznia5.png>
-Package pdftex.def Info: kuznia5.png used on input line 475.
+Package pdftex.def Info: kuznia5.png used on input line 480.
 (pdftex.def)             Requested size: 395.069pt x 599.83038pt.
- [13 <./kuzniaR.jpg>] <generatetest.png, id=75, 991.45406pt x 1487.5575pt>
+ [14 <D:/Zainstalowane/Eclipse/Wildfire/Dokumentacja/kuzniaR.jpg>]
+<generatetest.png, id=79, 991.45406pt x 1487.5575pt>
 File: generatetest.png Graphic file (type png)
-
-<use generatetest.png>
-Package pdftex.def Info: generatetest.png used on input line 483.
+ <use generatetest.png>
+Package pdftex.def Info: generatetest.png used on input line 488.
 (pdftex.def)             Requested size: 396.5746pt x 595.01247pt.
- <test1.png, id=76, 983.17313pt x 1392.70313pt>
-File: test1.png Graphic file (type png)
 
-<use test1.png>
-Package pdftex.def Info: test1.png used on input line 487.
+<test1.png, id=80, 983.17313pt x 1392.70313pt>
+File: test1.png Graphic file (type png)
+ <use test1.png>
+Package pdftex.def Info: test1.png used on input line 492.
 (pdftex.def)             Requested size: 393.26228pt x 557.07138pt.
- [14 <./kuznia5.png>]
-<test2.png, id=80, 986.18437pt x 1392.70313pt>
+ [15 <D:/Zainstalowane/Eclipse/Wildfire/Dokumentacja/kuznia5.png>]
+<test2.png, id=84, 986.18437pt x 1392.70313pt>
 File: test2.png Graphic file (type png)
  <use test2.png>
-Package pdftex.def Info: test2.png used on input line 490.
+Package pdftex.def Info: test2.png used on input line 495.
 (pdftex.def)             Requested size: 394.46675pt x 557.07138pt.
- [15 <./generatetest.png>] [16 <./test1.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 495--497
+ [16 <D:/Zainstalowane/Eclipse/Wildfire/Dokumentacja/generatetest.png>] [17 <D:
+/Zainstalowane/Eclipse/Wildfire/Dokumentacja/test1.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 500--502
 
  []
 
-[17 <./test2.png>]
-Overfull \hbox (28.0954pt too wide) in paragraph at lines 503--518
+[18 <D:/Zainstalowane/Eclipse/Wildfire/Dokumentacja/test2.png>]
+Overfull \hbox (28.0954pt too wide) in paragraph at lines 508--523
 [] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 503--518
+Underfull \hbox (badness 10000) in paragraph at lines 508--523
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 534--535
-
- []
-
-[18]
 Underfull \hbox (badness 10000) in paragraph at lines 540--541
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 546--547
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 548--549
+[19]
+Underfull \hbox (badness 10000) in paragraph at lines 547--548
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 559--573
+Underfull \hbox (badness 10000) in paragraph at lines 554--555
 
  []
 
-[19] [20] (dokumentacjalatex2.aux)
+
+Underfull \hbox (badness 10000) in paragraph at lines 556--557
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 567--581
+
+ []
+
+[20] [21]
+(D:\Zainstalowane\Eclipse\Wildfire\Dokumentacja\dokumentacjalatex2.aux)
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 2.17pt have occurred.
 
  ) 
 Here is how much of TeX's memory you used:
- 2487 strings out of 493673
- 29040 string characters out of 3151263
- 94926 words of memory out of 3000000
- 5783 multiletter control sequences out of 15000+200000
+ 2385 strings out of 493921
+ 29485 string characters out of 3147285
+ 86353 words of memory out of 3000000
+ 5628 multiletter control sequences out of 15000+200000
  16680 words of font info for 38 fonts, out of 3000000 for 9000
- 1025 hyphenation exceptions out of 8191
+ 841 hyphenation exceptions out of 8191
  27i,7n,24p,804b,229s stack positions out of 5000i,500n,10000p,200000b,50000s
-{D:/MiKTeX/fonts/enc/dvips/pl/plrm.enc}{D:/MiKTeX/fonts/enc/dvips/pl/plmi.enc
-}{D:/MiKTeX/fonts/enc/dvips/pl/plme.enc}{D:/MiKTeX/fonts/enc/dvips/pl/plms.enc}
- <C:\Users\Sebastian\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi60
-0\ecbx1200.pk> <C:\Users\Sebastian\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jkn
-appen\ec\dpi600\ecrm1095.pk> <C:\Users\Sebastian\AppData\Local\MiKTeX\2.9\fonts
-\pk\ljfour\jknappen\ec\dpi600\ecbx1095.pk> <C:\Users\Sebastian\AppData\Local\Mi
-KTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx1440.pk> <C:\Users\Sebastian\Ap
-pData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm1200.pk> <C:\User
-s\Sebastian\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm144
-0.pk> <C:\Users\Sebastian\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\
-dpi600\ecti1440.pk> <C:\Users\Sebastian\AppData\Local\MiKTeX\2.9\fonts\pk\ljfou
-r\jknappen\ec\dpi600\ecrm3583.pk> <C:\Users\Sebastian\AppData\Local\MiKTeX\2.9\
-fonts\pk\ljfour\jknappen\ec\dpi600\eccc1440.pk> <C:\Users\Sebastian\AppData\Loc
-al\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\eccc1728.pk><D:/MiKTeX/fonts/t
-ype1/public/amsfonts/cm/cmsy10.pfb><D:/MiKTeX/fonts/type1/public/pl/plex10.pfb>
-<D:/MiKTeX/fonts/type1/public/pl/plmi10.pfb><D:/MiKTeX/fonts/type1/public/pl/pl
-mi6.pfb><D:/MiKTeX/fonts/type1/public/pl/plmi8.pfb><D:/MiKTeX/fonts/type1/publi
-c/pl/plr10.pfb><D:/MiKTeX/fonts/type1/public/pl/plr6.pfb><D:/MiKTeX/fonts/type1
-/public/pl/plr8.pfb><D:/MiKTeX/fonts/type1/public/pl/plsy10.pfb><D:/MiKTeX/font
-s/type1/public/pl/plsy8.pfb>
-Output written on dokumentacjalatex2.pdf (21 pages, 5507504 bytes).
+{C:/Users/USER/AppData/Roaming/MiKTeX/2.9/fonts/enc/dvips/pl/plrm.enc}{C:/Use
+rs/USER/AppData/Roaming/MiKTeX/2.9/fonts/enc/dvips/pl/plmi.enc}{C:/Users/USER/A
+ppData/Roaming/MiKTeX/2.9/fonts/enc/dvips/pl/plme.enc}{C:/Users/USER/AppData/Ro
+aming/MiKTeX/2.9/fonts/enc/dvips/pl/plms.enc} <C:\Users\USER\AppData\Local\MiKT
+eX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx1200.pk> <C:\Users\USER\AppData\L
+ocal\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm1095.pk> <C:\Users\USER\
+AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx1095.pk> <C:\Us
+ers\USER\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx1440.p
+k> <C:\Users\USER\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\e
+crm1200.pk> <C:\Users\USER\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec
+\dpi600\ecrm1440.pk> <C:\Users\USER\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jk
+nappen\ec\dpi600\ecti1440.pk> <C:\Users\USER\AppData\Local\MiKTeX\2.9\fonts\pk\
+ljfour\jknappen\ec\dpi600\ecrm3583.pk> <C:\Users\USER\AppData\Local\MiKTeX\2.9\
+fonts\pk\ljfour\jknappen\ec\dpi600\eccc1440.pk> <C:\Users\USER\AppData\Local\Mi
+KTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\eccc1728.pk><C:/Program Files/MiKTe
+X 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/USER/AppData/Roaming/
+MiKTeX/2.9/fonts/type1/public/pl/plex10.pfb><C:/Users/USER/AppData/Roaming/MiKT
+eX/2.9/fonts/type1/public/pl/plmi10.pfb><C:/Users/USER/AppData/Roaming/MiKTeX/2
+.9/fonts/type1/public/pl/plmi6.pfb><C:/Users/USER/AppData/Roaming/MiKTeX/2.9/fo
+nts/type1/public/pl/plmi8.pfb><C:/Users/USER/AppData/Roaming/MiKTeX/2.9/fonts/t
+ype1/public/pl/plr10.pfb><C:/Users/USER/AppData/Roaming/MiKTeX/2.9/fonts/type1/
+public/pl/plr6.pfb><C:/Users/USER/AppData/Roaming/MiKTeX/2.9/fonts/type1/public
+/pl/plr8.pfb><C:/Users/USER/AppData/Roaming/MiKTeX/2.9/fonts/type1/public/pl/pl
+sy10.pfb><C:/Users/USER/AppData/Roaming/MiKTeX/2.9/fonts/type1/public/pl/plsy8.
+pfb>
+Output written on dokumentacjalatex2.pdf (22 pages, 5533556 bytes).
 PDF statistics:
- 502 PDF objects out of 1000 (max. 8388607)
+ 507 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 51 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 56 words of extra memory for PDF output out of 10000 (max. 10000000)
 
