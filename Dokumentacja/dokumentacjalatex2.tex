@@ -250,7 +250,8 @@
 	
 	\subsubsection{Współczynnik wiatru, nachylenia}
 	
-	Współczynniki te reprezentują dodatkowe strumienie ciepła, które tworzone są przez dodatkowe warunki jakimi są siła wiatru i ukształtowanie terenu. Są to bezwymiarowe współczynniki, wyliczane w sposób eksperymentalny.
+	Współczynniki te reprezentują dodatkowe strumienie ciepła, które tworzone są przez dodatkowe warunki jakimi są siła wiatru i ukształtowanie terenu. Są to bezwymiarowe współczynniki, wyliczane w sposób eksperymentalny. W naszej symulacji współczynniki zostały opisane wzorami: $$\phi_w = 5.275\beta^{-0.3}\tan\phi^{2}$$ 
+	$$\phi_w = C(3.281U)^B\left(\frac{\beta}{\beta_{op}}\right)^{-E}$$ gdzie $\beta$ jest współczynnikiem upakowania warstwy paliwowej, a $C,B,E$ są współczynnikami rozmiaru cząstki paliwa w warstwie paliowej. Dla prostoty, $\beta$ liczona jest jako iloraz średniej gęstości warstwy paliwa do gęstości cząstki warstwy paliwa. $\beta=\frac{\rho_{b}}{\rho_{p}}$ 
 	
 	\subsection{Rothermel - szybkość rozprzestrzeniania się pożaru w koronach}
 	\indent
@@ -366,7 +367,22 @@
 	\section*{Sąsiedztwo}
 	\indent	
 	
-	W naszym projekcie sąsiedztwo dla danego drzewa wyliczane jest na podstawie szybkości rozchodzenia się pożaru ze wzoru Rothermela, który to uwzględnia również współczynniki wiatru i nachylenia. Zastosowana została zasada Huygensa, która to zakłada, że każdy wierzchołek może być źródłem nowej eliptycznej ekspansji ognia. W związku z tym, sąsiedztwo komórki jest wygenerowane z elipsy. Jej kształt jest zgodny z zależnością odkrytą przez Andersona, przy założeniu, że pożar rośnie w kształcie pojedynczej elipsy, zgodnie z założeniami modelu Alexandra. Fizycznie tworzona jest ona w układzie współrzędnych biegunowych, gdzie zostaje obrócona wraz z kierunkiem wiania wiatru. Następnie jest ona rzutowana na rzeczywiste położenie komórki i poddana dyskretyzacji.
+	W naszym projekcie sąsiedztwo dla danego drzewa wyliczane jest na podstawie szybkości rozchodzenia się pożaru ze wzoru Rothermela, który to uwzględnia również współczynniki wiatru i nachylenia. Zastosowana została zasada Huygensa, która to zakłada, że każdy wierzchołek może być źródłem nowej eliptycznej ekspansji ognia. W związku z tym, sąsiedztwo komórki jest wygenerowane z elipsy. Jej kształt jest zgodny z zależnością odkrytą przez Andersona, przy założeniu, że pożar rośnie w kształcie pojedynczej elipsy, zgodnie z założeniami modelu Alexandra. Fizycznie tworzona jest ona w układzie współrzędnych biegunowych. Parametry tej elipsy zostały wyliczone z uwzględnieniem rozprzestrzeniania się pożaru powierzchni i koron. 
+	$$a = 0.5\frac{R+\frac{R}{HB}}{LB}$$	
+	$$b = \frac{R + \frac{R}{HB}}{2}$$
+	$$c = b - \frac{R}{HB}$$
+	gdzie:\\
+	$a$ - półoś mała \\	
+	$b$ - półoś wielka \\
+	$c$ - odległość od punktu zapłonu \\
+	$LB$ - stosunek długości do szerokości elipsy $$LB = 0.936e^{0.2566U}+0.461e^{-0.1548U}-0.397$$
+	$HB$ - stosunek tyłu do przodu elipsy $$HB = \frac{LB+(LB^2-1)^{\frac{1}{2}}}{LB-(LB^2-1)^{\frac{1}{2}}}$$
+	$U$ - prędkość wiatru \\	
+
+	$$ r^2 = \frac{a^2}{1-e^2cos^2\theta}  $$	
+	$$e^2 = \frac{b^2 - a^2}{b^2}$$
+	
+	Podczas procesu jej tworzenia, bardzo łatwo może zostać obrócona wraz z kierunkiem wiania wiatru poprzez przekazania kąta obrotu do funkcji trygonometrycznych. Następnie jest jej powierzchnia jest uwzględniana, a całość rzutowana na rzeczywiste położenie komórki i poddana dyskretyzacji. 
 	\begin{figure}[H]
 		\centerline{\includegraphics[scale=1.0]{elipse}}
 		\raggedright{	\caption{Sąsiedztwo komórki generowane z elipsy}}
@@ -419,6 +435,10 @@
 	\begin{figure}[H]
 		\centerline{\includegraphics[scale=0.9]{usecase1}}
 		\raggedright{	\caption{Diagram przypadków użycia}}
+	\end{figure}
+	\begin{figure}[H]
+		\centerline{\includegraphics[scale=0.9]{classDiagram}}
+		\raggedright{	\caption{Diagram klas z pominięciem biblioteki graficznej}}
 	\end{figure}
 	
 	\section{Wyniki symulacji}
@@ -504,10 +524,10 @@ Open broadleaf, Wind velocity=8 & 407 & 4967 & 8,19\% &66s \\ \hline
 	
 		Symulacja przeprowadzona na danych z pożaru Kuźni Raciborskiej w 1992 roku daje oczekiwane rezultaty, zgodne z rzeczywistym przebiegiem początkowego etapu pożaru. Porównanie wyników naszej symulacji z późniejszymi etapami pożaru jest bezcelowe z powodu ingerencji straży pożarnej, czego nie modelowaliśmy w naszym projekcie. 
 		
-		Wybranym przez nas językiem programowania była Java, a pośrednim celem tego projektu było sprawdzenie, jak radzi sobie ten język z ogromną ilością obliczeń potrzebnych przy symulacji pożaru lasu z jednoczesnym wyświetlaniem modelu trójwymiarowego. Testy aplikacji wykazały, że - tak jak się spodziewaliśmy - złożoność tego języka wpływa negatywnie na szybkość obliczeń (szczególnie dobrze widać to przy starcie aplikacji, gdy obliczane są elipsy sąsiedztw dla drzew).\\
-		\\
-		TODO co jeszcze???????????????????????????????
-		???????????????????????????????
+		Wybranym przez nas językiem programowania była Java, a pośrednim celem tego projektu było sprawdzenie, jak radzi sobie ten język z ogromną ilością obliczeń potrzebnych przy symulacji pożaru lasu z jednoczesnym wyświetlaniem modelu trójwymiarowego. Testy aplikacji wykazały, że - tak jak się spodziewaliśmy - złożoność tego języka wpływa negatywnie na szybkość obliczeń (szczególnie dobrze widać to przy starcie aplikacji, gdy obliczane są elipsy sąsiedztw dla drzew). Niemniej jednak, wykorzystanie wielowątkowości mogłoby poprawić rezultaty. 
+		
+		Symulacja pożaru lasu jest procesem skomplikowanym i bardzo kosztownym obliczeniowo. Wybór sposobu symulacji, również przekłada się na złożoność obliczeniową. W naszym projekcie zaimplementowany został empiryczny model, stosunkowo łatwy, w którym występuje tylko kilka funkcji obliczeniowych. Prędkość rozchodzenia się fali, czy też zapłon sąsiedztwa jest wyliczana empirycznie, zgodnie ze wzorem Rothermel'a, a nie za pomocą funkcji fizycznych dla każdego z drzew osobno.
+		
 	\section*{Usytuowanie modelu symulacji na tle istniejących rozwiązań}
 	\indent
 	

@@ -13,17 +13,17 @@
 \contentsline {subsection}{\numberline {1.3}Rothermel - szybko\IeC {\'s}\IeC {\'c} rozprzestrzeniania si\IeC {\k e} po\IeC {\.z}aru w koronach}{5}
 \contentsline {subsection}{\numberline {1.4}Van Wagner - intensywno\IeC {\'s}\IeC {\'c} linii ognia}{5}
 \contentsline {subsection}{\numberline {1.5}Cruz - szybko\IeC {\'s}\IeC {\'c} rozprzestrzeniania si\IeC {\k e} po\IeC {\.z}aru w koronach}{5}
-\contentsline {subsection}{\numberline {1.6}Modele oparte na automatach kom\IeC {\'o}rkowych}{5}
+\contentsline {subsection}{\numberline {1.6}Modele oparte na automatach kom\IeC {\'o}rkowych}{6}
 \contentsline {section}{\numberline {2}Proponowany model}{6}
 \contentsline {section}{Cele modelu}{6}
 \contentsline {section}{Uzasadnienie wyboru danych narz\IeC {\k e}dzi i technologii}{6}
 \contentsline {section}{Dane wej\IeC {\'s}ciowe}{7}
 \contentsline {section}{Dane wyj\IeC {\'s}ciowe}{7}
-\contentsline {section}{S\IeC {\k a}siedztwo}{7}
-\contentsline {section}{Modele paliwowe}{8}
-\contentsline {section}{\numberline {3}Wyniki symulacji}{9}
-\contentsline {section}{Por\IeC {\'o}wnanie wynik\IeC {\'o}w z danymi rzeczywistymi}{9}
-\contentsline {section}{\numberline {4}Testy}{12}
-\contentsline {section}{Statystyki}{14}
-\contentsline {section}{\numberline {5}Wnioski}{15}
-\contentsline {section}{\numberline {6}Literatura}{16}
+\contentsline {section}{S\IeC {\k a}siedztwo}{8}
+\contentsline {section}{Modele paliwowe}{9}
+\contentsline {section}{\numberline {3}Wyniki symulacji}{11}
+\contentsline {section}{Por\IeC {\'o}wnanie wynik\IeC {\'o}w z danymi rzeczywistymi}{11}
+\contentsline {section}{\numberline {4}Testy}{15}
+\contentsline {section}{Statystyki}{17}
+\contentsline {section}{\numberline {5}Wnioski}{18}
+\contentsline {section}{\numberline {6}Literatura}{20}
