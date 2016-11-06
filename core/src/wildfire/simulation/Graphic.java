@@ -31,7 +31,9 @@ import com.badlogic.gdx.graphics.g3d.utils.ModelBuilder;
 
 public class Graphic implements ApplicationListener,  InputProcessor {
 	
-	//do wyœwietlania GUI
+	//do wyswietlania GUI
+	private String assetsPath = "D:\\Biblioteka\\Studia\\VII semestr\\studio projektowe 2\\Wildfire\\core\\assets\\";
+
    private int screensizeY =620;
    private Texture treeGreen;	
    private Texture chosenDensity;	
@@ -47,7 +49,7 @@ public class Graphic implements ApplicationListener,  InputProcessor {
    private int vegetationProbablitity =50;
    
    
-   //do wyœwietlania modelu 3D
+   //do wyï¿½wietlania modelu 3D
    public ModelBatch modelBatch;
    public Model modelFree;
    public Model modelOak;
@@ -62,7 +64,7 @@ public class Graphic implements ApplicationListener,  InputProcessor {
    public PerspectiveCamera camera;
    private OrthographicCamera cam;
    private BitmapFont font;
-   private StringBuilder[] texts =new StringBuilder[6];	//bufor do  wpisywania atrybutów terenu
+   private StringBuilder[] texts =new StringBuilder[6];	//bufor do  wpisywania atrybutï¿½w terenu
    //enum do wyboru opcji zeby napisy byly wpisywane i wyswietlane odpowiednio
    public enum Choice {
 	    GENERATE(10), T_AREA(0), T_ROUGHNESS(1), T_MAXIMUM_HEIGHT(2), W_VELOCITY(3),W_DIRECTION(4),W_HUMIDITY (5),NONE(9), GENERATE_EXAMPLE(10) ;
@@ -77,8 +79,8 @@ public class Graphic implements ApplicationListener,  InputProcessor {
 	}
    private Choice option;
 
-   //dane z KuŸni - example
-   Terrain t = new Terrain(150,50,(int)(Data.percent_oak),4,60); //tutaj powinno byc od razu dane z ku¿ni
+   //dane z Kuï¿½ni - example
+   Terrain t = new Terrain(100,150,50,(int)(Data.percent_oak),4,60); //tutaj powinno byc od razu dane z kuï¿½ni
    
    @Override
    public void create() {
@@ -114,7 +116,7 @@ public class Graphic implements ApplicationListener,  InputProcessor {
       
       modelBatch = new ModelBatch();
 
-      //œrodowisko do cieni
+      //srodowisko do cieni
       environment = new Environment();
       environment.set(new ColorAttribute(ColorAttribute.AmbientLight, 0.4f, 0.4f, 0.4f, 1f));
       environment.add(new DirectionalLight().set(0.8f, 0.8f, 0.8f, -1f, -0.8f, -0.2f));
@@ -122,7 +124,7 @@ public class Graphic implements ApplicationListener,  InputProcessor {
       batch.setProjectionMatrix(cam.combined);
 
       
-	   //³adowanie tekstur i napisów pocz¹tkowych
+	   //ladowanie tekstur i napisow poczatkowych
 	   texts[0]=new StringBuilder("100");
 	   texts[1]=new StringBuilder("10");
 	   texts[2]=new StringBuilder("5");
@@ -131,24 +133,24 @@ public class Graphic implements ApplicationListener,  InputProcessor {
 	   texts[5]=new StringBuilder("72");
 	   font = new BitmapFont();
 	   
-	   background=new Texture("background.png"); 
-	   guitext=new Texture("text.png"); 
-	   treeRed = new Texture("treered.jpg"); 
-	   noTree= new Texture("notree.jpg"); 
-	   treeBlack = new Texture("treeblack.jpg"); 
-	   treeGreen = new Texture("treegreen.jpg"); 
-	   chosenDensity = new Texture("densityOpen.png"); 	
-	   chosenType = new Texture("typeMixed.png"); 
+	   background=new Texture(assetsPath + "background.png");
+	   guitext=new Texture(assetsPath + "text.png");
+	   treeRed = new Texture(assetsPath + "treered.jpg");
+	   noTree= new Texture(assetsPath + "notree.jpg");
+	   treeBlack = new Texture(assetsPath + "treeblack.jpg");
+	   treeGreen = new Texture(assetsPath + "treegreen.jpg");
+	   chosenDensity = new Texture(assetsPath + "densityOpen.png");
+	   chosenType = new Texture(assetsPath + "typeMixed.png");
       
 	   option=Choice.NONE;
-	   Gdx.input.setInputProcessor(this); //ustawienie odbierania klikniêæ myszy
+	   Gdx.input.setInputProcessor(this); //ustawienie odbierania klikniec myszy
       
    }
 
 
    @Override
    public void render() {
-	   //kolor t³a miêdzy renderami
+	   //kolor tï¿½a miï¿½dzy renderami
       Gdx.gl.glClearColor(0.84f, 0.90f, 0.44f, 1); 
       Gdx.gl.glViewport(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
       Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT);
@@ -160,7 +162,7 @@ public class Graphic implements ApplicationListener,  InputProcessor {
       }
    }
 
-   //metoda odpowiedzialna za wyœwietlanie menu
+   //metoda odpowiedzialna za wywietlanie menu
    public void batchMenu()
    {
 	   batch.begin();
@@ -177,16 +179,16 @@ public class Graphic implements ApplicationListener,  InputProcessor {
 	   batch.end();  
    }
    
-   //metoda odpowiedzialna za wyœwietlanie modelu lasu
+   //metoda odpowiedzialna za wywietlanie modelu lasu
    public void batchSimulation3D()
    {
 	   Gdx.input.setInputProcessor(camController);
  	   camController.update();
  	   camera.update();
        modelBatch.begin(camera);
-	   for (int y = 0; y<t.size; y++)
+	   for (int y = 0; y<t.sizeY; y++)
 			{
-				for (int x = 0; x<t.size; x++)
+				for (int x = 0; x<t.sizeX; x++)
 				{
 					//budowanie podstawe ziemii
 					for (int z = -2; z<t.getCell(y, x).getElevation()-1; z++)
@@ -222,18 +224,18 @@ public class Graphic implements ApplicationListener,  InputProcessor {
 				}
 			}
 	   modelBatch.end();  
-	   //przejœcie do kolejnego kroku po¿aru
+	   //przejcie do kolejnego kroku poaru
 	   if (t.isAllBurnt() == false) t.spreadFire();   
    }
  
-   //metoda do wyœwietlania symulacji w 2D. Aktualnie nieu¿ywana - przeszliœmy na model trójwymiarowy
+   //metoda do wywietlania symulacji w 2D. Aktualnie nieu - przeszliy na model trjwymiarowy
    public void batchSimulation()
    {
 	   batch.begin();
 	   int margin=290;
-	      for (int y = 0; y<t.size; y++)
+	      for (int y = 0; y<t.sizeY; y++)
 			{
-				for (int x = 0; x<t.size; x++)
+				for (int x = 0; x<t.sizeX; x++)
 				{
 					if(t.getCell(y, x).getState() == Cell.State.FREE)
 					{
@@ -257,7 +259,7 @@ public class Graphic implements ApplicationListener,  InputProcessor {
 	   if (t.isAllBurnt() == false) t.spreadFire();
    }
    
-	//obs³uga wpisywania znaków w pola w GUI
+	//obsuga wpisywania znakw w pola w GUI
    @Override
    public boolean keyDown(int keycode) {
 	   if  ((option.getValue()!=Choice.GENERATE.getValue())&&(option.getValue()!=Choice.NONE.getValue()))
@@ -279,13 +281,13 @@ public class Graphic implements ApplicationListener,  InputProcessor {
        return false;
    }
 
-   //obs³uga klikniêæ mysz¹ w GUI
+   //obsuga klikni mysz w GUI
    @Override
    public boolean touchDown(int screenX, int screenY, int pointer, int button) {
 	   if ((button == Buttons.LEFT) && (option.getValue()!=Choice.GENERATE.getValue())){
 		   int X= screenX;
 			int Y=screensizeY - screenY;
-			//wybrana opcja to Generate example - uruchamiamy przyk³ad z KuŸni:
+			//wybrana opcja to Generate example - uruchamiamy przykï¿½ad z Kuï¿½ni:
 			if ((X>16) && (X<280)  &&(Y>screensizeY -600) && (Y<screensizeY -556))
 			{
 				option=Choice.GENERATE_EXAMPLE;
@@ -293,12 +295,12 @@ public class Graphic implements ApplicationListener,  InputProcessor {
 		   //wybrana opcja to Generate:
 			if ((X>16) && (X<280)  &&(Y>screensizeY -544) && (Y<screensizeY -500))
 			{
-				//ustawienie danych Data wed³ug podanych w³aœciwoœc
+				//ustawienie danych Data wedï¿½ug podanych wï¿½aï¿½ciwoï¿½c
 				Data.setWind(Double.parseDouble(texts[3].toString()));
 				Data.setDirection(Direction.valueOf(texts[4].toString()));
 				Data.setHumidity(Integer.parseInt(texts[5].toString()));
-				//ustawienie terenu wed³ug podanych w³aœciwoœci
-				t = new Terrain(Integer.parseInt(texts[0].toString()),vegetationProbablitity,broadLeafTypeProbablitity,Integer.parseInt(texts[2].toString()),Integer.parseInt(texts[1].toString()) );
+				//ustawienie terenu wedï¿½ug podanych wï¿½aï¿½ciwoï¿½ci
+				t = new Terrain(Integer.parseInt(texts[0].toString()),100,vegetationProbablitity,broadLeafTypeProbablitity,Integer.parseInt(texts[2].toString()),Integer.parseInt(texts[1].toString()) );
 				option=Choice.GENERATE;
 			}
 			//wybor opcji vegetation
@@ -306,18 +308,18 @@ public class Graphic implements ApplicationListener,  InputProcessor {
 			{
 				if ((X>33) && (X<85))
 				{	
-					 chosenDensity = new Texture("densitySparse.png"); 	
+					 chosenDensity = new Texture(assetsPath + "densitySparse.png");
 					 vegetationProbablitity=50;
 					 
 				}
 				if ((X>136) && (X<177))
 				{	
-					 chosenDensity = new Texture("densityOpen.png"); 
+					 chosenDensity = new Texture(assetsPath + "densityOpen.png");
 					 vegetationProbablitity=20;
 				}
 				if ((X>212) && (X<255))
 				{	
-					 chosenDensity = new Texture("densityDense.png");
+					 chosenDensity = new Texture(assetsPath + "densityDense.png");
 					 vegetationProbablitity=90;
 				}
 			}
@@ -325,21 +327,21 @@ public class Graphic implements ApplicationListener,  InputProcessor {
 			{
 				if ((X>33) && (X<114))
 				{	
-					  chosenType = new Texture("typeNeedleleaf.png"); 
+					  chosenType = new Texture(assetsPath + "typeNeedleleaf.png");
 					  broadLeafTypeProbablitity=15;
 				}
 				if ((X>127) && (X<198))
 				{	
-					  chosenType = new Texture("typeBroadleaf.png"); 
+					  chosenType = new Texture(assetsPath + "typeBroadleaf.png");
 					  broadLeafTypeProbablitity=85;
 				}
 				if ((X>210) && (X<255))
 				{	
-					  chosenType = new Texture("typeMixed.png"); 
+					  chosenType = new Texture(assetsPath + "typeMixed.png");
 					  broadLeafTypeProbablitity=50;
 				}
 			}
-		   // wpisywanie w pozosta³e pola - prze³¹czenie kontekstu
+		   // wpisywanie w pozostaï¿½e pola - przeï¿½ï¿½czenie kontekstu
 			if ((X>185) && (X<263))
 			{				
 				if ((Y<screensizeY -60) && (Y>screensizeY -80) )
