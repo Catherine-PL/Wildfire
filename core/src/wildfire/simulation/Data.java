@@ -28,9 +28,7 @@ final public class Data {
 
 	
 	static int lifetime = 5;
-
 	
-
 	static double wind = 4;										// 0 - 30, 30> huragan
 	static double terrain = 1;
 	static double fuel_humidity = 1.0;		

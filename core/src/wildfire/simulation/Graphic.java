@@ -34,6 +34,8 @@ public class Graphic implements ApplicationListener,  InputProcessor {
 	//do wyswietlania GUI
 	private String assetsPath = "D:\\Biblioteka\\Studia\\VII semestr\\studio projektowe 2\\Wildfire\\core\\assets\\";
 
+	private int simulationSpeed = 0;
+	private int speedCounter = 0;
    private int screensizeY =620;
    private Texture treeGreen;	
    private Texture chosenDensity;	
@@ -52,6 +54,7 @@ public class Graphic implements ApplicationListener,  InputProcessor {
    //do wy�wietlania modelu 3D
    public ModelBatch modelBatch;
    public Model modelFree;
+	public Model modelNorth;
    public Model modelOak;
    public Model modelPiny;
    public Model modelBurning;
@@ -85,8 +88,11 @@ public class Graphic implements ApplicationListener,  InputProcessor {
    @Override
    public void create() {
 	   //do 3D
-	   
+
 	   ModelBuilder modelBuilder = new ModelBuilder();
+	   modelNorth = modelBuilder.createBox(5f, 3f, 5f,
+			   new Material(ColorAttribute.createDiffuse(Color.BLACK)),
+			   Usage.Position | Usage.Normal);
        modelFree = modelBuilder.createBox(3f, 1f, 3f, 
                new Material(ColorAttribute.createDiffuse(Color.BROWN)),
                Usage.Position | Usage.Normal);
@@ -144,6 +150,8 @@ public class Graphic implements ApplicationListener,  InputProcessor {
       
 	   option=Choice.NONE;
 	   Gdx.input.setInputProcessor(this); //ustawienie odbierania klikniec myszy
+
+
       
    }
 
@@ -158,7 +166,7 @@ public class Graphic implements ApplicationListener,  InputProcessor {
       batchMenu();
       if (option.getValue() ==Choice.GENERATE.getValue())
       {
-    	  batchSimulation3D();
+		  batchSimulation3D();
       }
    }
 
@@ -186,6 +194,10 @@ public class Graphic implements ApplicationListener,  InputProcessor {
  	   camController.update();
  	   camera.update();
        modelBatch.begin(camera);
+
+	   instance2 = new ModelInstance(modelNorth, 3*t.sizeY -70, 0, 3*t.sizeX/2);
+	   modelBatch.render(instance2, environment);
+
 	   for (int y = 0; y<t.sizeY; y++)
 			{
 				for (int x = 0; x<t.sizeX; x++)
@@ -225,7 +237,12 @@ public class Graphic implements ApplicationListener,  InputProcessor {
 			}
 	   modelBatch.end();  
 	   //przejcie do kolejnego kroku poaru
-	   if (t.isAllBurnt() == false) t.spreadFire();   
+	   if ((speedCounter >= 5*simulationSpeed) && t.isAllBurnt() == false) {
+		   speedCounter = 0;
+		   t.spreadFire();
+	   } else {
+		   speedCounter++;
+	   }
    }
  
    //metoda do wywietlania symulacji w 2D. Aktualnie nieu - przeszliy na model trjwymiarowy
@@ -256,7 +273,9 @@ public class Graphic implements ApplicationListener,  InputProcessor {
 				}
 			}
 	   batch.end();  
-	   if (t.isAllBurnt() == false) t.spreadFire();
+	   if (t.isAllBurnt() == false) {
+		   t.spreadFire();
+	   }
    }
    
 	//obsuga wpisywania znakw w pola w GUI
