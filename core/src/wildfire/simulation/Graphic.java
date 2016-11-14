@@ -28,6 +28,9 @@ import com.badlogic.gdx.graphics.g3d.environment.DirectionalLight;
 import com.badlogic.gdx.graphics.g3d.utils.CameraInputController;
 import com.badlogic.gdx.graphics.g3d.utils.ModelBuilder;
 
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
+
 
 public class Graphic implements ApplicationListener,  InputProcessor {
 	
@@ -37,6 +40,7 @@ public class Graphic implements ApplicationListener,  InputProcessor {
 	private int simulationSpeed = 0;
 	private int speedCounter = 0;
    private int screensizeY =620;
+	private long simulationTime = 0;
    private Texture treeGreen;	
    private Texture chosenDensity;	
    private Texture chosenType;
@@ -44,10 +48,11 @@ public class Graphic implements ApplicationListener,  InputProcessor {
    private Texture noTree;
    private Texture background;
    private Texture guitext;
-   private Texture treeBlack;	
-   
+   private Texture treeBlack;
+	private Texture report;
 
-   private int broadLeafTypeProbablitity =50;
+
+	private int broadLeafTypeProbablitity =50;
    private int vegetationProbablitity =50;
    
    
@@ -70,7 +75,7 @@ public class Graphic implements ApplicationListener,  InputProcessor {
    private StringBuilder[] texts =new StringBuilder[6];	//bufor do  wpisywania atrybut�w terenu
    //enum do wyboru opcji zeby napisy byly wpisywane i wyswietlane odpowiednio
    public enum Choice {
-	    GENERATE(10), T_AREA(0), T_ROUGHNESS(1), T_MAXIMUM_HEIGHT(2), W_VELOCITY(3),W_DIRECTION(4),W_HUMIDITY (5),NONE(9), GENERATE_EXAMPLE(10) ;
+	    GENERATE(10), T_AREA(0), T_ROUGHNESS(1), T_MAXIMUM_HEIGHT(2), W_VELOCITY(3),W_DIRECTION(4),W_HUMIDITY (5),NONE(9), GENERATE_EXAMPLE(10), FINISHED(11) ;
 	    private final int value;
 	    
 	    private Choice(int value) {
@@ -147,7 +152,8 @@ public class Graphic implements ApplicationListener,  InputProcessor {
 	   treeGreen = new Texture(assetsPath + "treegreen.jpg");
 	   chosenDensity = new Texture(assetsPath + "densityOpen.png");
 	   chosenType = new Texture(assetsPath + "typeMixed.png");
-      
+       report = new Texture(assetsPath + "report.png");
+
 	   option=Choice.NONE;
 	   Gdx.input.setInputProcessor(this); //ustawienie odbierania klikniec myszy
 
@@ -164,11 +170,29 @@ public class Graphic implements ApplicationListener,  InputProcessor {
       Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT);
       Gdx.input.setInputProcessor(this);
       batchMenu();
-      if (option.getValue() ==Choice.GENERATE.getValue())
+      if (option.getValue() == Choice.GENERATE.getValue())
       {
 		  batchSimulation3D();
       }
+	   if (option.getValue() == Choice.FINISHED.getValue()) {
+		   batchSimulation3D();
+		   batchReport();
+		   //TODOmk,,
+	   }
    }
+
+	public void batchReport()
+	{
+		batch.begin();
+		batch.draw(report, 460, 60);
+		font.draw(batch, "SIMULATION FINISHED", 480, 210);
+		font.draw(batch, "Simulation time: "+ simulationTime + " seconds", 480, 180);
+		font.draw(batch, "Trees total: " + t.fuelCount , 480, 150);
+		font.draw(batch, "Trees alive: "+ (t.fuelCount - t.getFuelBurntCount()) +", which is " + displayDouble(t.getFuelAlivePercent()) + " percent of total", 480, 120);
+		font.draw(batch, "Trees burnt: "+ t.getFuelBurntCount() +", which is " + displayDouble(t.getFuelBurntPercent()) + " percent of total", 480, 90);
+		//trees total, trees burnt, trees alive, total time
+		batch.end();
+	}
 
    //metoda odpowiedzialna za wywietlanie menu
    public void batchMenu()
@@ -190,6 +214,7 @@ public class Graphic implements ApplicationListener,  InputProcessor {
    //metoda odpowiedzialna za wywietlanie modelu lasu
    public void batchSimulation3D()
    {
+	   long simulationStart = System.nanoTime();
 	   Gdx.input.setInputProcessor(camController);
  	   camController.update();
  	   camera.update();
@@ -237,7 +262,12 @@ public class Graphic implements ApplicationListener,  InputProcessor {
 			}
 	   modelBatch.end();  
 	   //przejcie do kolejnego kroku poaru
-	   if ((speedCounter >= 5*simulationSpeed) && t.isAllBurnt() == false) {
+	   if (t.isAllBurnt()) {
+		   if (!option.equals(Choice.FINISHED)) {
+			   simulationTime = (System.nanoTime() - simulationStart)/100000;
+		   }
+		   option = Choice.FINISHED;
+	   } else if ((speedCounter >= 5*simulationSpeed) && t.isAllBurnt() == false) {
 		   speedCounter = 0;
 		   t.spreadFire();
 	   } else {
@@ -275,6 +305,8 @@ public class Graphic implements ApplicationListener,  InputProcessor {
 	   batch.end();  
 	   if (t.isAllBurnt() == false) {
 		   t.spreadFire();
+	   } else {
+		   option = Choice.FINISHED;
 	   }
    }
    
@@ -319,7 +351,7 @@ public class Graphic implements ApplicationListener,  InputProcessor {
 				Data.setDirection(Direction.valueOf(texts[4].toString()));
 				Data.setHumidity(Integer.parseInt(texts[5].toString()));
 				//ustawienie terenu wed�ug podanych w�a�ciwo�ci
-				t = new Terrain(Integer.parseInt(texts[0].toString()),100,vegetationProbablitity,broadLeafTypeProbablitity,Integer.parseInt(texts[2].toString()),Integer.parseInt(texts[1].toString()) );
+				t = new Terrain(Integer.parseInt(texts[0].toString()),10,vegetationProbablitity,broadLeafTypeProbablitity,Integer.parseInt(texts[2].toString()),Integer.parseInt(texts[1].toString()) );
 				option=Choice.GENERATE;
 			}
 			//wybor opcji vegetation
@@ -430,7 +462,13 @@ public class Graphic implements ApplicationListener,  InputProcessor {
  	   @Override
  	   public void resume() {
  	   }
-   
+
+
+	public String displayDouble(double value) {
+		DecimalFormat df = new DecimalFormat("#.##");
+		df.setRoundingMode(RoundingMode.DOWN);
+		return df.format(value);
+	}
 	
 }
 

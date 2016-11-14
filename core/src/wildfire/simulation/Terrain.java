@@ -27,11 +27,13 @@ public class Terrain {
 	public static int 				spotingCount=0;
 	public int 						sizeX;
 	public int 						sizeY;
+	public int 						fuelCount = 0;
 	
 	
 	Terrain(int _sizeX, int _sizeY, int probability, int vegtype, int relief, int roughness) //probability i roguhness zakres 0-100
 	{		
 		double l=0;
+		fuelCount = 0;
 		sizeX = _sizeX;
 		sizeY = _sizeY;
 		terrainState = new Cell[sizeY][sizeX];
@@ -68,8 +70,10 @@ public class Terrain {
 				
 				terrainState[y][x]=new Cell(new Cell.Coordinate(y, x), s, wood, life, heightS, heightT, 1);
 				
-				if(terrainState[y][x].getState() == Cell.State.FUEL)
+				if(terrainState[y][x].getState() == Cell.State.FUEL) {
 					l++;
+					fuelCount++;
+				}
 			}
 		
 		System.out.println("Number of all cells: " + sizeX*sizeY);
@@ -154,7 +158,7 @@ public class Terrain {
 			t.spreadFire();
 		}	
 		
-		System.out.println("---treesOnFire: " + treesOnFire.size() + ", treesOnFireAdd: " + treesOnFireAdd.size()+ ", treesOnFireRemove: " + treesOnFireRemove.size());		
+		System.out.println("---treesOnFire: " + treesOnFire.size() + ", treesOnFireAdd: " + treesOnFireAdd.size()+ ", treesOnFireRemove: " + treesOnFireRemove.size());
 		for(Cell temp : treesOnFireAdd)
 		{
 			treesOnFire.add(temp);
@@ -292,9 +296,26 @@ public class Terrain {
 		
 		
 	}
-		
-	
 
+	public double getFuelAlivePercent() {
+		return (double)(fuelCount - getFuelBurntCount()) / fuelCount * 100;
+	}
+
+	public double getFuelBurntPercent() {
+		return (double)getFuelBurntCount() / fuelCount * 100;
+	}
+
+	public int getFuelBurntCount() {
+		int fuelBurnt = 0;
+		for(int i=0;i<sizeX;i++)
+			for(int j=0;j<sizeY;j++){
+				if(Terrain.this.getCell(j, i).getState()== Cell.State.BURNT){
+					fuelBurnt ++;
+				}
+			}
+		if (fuelBurnt > fuelCount) return fuelCount -2;
+		return fuelBurnt;
+	}
 	
 
 }
