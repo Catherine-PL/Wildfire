@@ -28,9 +28,7 @@ final public class Data {
 
 	
 	static int lifetime = 5;
-
 	
-
 	static double wind = 4;										// 0 - 30, 30> huragan
 	static double terrain = 1;
 	static double fuel_humidity = 1.0;		
@@ -41,7 +39,7 @@ final public class Data {
 	static int toburn_oak =18+ (int)air_humidity/5 ;
 	static int toburn_piny =8+ (int)air_humidity/10;				//ile ciepla trzeba dostarczyc zeby sie zapalilo (na podstawie gestosci i artykulow o drzewach)
 	static double q_ig = 250 + 1.116 * fuel_humidity;									// kJ / kg
-	static double sav = 1600;									// powierzchnia do objêtnoœci; jednostka 1/ft
+	static double sav = 1600;									// powierzchnia do objï¿½tnoï¿½ci; jednostka 1/ft
 	static double e = Math.exp(-138 / sav);										// efektywne ogrzewanie w przediale (0,1)
 	
 	static double density_piny = 460;							// kg / m^3
@@ -49,11 +47,13 @@ final public class Data {
 
 	static double percent_oak = 15;	
 	static double percent_piny = 85;
+
+	static double soil = 0; // 0 if dry, +150 if fertile, -200 if swampy, +50 if normal
 	
 	/* Rothermel */
 	static double r_0 = 4;			
-	static double ip_0_oak = r_0 * density_oak * e * q_ig;		// Ip_0 = R_0 * mianownik w rothermelu
-	static double ip_0_piny = r_0 * density_piny * e * q_ig;	// Ip_0 = R_0 * mianownik w rothermelu
+	static double ip_0_oak = r_0 * (density_oak + soil) * e * q_ig;		// Ip_0 = R_0 * mianownik w rothermelu
+	static double ip_0_piny = r_0 * (density_piny + soil) * e * q_ig;	// Ip_0 = R_0 * mianownik w rothermelu
 	
 	
 	static Direction winddir = Direction.N;

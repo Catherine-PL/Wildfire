@@ -59,7 +59,7 @@ public class Cell {
 	private State 			state;
 	private Wood 			type;
 	private int				burnthreshold;
-	private int 			lifetime;									// ilosc minut palenia siê paliwa, mo¿na dodaæ pole np. iloœæ ciep³a dla komórki	
+	private int 			lifetime;									// ilosc minut palenia siï¿½ paliwa, moï¿½na dodaï¿½ pole np. iloï¿½ï¿½ ciepï¿½a dla komï¿½rki	
 	private long 			heightSea;									// jednostka m
 	private double 			heightTree;									// jednostka m
 	private int 			size = 1;									// bok kwadratu - ilosc metrow
@@ -239,20 +239,20 @@ public class Cell {
 		}
 		
 		
-		/* obrót miejsca zap³onu */
+		/* obrï¿½t miejsca zapï¿½onu */
 		int xz = (int) Math.round(c * Math.cos(Math.PI+radian));	
 		int yz = (int) Math.round(c * Math.sin(Math.PI+radian));
 
 		elipse.get(xz).remove(yz);										// usuniecie miejsca zaplonu z sasiadow
 
-		/* Przesuniecie elipsy na wspó³rzêdne komórki */
+		/* Przesuniecie elipsy na wspï¿½rzï¿½dne komï¿½rki */
 		for(Integer x : elipse.keySet())
 		{
 			int xn = coordinates.x + x - xz;			
 			result.put(xn, new TreeSet<Integer>());
 			for(Integer y : elipse.get(x))
 			{
-				result.get(xn).add(coordinates.y - (y - yz));			// bo oœ y roœnie w dó³
+				result.get(xn).add(coordinates.y - (y - yz));			// bo oï¿½ y roï¿½nie w dï¿½
 			}
 		}
 				
@@ -293,34 +293,17 @@ public class Cell {
 				}
 			}
 		}
-		
-		/*if(lifetime == maxlifetime-1)
-		{
-			for(Cell c : neighbors)
-			{
-				if(c.burnthreshold==0)
-				{
-					c.state = State.BURNING;
-					Terrain.treesOnFireAdd.add(c);
-				}
-				if(c.burnthreshold>0)
-				{
-					c.burnthreshold=c.burnthreshold-1;
-				}
-			}
-		}*/
-		
 	}	
 	public String toString()
 	{
 		return (this.coordinates.toString());
 	}	
 
-	//N-iloœæ pal¹cych siê s¹siadów
+	//N-iloï¿½ï¿½ palï¿½cych siï¿½ sï¿½siadï¿½w
 	public double getSpottingDistance(int N){
 		double distance=0;
 		
-		//zmienne do równañ
+		//zmienne do rï¿½wnaï¿½
 		double U=Data.wind;		//wind at treetop height  [m/s]
 		
 		double d=55;				//diameter at breast height of three torching out
@@ -330,7 +313,7 @@ public class Cell {
 		double dF=this.getDF(1, d, n); 				//adjusted stedy flame duration [none]
 		double hF=this.getHF(1,d,n);				//adjusted steady flame height [m]
 
-		//za³o¿enie h/hF<0.5,  dF<3.5
+		//zaï¿½oï¿½enie h/hF<0.5,  dF<3.5
 		double z_0=this.getZ_0(dF, hF, hF);		//initial firebrand height m
 
 		double h_c=2.2*Math.pow(z_0,0.337)-4;//minimium value of h_ m
