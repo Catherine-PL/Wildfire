@@ -10,4 +10,11 @@ public class GraphicUtils
         df.setRoundingMode(RoundingMode.DOWN);
         return df.format(value);
     }
+
+    public static boolean inBorders(int position,int smaller, int bigger) {
+        if ((position > smaller) && (position < bigger)) {
+            return true;
+        }
+        return false;
+    }
 }

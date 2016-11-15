@@ -1,7 +1,7 @@
 package wildfire.simulation;
 
 /**
- * Aggregation of all needed parameters to wildfire simulation.
+ * Aggregation of all needed parameters for wildfire simulation.
  * @author Sebastian
  *
  */
@@ -45,8 +45,10 @@ final public class Data {
 	static double density_piny = 460;							// kg / m^3
 	static double density_oak = 760;
 
-	static double percent_oak = 15;	
+	static double percent_oak = 15;
 	static double percent_piny = 85;
+
+	static int vegetation_probability = 50;
 
 	static double soil = 0; // 0 if dry, +150 if fertile, -200 if swampy, +50 if normal
 	

@@ -6,9 +6,10 @@ package wildfire.simulation;
  */
 public class Simulation
 {
-    public int simulationSpeed;
+    private int simulationSpeed;
     private long simulationTime;
     private long simulationStart;
+    private int speedCounter;
 
     public void startTimer(){
          simulationStart = System.nanoTime();
@@ -22,4 +23,21 @@ public class Simulation
         return simulationTime;
     }
 
+    public void setSimulationSpeed (int speed) {
+        simulationSpeed = speed;
+    }
+
+    public int getSimulationSpeed () {
+        return simulationSpeed;
+    }
+
+    public boolean readyNextStep() {
+        if ((speedCounter >= 5*simulationSpeed)) {
+            speedCounter = 0;
+            return true;
+        } else {
+            speedCounter++;
+            return false;
+        }
+    }
 }
