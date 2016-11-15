@@ -65,6 +65,16 @@ public class Cell {
 
     Set<Cell> neighbors = new HashSet<Cell>();
 
+    /**
+     * Cell constructor
+     * @param yx Coordinates of cell
+     * @param state State of cell
+     * @param type type of Wood if cell is in FUEL state
+     * @param lifetime fuel's resitence to fire (in iterations)
+     * @param heightSea lowest height of terrain
+     * @param heightTree height of tree
+     * @param size size of fuel
+     */
     public Cell(Coordinate yx, State state, Wood type, int lifetime, long heightSea, double heightTree, int size) {
         this.coordinates = yx;
         this.state = state;
@@ -80,11 +90,19 @@ public class Cell {
             this.burnthreshold = Data.toburn_piny;
     }
 
+    /**
+     * Cell constructor
+     * @param value threshold for reacting to fire nearby (how quickly fuel will catch fire)
+     */
     public void setBurnThreshold(int value) {
         burnthreshold = value;
     }
 
-    private double rothermel()    // szybkosc rozchodzenia sie pozaru dla jego czola
+    /**
+     * Calculates velocity of head of the fire, based on Rothermel model
+     * @return velocity of the head of fire
+     */
+    private double rothermel()
     {
 
         double density;
@@ -246,7 +264,11 @@ public class Cell {
         return (this.coordinates.toString());
     }
 
-    //N-ilo�� pal�cych si� s�siad�w
+    /**
+     * Calculates distance for spotting fire
+     * @param N parameter
+     * @return spotting distance
+     */
     public double getSpottingDistance(int N) {
         double distance = 0;
 

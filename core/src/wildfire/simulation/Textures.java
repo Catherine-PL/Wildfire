@@ -3,7 +3,9 @@ package wildfire.simulation;
 import com.badlogic.gdx.graphics.Texture;
 
 /**
- * Created by USER on 2016-11-15.
+ * Textures contains textures used in rendering GUI
+ *
+ * @author Katarzyna
  */
 public class Textures {
     public Texture treeGreen;
@@ -16,6 +18,10 @@ public class Textures {
     public Texture treeBlack;
     public Texture report;
 
+    /**
+     * This is constructor that initializes textures with files
+     * @param assetsPath path to directory with files
+     */
     public Textures(String assetsPath) {
         background = new Texture(assetsPath + "background.png");
         guitext = new Texture(assetsPath + "text.png");

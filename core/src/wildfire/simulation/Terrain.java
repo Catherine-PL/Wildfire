@@ -25,7 +25,15 @@ public class Terrain {
     public int sizeY;
     public int fuelCount = 0;
 
-
+    /**
+     * This is constructor that creates Terrain
+     * @param _sizeX width of terrain
+     * @param _sizeY height of terrain
+     * @param probability probability of growing tree on cell
+     * @param vegtype probability of tree being oak
+     * @param relief maximum elevation between cels
+     * @param roughness the higher, the bigger differences between heights of neighbour cells
+     */
     Terrain(int _sizeX, int _sizeY, int probability, int vegtype, int relief, int roughness) //probability i roguhness zakres 0-100
     {
         fuelCount = 0;
@@ -66,6 +74,10 @@ public class Terrain {
         ignite();
     }
 
+    /**
+     * Saves neighbours for each cell - based on eliptical shape
+     * @param wind_direction direction of wind
+     */
     private void defineNeighbors(Data.Direction wind_direction) {
         for (int y = 0; y < sizeY; y++) {
             for (int x = 0; x < sizeX; x++) {
@@ -83,7 +95,9 @@ public class Terrain {
         }
     }
 
-    //rozpoczęcie pożaru - 9 środkowych drzew podpalanych
+    /**
+     * Starts the fire: changes state of nine cells in the middle of terrain to Burning
+     */
     public void ignite() {
         Cell choosenTree;
         for (int i = -1; i < 2; i++) {
@@ -96,7 +110,10 @@ public class Terrain {
         }
     }
 
-    //podstawowy generator, nie ma uwzglednienia wysokosci na jakiej sa sasiedzi
+    /**
+     * For each cell of terrain randomizes its height between zero and maximum height set by user
+     * @param relief maximum height
+     */
     public void generateElevation(int relief) {
         int probability = 0;
         for (int y = 0; y < sizeY; y++)
@@ -130,10 +147,20 @@ public class Terrain {
         spreadSpotting(treesOnFire);
     }
 
+    /**
+     * Checks if there are no trees on fire
+     * @return True if no trees on fire
+     */
     public boolean isAllBurnt() {
         return treesOnFire.isEmpty();
     }
 
+    /**
+     * Getter for chosen cell from terrain
+     * @param y y position of cell
+     * @param x x position of cell
+     * @return chosen Cell
+     */
     public Cell getCell(int y, int x) {
         return terrainState[y][x];
     }
@@ -147,10 +174,13 @@ public class Terrain {
             }
             txt = txt + "\n";
         }
-
         return txt;
     }
 
+    /**
+     * Spreading spot fire among trees.
+     * @param isOnFire set of trees on fire
+     */
     public void spreadSpotting(Set<Cell> isOnFire) {
         int X = 0, Y = 0, N = 0, kX = 0, kY = 0, skalar = 0, nowyX, nowyY;
         double spottingDist = 0;
@@ -229,6 +259,12 @@ public class Terrain {
             }
     }
 
+    /**
+     * Get numer of cell's neighbours on fire
+     * @param x x position of cell
+     * @param y y position of cell
+     * @return number of neighbour cells on fire
+     */
     private int getNeighnoursOnFire(int x, int y) {
         int n = 0;
         if (x + 1 < Terrain.this.sizeY && y + 1 < Terrain.this.sizeX && x > 1 && y > 1) {
@@ -272,14 +308,26 @@ public class Terrain {
 
     }
 
+    /**
+     * Getting percentage of alive trees from all trees on terrain
+     * @return percentage of alive trees
+     */
     public double getFuelAlivePercent() {
         return (double) (fuelCount - getFuelBurntCount()) / fuelCount * 100;
     }
 
+    /**
+     * Getting percentage of burnt trees from all trees on terrain
+     * @return percentage of burnt trees
+     */
     public double getFuelBurntPercent() {
         return (double) getFuelBurntCount() / fuelCount * 100;
     }
 
+    /**
+     * Counts burnt trees on terrain
+     * @return amount of burnt trees
+     */
     public int getFuelBurntCount() {
         int fuelBurnt = 0;
         for (int i = 0; i < sizeX; i++)
@@ -291,6 +339,4 @@ public class Terrain {
         if (fuelBurnt > fuelCount) return fuelCount - 2;
         return fuelBurnt;
     }
-
-
 }

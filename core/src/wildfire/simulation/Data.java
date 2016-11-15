@@ -7,6 +7,9 @@ package wildfire.simulation;
  */
 final public class Data {
 
+    /**
+     * Available wind directions and their translations to angles
+     */
     public enum Direction {
         N(90), NE(45), E(0), SE(-45), S(270), SW(-135), W(180), NW(135);
 
@@ -57,18 +60,38 @@ final public class Data {
 
     static Direction winddir = Direction.N;
 
+    /**
+     * Setter for air humidity
+     * @param h new air humidity
+     * @return Nothing.
+     */
     static void setHumidity(int h) {
         air_humidity = h;
     }
 
+    /**
+     * Setter for wind direction
+     * @param d new wind direction
+     * @return Nothing.
+     */
     static void setDirection(Direction d) {
         winddir = d;
     }
 
+    /**
+     * Setter for wind velocity
+     * @param value new wind velocity
+     * @return Nothing.
+     */
     static void setWind(double value) {
         wind = value;
     }
 
+    /**
+     * Setter for fuel humidity
+     * @param value new fuel humidity
+     * @return Nothing.
+     */
     static void setFuel_humidity(int value) {
         fuel_humidity = value;
     }

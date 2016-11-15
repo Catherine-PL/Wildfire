@@ -20,6 +20,11 @@ import com.badlogic.gdx.graphics.g3d.environment.DirectionalLight;
 import com.badlogic.gdx.graphics.g3d.utils.CameraInputController;
 import wildfire.simulation.Data.Direction;
 
+/**
+ * GraphicController controls GUI and rendering simulation
+ *
+ * @author Katarzyna
+ */
 public class GraphicController implements ApplicationListener, InputProcessor {
     private String assetsPath = "D:\\Biblioteka\\Studia\\VII semestr\\studio projektowe 2\\Wildfire\\core\\assets\\";
     private Textures textures;
@@ -37,7 +42,9 @@ public class GraphicController implements ApplicationListener, InputProcessor {
     private BitmapFont font;
     private StringBuilder[] texts = new StringBuilder[6];    //bufor do  wpisywania atrybut�w terenu
 
-    //enum do wyboru opcji zeby napisy byly wpisywane i wyswietlane odpowiednio
+    /**
+     * Available options in GUI
+     */
     public enum Choice {
         GENERATE(10), T_AREA(0), T_ROUGHNESS(1), T_MAXIMUM_HEIGHT(2), W_VELOCITY(3), W_DIRECTION(4), W_HUMIDITY(5), NONE(9), GENERATE_EXAMPLE(10), FINISHED(11);
         private final int value;
@@ -56,6 +63,9 @@ public class GraphicController implements ApplicationListener, InputProcessor {
     //dane z Ku�ni - example
     Terrain t = new Terrain(100, 150, Data.vegetation_probability, (int) (Data.percent_oak), 4, 60); //tutaj powinno byc od razu dane z ku�ni
 
+    /**
+     * Initialization of all necessary fields before rendering
+     */
     @Override
     public void create() {
         //do 3D
@@ -90,6 +100,9 @@ public class GraphicController implements ApplicationListener, InputProcessor {
         Gdx.input.setInputProcessor(this);
     }
 
+    /**
+     * Continuous rendering of elements according to User's choice
+     */
     @Override
     public void render() {
         //kolor t�a mi�dzy renderami
@@ -107,6 +120,9 @@ public class GraphicController implements ApplicationListener, InputProcessor {
         }
     }
 
+    /**
+     * Renders report after simulation end
+     */
     public void batchReport() {
         batch.begin();
         batch.draw(textures.report, 460, 60);
@@ -118,7 +134,9 @@ public class GraphicController implements ApplicationListener, InputProcessor {
         batch.end();
     }
 
-    //metoda odpowiedzialna za wywietlanie menu
+    /**
+     * Renders menu
+     */
     public void batchMenu() {
         batch.begin();
         batch.draw(textures.background, 0, 0);
@@ -134,7 +152,9 @@ public class GraphicController implements ApplicationListener, InputProcessor {
         batch.end();
     }
 
-    //metoda odpowiedzialna za wywietlanie modelu lasu
+    /**
+     * Renders terrain with trees during and after simulation
+     */
     public void batchSimulation3D() {
         simulation.startTimer();
         Gdx.input.setInputProcessor(camController);
@@ -163,6 +183,9 @@ public class GraphicController implements ApplicationListener, InputProcessor {
         }
     }
 
+    /**
+     * Helper method for rendering ground
+     */
     private void renderGround(int y, int x) {
         for (int z = -2; z < t.getCell(y, x).getElevation() - 1; z++) {
             instance2 = new ModelInstance(models.modelFree, 3 * y - 80, z, 3 * x);
@@ -170,6 +193,9 @@ public class GraphicController implements ApplicationListener, InputProcessor {
         }
     }
 
+    /**
+     * Helper method for rendering trees on the ground
+     */
     private void renderTree(int y, int x) {
         if ((t.getCell(y, x).getState() == Cell.State.FUEL)) {
             if ((t.getCell(y, x).getType() == Cell.Wood.OAK)) {
@@ -191,6 +217,9 @@ public class GraphicController implements ApplicationListener, InputProcessor {
         }
     }
 
+    /**
+     * Initializes position of cameras - menu camera and simulation (perspective) camera
+     */
     private void initCameras(OrthographicCamera cam) {
         cam.setToOrtho(false, 1300, 620);
         camera = new PerspectiveCamera(57, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
@@ -203,7 +232,9 @@ public class GraphicController implements ApplicationListener, InputProcessor {
     }
 
 
-    //obsuga wpisywania znakw w pola w GUI
+    /**
+     * Catches and renders text written in fields by User
+     */
     @Override
     public boolean keyDown(int keycode) {
         if ((option.getValue() != Choice.GENERATE.getValue()) && (option.getValue() != Choice.NONE.getValue())) {
@@ -224,6 +255,10 @@ public class GraphicController implements ApplicationListener, InputProcessor {
         return false;
     }
 
+    /**
+     * Discovers mouse touches on menu and selects appropriate fields
+     * @return False if no problems occured after touchdown
+     */
     @Override
     public boolean touchDown(int X, int screenY, int pointer, int button) {
         if ((button == Buttons.LEFT) && (option.getValue() != Choice.GENERATE.getValue())) {

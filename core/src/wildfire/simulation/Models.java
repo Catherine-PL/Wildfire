@@ -8,7 +8,9 @@ import com.badlogic.gdx.graphics.g3d.attributes.ColorAttribute;
 import com.badlogic.gdx.graphics.g3d.utils.ModelBuilder;
 
 /**
- * Created by USER on 2016-11-15.
+ * Models contains all models useful in rendering Wildfire Simulation
+ *
+ * @author Katarzyna
  */
 public class Models {
     public Model modelFree;
@@ -18,6 +20,9 @@ public class Models {
     public Model modelBurning;
     public Model modelBurnt;
 
+    /**
+     * Initializes all models for 3D simulation
+     */
     public Models() {
         ModelBuilder modelBuilder = new ModelBuilder();
         modelNorth = modelBuilder.createBox(5f, 3f, 5f,
