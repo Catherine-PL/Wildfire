@@ -1,7 +1,5 @@
 package wildfire.simulation;
 
-//import representation.View.Screen;
-
 import wildfire.simulation.Data.Direction;
 
 import com.badlogic.gdx.ApplicationListener;
@@ -28,28 +26,18 @@ import com.badlogic.gdx.graphics.g3d.environment.DirectionalLight;
 import com.badlogic.gdx.graphics.g3d.utils.CameraInputController;
 import com.badlogic.gdx.graphics.g3d.utils.ModelBuilder;
 
-import java.math.RoundingMode;
-import java.text.DecimalFormat;
 
-
-public class Graphic implements ApplicationListener,  InputProcessor {
+public class GraphicController implements ApplicationListener,  InputProcessor {
 	
 	//do wyswietlania GUI
 	private String assetsPath = "D:\\Biblioteka\\Studia\\VII semestr\\studio projektowe 2\\Wildfire\\core\\assets\\";
+	private Textures textures;
+	private Simulation simulation;
 
 	private int simulationSpeed = 0;
 	private int speedCounter = 0;
    private int screensizeY =620;
-	private long simulationTime = 0;
-   private Texture treeGreen;	
-   private Texture chosenDensity;	
-   private Texture chosenType;
-   private Texture treeRed;	
-   private Texture noTree;
-   private Texture background;
-   private Texture guitext;
-   private Texture treeBlack;
-	private Texture report;
+	//private long simulationTime = 0;
 
 
 	private int broadLeafTypeProbablitity =50;
@@ -93,6 +81,8 @@ public class Graphic implements ApplicationListener,  InputProcessor {
    @Override
    public void create() {
 	   //do 3D
+	   textures = new Textures(assetsPath);
+	   simulation = new Simulation();
 
 	   ModelBuilder modelBuilder = new ModelBuilder();
 	   modelNorth = modelBuilder.createBox(5f, 3f, 5f,
@@ -143,16 +133,6 @@ public class Graphic implements ApplicationListener,  InputProcessor {
 	   texts[4]=new StringBuilder("N");
 	   texts[5]=new StringBuilder("72");
 	   font = new BitmapFont();
-	   
-	   background=new Texture(assetsPath + "background.png");
-	   guitext=new Texture(assetsPath + "text.png");
-	   treeRed = new Texture(assetsPath + "treered.jpg");
-	   noTree= new Texture(assetsPath + "notree.jpg");
-	   treeBlack = new Texture(assetsPath + "treeblack.jpg");
-	   treeGreen = new Texture(assetsPath + "treegreen.jpg");
-	   chosenDensity = new Texture(assetsPath + "densityOpen.png");
-	   chosenType = new Texture(assetsPath + "typeMixed.png");
-       report = new Texture(assetsPath + "report.png");
 
 	   option=Choice.NONE;
 	   Gdx.input.setInputProcessor(this); //ustawienie odbierania klikniec myszy
@@ -184,12 +164,12 @@ public class Graphic implements ApplicationListener,  InputProcessor {
 	public void batchReport()
 	{
 		batch.begin();
-		batch.draw(report, 460, 60);
+		batch.draw(textures.report, 460, 60);
 		font.draw(batch, "SIMULATION FINISHED", 480, 210);
-		font.draw(batch, "Simulation time: "+ simulationTime + " seconds", 480, 180);
+		font.draw(batch, "Simulation time: "+ simulation.getSimulationTime() + " seconds", 480, 180);
 		font.draw(batch, "Trees total: " + t.fuelCount , 480, 150);
-		font.draw(batch, "Trees alive: "+ (t.fuelCount - t.getFuelBurntCount()) +", which is " + displayDouble(t.getFuelAlivePercent()) + " percent of total", 480, 120);
-		font.draw(batch, "Trees burnt: "+ t.getFuelBurntCount() +", which is " + displayDouble(t.getFuelBurntPercent()) + " percent of total", 480, 90);
+		font.draw(batch, "Trees alive: "+ (t.fuelCount - t.getFuelBurntCount()) +", which is " + GraphicUtils.displayDouble(t.getFuelAlivePercent()) + " percent of total", 480, 120);
+		font.draw(batch, "Trees burnt: "+ t.getFuelBurntCount() +", which is " + GraphicUtils.displayDouble(t.getFuelBurntPercent()) + " percent of total", 480, 90);
 		//trees total, trees burnt, trees alive, total time
 		batch.end();
 	}
@@ -198,10 +178,10 @@ public class Graphic implements ApplicationListener,  InputProcessor {
    public void batchMenu()
    {
 	   batch.begin();
-	   batch.draw(background, 0,0);
-	   batch.draw(chosenDensity, 29,360);
-	   batch.draw(chosenType, 29,308);
-	   batch.draw(guitext, 0,0);
+	   batch.draw(textures.background, 0,0);
+	   batch.draw(textures.chosenDensity, 29,360);
+	   batch.draw(textures.chosenType, 29,308);
+	   batch.draw(textures.guitext, 0,0);
 	   font.draw(batch, texts[0].toString(), 188, screensizeY-65);	
 	   font.draw(batch, texts[1].toString(), 188,  screensizeY-93);	
 	   font.draw(batch, texts[2].toString(), 188,  screensizeY-120);	
@@ -214,7 +194,7 @@ public class Graphic implements ApplicationListener,  InputProcessor {
    //metoda odpowiedzialna za wywietlanie modelu lasu
    public void batchSimulation3D()
    {
-	   long simulationStart = System.nanoTime();
+	   simulation.startTimer();
 	   Gdx.input.setInputProcessor(camController);
  	   camController.update();
  	   camera.update();
@@ -264,7 +244,7 @@ public class Graphic implements ApplicationListener,  InputProcessor {
 	   //przejcie do kolejnego kroku poaru
 	   if (t.isAllBurnt()) {
 		   if (!option.equals(Choice.FINISHED)) {
-			   simulationTime = (System.nanoTime() - simulationStart)/100000;
+			   simulation.stopTimer();
 		   }
 		   option = Choice.FINISHED;
 	   } else if ((speedCounter >= 5*simulationSpeed) && t.isAllBurnt() == false) {
@@ -286,19 +266,19 @@ public class Graphic implements ApplicationListener,  InputProcessor {
 				{
 					if(t.getCell(y, x).getState() == Cell.State.FREE)
 					{
-						batch.draw(noTree, 10*y+margin, 10*x+10);
+						batch.draw(textures.noTree, 10*y+margin, 10*x+10);
 					}
 					if((t.getCell(y, x).getState() == Cell.State.FUEL))
 					{
-						batch.draw(treeGreen, 10*y+margin, 10*x+10);
+						batch.draw(textures.treeGreen, 10*y+margin, 10*x+10);
 					}
 					if((t.getCell(y, x).getState() == Cell.State.BURNING))
 					{
-						batch.draw(treeRed, 10*y+margin, 10*x+10);
+						batch.draw(textures.treeRed, 10*y+margin, 10*x+10);
 					}
 					if((t.getCell(y, x).getState() == Cell.State.BURNT))
 					{
-						batch.draw(treeBlack, 10*y+margin, 10*x+10);
+						batch.draw(textures.treeBlack, 10*y+margin, 10*x+10);
 					}
 				}
 			}
@@ -358,37 +338,37 @@ public class Graphic implements ApplicationListener,  InputProcessor {
 			if ((Y<screensizeY -244) && (Y>screensizeY -260) )
 			{
 				if ((X>33) && (X<85))
-				{	
-					 chosenDensity = new Texture(assetsPath + "densitySparse.png");
+				{
+					 textures.chosenDensity = new Texture(assetsPath + "densitySparse.png");
 					 vegetationProbablitity=50;
 					 
 				}
 				if ((X>136) && (X<177))
-				{	
-					 chosenDensity = new Texture(assetsPath + "densityOpen.png");
+				{
+					 textures.chosenDensity = new Texture(assetsPath + "densityOpen.png");
 					 vegetationProbablitity=20;
 				}
 				if ((X>212) && (X<255))
-				{	
-					 chosenDensity = new Texture(assetsPath + "densityDense.png");
+				{
+					 textures.chosenDensity = new Texture(assetsPath + "densityDense.png");
 					 vegetationProbablitity=90;
 				}
 			}
 			if ((Y< screensizeY -291) && (Y>screensizeY -308) )
 			{
 				if ((X>33) && (X<114))
-				{	
-					  chosenType = new Texture(assetsPath + "typeNeedleleaf.png");
+				{
+					  textures.chosenType = new Texture(assetsPath + "typeNeedleleaf.png");
 					  broadLeafTypeProbablitity=15;
 				}
 				if ((X>127) && (X<198))
-				{	
-					  chosenType = new Texture(assetsPath + "typeBroadleaf.png");
+				{
+					  textures.chosenType = new Texture(assetsPath + "typeBroadleaf.png");
 					  broadLeafTypeProbablitity=85;
 				}
 				if ((X>210) && (X<255))
-				{	
-					  chosenType = new Texture(assetsPath + "typeMixed.png");
+				{
+					  textures.chosenType = new Texture(assetsPath + "typeMixed.png");
 					  broadLeafTypeProbablitity=50;
 				}
 			}
@@ -462,15 +442,4 @@ public class Graphic implements ApplicationListener,  InputProcessor {
  	   @Override
  	   public void resume() {
  	   }
-
-
-	public String displayDouble(double value) {
-		DecimalFormat df = new DecimalFormat("#.##");
-		df.setRoundingMode(RoundingMode.DOWN);
-		return df.format(value);
-	}
-	
 }
-
-
-
