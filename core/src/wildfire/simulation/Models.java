@@ -10,8 +10,7 @@ import com.badlogic.gdx.graphics.g3d.utils.ModelBuilder;
 /**
  * Created by USER on 2016-11-15.
  */
-public class Models
-{
+public class Models {
     public Model modelFree;
     public Model modelNorth;
     public Model modelOak;
@@ -27,16 +26,16 @@ public class Models
         modelFree = modelBuilder.createBox(3f, 1f, 3f,
                 new Material(ColorAttribute.createDiffuse(Color.BROWN)),
                 VertexAttributes.Usage.Position | VertexAttributes.Usage.Normal);
-        modelOak = modelBuilder.createCone(3f, 3f, 3f,3,
+        modelOak = modelBuilder.createCone(3f, 3f, 3f, 3,
                 new Material(ColorAttribute.createDiffuse(Color.GREEN)),
                 VertexAttributes.Usage.Position | VertexAttributes.Usage.Normal);
-        modelPiny = modelBuilder.createCone(3f, 3f, 3f,3,
+        modelPiny = modelBuilder.createCone(3f, 3f, 3f, 3,
                 new Material(ColorAttribute.createDiffuse(Color.YELLOW)),
                 VertexAttributes.Usage.Position | VertexAttributes.Usage.Normal);
-        modelBurning = modelBuilder.createCone(3f, 3f, 3f,3,
+        modelBurning = modelBuilder.createCone(3f, 3f, 3f, 3,
                 new Material(ColorAttribute.createDiffuse(Color.RED)),
                 VertexAttributes.Usage.Position | VertexAttributes.Usage.Normal);
-        modelBurnt = modelBuilder.createCone(3f, 3f, 3f,3,
+        modelBurnt = modelBuilder.createCone(3f, 3f, 3f, 3,
                 new Material(ColorAttribute.createDiffuse(Color.BLACK)),
                 VertexAttributes.Usage.Position | VertexAttributes.Usage.Normal);
     }
