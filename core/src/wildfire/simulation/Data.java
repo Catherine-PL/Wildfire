@@ -20,16 +20,17 @@ final public class Data {
         }
     }
 
-    //
+
     static double sigma = Data.sav;
     static double betaOp = 3.348 * Math.pow(sigma, -0.8189);
     static double C = 7.47 * Math.exp((-0.133 * Math.pow(sigma, 0.55)));
     static double B = 0.02526 * Math.pow(sigma, 0.54);
     static double E = 0.715 * Math.exp((-3.59 * 0.0001 * sigma));
-//
+
     static int lifetime = 5;
 
-    static double wind = 4;                                        // 0 - 30, 30> huragan
+    static Wind windInfo = new Wind(Direction.N,Direction.N,Double.parseDouble("4"),Double.parseDouble("4"));
+    static double wind = windInfo.getCurrentVelocity();  // 0 - 30, 30> huragan
     static double terrain = 1;
     static double fuel_humidity = 1.0;
     static double air_humidity = 15;
@@ -58,12 +59,11 @@ final public class Data {
     static double ip_0_piny = r_0 * (density_piny + soil) * e * q_ig;    // Ip_0 = R_0 * mianownik w rothermelu
 
 
-    static Direction winddir = Direction.N;
+    static Direction winddir = windInfo.getCurrentDirection();
 
     /**
      * Setter for air humidity
      * @param h new air humidity
-     * @return Nothing.
      */
     static void setHumidity(int h) {
         air_humidity = h;
@@ -72,28 +72,41 @@ final public class Data {
     /**
      * Setter for wind direction
      * @param d new wind direction
-     * @return Nothing.
      */
     static void setDirection(Direction d) {
-        winddir = d;
+        windInfo.directions.setFirst(d);
+        windInfo.directions.setSecond(d);
     }
 
+    static void setDirection(Direction d, Direction d2) {
+        windInfo.directions.setFirst(d);
+        windInfo.directions.setSecond(d2);
+    }
     /**
      * Setter for wind velocity
      * @param value new wind velocity
-     * @return Nothing.
      */
-    static void setWind(double value) {
-        wind = value;
+    static void setWindVelocity(double value) {
+        windInfo.velocities.setFirst(value);
+        windInfo.velocities.setSecond(value);
+    }
+
+    static void setWindVelocity(double value, double value1) {
+        windInfo.velocities.setFirst(value);
+        windInfo.velocities.setSecond(value1);
     }
 
     /**
      * Setter for fuel humidity
      * @param value new fuel humidity
-     * @return Nothing.
      */
     static void setFuel_humidity(int value) {
         fuel_humidity = value;
     }
 
+
+    static public void updateWind(){
+        Data.wind = windInfo.getCurrentVelocity();
+        Data.winddir = windInfo.getCurrentDirection();
+    }
 }

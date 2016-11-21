@@ -52,7 +52,7 @@ public class Cell {
     private State state;
     private Wood type;
     private int burnthreshold;
-    private double U = Data.wind;
+    private double U =  Data.wind;
     private int lifetime;                                    // ilosc minut palenia si� paliwa, mo�na doda� pole np. ilo�� ciep�a dla kom�rki
     private long heightSea;                                    // jednostka m
     private double heightTree;                                    // jednostka m

@@ -179,6 +179,7 @@ public class GraphicController implements ApplicationListener, InputProcessor {
             }
             option = Choice.FINISHED;
         } else if (simulation.readyNextStep() && !t.isAllBurnt()) {
+            Data.updateWind();
             t.spreadFire();
         }
     }
@@ -269,7 +270,7 @@ public class GraphicController implements ApplicationListener, InputProcessor {
             }
             //option GENERATE
             if (GraphicUtils.inBorders(X, 16, 280) && GraphicUtils.inBorders(Y, screensizeY - 544, screensizeY - 500)) {
-                Data.setWind(Double.parseDouble(texts[3].toString()));
+                Data.setWindVelocity(Double.parseDouble(texts[3].toString()));
                 Data.setDirection(Direction.valueOf(texts[4].toString()));
                 Data.setHumidity(Integer.parseInt(texts[5].toString()));
                 t = new Terrain(Integer.parseInt(texts[0].toString()), 10, Data.vegetation_probability, (int) (Data.percent_oak), Integer.parseInt(texts[2].toString()), Integer.parseInt(texts[1].toString()));
