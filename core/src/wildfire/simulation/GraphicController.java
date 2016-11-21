@@ -18,7 +18,15 @@ import com.badlogic.gdx.graphics.g3d.ModelInstance;
 import com.badlogic.gdx.graphics.g3d.attributes.ColorAttribute;
 import com.badlogic.gdx.graphics.g3d.environment.DirectionalLight;
 import com.badlogic.gdx.graphics.g3d.utils.CameraInputController;
+import com.google.gson.Gson;
+import com.google.gson.stream.JsonReader;
 import wildfire.simulation.Data.Direction;
+
+import javax.xml.ws.Response;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 /**
  * GraphicController controls GUI and rendering simulation
@@ -232,6 +240,24 @@ public class GraphicController implements ApplicationListener, InputProcessor {
         camController = new CameraInputController(camera);
     }
 
+    private Terrain loadFromFile(Path file) {
+        //TODO
+        DataTemplate dt = new DataTemplate();
+        Gson gson = new Gson();
+        try {
+            JsonReader jsonReader = new JsonReader(new FileReader(file.toString()));
+            dt = gson.fromJson(jsonReader, DataTemplate.class);
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        //set simulation speed
+        simulation.setSimulationSpeed(dt.simulation.speed);
+        //set Data parameters
+        dt.updateData();
+
+        return new Terrain(dt.terrain.a, dt.terrain.b, Data.vegetation_probability, (int) (Data.percent_oak), dt.terrain.height, dt.terrain.roughness);
+    }
 
     /**
      * Catches and renders text written in fields by User
@@ -274,6 +300,7 @@ public class GraphicController implements ApplicationListener, InputProcessor {
                 Data.setDirection(Direction.valueOf(texts[4].toString()));
                 Data.setHumidity(Integer.parseInt(texts[5].toString()));
                 t = new Terrain(Integer.parseInt(texts[0].toString()), 10, Data.vegetation_probability, (int) (Data.percent_oak), Integer.parseInt(texts[2].toString()), Integer.parseInt(texts[1].toString()));
+                //example from file: t = loadFromFile(Paths.get("D:\\Biblioteka\\Studia\\VII semestr\\studio projektowe 2\\example.json"));
                 option = Choice.GENERATE;
             }
             //option VEGETATION
