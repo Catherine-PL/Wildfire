@@ -150,6 +150,7 @@ public class GraphicController implements ApplicationListener, InputProcessor {
         batch.draw(textures.background, 0, 0);
         batch.draw(textures.chosenDensity, 29, 360);
         batch.draw(textures.chosenType, 29, 308);
+        batch.draw(textures.chosenSoil, 270, 310);
         batch.draw(textures.guitext, 0, 0);
         font.draw(batch, texts[0].toString(), 188, screensizeY - 65);
         font.draw(batch, texts[1].toString(), 188, screensizeY - 93);
@@ -332,6 +333,22 @@ public class GraphicController implements ApplicationListener, InputProcessor {
                     Data.percent_oak = 50;
                 }
             }
+            //option soil
+            //TODO
+            if (GraphicUtils.inBorders(X, 270, 350)) {
+                if (GraphicUtils.inBorders(Y, 380, 410)) {
+                    textures.chosenSoil = new Texture(assetsPath + "soilDry.png");
+                    Data.soil = 0;
+                }
+                if (GraphicUtils.inBorders(Y, 350, 370)) {
+                    textures.chosenSoil = new Texture(assetsPath + "soilFertile.png");
+                    Data.soil = 150;
+                }
+                if (GraphicUtils.inBorders(Y, 310, 340)) {
+                    textures.chosenSoil = new Texture(assetsPath + "soilSwampy.png");
+                    Data.soil = -200;
+                }
+            }
             // writable options
             if (GraphicUtils.inBorders(X, 185, 263)) {
                 if (GraphicUtils.inBorders(Y, screensizeY - 80, screensizeY - 60)) {
@@ -349,7 +366,7 @@ public class GraphicController implements ApplicationListener, InputProcessor {
                 if (GraphicUtils.inBorders(Y, screensizeY - 436, screensizeY - 414)) {
                     option = Choice.W_DIRECTION;
                 }
-                if (GraphicUtils.inBorders(Y, screensizeY - 463, screensizeY - 4417)) {
+                if (GraphicUtils.inBorders(Y, screensizeY - 463, screensizeY - 447)) {
                     option = Choice.W_HUMIDITY;
                 }
             }
