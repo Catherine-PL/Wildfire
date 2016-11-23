@@ -22,7 +22,6 @@ import com.google.gson.Gson;
 import com.google.gson.stream.JsonReader;
 import wildfire.simulation.Data.Direction;
 
-import javax.xml.ws.Response;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.nio.file.Path;
@@ -48,13 +47,14 @@ public class GraphicController implements ApplicationListener, InputProcessor {
     private SpriteBatch batch;
     public PerspectiveCamera camera;
     private BitmapFont font;
-    private StringBuilder[] texts = new StringBuilder[6];    //bufor do  wpisywania atrybut�w terenu
+    private StringBuilder[] texts = new StringBuilder[10];    //bufor do  wpisywania atrybut�w terenu
 
     /**
      * Available options in GUI
      */
     public enum Choice {
-        GENERATE(10), T_AREA(0), T_ROUGHNESS(1), T_MAXIMUM_HEIGHT(2), W_VELOCITY(3), W_DIRECTION(4), W_HUMIDITY(5), NONE(9), GENERATE_EXAMPLE(10), FINISHED(11);
+        GENERATE(10), T_AREA(0), T_ROUGHNESS(1), T_MAXIMUM_HEIGHT(2), W_VELOCITY(3), W_DIRECTION(4), W_HUMIDITY(5), NONE(12), GENERATE_EXAMPLE(10), FINISHED(11),
+        T_AREA2(6),W_DIRECTION2(7), W_VELOCITY2(8), PATH(9), GENERATE_FILE(10);
         private final int value;
 
         Choice(int value) {
@@ -102,6 +102,10 @@ public class GraphicController implements ApplicationListener, InputProcessor {
         texts[3] = new StringBuilder("4");
         texts[4] = new StringBuilder("N");
         texts[5] = new StringBuilder("72");
+        texts[6] = new StringBuilder("100");
+        texts[7] = new StringBuilder("N");
+        texts[8] = new StringBuilder("4");
+        texts[9] = new StringBuilder("D:\\Biblioteka\\Studia\\VII semestr\\studio projektowe 2\\example.json");
         font = new BitmapFont();
 
         option = Choice.NONE;
@@ -158,6 +162,11 @@ public class GraphicController implements ApplicationListener, InputProcessor {
         font.draw(batch, texts[3].toString(), 188, screensizeY - 394);
         font.draw(batch, texts[4].toString(), 188, screensizeY - 422);
         font.draw(batch, texts[5].toString(), 188, screensizeY - 449);
+
+        font.draw(batch, texts[6].toString(), 288, screensizeY - 65);
+        font.draw(batch, texts[7].toString(), 288, screensizeY - 422);
+        font.draw(batch, texts[8].toString(), 288, screensizeY - 394);
+        font.draw(batch, texts[9].toString(), 348, screensizeY - 570);
         batch.end();
     }
 
@@ -295,13 +304,24 @@ public class GraphicController implements ApplicationListener, InputProcessor {
             if (GraphicUtils.inBorders(X, 16, 280) && GraphicUtils.inBorders(Y, screensizeY - 600, screensizeY - 556)) {
                 option = Choice.GENERATE_EXAMPLE;
             }
+            //option GENERATE FROM FILE
+            if (GraphicUtils.inBorders(X, 940, 1200) && GraphicUtils.inBorders(Y, screensizeY - 600, screensizeY - 556)) {
+                t = loadFromFile(Paths.get(texts[9].toString()));
+                System.out.println("Button");
+                //example from file: t = loadFromFile(Paths.get("D:\\Biblioteka\\Studia\\VII semestr\\studio projektowe 2\\example.json"));
+                option = Choice.GENERATE_FILE;
+            }
             //option GENERATE
             if (GraphicUtils.inBorders(X, 16, 280) && GraphicUtils.inBorders(Y, screensizeY - 544, screensizeY - 500)) {
-                Data.setWindVelocity(Double.parseDouble(texts[3].toString()));
-                Data.setDirection(Direction.valueOf(texts[4].toString()));
+                //Data.setWindVelocity(Double.parseDouble(texts[3].toString()));
+                //Data.setDirection(Direction.valueOf(texts[4].toString()));
                 Data.setHumidity(Integer.parseInt(texts[5].toString()));
-                t = new Terrain(Integer.parseInt(texts[0].toString()), 10, Data.vegetation_probability, (int) (Data.percent_oak), Integer.parseInt(texts[2].toString()), Integer.parseInt(texts[1].toString()));
-                //example from file: t = loadFromFile(Paths.get("D:\\Biblioteka\\Studia\\VII semestr\\studio projektowe 2\\example.json"));
+                Data.windInfo.velocities.setSecond(Double.parseDouble(texts[8].toString()));
+                Data.windInfo.velocities.setFirst(Double.parseDouble(texts[3].toString()));
+                Data.windInfo.directions.setFirst(Direction.valueOf(texts[4].toString()));
+                Data.windInfo.directions.setSecond(Direction.valueOf(texts[7].toString()));
+
+                t = new Terrain(Integer.parseInt(texts[0].toString()), Integer.parseInt(texts[6].toString()), Data.vegetation_probability, (int) (Data.percent_oak), Integer.parseInt(texts[2].toString()), Integer.parseInt(texts[1].toString()));
                 option = Choice.GENERATE;
             }
             //option VEGETATION
@@ -334,7 +354,6 @@ public class GraphicController implements ApplicationListener, InputProcessor {
                 }
             }
             //option soil
-            //TODO
             if (GraphicUtils.inBorders(X, 270, 350)) {
                 if (GraphicUtils.inBorders(Y, 380, 410)) {
                     textures.chosenSoil = new Texture(assetsPath + "soilDry.png");
@@ -370,6 +389,23 @@ public class GraphicController implements ApplicationListener, InputProcessor {
                     option = Choice.W_HUMIDITY;
                 }
             }
+            if (GraphicUtils.inBorders(X,285,363)) {
+                if (GraphicUtils.inBorders(Y, screensizeY - 80, screensizeY - 60)) {
+                    option = Choice.T_AREA2;
+                }
+                if (GraphicUtils.inBorders(Y, screensizeY - 436, screensizeY - 414)) {
+                    option = Choice.W_DIRECTION2;
+                }
+                if (GraphicUtils.inBorders(Y, screensizeY - 409, screensizeY - 387)) {
+                    option = Choice.W_VELOCITY2;
+                }
+            }
+            //TODO x and y for path
+            if ((GraphicUtils.inBorders(Y, screensizeY - 590, screensizeY - 570))
+                    && (GraphicUtils.inBorders(X,345, 930 ))) {
+                option = Choice.PATH;
+            }
+
         }
         return false;
     }
