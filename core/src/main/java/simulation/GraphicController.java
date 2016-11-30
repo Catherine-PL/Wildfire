@@ -1,4 +1,4 @@
-package wildfire.simulation;
+package simulation;
 
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
@@ -18,9 +18,10 @@ import com.badlogic.gdx.graphics.g3d.ModelInstance;
 import com.badlogic.gdx.graphics.g3d.attributes.ColorAttribute;
 import com.badlogic.gdx.graphics.g3d.environment.DirectionalLight;
 import com.badlogic.gdx.graphics.g3d.utils.CameraInputController;
+import com.google.common.io.Resources;
 import com.google.gson.Gson;
 import com.google.gson.stream.JsonReader;
-import wildfire.simulation.Data.Direction;
+import simulation.Data.Direction;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -33,7 +34,7 @@ import java.nio.file.Paths;
  * @author Katarzyna
  */
 public class GraphicController implements ApplicationListener, InputProcessor {
-    private String assetsPath = "D:\\Biblioteka\\Studia\\VII semestr\\studio projektowe 2\\Wildfire\\core\\assets\\";
+    private String assetsPath = Resources.getResource("assets").getPath() + "/";
     private Textures textures;
     private Simulation simulation;
     private Models models;

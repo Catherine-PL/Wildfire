@@ -1,4 +1,4 @@
-package wildfire.simulation;
+package simulation;
 
 public class Pair<T> {
     private T first;

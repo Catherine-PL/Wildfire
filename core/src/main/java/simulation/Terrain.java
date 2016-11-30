@@ -1,8 +1,8 @@
-package wildfire.simulation;
+package simulation;
 
-import wildfire.simulation.Cell.State;
-import wildfire.simulation.Cell.Wood;
-import wildfire.simulation.Data.Direction;
+import simulation.Cell.State;
+import simulation.Cell.Wood;
+import simulation.Data.Direction;
 
 import java.util.*;
 

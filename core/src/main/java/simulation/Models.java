@@ -1,4 +1,4 @@
-package wildfire.simulation;
+package simulation;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.VertexAttributes;

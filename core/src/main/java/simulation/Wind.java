@@ -1,6 +1,7 @@
-package wildfire.simulation;
+package simulation;
 
-import wildfire.simulation.Data.Direction;
+import simulation.Data.Direction;
+
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Wind {

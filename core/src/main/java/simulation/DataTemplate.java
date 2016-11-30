@@ -1,4 +1,4 @@
-package wildfire.simulation;
+package simulation;
 
 public class DataTemplate {
     public DataSimulation simulation;

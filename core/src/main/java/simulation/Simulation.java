@@ -1,4 +1,4 @@
-package wildfire.simulation;
+package simulation;
 
 /**
  * Simulation contains general simulation parameters (time, speed)

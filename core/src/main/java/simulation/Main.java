@@ -1,4 +1,4 @@
-package wildfire.simulation;
+package simulation;
 
 import java.util.Random;
 

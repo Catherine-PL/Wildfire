@@ -1,4 +1,4 @@
-package wildfire.simulation;
+package simulation;
 
 import java.math.RoundingMode;
 import java.text.DecimalFormat;

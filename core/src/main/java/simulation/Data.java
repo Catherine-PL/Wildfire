@@ -1,4 +1,4 @@
-package wildfire.simulation;
+package simulation;
 
 /**
  * Aggregation of all needed parameters for wildfire simulation.
