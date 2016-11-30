@@ -1,4 +1,4 @@
-package simulation;
+package simulation.graphic;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.VertexAttributes;

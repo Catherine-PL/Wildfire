@@ -22,7 +22,6 @@ import com.google.common.io.Resources;
 import com.google.gson.Gson;
 import com.google.gson.stream.JsonReader;
 import org.apache.commons.lang3.tuple.Pair;
-import simulation.Models;
 import simulation.Simulation;
 import simulation.data.Data;
 import simulation.data.DataTemplate;
