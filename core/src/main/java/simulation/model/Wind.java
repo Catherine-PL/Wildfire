@@ -1,41 +1,41 @@
 package simulation.model;
 
+import org.apache.commons.lang3.tuple.Pair;
 import simulation.data.Data.Direction;
-import simulation.util.Pair;
 
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Wind {
-     Pair<Direction> directions;
-     Pair<Double> velocities;
+     Pair<Direction, Direction> directions;
+     Pair<Double, Double> velocities;
 
     public Wind (Direction dir1, Direction dir2, Double vel1, Double vel2) {
-        directions = new Pair<Direction>(dir1, dir2);
-        velocities = new Pair<Double>(vel1, vel2);
+        directions = Pair.of(dir1, dir2);
+        velocities = Pair.of(vel1, vel2);
     }
 
-    public void setDirections(Pair<Direction> directions) {
+    public void setDirections(Pair<Direction, Direction> directions) {
         this.directions = directions;
     }
 
-    public void setVelocities(Pair<Double> velocities) {
+    public void setVelocities(Pair<Double, Double> velocities) {
         this.velocities = velocities;
     }
 
     public double getCurrentVelocity() {
-        if (velocities.getFirst() < velocities.getSecond()) {
-            return ThreadLocalRandom.current().nextDouble(velocities.getFirst(), velocities.getSecond());
-        } else if (velocities.getFirst() > velocities.getSecond()) {
-            return ThreadLocalRandom.current().nextDouble(velocities.getSecond(), velocities.getFirst());
-        } else return velocities.getFirst();
+        if (velocities.getLeft() < velocities.getRight()) {
+            return ThreadLocalRandom.current().nextDouble(velocities.getLeft(), velocities.getRight());
+        } else if (velocities.getLeft() > velocities.getRight()) {
+            return ThreadLocalRandom.current().nextDouble(velocities.getRight(), velocities.getLeft());
+        } else return velocities.getLeft();
 
     }
 
     public Direction getCurrentDirection() {
         if(Math.random() < 0.5) {
-            return directions.getFirst();
+            return directions.getLeft();
         } else {
-            return directions.getSecond();
+            return directions.getRight();
         }
     }
 }

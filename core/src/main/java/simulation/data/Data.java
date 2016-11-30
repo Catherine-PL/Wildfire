@@ -1,7 +1,7 @@
 package simulation.data;
 
+import org.apache.commons.lang3.tuple.Pair;
 import simulation.model.Wind;
-import simulation.util.Pair;
 
 /**
  * Aggregation of all needed parameters for wildfire simulation.
@@ -85,7 +85,7 @@ final public class Data {
     }
 
     public static void setDirection(Direction d, Direction d2) {
-        windInfo.setDirections(new Pair<>(d, d2));
+        windInfo.setDirections(Pair.of(d, d2));
     }
     /**
      * Setter for wind velocity
@@ -96,7 +96,7 @@ final public class Data {
     }
 
     public static void setWindVelocity(double value, double value1) {
-        windInfo.setVelocities(new Pair<>(value, value1));
+        windInfo.setVelocities(Pair.of(value, value1));
     }
 
     /**

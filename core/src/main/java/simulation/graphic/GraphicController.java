@@ -21,13 +21,13 @@ import com.badlogic.gdx.graphics.g3d.utils.CameraInputController;
 import com.google.common.io.Resources;
 import com.google.gson.Gson;
 import com.google.gson.stream.JsonReader;
+import org.apache.commons.lang3.tuple.Pair;
 import simulation.Models;
 import simulation.Simulation;
 import simulation.data.Data;
 import simulation.data.Data.Direction;
 import simulation.data.DataTemplate;
 import simulation.model.*;
-import simulation.util.Pair;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -323,8 +323,8 @@ public class GraphicController implements ApplicationListener, InputProcessor {
                 //Data.setWindVelocity(Double.parseDouble(texts[3].toString()));
                 //Data.setDirection(Direction.valueOf(texts[4].toString()));
                 Data.setHumidity(Integer.parseInt(texts[5].toString()));
-                Data.windInfo.setVelocities(new Pair<>(Double.parseDouble(texts[3].toString()), Double.parseDouble(texts[8].toString())));
-                Data.windInfo.setDirections(new Pair<>(Direction.valueOf(texts[4].toString()), Direction.valueOf(texts[7].toString())));
+                Data.windInfo.setVelocities(Pair.of(Double.parseDouble(texts[3].toString()), Double.parseDouble(texts[8].toString())));
+                Data.windInfo.setDirections(Pair.of(Direction.valueOf(texts[4].toString()), Direction.valueOf(texts[7].toString())));
 
                 t = new Terrain(Integer.parseInt(texts[0].toString()), Integer.parseInt(texts[6].toString()), Data.vegetation_probability, (int) (Data.percent_oak), Integer.parseInt(texts[2].toString()), Integer.parseInt(texts[1].toString()));
                 option = Choice.GENERATE;
