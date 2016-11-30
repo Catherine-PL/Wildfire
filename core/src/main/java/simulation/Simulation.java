@@ -6,6 +6,7 @@ package simulation;
  * @author Katarzyna
  */
 public class Simulation {
+
     private int simulationSpeed;
     private long simulationTime;
     private long simulationStart;

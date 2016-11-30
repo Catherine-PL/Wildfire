@@ -13,6 +13,7 @@ import com.badlogic.gdx.graphics.g3d.utils.ModelBuilder;
  * @author Katarzyna
  */
 public class Models {
+
     public Model modelFree;
     public Model modelNorth;
     public Model modelOak;

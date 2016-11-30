@@ -7,5 +7,6 @@ package simulation.model;
  */
 
 public enum Wood {
+
     OAK, PINY, NONE
 }

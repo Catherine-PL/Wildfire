@@ -56,26 +56,9 @@ public class GraphicController implements ApplicationListener, InputProcessor {
     private BitmapFont font;
     private StringBuilder[] texts = new StringBuilder[10];    //bufor do  wpisywania atrybut�w terenu
 
-    /**
-     * Available options in GUI
-     */
-    public enum Choice {
-        GENERATE(10), T_AREA(0), T_ROUGHNESS(1), T_MAXIMUM_HEIGHT(2), W_VELOCITY(3), W_DIRECTION(4), W_HUMIDITY(5), NONE(12), GENERATE_EXAMPLE(10), FINISHED(11),
-        T_AREA2(6),W_DIRECTION2(7), W_VELOCITY2(8), PATH(9), GENERATE_FILE(10);
-        private final int value;
-
-        Choice(int value) {
-            this.value = value;
-        }
-
-        public int getValue() {
-            return value;
-        }
-    }
-
     private Choice option;
 
-    //dane z Ku�ni - example
+    //dane z Kuzni - example
     Terrain t = new Terrain(100, 150, Data.vegetation_probability, (int) (Data.percent_oak), 4, 60); //tutaj powinno byc od razu dane z ku�ni
 
     /**
