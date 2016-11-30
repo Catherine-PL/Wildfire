@@ -1,4 +1,6 @@
-package simulation;
+package simulation.model;
+
+import simulation.data.Data;
 
 import java.util.*;
 
@@ -8,44 +10,6 @@ import java.util.*;
  * @author Sebastian
  */
 public class Cell {
-
-    /**
-     * Available states of our cell
-     *
-     * @author Sebastian
-     */
-    public enum State {
-        BURNING, BURNT, FUEL, FREE;
-    }
-
-    /**
-     * Types of wood
-     *
-     * @author Sebastian
-     */
-    public enum Wood {
-        OAK, PINY, NONE;
-    }
-
-    /**
-     * Class which contain coordinates y and x
-     *
-     * @author Sebastian
-     */
-    static class Coordinate {
-        int x;
-        int y;
-
-        Coordinate(int _y, int _x) {
-            x = _x;
-            y = _y;
-        }
-
-
-        public String toString() {
-            return ("y:" + y + " - x:" + x);
-        }
-    }
 
     private Coordinate coordinates;
     private int elevation;
@@ -219,10 +183,10 @@ public class Cell {
 
 		/* Przesuniecie elipsy na wsp�rz�dne kom�rki */
         for (Integer x : elipse.keySet()) {
-            int xn = coordinates.x + x - xz;
+            int xn = coordinates.getX() + x - xz;
             result.put(xn, new TreeSet<Integer>());
             for (Integer y : elipse.get(x)) {
-                result.get(xn).add(coordinates.y - (y - yz));            // bo o� y ro�nie w d�
+                result.get(xn).add(coordinates.getY() - (y - yz));            // bo o� y ro�nie w d�
             }
         }
         return result;
@@ -377,15 +341,15 @@ public class Cell {
     }
 
     public static void main(String[] args) {
-        Cell c = new Cell(new Cell.Coordinate(2, 2), State.FUEL, Wood.OAK, 10, 500, 10, 1);
+        Cell c = new Cell(new Coordinate(2, 2), State.FUEL, Wood.OAK, 10, 500, 10, 1);
         c.factors();
 
         System.out.println("Cell: x=2 y=2");
         System.out.println("-----------");
         System.out.println("E: " + c.elipse(0));
         System.out.println("W: " + c.elipse(180));
-        System.out.println("N: " + c.elipse(Data.Direction.N.angle));
-        System.out.println("S: " + c.elipse(Data.Direction.S.angle));
+        System.out.println("N: " + c.elipse(Data.Direction.N.getAngle()));
+        System.out.println("S: " + c.elipse(Data.Direction.S.getAngle()));
 
 
     }

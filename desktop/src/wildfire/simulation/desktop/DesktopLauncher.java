@@ -2,7 +2,7 @@ package wildfire.simulation.desktop;
 
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
-import simulation.GraphicController;
+import simulation.graphic.GraphicController;
 
 public class DesktopLauncher {
     public static void main(String[] args) {

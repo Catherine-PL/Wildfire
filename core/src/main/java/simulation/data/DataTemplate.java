@@ -1,35 +1,12 @@
-package simulation;
+package simulation.data;
+
+import simulation.model.Wind;
 
 public class DataTemplate {
     public DataSimulation simulation;
     public DataTerrain terrain;
     public DataVegetation vegetation;
     public DataWeather weather;
-
-    class DataTerrain {
-        public int a;
-        public int b;
-        public int roughness;
-        public int height;
-    }
-
-    class DataVegetation {
-        public String density;
-        public String type;
-        public String soil;
-    }
-
-    class DataSimulation {
-        public int speed;
-    }
-
-    class DataWeather {
-        public Double windVelocityMin;
-        public Double windVelocityMax;
-        public String windDirection1;
-        public String windDirection2;
-        public int humidity;
-    }
 
     public void updateData(){
         //vegetation soil

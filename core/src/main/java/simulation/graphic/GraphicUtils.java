@@ -1,4 +1,4 @@
-package simulation;
+package simulation.graphic;
 
 import java.math.RoundingMode;
 import java.text.DecimalFormat;

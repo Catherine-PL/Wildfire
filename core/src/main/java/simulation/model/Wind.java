@@ -1,6 +1,7 @@
-package simulation;
+package simulation.model;
 
-import simulation.Data.Direction;
+import simulation.data.Data.Direction;
+import simulation.util.Pair;
 
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -11,6 +12,14 @@ public class Wind {
     public Wind (Direction dir1, Direction dir2, Double vel1, Double vel2) {
         directions = new Pair<Direction>(dir1, dir2);
         velocities = new Pair<Double>(vel1, vel2);
+    }
+
+    public void setDirections(Pair<Direction> directions) {
+        this.directions = directions;
+    }
+
+    public void setVelocities(Pair<Double> velocities) {
+        this.velocities = velocities;
     }
 
     public double getCurrentVelocity() {

@@ -12,4 +12,6 @@ eclipse.project {
 
 dependencies {
     compile 'com.google.guava:guava:20.0'
+    compile 'org.apache.commons:commons-lang3:3.5'
+
 }

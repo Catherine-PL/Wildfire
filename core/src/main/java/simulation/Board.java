@@ -2,14 +2,11 @@ package simulation;
 
 import java.util.Random;
 
-public class Main {
-    public static void main(String[] args) {
-        System.out.println(System.getProperty("java.runtime.version"));
-    }
+/**
+ * Created by Sebastian on 2016-11-30.
+ */
+public class Board {
 
-}
-
-class Board {
     int size;
     Node[][] boardState;
 
@@ -104,23 +101,4 @@ class Board {
     }
 
 
-}
-
-class Node {
-    static Random randomGenerator = new Random();
-    boolean isTree = false;
-    boolean isBurning = false;
-    boolean burnt = false;
-    boolean burningSinceThisStep = false;
-
-    Node(int _probability) {
-        if (generateRandom() < _probability) {
-            isTree = true;
-        }
-    }
-
-    int generateRandom() {
-        return randomGenerator.nextInt(100);
-
-    }
 }

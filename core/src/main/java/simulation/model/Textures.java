@@ -1,4 +1,4 @@
-package simulation;
+package simulation.model;
 
 import com.badlogic.gdx.graphics.Texture;
 

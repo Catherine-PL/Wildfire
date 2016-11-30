@@ -1,4 +1,4 @@
-package simulation;
+package simulation.util;
 
 public class Pair<T> {
     private T first;

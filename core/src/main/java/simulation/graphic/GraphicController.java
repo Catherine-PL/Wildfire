@@ -1,4 +1,4 @@
-package simulation;
+package simulation.graphic;
 
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
@@ -21,7 +21,13 @@ import com.badlogic.gdx.graphics.g3d.utils.CameraInputController;
 import com.google.common.io.Resources;
 import com.google.gson.Gson;
 import com.google.gson.stream.JsonReader;
-import simulation.Data.Direction;
+import simulation.Models;
+import simulation.Simulation;
+import simulation.data.Data;
+import simulation.data.Data.Direction;
+import simulation.data.DataTemplate;
+import simulation.model.*;
+import simulation.util.Pair;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -217,21 +223,21 @@ public class GraphicController implements ApplicationListener, InputProcessor {
      * Helper method for rendering trees on the ground
      */
     private void renderTree(int y, int x) {
-        if ((t.getCell(y, x).getState() == Cell.State.FUEL)) {
-            if ((t.getCell(y, x).getType() == Cell.Wood.OAK)) {
+        if ((t.getCell(y, x).getState() == State.FUEL)) {
+            if ((t.getCell(y, x).getType() == Wood.OAK)) {
                 instance = new ModelInstance(models.modelOak, 3 * y - 80, t.getCell(y, x).getElevation(), 3 * x);
                 modelBatch.render(instance, environment);
             }
-            if ((t.getCell(y, x).getType() == Cell.Wood.PINY)) {
+            if ((t.getCell(y, x).getType() == Wood.PINY)) {
                 instance = new ModelInstance(models.modelPiny, 3 * y - 80, t.getCell(y, x).getElevation(), 3 * x);
                 modelBatch.render(instance, environment);
             }
         }
-        if ((t.getCell(y, x).getState() == Cell.State.BURNING)) {
+        if ((t.getCell(y, x).getState() == State.BURNING)) {
             instance = new ModelInstance(models.modelBurning, 3 * y - 80, t.getCell(y, x).getElevation(), 3 * x);
             modelBatch.render(instance, environment);
         }
-        if ((t.getCell(y, x).getState() == Cell.State.BURNT)) {
+        if ((t.getCell(y, x).getState() == State.BURNT)) {
             instance = new ModelInstance(models.modelBurnt, 3 * y - 80, t.getCell(y, x).getElevation(), 3 * x);
             modelBatch.render(instance, environment);
         }
@@ -317,10 +323,8 @@ public class GraphicController implements ApplicationListener, InputProcessor {
                 //Data.setWindVelocity(Double.parseDouble(texts[3].toString()));
                 //Data.setDirection(Direction.valueOf(texts[4].toString()));
                 Data.setHumidity(Integer.parseInt(texts[5].toString()));
-                Data.windInfo.velocities.setSecond(Double.parseDouble(texts[8].toString()));
-                Data.windInfo.velocities.setFirst(Double.parseDouble(texts[3].toString()));
-                Data.windInfo.directions.setFirst(Direction.valueOf(texts[4].toString()));
-                Data.windInfo.directions.setSecond(Direction.valueOf(texts[7].toString()));
+                Data.windInfo.setVelocities(new Pair<>(Double.parseDouble(texts[3].toString()), Double.parseDouble(texts[8].toString())));
+                Data.windInfo.setDirections(new Pair<>(Direction.valueOf(texts[4].toString()), Direction.valueOf(texts[7].toString())));
 
                 t = new Terrain(Integer.parseInt(texts[0].toString()), Integer.parseInt(texts[6].toString()), Data.vegetation_probability, (int) (Data.percent_oak), Integer.parseInt(texts[2].toString()), Integer.parseInt(texts[1].toString()));
                 option = Choice.GENERATE;
