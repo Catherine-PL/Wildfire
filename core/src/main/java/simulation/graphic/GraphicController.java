@@ -23,6 +23,7 @@ import com.google.gson.Gson;
 import com.google.gson.stream.JsonReader;
 import org.apache.commons.lang3.tuple.Pair;
 import simulation.Simulation;
+import simulation.Terrain;
 import simulation.data.Data;
 import simulation.data.DataTemplate;
 import simulation.model.*;
@@ -194,7 +195,7 @@ public class GraphicController implements ApplicationListener, InputProcessor {
      * Helper method for rendering ground
      */
     private void renderGround(int y, int x) {
-        for (int z = -2; z < t.getCell(y, x).getElevation() - 1; z++) {
+        for (int z = -2; z < t.getCell(y, x).elevation - 1; z++) {
             instance2 = new ModelInstance(models.modelFree, 3 * y - 80, z, 3 * x);
             modelBatch.render(instance2, environment);
         }
@@ -204,22 +205,22 @@ public class GraphicController implements ApplicationListener, InputProcessor {
      * Helper method for rendering trees on the ground
      */
     private void renderTree(int y, int x) {
-        if ((t.getCell(y, x).getState() == State.FUEL)) {
-            if ((t.getCell(y, x).getType() == Wood.OAK)) {
-                instance = new ModelInstance(models.modelOak, 3 * y - 80, t.getCell(y, x).getElevation(), 3 * x);
+        if ((t.getCell(y, x).state == State.FUEL)) {
+            if ((t.getCell(y, x).type == Wood.OAK)) {
+                instance = new ModelInstance(models.modelOak, 3 * y - 80, t.getCell(y, x).elevation, 3 * x);
                 modelBatch.render(instance, environment);
             }
-            if ((t.getCell(y, x).getType() == Wood.PINY)) {
-                instance = new ModelInstance(models.modelPiny, 3 * y - 80, t.getCell(y, x).getElevation(), 3 * x);
+            if ((t.getCell(y, x).type == Wood.PINY)) {
+                instance = new ModelInstance(models.modelPiny, 3 * y - 80, t.getCell(y, x).elevation, 3 * x);
                 modelBatch.render(instance, environment);
             }
         }
-        if ((t.getCell(y, x).getState() == State.BURNING)) {
-            instance = new ModelInstance(models.modelBurning, 3 * y - 80, t.getCell(y, x).getElevation(), 3 * x);
+        if ((t.getCell(y, x).state == State.BURNING)) {
+            instance = new ModelInstance(models.modelBurning, 3 * y - 80, t.getCell(y, x).elevation, 3 * x);
             modelBatch.render(instance, environment);
         }
-        if ((t.getCell(y, x).getState() == State.BURNT)) {
-            instance = new ModelInstance(models.modelBurnt, 3 * y - 80, t.getCell(y, x).getElevation(), 3 * x);
+        if ((t.getCell(y, x).state == State.BURNT)) {
+            instance = new ModelInstance(models.modelBurnt, 3 * y - 80, t.getCell(y, x).elevation, 3 * x);
             modelBatch.render(instance, environment);
         }
     }

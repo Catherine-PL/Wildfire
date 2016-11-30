@@ -1,7 +1,8 @@
-package simulation.model;
+package simulation;
 
 import org.apache.commons.lang3.tuple.Pair;
 import simulation.data.Data;
+import simulation.model.*;
 
 import java.util.*;
 
@@ -13,10 +14,10 @@ import java.util.*;
 public class Terrain {
 
     private Cell[][] terrainState;
-    private static Set<Cell> treesOnFire = new HashSet<Cell>();
+    private static Set<Cell> treesOnFire = new HashSet<>();
 
-    public static Set<Cell> treesOnFireAdd = new HashSet<Cell>();
-    public static Set<Cell> treesOnFireRemove = new HashSet<Cell>();
+    public static Set<Cell> treesOnFireAdd = new HashSet<>();
+    public static Set<Cell> treesOnFireRemove = new HashSet<>();
     public static Random randomGenerator = new Random();
     public static int outBorderFire = 0;
     public static int spotingCount = 0;
@@ -63,7 +64,7 @@ public class Terrain {
 
                 terrainState[y][x] = new Cell(new Coordinate(y, x), s, wood, life, heightS, heightT, 1);
 
-                if (terrainState[y][x].getState() == State.FUEL) {
+                if (terrainState[y][x].state == State.FUEL) {
                     fuelCount++;
                 }
             }
@@ -80,13 +81,13 @@ public class Terrain {
     private void defineNeighbors(Direction wind_direction) {
         for (int y = 0; y < sizeY; y++) {
             for (int x = 0; x < sizeX; x++) {
-                if (terrainState[y][x].getState() == State.FUEL)        // dla ka¿dego drzewa, a nie dla kamieni
+                if (terrainState[y][x].state == State.FUEL)        // dla ka¿dego drzewa, a nie dla kamieni
                 {
-                    HashMap<Integer, TreeSet<Integer>> neighbors = terrainState[y][x].elipse(wind_direction.getAngle());
+                    HashMap<Integer, TreeSet<Integer>> neighbors = FireSpread.elipse(wind_direction.getAngle(), terrainState[y][x]);
                     for (Integer xn : neighbors.keySet()) {
                         for (Integer yn : neighbors.get(xn)) {
                             if (yn >= 0 && yn < sizeY && xn >= 0 && xn < sizeX)
-                                terrainState[y][x].addNeighbor(terrainState[yn][xn]);
+                                terrainState[y][x].neighbors.add(terrainState[yn][xn]);
                         }
                     }
                 }
@@ -102,8 +103,8 @@ public class Terrain {
         for (int i = -1; i < 2; i++) {
             for (int j = -1; j < 2; j++) {
                 choosenTree = terrainState[sizeY / 2 - i][sizeX / 2 - j];
-                choosenTree.setBurnThreshold(0);
-                choosenTree.setState(State.BURNING);
+                choosenTree.burnthreshold = 0;
+                choosenTree.state = State.BURNING;
                 treesOnFire.add(choosenTree);
             }
         }
@@ -118,11 +119,11 @@ public class Terrain {
         for (int y = 0; y < sizeY; y++)
             for (int x = 0; x < sizeX; x++) {
                 probability = randomGenerator.nextInt(100);
-                if (probability < 10) terrainState[y][x].setElevation(relief);
-                else if (probability < 20) terrainState[y][x].setElevation(relief / 5);
-                else if (probability < 50) terrainState[y][x].setElevation(relief / 3);
-                else if (probability < 75) terrainState[y][x].setElevation(relief / 2 + relief / 5);
-                else if (probability < 90) terrainState[y][x].setElevation(relief / 2 - relief / 5);
+                if (probability < 10) terrainState[y][x].elevation = relief;
+                else if (probability < 20) terrainState[y][x].elevation = relief / 5;
+                else if (probability < 50) terrainState[y][x].elevation = relief / 3;
+                else if (probability < 75) terrainState[y][x].elevation = relief / 2 + relief / 5;
+                else if (probability < 90) terrainState[y][x].elevation = relief / 2 - relief / 5;
             }
     }
 
@@ -132,7 +133,7 @@ public class Terrain {
     public void spreadFire() {
 
         for (Cell t : treesOnFire) {
-            t.spreadFire();
+            FireSpread.spreadFire(t);
         }
         for (Cell temp : treesOnFireAdd) {
             treesOnFire.add(temp);
@@ -169,7 +170,7 @@ public class Terrain {
         String txt = new String();
         for (int y = 0; y < sizeY; y++) {
             for (int x = 0; x < sizeX; x++) {
-                txt = txt + terrainState[y][x].getState() + ", ";
+                txt = txt + terrainState[y][x].state + ", ";
             }
             txt = txt + "\n";
         }
@@ -230,7 +231,7 @@ public class Terrain {
         for (int i = 0; i < sizeX; i++)
             for (int j = 0; j < sizeY; j++) {
                 Cell komorka = Terrain.this.getCell(j, i);
-                if (komorka.getState() == State.BURNING) {
+                if (komorka.state == State.BURNING) {
                     //komórka dla której liczê
 
                     kX = i;
@@ -241,7 +242,7 @@ public class Terrain {
                     //obliczenie iloœci pal¹cych siê drzew w okolicy 3x3
                     N = getNeighnoursOnFire(kX, kY) + 1;
                     //wyliczenie maksymalnego dystansu spotiingu z Albiniego
-                    spottingDist = komorka.getSpottingDistance(N);
+                    spottingDist = Spotting.getSpottingDistance(N);
 
                     //losowo wybiermay spotting distance z progiem górnym z Albiniego
                     skalar = ran.nextInt((int) spottingDist);
@@ -249,8 +250,8 @@ public class Terrain {
                     if (X != 0) nowyX = kX + X * skalar;
                     if (Y != 0) nowyY = kY + Y * skalar;
                     if (nowyY > 0 && nowyY < 100 && nowyX > 0 && nowyX < 100) {
-                        if (Terrain.this.terrainState[nowyY][nowyX].getState() == State.FUEL) {
-                            Terrain.this.terrainState[nowyY][nowyX].setBurnthresholdToZero();
+                        if (Terrain.this.terrainState[nowyY][nowyX].state == State.FUEL) {
+                            Terrain.this.terrainState[nowyY][nowyX].burnthreshold = 0;
                             Terrain.spotingCount++;
                         }
                     } else Terrain.outBorderFire++;
@@ -267,14 +268,14 @@ public class Terrain {
     private int getNeighnoursOnFire(int x, int y) {
         int n = 0;
         if (x + 1 < Terrain.this.sizeY && y + 1 < Terrain.this.sizeX && x > 1 && y > 1) {
-            if (this.terrainState[x + 1][y + 1].getState() == State.BURNING) n = n + 1;
-            if (this.terrainState[x][y + 1].getState() == State.BURNING) n = n + 1;
-            if (this.terrainState[x + 1][y].getState() == State.BURNING) n = n + 1;
-            if (this.terrainState[x - 1][y - 1].getState() == State.BURNING) n = n + 1;
-            if (this.terrainState[x - 1][y].getState() == State.BURNING) n = n + 1;
-            if (this.terrainState[x][y - 1].getState() == State.BURNING) n = n + 1;
-            if (this.terrainState[x + 1][y - 1].getState() == State.BURNING) n = n + 1;
-            if (this.terrainState[x - 1][y + 1].getState() == State.BURNING) n = n + 1;
+            if (this.terrainState[x + 1][y + 1].state == State.BURNING) n = n + 1;
+            if (this.terrainState[x][y + 1].state == State.BURNING) n = n + 1;
+            if (this.terrainState[x + 1][y].state == State.BURNING) n = n + 1;
+            if (this.terrainState[x - 1][y - 1].state == State.BURNING) n = n + 1;
+            if (this.terrainState[x - 1][y].state == State.BURNING) n = n + 1;
+            if (this.terrainState[x][y - 1].state == State.BURNING) n = n + 1;
+            if (this.terrainState[x + 1][y - 1].state == State.BURNING) n = n + 1;
+            if (this.terrainState[x - 1][y + 1].state == State.BURNING) n = n + 1;
         }
         return n;
     }
@@ -287,7 +288,8 @@ public class Terrain {
         Data.windInfo.setDirections(Pair.of(Direction.S, Direction.S));
         Terrain t = new Terrain(5, 100, 50, (int) (Data.percent_oak), 50, 60);
         System.out.println(t.terrainState[2][2]);
-        System.out.println(t.terrainState[2][2].elipse(Direction.S.getAngle()));
+        System.out.println(FireSpread.elipse(Direction.S.getAngle(), t.terrainState[2][2]));
+
         while (!t.isAllBurnt()) {
             System.out.println("-------------------------");
             System.out.println(t.toString());
@@ -299,12 +301,10 @@ public class Terrain {
 
         System.out.println("Cell: x=2 y=2");
         System.out.println("-----------");
-        System.out.println("E: " + t.terrainState[2][2].elipse(0));
-        System.out.println("W: " + t.terrainState[2][2].elipse(180));
-        System.out.println("N: " + t.terrainState[2][2].elipse(Direction.N.getAngle()));
-        System.out.println("S: " + t.terrainState[2][2].elipse(Direction.S.getAngle()));
-
-
+        System.out.println("E: " + FireSpread.elipse(0, t.terrainState[2][2]));
+        System.out.println("W: " + FireSpread.elipse(180, t.terrainState[2][2]));
+        System.out.println("N: " + FireSpread.elipse(Direction.N.getAngle(), t.terrainState[2][2]));
+        System.out.println("S: " + FireSpread.elipse(Direction.S.getAngle(), t.terrainState[2][2]));
     }
 
     /**
@@ -331,7 +331,7 @@ public class Terrain {
         int fuelBurnt = 0;
         for (int i = 0; i < sizeX; i++)
             for (int j = 0; j < sizeY; j++) {
-                if (Terrain.this.getCell(j, i).getState() == State.BURNT) {
+                if (Terrain.this.getCell(j, i).state == State.BURNT) {
                     fuelBurnt++;
                 }
             }

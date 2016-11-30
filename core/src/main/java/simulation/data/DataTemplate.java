@@ -4,10 +4,11 @@ import simulation.model.Direction;
 import simulation.model.Wind;
 
 public class DataTemplate {
-    public DataSimulation simulation;
-    public DataTerrain terrain;
-    public DataVegetation vegetation;
-    public DataWeather weather;
+
+    public TemplateSimulation simulation;
+    public TemplateTerrain terrain;
+    public TemplateVegetation vegetation;
+    public TemplateWeather weather;
 
     public void updateData(){
         //vegetation soil

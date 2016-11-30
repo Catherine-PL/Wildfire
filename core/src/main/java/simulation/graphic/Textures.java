@@ -1,4 +1,4 @@
-package simulation.model;
+package simulation.graphic;
 
 import com.badlogic.gdx.graphics.Texture;
 
@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.Texture;
  * @author Katarzyna
  */
 public class Textures {
+
     public Texture treeGreen;
     public Texture chosenDensity;
     public Texture chosenType;
