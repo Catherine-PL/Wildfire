@@ -348,8 +348,8 @@ public class Cell {
         System.out.println("-----------");
         System.out.println("E: " + c.elipse(0));
         System.out.println("W: " + c.elipse(180));
-        System.out.println("N: " + c.elipse(Data.Direction.N.getAngle()));
-        System.out.println("S: " + c.elipse(Data.Direction.S.getAngle()));
+        System.out.println("N: " + c.elipse(Direction.N.getAngle()));
+        System.out.println("S: " + c.elipse(Direction.S.getAngle()));
 
 
     }

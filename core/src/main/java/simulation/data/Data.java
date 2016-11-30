@@ -1,6 +1,6 @@
 package simulation.data;
 
-import org.apache.commons.lang3.tuple.Pair;
+import simulation.model.Direction;
 import simulation.model.Wind;
 
 /**
@@ -9,23 +9,6 @@ import simulation.model.Wind;
  * @author Sebastian
  */
 final public class Data {
-
-    /**
-     * Available wind directions and their translations to angles
-     */
-    public enum Direction {
-        N(90), NE(45), E(0), SE(-45), S(270), SW(-135), W(180), NW(135);
-
-        int angle;
-
-        Direction(int angle_from_E) {
-            angle = angle_from_E;
-        }
-
-        public int getAngle() {
-            return angle;
-        }
-    }
 
 
     public static double sigma = Data.sav;
@@ -65,48 +48,7 @@ final public class Data {
     public static double ip_0_oak = r_0 * (density_oak + soil) * e * q_ig;        // Ip_0 = R_0 * mianownik w rothermelu
     public static double ip_0_piny = r_0 * (density_piny + soil) * e * q_ig;    // Ip_0 = R_0 * mianownik w rothermelu
 
-
     public static Direction winddir = windInfo.getCurrentDirection();
-
-    /**
-     * Setter for air humidity
-     * @param h new air humidity
-     */
-    public static void setHumidity(int h) {
-        air_humidity = h;
-    }
-
-    /**
-     * Setter for wind direction
-     * @param d new wind direction
-     */
-    public static void setDirection(Direction d) {
-        setDirection(d, d);
-    }
-
-    public static void setDirection(Direction d, Direction d2) {
-        windInfo.setDirections(Pair.of(d, d2));
-    }
-    /**
-     * Setter for wind velocity
-     * @param value new wind velocity
-     */
-    public static void setWindVelocity(double value) {
-        setWindVelocity(value, value);
-    }
-
-    public static void setWindVelocity(double value, double value1) {
-        windInfo.setVelocities(Pair.of(value, value1));
-    }
-
-    /**
-     * Setter for fuel humidity
-     * @param value new fuel humidity
-     */
-    public static void setFuel_humidity(int value) {
-        fuel_humidity = value;
-    }
-
 
     public static void updateWind(){
         Data.wind = windInfo.getCurrentVelocity();

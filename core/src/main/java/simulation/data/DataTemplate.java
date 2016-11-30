@@ -1,5 +1,6 @@
 package simulation.data;
 
+import simulation.model.Direction;
 import simulation.model.Wind;
 
 public class DataTemplate {
@@ -34,9 +35,9 @@ public class DataTemplate {
             Data.percent_oak = 85;
         }
         //air humidity
-        Data.setHumidity(weather.humidity);
+        Data.air_humidity = weather.humidity;
         //wind
-        Data.windInfo = new Wind(Data.Direction.valueOf(weather.windDirection1), Data.Direction.valueOf(weather.windDirection2),
+        Data.windInfo = new Wind(Direction.valueOf(weather.windDirection1), Direction.valueOf(weather.windDirection2),
                                 weather.windVelocityMin, weather.windVelocityMax);
     }
 }

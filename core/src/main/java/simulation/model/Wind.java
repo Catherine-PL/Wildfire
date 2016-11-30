@@ -1,7 +1,6 @@
 package simulation.model;
 
 import org.apache.commons.lang3.tuple.Pair;
-import simulation.data.Data.Direction;
 
 import java.util.concurrent.ThreadLocalRandom;
 

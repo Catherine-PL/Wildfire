@@ -1,7 +1,7 @@
 package simulation.model;
 
+import org.apache.commons.lang3.tuple.Pair;
 import simulation.data.Data;
-import simulation.data.Data.Direction;
 
 import java.util.*;
 
@@ -77,7 +77,7 @@ public class Terrain {
      * Saves neighbours for each cell - based on eliptical shape
      * @param wind_direction direction of wind
      */
-    private void defineNeighbors(Data.Direction wind_direction) {
+    private void defineNeighbors(Direction wind_direction) {
         for (int y = 0; y < sizeY; y++) {
             for (int x = 0; x < sizeX; x++) {
                 if (terrainState[y][x].getState() == State.FUEL)        // dla ka¿dego drzewa, a nie dla kamieni
@@ -284,7 +284,7 @@ public class Terrain {
         int size = 6;
 
         // testowanie
-        Data.setDirection(Direction.S);
+        Data.windInfo.setDirections(Pair.of(Direction.S, Direction.S));
         Terrain t = new Terrain(5, 100, 50, (int) (Data.percent_oak), 50, 60);
         System.out.println(t.terrainState[2][2]);
         System.out.println(t.terrainState[2][2].elipse(Direction.S.getAngle()));
@@ -301,8 +301,8 @@ public class Terrain {
         System.out.println("-----------");
         System.out.println("E: " + t.terrainState[2][2].elipse(0));
         System.out.println("W: " + t.terrainState[2][2].elipse(180));
-        System.out.println("N: " + t.terrainState[2][2].elipse(Data.Direction.N.getAngle()));
-        System.out.println("S: " + t.terrainState[2][2].elipse(Data.Direction.S.getAngle()));
+        System.out.println("N: " + t.terrainState[2][2].elipse(Direction.N.getAngle()));
+        System.out.println("S: " + t.terrainState[2][2].elipse(Direction.S.getAngle()));
 
 
     }

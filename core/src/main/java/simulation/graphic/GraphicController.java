@@ -25,7 +25,6 @@ import org.apache.commons.lang3.tuple.Pair;
 import simulation.Models;
 import simulation.Simulation;
 import simulation.data.Data;
-import simulation.data.Data.Direction;
 import simulation.data.DataTemplate;
 import simulation.model.*;
 
@@ -305,7 +304,7 @@ public class GraphicController implements ApplicationListener, InputProcessor {
             if (GraphicUtils.inBorders(X, 16, 280) && GraphicUtils.inBorders(Y, screensizeY - 544, screensizeY - 500)) {
                 //Data.setWindVelocity(Double.parseDouble(texts[3].toString()));
                 //Data.setDirection(Direction.valueOf(texts[4].toString()));
-                Data.setHumidity(Integer.parseInt(texts[5].toString()));
+                Data.air_humidity = Integer.parseInt(texts[5].toString());
                 Data.windInfo.setVelocities(Pair.of(Double.parseDouble(texts[3].toString()), Double.parseDouble(texts[8].toString())));
                 Data.windInfo.setDirections(Pair.of(Direction.valueOf(texts[4].toString()), Direction.valueOf(texts[7].toString())));
 
