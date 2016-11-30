@@ -1,0 +1,23 @@
+{
+	"terrain": {
+		"a": 10,
+		"b": 100,
+		"roughness":10,
+		"height":5 
+	},
+	"vegetation": {
+		"density": "open",
+		"type": "mixed",
+		"soil": "dry"
+	},
+	"simulation": {
+		"speed" : 1	
+	},
+	"weather": {
+		"windVelocityMin": 2.0,
+		"windVelocityMax": 6.0,
+		"windDirection1":"N",
+		"windDirection2":"N",
+		"humidity":72
+	}
+}

@@ -1,7 +1,13 @@
 package simulation.data;
 
+import com.google.gson.Gson;
+import com.google.gson.stream.JsonReader;
 import simulation.model.Direction;
 import simulation.model.Wind;
+
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.nio.file.Path;
 
 public class DataTemplate {
 
@@ -10,27 +16,41 @@ public class DataTemplate {
     public TemplateVegetation vegetation;
     public TemplateWeather weather;
 
+    public static DataTemplate loadFromFile(Path filePath) {
+        DataTemplate result = new DataTemplate();
+        Gson gson = new Gson();
+
+        try {
+            JsonReader jsonReader = new JsonReader(new FileReader(filePath.toString()));
+            result = gson.fromJson(jsonReader, DataTemplate.class);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        return result;
+    }
+
     public void updateData(){
         //vegetation soil
-        if (vegetation.soil.equals("dry")) {
+        if (vegetation.soil != null && vegetation.soil.equals("dry")) {
             Data.soil = 0;
-        } else if (vegetation.soil.equals("fertile")) {
+        } else if (vegetation.soil != null && vegetation.soil.equals("fertile")) {
             Data.soil = 150;
         } else {
             Data.soil = 50;
         }
         //vegetation probability
-        if (vegetation.density.equals("open")) {
+        if (vegetation.density!= null && vegetation.density.equals("open")) {
             Data.vegetation_probability = 20;
-        } else if (vegetation.density.equals("sparse")) {
+        } else if (vegetation.density!= null && vegetation.density.equals("sparse")) {
             Data.vegetation_probability = 50;
         } else {
             Data.vegetation_probability = 90;
         }
         //vegetation type
-        if (vegetation.type.equals("mixed")) {
+        if (vegetation.type != null && vegetation.type.equals("mixed")) {
             Data.percent_oak = 50;
-        } else if (vegetation.type.equals("needleleaf")) {
+        } else if (vegetation.type != null && vegetation.type.equals("needleleaf")) {
             Data.percent_oak = 15;
         } else {
             Data.percent_oak = 85;

@@ -15,7 +15,7 @@ public class Rothermel {
     public static double rothermel(Wood type, double U)
     {
         double density;
-        double ip_0 = 0;
+        double ip_0;
 
         if (type == Wood.OAK) {
             density = Data.density_oak;

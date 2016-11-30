@@ -35,41 +35,32 @@ public class FireSpread {
         c = b - (r / hb());
     }
 
-
-    /**
-     * Calculates nieghbors in a shape of elipse which is related with rothermel without any restrictions.
-     *
-     * @param angle Angle of wind from East direction.
-     * @return All neighbors to burn in HashMap where key is Integer x and value is a HashSet of Integers y
-     */
-    public static HashMap<Integer, TreeSet<Integer>> elipse(double angle, Cell cell) {
-        factors(cell.type);
-
-        HashMap<Integer, TreeSet<Integer>> elipse = new HashMap<>();
+    private static HashMap<Integer, TreeSet<Integer>> createEllipseWithRotation(double angle) {
         HashMap<Integer, TreeSet<Integer>> result = new HashMap<>();
 
         double step = Math.PI / 180;
         double radian = angle * step;
         double e2 = ((b * b) - (a * a)) / (b * b);
 
-		/* Stworzenie elipsy wraz z obrotem */
         for (double i = 0; i < (2 * Math.PI); i = i + step) {
             double r = Math.sqrt((a * a) / (1 - e2 * Math.cos(i - radian) * Math.cos(i - radian)));
 
             int x = (int) Math.round(r * Math.cos(i));
             int y = (int) Math.round(r * Math.sin(i));
 
-            if (!elipse.containsKey(x))
-                elipse.put(x, new TreeSet<Integer>());
+            if (!result.containsKey(x))
+                result.put(x, new TreeSet<>());
 
-            elipse.get(x).add(y);
+            result.get(x).add(y);
         }
 
-		/*	wypelnienie srodka */
+        return result;
+    }
+
+    private static HashMap<Integer, TreeSet<Integer>> fillEllipseInside(HashMap<Integer, TreeSet<Integer>> elipse) {
         Set<Integer> keys = new HashSet<>(elipse.keySet());
-        Iterator<Integer> it = keys.iterator();
-        while (it.hasNext()) {
-            Integer key = it.next();
+
+        for (Integer key : keys) {
             TreeSet<Integer> set = elipse.get(key);
 
             Integer max = set.last();
@@ -81,7 +72,24 @@ public class FireSpread {
             elipse.put(key, set);
         }
 
-		/* obrot miejsca zaplonu */
+        return elipse;
+    }
+
+    /**
+     * Calculates nieghbors in a shape of elipse which is related with rothermel without any restrictions.
+     *
+     * @param angle Angle of wind from East direction.
+     * @return All neighbors to burn in HashMap where key is Integer x and value is a HashSet of Integers y
+     */
+    public static HashMap<Integer, TreeSet<Integer>> elipse(double angle, Cell cell) {
+        HashMap<Integer, TreeSet<Integer>> result = new HashMap<>();
+        factors(cell.type);
+
+        HashMap<Integer, TreeSet<Integer>> elipse = fillEllipseInside(createEllipseWithRotation(angle));
+
+        /* obrot miejsca zaplonu */
+        double step = Math.PI / 180;
+        double radian = angle * step;
         int xz = (int) Math.round(c * Math.cos(Math.PI + radian));
         int yz = (int) Math.round(c * Math.sin(Math.PI + radian));
 

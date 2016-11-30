@@ -10,7 +10,6 @@ import simulation.model.Wind;
  */
 final public class Data {
 
-
     public static double sigma = Data.sav;
     public static double betaOp = 3.348 * Math.pow(sigma, -0.8189);
     public static double C = 7.47 * Math.exp((-0.133 * Math.pow(sigma, 0.55)));

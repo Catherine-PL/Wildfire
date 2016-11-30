@@ -21,6 +21,14 @@ public class Wind {
         this.velocities = velocities;
     }
 
+    public Pair<Direction, Direction> getDirections() {
+        return directions;
+    }
+
+    public Pair<Double, Double> getVelocities() {
+        return velocities;
+    }
+
     public double getCurrentVelocity() {
         if (velocities.getLeft() < velocities.getRight()) {
             return ThreadLocalRandom.current().nextDouble(velocities.getLeft(), velocities.getRight());

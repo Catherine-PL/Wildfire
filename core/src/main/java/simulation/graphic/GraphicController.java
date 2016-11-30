@@ -94,7 +94,8 @@ public class GraphicController implements ApplicationListener, InputProcessor {
         texts[6] = new StringBuilder("100");
         texts[7] = new StringBuilder("N");
         texts[8] = new StringBuilder("4");
-        texts[9] = new StringBuilder("D:\\Biblioteka\\Studia\\VII semestr\\studio projektowe 2\\example.json");
+        texts[9] = new StringBuilder("H:\\download\\example.json");
+        //texts[9] = new StringBuilder("D:\\Biblioteka\\Studia\\VII semestr\\studio projektowe 2\\example.json");
         font = new BitmapFont();
 
         option = Choice.NONE;
@@ -240,22 +241,10 @@ public class GraphicController implements ApplicationListener, InputProcessor {
     }
 
     private Terrain loadFromFile(Path file) {
-        //TODO
-        DataTemplate dt = new DataTemplate();
-        Gson gson = new Gson();
-        try {
-            JsonReader jsonReader = new JsonReader(new FileReader(file.toString()));
-            dt = gson.fromJson(jsonReader, DataTemplate.class);
-
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        //set simulation speed
+        DataTemplate dt = DataTemplate.loadFromFile(file);
         simulation.setSimulationSpeed(dt.simulation.speed);
-        //set Data parameters
-        dt.updateData();
 
-        return new Terrain(dt.terrain.a, dt.terrain.b, Data.vegetation_probability, (int) (Data.percent_oak), dt.terrain.height, dt.terrain.roughness);
+        return Terrain.create(dt);
     }
 
     /**

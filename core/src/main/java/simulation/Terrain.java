@@ -1,9 +1,15 @@
 package simulation;
 
+import com.google.gson.Gson;
+import com.google.gson.stream.JsonReader;
 import org.apache.commons.lang3.tuple.Pair;
 import simulation.data.Data;
+import simulation.data.DataTemplate;
 import simulation.model.*;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.nio.file.Path;
 import java.util.*;
 
 /**
@@ -72,6 +78,12 @@ public class Terrain {
         defineNeighbors(Data.winddir);
         generateElevation(relief);
         ignite();
+    }
+
+    public static Terrain create(DataTemplate dt) {
+        dt.updateData();
+
+        return new Terrain(dt.terrain.a, dt.terrain.b, Data.vegetation_probability, (int) (Data.percent_oak), dt.terrain.height, dt.terrain.roughness);
     }
 
     /**
@@ -280,33 +292,6 @@ public class Terrain {
         return n;
     }
 
-    public static void main(String[] args) {
-        // TODO Auto-generated method stub
-        int size = 6;
-
-        // testowanie
-        Data.windInfo.setDirections(Pair.of(Direction.S, Direction.S));
-        Terrain t = new Terrain(5, 100, 50, (int) (Data.percent_oak), 50, 60);
-        System.out.println(t.terrainState[2][2]);
-        System.out.println(FireSpread.elipse(Direction.S.getAngle(), t.terrainState[2][2]));
-
-        while (!t.isAllBurnt()) {
-            System.out.println("-------------------------");
-            System.out.println(t.toString());
-
-            t.spreadFire();
-        }
-
-        System.out.println("-----------------------------");
-
-        System.out.println("Cell: x=2 y=2");
-        System.out.println("-----------");
-        System.out.println("E: " + FireSpread.elipse(0, t.terrainState[2][2]));
-        System.out.println("W: " + FireSpread.elipse(180, t.terrainState[2][2]));
-        System.out.println("N: " + FireSpread.elipse(Direction.N.getAngle(), t.terrainState[2][2]));
-        System.out.println("S: " + FireSpread.elipse(Direction.S.getAngle(), t.terrainState[2][2]));
-    }
-
     /**
      * Getting percentage of alive trees from all trees on terrain
      * @return percentage of alive trees
@@ -337,5 +322,32 @@ public class Terrain {
             }
         if (fuelBurnt > fuelCount) return fuelCount - 2;
         return fuelBurnt;
+    }
+
+    public static void main(String[] args) {
+        // TODO Auto-generated method stub
+        int size = 6;
+
+        // testowanie
+        Data.windInfo.setDirections(Pair.of(Direction.S, Direction.S));
+        Terrain t = new Terrain(5, 100, 50, (int) (Data.percent_oak), 50, 60);
+        System.out.println(t.terrainState[2][2]);
+        System.out.println(FireSpread.elipse(Direction.S.getAngle(), t.terrainState[2][2]));
+
+        while (!t.isAllBurnt()) {
+            System.out.println("-------------------------");
+            System.out.println(t.toString());
+
+            t.spreadFire();
+        }
+
+        System.out.println("-----------------------------");
+
+        System.out.println("Cell: x=2 y=2");
+        System.out.println("-----------");
+        System.out.println("E: " + FireSpread.elipse(0, t.terrainState[2][2]));
+        System.out.println("W: " + FireSpread.elipse(180, t.terrainState[2][2]));
+        System.out.println("N: " + FireSpread.elipse(Direction.N.getAngle(), t.terrainState[2][2]));
+        System.out.println("S: " + FireSpread.elipse(Direction.S.getAngle(), t.terrainState[2][2]));
     }
 }
