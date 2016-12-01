@@ -240,7 +240,7 @@ public class GraphicController implements ApplicationListener, InputProcessor {
     }
 
     private Terrain loadFromFile(Path file) {
-        DataTemplate dt = DataTemplate.loadFromFile(file);
+        DataTemplate dt = DataTemplate.loadFromFile(Paths.get(file.toString().replaceAll(";",":")));
         simulation.setSimulationSpeed(dt.simulation.speed);
 
         return Terrain.create(dt);
