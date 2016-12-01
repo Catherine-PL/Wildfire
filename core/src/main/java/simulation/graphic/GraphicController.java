@@ -94,8 +94,7 @@ public class GraphicController implements ApplicationListener, InputProcessor {
         texts[6] = new StringBuilder("100");
         texts[7] = new StringBuilder("N");
         texts[8] = new StringBuilder("4");
-        texts[9] = new StringBuilder("H:\\download\\example.json");
-        //texts[9] = new StringBuilder("D:\\Biblioteka\\Studia\\VII semestr\\studio projektowe 2\\example.json");
+        texts[9] = new StringBuilder(Resources.getResource("example.json").getPath().replaceFirst("/",""));
         font = new BitmapFont();
 
         option = Choice.NONE;

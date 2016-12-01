@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>wildfire.simulation</OriginalElement>
+  <nodes>
+    <node x="938.0" y="831.5">wildfire.simulation.Models</node>
+    <node x="1547.0" y="0.0">wildfire.simulation.GraphicUtils</node>
+    <node x="289.5" y="587.0">wildfire.simulation.Cell.Coordinate</node>
+    <node x="697.0" y="776.0">wildfire.simulation.Simulation</node>
+    <node x="0.0" y="831.5">wildfire.simulation.Textures</node>
+    <node x="96.0" y="820.5">wildfire.simulation.GraphicController.Choice</node>
+    <node x="378.0" y="0.0">wildfire.simulation.Cell.Wood</node>
+    <node x="1276.0" y="0.0">wildfire.simulation.Data</node>
+    <node x="1058.0" y="0.0">wildfire.simulation.Node</node>
+    <node x="214.00000000000003" y="688.0">wildfire.simulation.Terrain</node>
+    <node x="195.99999999999997" y="1084.0">wildfire.simulation.GraphicController</node>
+    <node x="300.0" y="0.0">wildfire.simulation.Cell.State</node>
+    <node x="163.83333333333337" y="79.0">wildfire.simulation.Cell</node>
+    <node x="1054.0" y="101.0">wildfire.simulation.Board</node>
+    <node x="385.0" y="1603.0">wildfire.simulation.desktop</node>
+    <node x="0.0" y="1677.0">wildfire.simulation.Main</node>
+    <node x="1349.0" y="167.0">wildfire.simulation.Data.Direction</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="wildfire.simulation.desktop" target="wildfire.simulation.GraphicController">
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="234.5" />
+    </edge>
+    <edge source="wildfire.simulation.Board" target="wildfire.simulation.Node">
+      <point x="-44.25" y="-58.5" />
+      <point x="1098.25" y="76.0" />
+      <point x="1100.25" y="76.0" />
+      <point x="-42.25" y="25.5" />
+    </edge>
+    <edge source="wildfire.simulation.GraphicController" target="wildfire.simulation.Textures">
+      <point x="-174.64999999999986" y="-234.5" />
+      <point x="270.85000000000014" y="1054.0" />
+      <point x="57.0" y="1054.0" />
+      <point x="19.0" y="14.5" />
+    </edge>
+    <edge source="wildfire.simulation.Cell" target="wildfire.simulation.Cell.Wood">
+      <point x="64.12499999999994" y="-224.0" />
+      <point x="484.4583333333333" y="59.0" />
+      <point x="394.0" y="59.0" />
+      <point x="-16.0" y="14.5" />
+    </edge>
+    <edge source="wildfire.simulation.Data" target="wildfire.simulation.Data.Direction">
+      <point x="56.5" y="58.5" />
+      <point x="1445.5" y="142.0" />
+      <point x="1409.0" y="142.0" />
+      <point x="20.0" y="-14.5" />
+    </edge>
+    <edge source="wildfire.simulation.GraphicController" target="wildfire.simulation.Simulation">
+      <point x="124.75" y="-234.5" />
+      <point x="570.25" y="1044.0" />
+      <point x="862.75" y="1044.0" />
+      <point x="55.25" y="70.0" />
+    </edge>
+    <edge source="wildfire.simulation.GraphicController" target="wildfire.simulation.GraphicController.Choice">
+      <point x="-124.74999999999989" y="-234.5" />
+      <point x="320.7500000000001" y="1044.0" />
+      <point x="120.5" y="1044.0" />
+      <point x="-24.5" y="25.5" />
+    </edge>
+    <edge source="wildfire.simulation.GraphicController" target="wildfire.simulation.Models">
+      <point x="224.54999999999995" y="-234.5" />
+      <point x="670.05" y="1064.0" />
+      <point x="991.25" y="1064.0" />
+      <point x="17.75" y="14.5" />
+    </edge>
+    <edge source="wildfire.simulation.Cell.Wood" target="wildfire.simulation.Cell">
+      <point x="16.0" y="14.5" />
+      <point x="426.0" y="49.0" />
+      <point x="612.7083333333333" y="49.0" />
+      <point x="192.37499999999994" y="-224.0" />
+    </edge>
+    <edge source="wildfire.simulation.Terrain" target="wildfire.simulation.Cell.Coordinate">
+      <point x="-173.625" y="-158.0" />
+      <point x="271.875" y="668.0" />
+      <point x="358.0" y="668.0" />
+      <point x="0.0" y="25.5" />
+    </edge>
+    <edge source="wildfire.simulation.GraphicController" target="wildfire.simulation.Terrain">
+      <point x="24.950000000000045" y="-234.5" />
+      <point x="470.45000000000005" y="1024.0" />
+      <point x="561.25" y="1024.0" />
+      <point x="115.75" y="158.0" />
+    </edge>
+    <edge source="wildfire.simulation.Cell" target="wildfire.simulation.Cell.State">
+      <point x="-192.37500000000006" y="-224.0" />
+      <point x="227.95833333333331" y="59.0" />
+      <point x="314.5" y="59.0" />
+      <point x="-14.5" y="14.5" />
+    </edge>
+    <edge source="wildfire.simulation.Cell.Coordinate" target="wildfire.simulation.Cell">
+      <point x="-45.66666666666663" y="-25.5" />
+      <point x="312.33333333333337" y="567.0" />
+      <point x="206.58333333333337" y="567.0" />
+      <point x="-213.75" y="224.0" />
+    </edge>
+    <edge source="wildfire.simulation.Data.Direction" target="wildfire.simulation.Data">
+      <point x="-20.0" y="-14.5" />
+      <point x="1369.0" y="142.0" />
+      <point x="1332.5" y="142.0" />
+      <point x="-56.5" y="58.5" />
+    </edge>
+    <edge source="wildfire.simulation.GraphicController.Choice" target="wildfire.simulation.GraphicController">
+      <point x="24.5" y="25.5" />
+      <point x="169.5" y="1034.0" />
+      <point x="370.6500000000001" y="1034.0" />
+      <point x="-74.84999999999991" y="-234.5" />
+    </edge>
+    <edge source="wildfire.simulation.Cell" target="wildfire.simulation.Cell.Coordinate">
+      <point x="-42.75" y="224.0" />
+      <point x="377.58333333333337" y="567.0" />
+      <point x="403.6666666666667" y="567.0" />
+      <point x="45.666666666666686" y="-25.5" />
+    </edge>
+    <edge source="wildfire.simulation.Cell.State" target="wildfire.simulation.Cell">
+      <point x="14.5" y="14.5" />
+      <point x="343.5" y="59.0" />
+      <point x="356.2083333333333" y="59.0" />
+      <point x="-64.12500000000006" y="-224.0" />
+    </edge>
+    <edge source="wildfire.simulation.Terrain" target="wildfire.simulation.Cell">
+      <point x="173.625" y="-158.0" />
+      <point x="619.125" y="658.0" />
+      <point x="459.0" y="658.0" />
+      <point x="459.0" y="567.0" />
+      <point x="634.0833333333333" y="567.0" />
+      <point x="213.74999999999994" y="224.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.4731121281464531" x="887.0" y="864.0" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Inner Classes</Category>
+    <Category>Properties</Category>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
