@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>simulation.model</OriginalElement>
+  <nodes>
+    <node x="71.0" y="190.0">simulation.model.Cell</node>
+    <node x="0.0" y="785.0">simulation.model.Wind</node>
+    <node x="13.0" y="507.0">simulation.model.Direction</node>
+    <node x="0.0" y="0.0">simulation.model.Coordinate</node>
+    <node x="398.0" y="11.5">simulation.model.State</node>
+    <node x="276.0" y="22.5">simulation.model.Wood</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="simulation.model.Cell" target="simulation.model.Wood">
+      <point x="47.125" y="-136.0" />
+      <point x="306.625" y="165.0" />
+      <point x="327.0" y="165.0" />
+      <point x="0.0" y="47.5" />
+    </edge>
+    <edge source="simulation.model.Wind" target="simulation.model.Direction">
+      <point x="0.0" y="-58.5" />
+      <point x="0.0" y="114.0" />
+    </edge>
+    <edge source="simulation.model.Cell" target="simulation.model.Coordinate">
+      <point x="-141.375" y="-136.0" />
+      <point x="118.125" y="165.0" />
+      <point x="64.0" y="165.0" />
+      <point x="-64.0" y="70.0" />
+    </edge>
+    <edge source="simulation.model.Cell" target="simulation.model.State">
+      <point x="141.375" y="-136.0" />
+      <point x="400.875" y="165.0" />
+      <point x="472.5" y="165.0" />
+      <point x="0.0" y="58.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.9143167028199566" x="273.5" y="451.0" />
+  <SelectedNodes>
+    <node>simulation.model.Cell</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Properties</Category>
+    <Category>Methods</Category>
+    <Category>Fields</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

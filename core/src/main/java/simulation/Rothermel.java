@@ -4,12 +4,16 @@ import simulation.data.Data;
 import simulation.model.Wood;
 
 /**
- * Created by Sebastian on 2016-11-30.
+ * Class which is responsible for Rothermal equation.
+ *
+ * @author Sebastian Katszer
  */
 public class Rothermel {
 
     /**
      * Calculates velocity of head of the fire, based on Rothermel model
+     * @param type Wood type for which calculate rothermel value.
+     * @param U Wind value which is represented in equation as U
      * @return velocity of the head of fire
      */
     public static double rothermel(Wood type, double U)

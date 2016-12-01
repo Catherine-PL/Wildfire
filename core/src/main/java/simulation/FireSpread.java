@@ -8,7 +8,9 @@ import simulation.model.Wood;
 import java.util.*;
 
 /**
- * Created by Sebastian on 2016-11-30.
+ * Responsible for fire spreading basing on each cell.
+ *
+ * @author Sebastian Katszer
  */
 public class FireSpread {
 
@@ -79,6 +81,7 @@ public class FireSpread {
      * Calculates nieghbors in a shape of elipse which is related with rothermel without any restrictions.
      *
      * @param angle Angle of wind from East direction.
+     * @param cell Cell of cellural automata for which ellipse should be created.
      * @return All neighbors to burn in HashMap where key is Integer x and value is a HashSet of Integers y
      */
     public static HashMap<Integer, TreeSet<Integer>> elipse(double angle, Cell cell) {
@@ -110,6 +113,7 @@ public class FireSpread {
     /**
      * Spreading fire means ignite all neighbors and decrease lifetime.
      * It checks lifetime and type of neighbors.
+     * @param cell Represents a cell for which action should be taken.
      */
     public static void spreadFire(Cell cell) {
         cell.lifetime--;

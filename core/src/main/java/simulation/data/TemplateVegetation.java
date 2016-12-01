@@ -1,7 +1,7 @@
 package simulation.data;
 
 /**
- * Created by Sebastian on 2016-11-30.
+ * Stores data for DataTemplate responsible for Vegetation
  */
 public class TemplateVegetation {
 

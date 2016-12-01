@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>simulation.data</OriginalElement>
+  <nodes>
+    <node x="276.4375" y="902.0">simulation.data.DataTemplate</node>
+    <node x="0.0" y="713.0">simulation.data.TemplateWeather</node>
+    <node x="808.0" y="713.0">simulation.data.DataTest</node>
+    <node x="442.0" y="724.0">simulation.data.TemplateTerrain</node>
+    <node x="598.0" y="735.0">simulation.data.TemplateVegetation</node>
+    <node x="0.0" y="0.0">simulation.data.Data</node>
+    <node x="283.0" y="757.0">simulation.data.TemplateSimulation</node>
+    <node x="301.25" y="1114.0">simulation.data.DataTemplateTest</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="simulation.data.DataTemplateTest" target="simulation.data.TemplateWeather">
+      <point x="-86.66666666666669" y="-36.5" />
+      <point x="344.5833333333333" y="1089.0" />
+      <point x="65.75" y="1089.0" />
+      <point x="-65.75" y="69.5" />
+    </edge>
+    <edge source="simulation.data.DataTemplateTest" target="simulation.data.DataTemplate">
+      <point x="0.0" y="-36.5" />
+      <point x="431.25" y="1089.0" />
+      <point x="435.9375" y="1089.0" />
+      <point x="0.0" y="81.0" />
+    </edge>
+    <edge source="simulation.data.DataTemplateTest" target="simulation.data.TemplateVegetation">
+      <point x="86.66666666666663" y="-36.5" />
+      <point x="517.9166666666666" y="1089.0" />
+      <point x="721.75" y="1089.0" />
+      <point x="41.25" y="47.5" />
+    </edge>
+    <edge source="simulation.data.DataTemplate" target="simulation.data.TemplateWeather">
+      <point x="-119.625" y="-81.0" />
+      <point x="316.3125" y="877.0" />
+      <point x="197.25" y="877.0" />
+      <point x="65.75" y="69.5" />
+    </edge>
+    <edge source="simulation.data.DataTemplate" target="simulation.data.TemplateSimulation">
+      <point x="-39.875" y="-81.0" />
+      <point x="396.0625" y="877.0" />
+      <point x="352.5" y="877.0" />
+      <point x="0.0" y="25.5" />
+    </edge>
+    <edge source="simulation.data.DataTemplate" target="simulation.data.TemplateVegetation">
+      <point x="119.625" y="-81.0" />
+      <point x="555.5625" y="877.0" />
+      <point x="639.25" y="877.0" />
+      <point x="-41.25" y="47.5" />
+    </edge>
+    <edge source="simulation.data.DataTemplate" target="simulation.data.TemplateTerrain">
+      <point x="39.875" y="-81.0" />
+      <point x="475.8125" y="877.0" />
+      <point x="510.0" y="877.0" />
+      <point x="0.0" y="58.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.6984258492129246" x="498.0" y="593.5" />
+  <SelectedNodes>
+    <node>simulation.data.DataTemplate</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Properties</Category>
+    <Category>Methods</Category>
+    <Category>Fields</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

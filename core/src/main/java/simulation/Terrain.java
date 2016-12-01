@@ -1,15 +1,10 @@
 package simulation;
 
-import com.google.gson.Gson;
-import com.google.gson.stream.JsonReader;
 import org.apache.commons.lang3.tuple.Pair;
 import simulation.data.Data;
 import simulation.data.DataTemplate;
 import simulation.model.*;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.nio.file.Path;
 import java.util.*;
 
 /**
@@ -80,6 +75,12 @@ public class Terrain {
         ignite();
     }
 
+    /**
+     * Create a terrain basing on DataTemplate class which store needed parameters.
+     * Used generally during loading json file from file.
+     * @param dt Parsed object from json file.
+     * @return Terrain class which is set with data from DataTemplate.
+     */
     public static Terrain create(DataTemplate dt) {
         dt.updateData();
 

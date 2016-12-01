@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>simulation.graphic</OriginalElement>
+  <nodes>
+    <node x="0.0" y="110.5">simulation.graphic.Models</node>
+    <node x="32.499999999999886" y="432.0">simulation.graphic.GraphicController</node>
+    <node x="681.0" y="66.5">simulation.graphic.Textures</node>
+    <node x="266.0" y="0.0">simulation.graphic.Choice</node>
+    <node x="1052.0" y="0.0">simulation.graphic.GraphicUtils</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="simulation.graphic.GraphicController" target="simulation.graphic.Models">
+      <point x="-344.7999999999998" y="-422.0" />
+      <point x="118.7000000000001" y="407.0" />
+      <point x="61.5" y="407.0" />
+      <point x="-61.5" y="80.5" />
+    </edge>
+    <edge source="simulation.graphic.GraphicController" target="simulation.graphic.Textures">
+      <point x="172.40000000000015" y="-422.0" />
+      <point x="635.9000000000001" y="407.0" />
+      <point x="762.5" y="407.0" />
+      <point x="-81.5" y="124.5" />
+    </edge>
+    <edge source="simulation.graphic.GraphicController" target="simulation.graphic.Choice">
+      <point x="1.1368683772161603E-13" y="-422.0" />
+      <point x="0.0" y="191.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.6504629629629629" x="639.5" y="638.0" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Properties</Category>
+    <Category>Methods</Category>
+    <Category>Fields</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

@@ -9,6 +9,9 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.nio.file.Path;
 
+/**
+ * Class which represents transitive data. Used during loading files with data, especially json.
+ */
 public class DataTemplate {
 
     public TemplateSimulation simulation;
@@ -30,6 +33,9 @@ public class DataTemplate {
         return result;
     }
 
+    /**
+     * Update Data class with parameters from DataTemplate. It is required step to properly set data used in simulation.
+     */
     public void updateData(){
         //vegetation soil
         if (vegetation.soil != null && vegetation.soil.equals("dry")) {

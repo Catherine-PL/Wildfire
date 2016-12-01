@@ -4,6 +4,9 @@ import org.apache.commons.lang3.tuple.Pair;
 
 import java.util.concurrent.ThreadLocalRandom;
 
+/**
+ * Class which tries to reflect wind.
+ */
 public class Wind {
      Pair<Direction, Direction> directions;
      Pair<Double, Double> velocities;

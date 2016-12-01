@@ -3,7 +3,9 @@ package simulation;
 import simulation.data.Data;
 
 /**
- * Created by Sebastian on 2016-11-30.
+ * Responsible for calculating phenomenon in wildfire as spotting,
+ * which occurs when trees are throwing fire bombs which ignite trees,
+ * which are not in surrounding.
  */
 public class Spotting {
 

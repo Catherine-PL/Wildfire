@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>simulation</OriginalElement>
+  <nodes>
+    <node x="346.0" y="835.451171875">simulation.Spotting</node>
+    <node x="0.0" y="835.451171875">simulation.FireSpread</node>
+    <node x="598.0916666666667" y="731.451171875">simulation.graphic</node>
+    <node x="673.0" y="835.451171875">simulation.Rothermel</node>
+    <node x="490.10833333333335" y="13.451171875">simulation.model</node>
+    <node x="662.0" y="387.451171875">simulation.data</node>
+    <node x="0.0" y="122.451171875">simulation.Terrain</node>
+    <node x="784.0" y="309.451171875">simulation.Simulation</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="simulation.data" target="simulation.model">
+      <point x="-25.5" y="-14.5" />
+      <point x="687.5" y="102.451171875" />
+      <point x="574.8583333333333" y="102.451171875" />
+      <point x="28.25" y="14.5" />
+    </edge>
+    <edge source="simulation.Terrain" target="simulation.model">
+      <point x="-153.0" y="-279.5" />
+      <point x="153.0" y="92.451171875" />
+      <point x="537.1916666666667" y="92.451171875" />
+      <point x="-9.416666666666629" y="14.5" />
+    </edge>
+    <edge source="simulation.graphic" target="simulation.Terrain">
+      <point x="-44.625" y="-14.5" />
+      <point x="612.9666666666667" y="711.451171875" />
+      <point x="153.0" y="711.451171875" />
+      <point x="-153.0" y="279.5" />
+    </edge>
+    <edge source="simulation.data" target="simulation.data">
+      <point x="-25.5" y="14.5" />
+      <point x="687.5" y="436.451171875" />
+      <point x="642.0" y="436.451171875" />
+      <point x="642.0" y="409.201171875" />
+      <point x="-51.0" y="7.25" />
+    </edge>
+    <edge source="simulation.model" target="simulation.model">
+      <point x="-28.25" y="14.5" />
+      <point x="518.3583333333333" y="72.451171875" />
+      <point x="460.10833333333335" y="72.451171875" />
+      <point x="460.10833333333335" y="20.701171875" />
+      <point x="-56.5" y="-7.25" />
+    </edge>
+    <edge source="simulation.graphic" target="simulation.Simulation">
+      <point x="14.875" y="-14.5" />
+      <point x="672.4666666666667" y="701.451171875" />
+      <point x="854.0" y="701.451171875" />
+      <point x="-70.0" y="92.5" />
+    </edge>
+    <edge source="simulation.graphic" target="simulation.graphic">
+      <point x="29.75" y="14.5" />
+      <point x="687.3416666666667" y="790.451171875" />
+      <point x="568.0916666666667" y="790.451171875" />
+      <point x="568.0916666666667" y="738.701171875" />
+      <point x="-59.5" y="-7.25" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.7473404255319149" x="532.0" y="554.0" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+    <Category>Fields</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

@@ -4,7 +4,6 @@ import com.google.common.io.Resources;
 import org.apache.commons.lang3.tuple.Pair;
 import org.junit.Test;
 import simulation.model.Direction;
-import simulation.model.Wind;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
